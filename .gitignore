@@ -399,3 +399,4 @@ FodyWeavers.xsd
 *.pack
 *.json
 *.js
+*.old

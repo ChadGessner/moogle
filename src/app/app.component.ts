@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FlixterApiService } from './flixter-api.service';
-import {TheaterData} from 'src/app/models/theater-data.interface';
-import {Theater} from 'src/app/models/theater.interface';
+import { Component, OnInit, Input } from '@angular/core';
+import { FlixterApiService } from './api.service';
+import {data} from 'src/app/models/theater-data.interface';
+import {theater} from 'src/app/models/theater.interface';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,13 +11,21 @@ import {Theater} from 'src/app/models/theater.interface';
 })
 export class AppComponent implements OnInit {
   title = 'moogle-app';
-  apiResult:any;
+  @Input()apiResult:any;
+  show:boolean = false;
   constructor(private api:FlixterApiService) {}
-
+  getShow() {
+    this.show = !this.show;
+    console.log(this.show)
+  }
   ngOnInit(): void {
-    this.api.getLocalTheaterData().subscribe(
-      (x)=>
-      this.apiResult = x
-    )
+  //   this.api.getLocalTheaterData().subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         this.apiResult = x
+  //       }
+  //       console.log(x)
+  //   }
+  // )
   }
 }

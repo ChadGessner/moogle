@@ -1,5 +1,5 @@
-import { Theater } from "./theater.interface";
+import { theater } from "./theater.interface";
 
-export interface TheaterData {
-    Theaters:Theater[]
+export interface data {
+    theaters:theater[]
 }

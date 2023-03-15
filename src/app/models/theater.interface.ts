@@ -1,6 +1,6 @@
 
 
-export interface Theater {
+export interface theater {
     id:string,
     tid:string,
     name:string,

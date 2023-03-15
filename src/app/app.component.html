@@ -12,18 +12,10 @@
 <div class="col-xs-12" >
   <div class="row">
     <h1 class="text-alert-success">Hello Moogle</h1>
-    <button class="btn btn-success">Hello Bootstrap</button>
-    <div class="col-xs-12">
-      <div class="row-xs-12" *ngFor="let theater of apiResult.Theaters">
-        <p>{{theater.id}}</p>
-        <p>{{theater.tid}}</p>
-        <p>{{theater.latitude}}</p>
-        <p>{{theater.longitude}}</p>
-        <p>{{theater.hasReservedSeating}}</p>
-        <p>{{theater.hasShowtimes}}</p>
-        <p>{{theater.isTicketing}}</p>
-        <p>{{theater.distance}}</p>
-      </div>
+    <!-- <button (click)="getShow()" class="btn btn-success">Hello Bootstrap</button> -->
+    <div  class="col-xs-12">
+      <app-user-registration></app-user-registration>
+      
     </div>
   </div>
 </div>

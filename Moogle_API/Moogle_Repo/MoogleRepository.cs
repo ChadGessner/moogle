@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Moogle_Models.Db_Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,24 @@ namespace Moogle_Repo
       _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
       _optionsBuilder.UseSqlServer(_configuration.GetConnectionString("StringyConnections"));
     }
-  }
+
+        public User AddUser(User user, List<Theater> theaters)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                theaters.ForEach(x =>
+                {
+                    db.UserTheaterRelationships.Add(new UserTheaterRelationship()
+                    {
+                        User = user,
+                        Theater = x
+                    });
+                });
+                db.SaveChanges();
+            }
+                return user;
+        }
+    }
 }

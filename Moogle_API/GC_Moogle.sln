@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_MVC", "Moogle_MVC\Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Console", "Moogle_Console\Moogle_Console.csproj", "{DACB19D8-E97C-4586-B209-138FA469D5DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Models", "Moogle_Models\Moogle_Models.csproj", "{32D29D31-8009-4262-8991-6A82C8E6B225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Models", "Moogle_Models\Moogle_Models.csproj", "{32D29D31-8009-4262-8991-6A82C8E6B225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Flixter_Domain", "Moogle_Flixter_Domain\Moogle_Flixter_Domain.csproj", "{02D69F67-E108-476E-B4E3-93DADC6562D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{32D29D31-8009-4262-8991-6A82C8E6B225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32D29D31-8009-4262-8991-6A82C8E6B225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32D29D31-8009-4262-8991-6A82C8E6B225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

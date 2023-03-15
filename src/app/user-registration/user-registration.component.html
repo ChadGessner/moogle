@@ -1,0 +1,29 @@
+    <div class="container">
+        <form class="list-group" #newUser="ngForm" (ngSubmit)="register(newUser)" novalidate> 
+            <label class="text-success" for="firstName"  >First Name</label>
+            <input name="firstName" [ngModel] />
+            <label for="lastName" class="text-success" >Last Name</label>
+            <input name="lastName"  [ngModel] />
+            <label for="userName" class="text-success" >User Name</label>
+            <input name="userName" [ngModel] />
+            <label for="password" class="text-success" >Password</label>
+            <input name="password"  [ngModel] />
+            <label for="email" class="text-success" >Email Address</label>
+            <input name="email"  [ngModel] />
+            <label for="phone" class="text-success" >Phone Number</label>
+            <input name="phone"  [ngModel] />
+            <label for="address" class="text-success" >Home Address</label>
+            <input name="address"  [ngModel] />
+            <label for="city" class="text-success" >City</label>
+            <input name="city"  [ngModel] />
+            <label for="state" class="text-success" >State</label>
+            <input name="state"  [ngModel] />
+            <label for="zipCode" class="text-success" >Zip Code</label>
+            <input name="zipCode"  [ngModel] />
+            <label for="submit" class="text-success" >Submit</label>
+            <Button  type="submit" class="btn btn-secondary" >Submit</Button>
+        </form>
+    </div>
+    
+
+

@@ -1,18 +1,27 @@
-﻿using Moogle_Models.Db_Models;
+using Moogle_Models.Db_Models;
 using Moogle_Repo;
 
 namespace Moogle_Domain
 {
   public class Interactor
   {
-        private readonly MoogleRepository _db;
-        public Interactor()
-        {
-            _db = new MoogleRepository();
-        }
-        public User RegisterUser(User user, List<Theater> theaters)
-        {
-            return _db.AddUser(user, theaters);
-        }
+    private readonly MoogleRepository _db;
+    public Interactor()
+    {
+        _db = new MoogleRepository();
     }
+    public User RegisterUser(User user, List<Theater> theaters)
+    {
+        Console.WriteLine(user.FirstName + " " + user.LastName);
+        return _db.AddUser(user, theaters).Result;
+    }
+    public User GetUser(string username, string password)
+    {
+      return _db.GetUser(username, password);
+    }
+    public List<Theater> GetTheatersByUserZip(User user)
+    {
+      return _db.GetTheatersByUserZip(user).Result;
+    }
+  }
 }

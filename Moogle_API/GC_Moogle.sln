@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Console", "Moogle_Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Models", "Moogle_Models\Moogle_Models.csproj", "{32D29D31-8009-4262-8991-6A82C8E6B225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Flixter_Domain", "Moogle_Flixter_Domain\Moogle_Flixter_Domain.csproj", "{02D69F67-E108-476E-B4E3-93DADC6562D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Flixter_Domain", "Moogle_Flixter_Domain\Moogle_Flixter_Domain.csproj", "{02D69F67-E108-476E-B4E3-93DADC6562D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4764F311-90B8-40C0-AFD0-81D8CCC7AA40}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

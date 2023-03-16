@@ -15,6 +15,14 @@
     <!-- <button (click)="getShow()" class="btn btn-success">Hello Bootstrap</button> -->
     <div  class="col-xs-12">
       <app-user-registration></app-user-registration>
+      <div *ngIf="registeredUser">
+        <p>Hello {{registeredUser.name}}</p>
+      </div>
+      <vg-player [ngStyle]="{'width': '400px', 'height' : '400px'}" >
+        <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+            <source src="https://playerservice.services.fandango.com/v1/clip/8628C319-94F1-4BC4-9054-83729F78D88F" type="video/mp4">
+        </video>
+    </vg-player>
       
     </div>
   </div>

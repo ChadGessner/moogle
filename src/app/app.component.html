@@ -9,12 +9,16 @@
   isTicketing:boolean,
   distance:number
 } -->
-<div class="col-xs-12" >
+
+<div class="row-cols-7" >
+  <app-nav></app-nav>
+  <router-outlet></router-outlet>
   <div class="row">
-    <h1 class="text-alert-success">Hello Moogle</h1>
+    
+    
     <!-- <button (click)="getShow()" class="btn btn-success">Hello Bootstrap</button> -->
     <div  class="col-xs-12">
-      <app-user-registration></app-user-registration>
+      
       <div *ngIf="registeredUser">
         <p>Hello {{registeredUser.name}}</p>
       </div>

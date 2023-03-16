@@ -22,7 +22,7 @@ namespace Moogle_Flixter_Domain
                 Client = new HttpClient();
       
             }
-            public TheaterRequest MakeTheaterRequest(string zipCode)
+            public async Task<TheaterRequest> MakeTheaterRequest(string zipCode)
             {
               string apiUri = BaseUri + $"theaters/list?zipCode={zipCode}&radius=50";
 
@@ -31,11 +31,11 @@ namespace Moogle_Flixter_Domain
                 .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
               var apiTask = header.GetJsonAsync<TheaterRequest>();
-              apiTask.Wait();
-              TheaterRequest result = apiTask.Result;
-              return result;
-      
-            }
+              
+              
+              return await apiTask.WaitAsync(new TimeSpan(0,0,10));
+
+    }
             public TheaterDetailData MakeTheaterDetailRequest(string theaterId)
             {
                 string apiUri = BaseUri + $"theaters/detail?id={theaterId}";

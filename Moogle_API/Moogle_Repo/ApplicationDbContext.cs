@@ -10,7 +10,8 @@ namespace Moogle_Repo
 
         public DbSet<User> Users { get; set; }
         public DbSet<Theater> Theaters { get; set; }
-        public DbSet<UserTheaterRelationship> UserTheaterRelationships { get; set; }
+        public DbSet<TheaterZip> TheaterZips { get; set; }
+
         public ApplicationDbContext()
         {
 
@@ -32,5 +33,24 @@ namespace Moogle_Repo
             optionsBuilder.UseSqlServer(cnstr);
           }
         }
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //  modelBuilder.Entity<User>()
+    //    .OwnsOne(z => z.Zip,
+    //    zc =>
+    //    {
+    //      zc.Property()
+    //    });
+
+
+
+
+    //  modelBuilder.Entity<Zip>()
+    //    .HasMany(z => z.Users)
+    //    .WithOne(u => u.Zip)
+    //    .HasPrincipalKey(u => u.ZipCode);
+        
+        
+    //}
   }
 }

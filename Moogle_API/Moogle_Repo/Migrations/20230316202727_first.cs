@@ -52,53 +52,42 @@ namespace Moogle_Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserTheaterRelationships",
+                name: "TheaterZips",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TheaterId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserTheaterRelationships", x => x.Id);
+                    table.PrimaryKey("PK_TheaterZips", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserTheaterRelationships_Theaters_TheaterId",
+                        name: "FK_TheaterZips_Theaters_TheaterId",
                         column: x => x.TheaterId,
                         principalTable: "Theaters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserTheaterRelationships_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserTheaterRelationships_TheaterId",
-                table: "UserTheaterRelationships",
+                name: "IX_TheaterZips_TheaterId",
+                table: "TheaterZips",
                 column: "TheaterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UserTheaterRelationships_UserId",
-                table: "UserTheaterRelationships",
-                column: "UserId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserTheaterRelationships");
-
-            migrationBuilder.DropTable(
-                name: "Theaters");
+                name: "TheaterZips");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Theaters");
         }
     }
 }

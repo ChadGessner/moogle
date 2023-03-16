@@ -4,6 +4,7 @@ using Moogle_Models.Db_Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,23 +25,73 @@ namespace Moogle_Repo
       _optionsBuilder.UseSqlServer(_configuration.GetConnectionString("StringyConnections"));
     }
 
-        public User AddUser(User user, List<Theater> theaters)
+        public async Task<User> AddUser(User user, List<Theater> theaters)
         {
             using (var db = new ApplicationDbContext())
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                theaters.ForEach(x =>
+                if(db.Users.Any(u=> u.UserName == user.UserName))
                 {
-                    db.UserTheaterRelationships.Add(new UserTheaterRelationship()
+                    return null;
+                }
+                TheaterZip zip = await db.TheaterZips.FirstOrDefaultAsync(x=>x.ZipCode ==  user.ZipCode);
+                if(zip != null)
+                {
+                    db.Users.Add(user);
+                    db.SaveChangesAsync().Wait();
+                    return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
+                    
+                }
+                
+                db.Users.Add(user);
+                db.SaveChangesAsync().Wait();
+                user = GetUser(user.UserName, user.Password);
+                foreach (var theater in theaters)
+                {
+                    if(theater != null)
                     {
-                        User = user,
-                        Theater = x
-                    });
-                });
+                        
+                        Theater theaterToAdd = await db.Theaters.FirstOrDefaultAsync(x => x.Id == theater.Id);
+                        zip = new TheaterZip()
+                        {
+                            ZipCode = user.ZipCode,
+                            Theater = theaterToAdd
+                        };
+                        if (theaterToAdd != null)
+                        {
+                            db.TheaterZips.Add(zip); 
+                            db.SaveChangesAsync().Wait();
+
+                            continue;
+                        }
+                        else
+                        {
+                            theaterToAdd = theater;
+                            db.Theaters.Add(theater);
+                            db.SaveChangesAsync().Wait();
+                            zip.Theater = theaterToAdd;
+                            db.TheaterZips.Add(zip);
+                            db.SaveChangesAsync().Wait();
+                        }
+                    }
+                }
                 db.SaveChanges();
+                return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
             }
+        }
+        public User GetUser(string username, string password)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var user = db.Users.FirstOrDefault(u=> u.UserName == username && u.Password == password);
                 return user;
+            }
+        }
+        public async Task<List<Theater>> GetTheatersByUserZip(User user)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                return await db.TheaterZips.Where(x=> x.ZipCode == user.ZipCode).Select(x=> x.Theater).ToListAsync();
+            }
         }
     }
 }

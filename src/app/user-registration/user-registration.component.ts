@@ -1,5 +1,6 @@
 import { Component, NgModule, Input } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { FlixterApiService } from '../api.service';
 import {User} from '../models/user.interface';
 
 @Component({
@@ -9,7 +10,7 @@ import {User} from '../models/user.interface';
 })
 export class UserRegistrationComponent {
   
-  constructor(){}
+  constructor(private api:FlixterApiService){}
   
   register(newUser: NgForm){
     let user:User = {
@@ -25,5 +26,6 @@ export class UserRegistrationComponent {
       zipCode: newUser.form.value.zipCode
     }
     console.log(user)
+    return this.api.registerNewUser(user);
   }
 }

@@ -21,7 +21,7 @@ namespace Moogle_Models.Db_Models
         public bool HasReservedSeating { get; set; }
         public bool IsTicketing { get; set; }
         public float Distance { get; set; }
-        public virtual List<UserTheaterRelationship> Relationships { get; set; }
+        
   }
 }
 /* 

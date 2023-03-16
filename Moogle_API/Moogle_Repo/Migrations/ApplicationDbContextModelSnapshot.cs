@@ -58,6 +58,29 @@ namespace Moogle_Repo.Migrations
                     b.ToTable("Theaters");
                 });
 
+            modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TheaterId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TheaterId");
+
+                    b.ToTable("TheaterZips");
+                });
+
             modelBuilder.Entity("Moogle_Models.Db_Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -94,6 +117,14 @@ namespace Moogle_Repo.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -103,57 +134,15 @@ namespace Moogle_Repo.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Moogle_Models.Db_Models.UserTheaterRelationship", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TheaterId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TheaterId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserTheaterRelationships");
-                });
-
-            modelBuilder.Entity("Moogle_Models.Db_Models.UserTheaterRelationship", b =>
+            modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
                 {
                     b.HasOne("Moogle_Models.Db_Models.Theater", "Theater")
-                        .WithMany("Relationships")
+                        .WithMany()
                         .HasForeignKey("TheaterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Moogle_Models.Db_Models.User", "User")
-                        .WithMany("Relationships")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Theater");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Moogle_Models.Db_Models.Theater", b =>
-                {
-                    b.Navigation("Relationships");
-                });
-
-            modelBuilder.Entity("Moogle_Models.Db_Models.User", b =>
-                {
-                    b.Navigation("Relationships");
                 });
 #pragma warning restore 612, 618
         }

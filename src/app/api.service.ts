@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {data} from 'src/app/models/theater-data.interface';
 import {theater} from 'src/app/models/theater.interface';
@@ -14,13 +14,18 @@ export class FlixterApiService {
 	// }
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   user:any;
+  @Output()registerEvent:EventEmitter<User> = new EventEmitter();
   constructor(private http:HttpClient) {
 
    }
 
    registerNewUser(user:User) {
-      return this.http.post<User>(this.serverUri, user).subscribe((x)=>{
-        this.user = x
+      this.http.post<User>(this.serverUri, user)
+      .subscribe((x)=>{
+        if(x){
+          this.user = x
+        }
+        return this.registerEvent.emit(this.user)
       })
    }
   //  getLocalTheaterData() {

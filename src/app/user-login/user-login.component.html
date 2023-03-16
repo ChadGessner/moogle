@@ -1,0 +1,14 @@
+
+<form class="card container-fluid p-2 m-2 bg-success" (ngSubmit)="onSubmit(login)" #login="ngForm" >
+    <div class="col-1">
+        <label class="form-label" for="userName">Enter Username</label>
+        <input class="form-control-lg" type="text" name="userName" ngModel>
+    </div>
+    <div class="col-1">
+        <label class="form-label" for="password">Enter Password</label>
+        <input class="form-control-lg" name="password" ngModel>
+    </div>
+    <div class="col-1">
+        <button type="submit" class="btn btn-warning m-2" >Submit</button>
+    </div>
+</form>

@@ -49,8 +49,6 @@ namespace Moogle_Repo
     //    .HasMany(z => z.Users)
     //    .WithOne(u => u.Zip)
     //    .HasPrincipalKey(u => u.ZipCode);
-        
-        
     //}
   }
 }

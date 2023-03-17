@@ -15,6 +15,7 @@ import { NavComponent } from './nav/nav.component';
 import { TheatersComponent } from './theaters/theaters.component';
 
 import { HomeComponent } from './home/home.component';
+import { TheaterDetailsComponent } from './theater-details/theater-details.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     UserLoginComponent,
     NavComponent,
     TheatersComponent,
-    HomeComponent
+    HomeComponent,
+    TheaterDetailsComponent
 
   ],
   imports: [

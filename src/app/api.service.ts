@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {data} from 'src/app/models/theater-data.interface';
 import {theater} from 'src/app/models/theater.interface';
 import { User } from './models/user.interface';
+import { TheaterDetails } from './models/theater-details.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,8 +17,10 @@ export class FlixterApiService {
   baseUri:string = 'https://localhost:7239/api/';
   user:any;
   theaters:any;
+  theaterDetails:any;
   @Output()registerEvent:EventEmitter<User> = new EventEmitter();
   @Output()theatersEvent:EventEmitter<data> = new EventEmitter();
+  @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
   constructor(private http:HttpClient) {
 
    }
@@ -38,23 +41,34 @@ export class FlixterApiService {
         if(x) {
           this.user = x;
           this.registerEvent.emit(this.user);
-          return this.getTheaters(this.user.userName, this.user.password)
+          //return this.getTheaters(this.user.userName, this.user.password)
         }
       }
     )
    }
-   getTheaters(username:string, password:string) {
+  //  getTheaters(username:string, password:string) {
     
-    let uriEnd = `User/GetTheaters/${username}/${password}`;
-    this.http.get<data>(this.baseUri + uriEnd).subscribe(
-      (x)=>{
-        if(x){
-          this.theaters = x;
-          return this.theatersEvent.emit(this.theaters);
-        }
-      }
-    )
-   }
+  //   let uriEnd = `User/GetTheaters/${username}/${password}`;
+  //   this.http.get<data>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         this.theaters = x;
+  //         console.log(JSON.stringify(x))
+  //         return this.theatersEvent.emit(this.theaters);
+  //       }
+  //     }
+  //   )
+  //  }
+  //  getTheaterDetails(theaterId:string) {
+  //     this.http.get<TheaterDetails>(this.baseUri + `User/GetTheaterDetails/${theaterId}`)
+  //     .subscribe(
+  //       (x)=> {
+  //         if(x){
+  //           this.theatersDetailsEvent.emit(x as TheaterDetails);
+  //         }
+  //       }
+  //     )
+  //  }
   //  getLocalTheaterData() {
   //   return this.http.get<data>(this.theaterUri, {
   //     "headers" : this.defaultHeaders

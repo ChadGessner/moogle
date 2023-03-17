@@ -1,0 +1,21 @@
+
+<button (click)="fetchJson()" >Clack</button>
+<div>
+    <div>
+        <ul *ngIf="theaterDetails">
+            <li *ngFor="let movie of theaterDetails.data.theaterShowtimeGroupings.movies" >
+                <h1>{{movie.name}}</h1>
+                <img height="200px" width="200px" src="{{movie.posterImage.url}}">
+                <p>Age Restriction: <span class="text-danger" >{{movie.motionPictureRating.code}}</span> {{movie.motionPictureRating.description}}</p>
+                <p><img height="20px" width="20px" src="{{movie.tomatoRating.iconImage.url}}" >Tomato Rating: {{movie.tomatoRating.state}} {{movie.tomatoRating.tomatometer}}</p>
+                <div *ngFor="let variant of movie.movieVariants">
+                    <div class="row" *ngFor="let amenity of variant.amenityGroups">
+                        <p *ngFor="let show of amenity.showtimes">
+                            <span> Date: {{show.providerDate}}</span> <span>Time: {{show.providerTime}}</span>
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

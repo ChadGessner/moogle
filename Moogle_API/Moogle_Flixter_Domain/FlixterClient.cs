@@ -7,6 +7,7 @@ using Moogle_Models.API_Models.TheaterRequest;
 using Moogle_Models.API_Models.TheaterDetails;
 using Moogle_Models.API_Models.MovieDetails;
 using Moogle_Models.API_Models.Reviews;
+using Moogle_Models.API_Models.UpcomingMovies;
 
 namespace Moogle_Flixter_Domain
 {
@@ -78,5 +79,20 @@ namespace Moogle_Flixter_Domain
             //Console.WriteLine(result.ToString());
             return result;
         }
-    }
+
+        public UpcomingMovies MakeUpcomingMovieRequest()
+        {
+          string apiUri = BaseUri + $"/movies/get-upcoming?countryId=usa&limit=100";
+          var header = apiUri
+            
+            .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+            .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+          var apiTask = header.GetJsonAsync<UpcomingMovies>();
+          apiTask.Wait();
+          UpcomingMovies result = apiTask.Result;
+          Console.WriteLine(result.ToString());
+          return result;
+        }
+  }
 }

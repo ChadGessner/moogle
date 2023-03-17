@@ -24,7 +24,7 @@ namespace Moogle_API.Controllers
     }
 
     [HttpGet("GetNewsStoryList")]
-    public NewsData GetNewsStoryList()
+    public NewsRoot GetNewsStoryList()
     {
       return Client.MakeMovieNewsRequest();
     }

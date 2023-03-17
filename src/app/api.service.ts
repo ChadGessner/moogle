@@ -1,7 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {data} from 'src/app/models/theater-data.interface';
-import {theater} from 'src/app/models/theater.interface';
+import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
 @Injectable({
@@ -19,7 +18,7 @@ export class FlixterApiService {
   theaters:any;
   theaterDetails:any;
   @Output()registerEvent:EventEmitter<User> = new EventEmitter();
-  @Output()theatersEvent:EventEmitter<data> = new EventEmitter();
+  @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
   @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
   constructor(private http:HttpClient) {
 

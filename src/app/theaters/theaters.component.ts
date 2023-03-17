@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FlixterApiService } from '../api.service';
-import { data } from '../models/theater-data.interface';
+import { TheaterData } from '../models/theater-data.interface';
 import {BobSaget} from '../dataForTesting/bobSagetLoginData'
 @Component({
   selector: 'app-theaters',

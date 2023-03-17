@@ -1,0 +1,14 @@
+nav {
+
+    max-height: 70px;
+}
+.floaty {
+    
+    overflow:none;
+    z-index:1;
+}
+.dd {
+    float:inline-start;
+    overflow:none;
+    z-index:1;
+}

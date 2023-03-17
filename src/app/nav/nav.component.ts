@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-
+  isHamburger:boolean = false;
+  constructor(){}
+  toggleHamburger(event:MouseEvent){
+    this.isHamburger = !this.isHamburger;
+    console.log(this.isHamburger);
+    
+  }
 }

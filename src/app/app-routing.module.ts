@@ -4,6 +4,7 @@ import { TheatersComponent } from './theaters/theaters.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { HomeComponent } from './home/home.component';
+import { TheaterDetailsComponent } from './theater-details/theater-details.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,9 @@ const routes: Routes = [
   },{
     path: 'login', component: UserLoginComponent
   },{
-
+    path: 'theater-details', component: TheaterDetailsComponent
+  },{
+    
     path: 'theaters', component: TheatersComponent
   },{
     path: 'home', component: HomeComponent

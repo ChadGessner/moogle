@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ namespace Moogle_Models.API_Models.TheaterDetails
     public class MotionPictureRating
     {
         [JsonPropertyName("area")]
-        public object area { get; set; }
+        public object? area { get; set; } 
         [JsonPropertyName("code")]
         public string code { get; set; }
         [JsonPropertyName("description")]

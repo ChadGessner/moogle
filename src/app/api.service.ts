@@ -13,8 +13,11 @@ export class FlixterApiService {
 	// 	'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
 	// }
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
+  baseUri:string = 'https://localhost:7239/api/';
   user:any;
+  theaters:any;
   @Output()registerEvent:EventEmitter<User> = new EventEmitter();
+  @Output()theatersEvent:EventEmitter<data> = new EventEmitter();
   constructor(private http:HttpClient) {
 
    }
@@ -27,6 +30,30 @@ export class FlixterApiService {
         }
         return this.registerEvent.emit(this.user)
       })
+   }
+   userLogin(username:string, password:string){
+    let uriEnd = `User/GetUser/${username}/${password}`;
+    this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+      (x)=>{
+        if(x) {
+          this.user = x;
+          this.registerEvent.emit(this.user);
+          return this.getTheaters(this.user.userName, this.user.password)
+        }
+      }
+    )
+   }
+   getTheaters(username:string, password:string) {
+    
+    let uriEnd = `User/GetTheaters/${username}/${password}`;
+    this.http.get<data>(this.baseUri + uriEnd).subscribe(
+      (x)=>{
+        if(x){
+          this.theaters = x;
+          return this.theatersEvent.emit(this.theaters);
+        }
+      }
+    )
    }
   //  getLocalTheaterData() {
   //   return this.http.get<data>(this.theaterUri, {

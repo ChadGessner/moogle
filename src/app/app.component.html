@@ -13,6 +13,7 @@
 <div class="row-cols-7" >
   <app-nav></app-nav>
   <router-outlet></router-outlet>
+  <app-theaters></app-theaters>
   <div class="row">
     
     
@@ -20,11 +21,13 @@
     <div  class="col-xs-12">
       
       <div *ngIf="registeredUser">
-        <p>Hello {{registeredUser.name}}</p>
+        <p>Hello {{registeredUser.firstName }} {{registeredUser.lastName}}</p>
       </div>
       <vg-player [ngStyle]="{'width': '400px', 'height' : '400px'}" >
         <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
-            <source src="https://playerservice.services.fandango.com/v1/clip/8628C319-94F1-4BC4-9054-83729F78D88F" type="video/mp4">
+            <source 
+            src="https://playerservice.services.fandango.com/v1/clip/8628C319-94F1-4BC4-9054-83729F78D88F" 
+            type="video/mp4">
         </video>
     </vg-player>
       

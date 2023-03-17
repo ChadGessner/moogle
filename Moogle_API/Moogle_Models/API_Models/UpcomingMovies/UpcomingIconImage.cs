@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.UpcomingMovies
 {
-  public class UpcomingMovies
+  public class UpcomingIconImage
   {
-    public UpcomingData data { get; set; }
+    public string url { get; set; }
   }
 }

@@ -2,8 +2,6 @@
 using Moogle_Models.API_Models.Theater.TheaterRequest;
 using Newtonsoft.Json;
 using Flurl.Http;
-using System.Security.Cryptography.X509Certificates;
-using Moogle_Models.API_Models.TheaterRequest;
 using Moogle_Models.API_Models.TheaterDetails;
 using Moogle_Models.API_Models.MovieDetails;
 using Moogle_Models.API_Models.Reviews;
@@ -82,7 +80,7 @@ namespace Moogle_Flixter_Domain
     }
     public UpcomingMovies MakeUpcomingMovieRequest()
     {
-      string apiUri = BaseUri + $"/movies/get-upcoming?countryId=usa&limit=100";
+      string apiUri = BaseUri + $"movies/get-upcoming?countryId=usa&limit=100";
       var header = apiUri
 
         .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
@@ -94,7 +92,7 @@ namespace Moogle_Flixter_Domain
       Console.WriteLine(result.ToString());
       return result;
     }
-    public NewsData MakeMovieNewsRequest()
+    public NewsRoot MakeMovieNewsRequest()
     {
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "news/list";
@@ -102,9 +100,9 @@ namespace Moogle_Flixter_Domain
           .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
-      var apiTask = header.GetJsonAsync<NewsData>();
+      var apiTask = header.GetJsonAsync<NewsRoot>();
       apiTask.Wait();
-      NewsData result = apiTask.Result;
+      NewsRoot result = apiTask.Result;
       //Console.WriteLine(result.ToString());
       return result;
     }

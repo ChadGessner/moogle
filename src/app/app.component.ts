@@ -23,5 +23,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
   this.api.registerEvent.subscribe((x)=> this.registeredUser = x)
+  
   }
 }

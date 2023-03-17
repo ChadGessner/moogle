@@ -11,7 +11,11 @@ import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { NavComponent } from './nav/nav.component';
+
+import { TheatersComponent } from './theaters/theaters.component';
+
 import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +23,9 @@ import { HomeComponent } from './home/home.component';
     UserRegistrationComponent,
     UserLoginComponent,
     NavComponent,
+    TheatersComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule,

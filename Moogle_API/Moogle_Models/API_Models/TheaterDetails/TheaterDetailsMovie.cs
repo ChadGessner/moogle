@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.TheaterDetails
 {
-    public class Movie
+    public class TheaterDetailsMovie
     {
         [JsonPropertyName("fandangoId")]
         public string fandangoId { get; set; }
@@ -20,15 +20,15 @@ namespace Moogle_Models.API_Models.TheaterDetails
         [JsonPropertyName("durationMinutes")]
         public int durationMinutes { get; set; }
         [JsonPropertyName("tomatoRating")]
-        public TomatoRating tomatoRating { get; set; }
+        public TheaterDetailsTomatoRating tomatoRating { get; set; }
         [JsonPropertyName("userRating")]
-        public UserRating userRating { get; set; }
+        public TheaterDetailsUserRating userRating { get; set; }
         [JsonPropertyName("motionPictureRating")]
-        public MotionPictureRating motionPictureRating { get; set; }
+        public TheaterDetailsMotionPictureRating motionPictureRating { get; set; }
         [JsonPropertyName("releaseDate")]
         public string releaseDate { get; set; }
         [JsonPropertyName("posterImage")]
-        public PosterImage posterImage { get; set; }
+        public TheaterDetailsPosterImage posterImage { get; set; }
         [JsonPropertyName("movieVariants")]
         public List<MovieVariant> movieVariants { get; set; }
     }

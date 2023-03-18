@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.MovieDetails
 {
-  public class MotionPictureRating
+  public class MovieDetailsMotionPictureRating
   {
     public object area { get; set; }
     public string code { get; set; }

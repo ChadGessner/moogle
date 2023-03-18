@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.TheaterDetails
 {
-    public class MotionPictureRating
+    public class TheaterDetailsMotionPictureRating
     {
         [JsonPropertyName("area")]
         public object? area { get; set; } 

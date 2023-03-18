@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.TheaterDetails
 {
-    public class PosterImage
+    public class TheaterDetailsIconImage
     {
         [JsonPropertyName("url")]
         public string url { get; set; }

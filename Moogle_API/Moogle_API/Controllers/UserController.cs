@@ -51,7 +51,7 @@ namespace Moogle_API.Controllers
     {
       return Client.MakeTheaterDetailRequest(theaterId);
     }
-      
-    
-  }  
+
+
+  }
 }

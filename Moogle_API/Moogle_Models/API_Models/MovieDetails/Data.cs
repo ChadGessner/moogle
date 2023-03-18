@@ -8,6 +8,6 @@ namespace Moogle_Models.API_Models.MovieDetails
 {
   public class Data
   {
-    public Movie movie { get; set; }
+    public MovieDetailsMovie movie { get; set; }
   }
 }

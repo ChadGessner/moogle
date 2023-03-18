@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.MovieDetails
 {
-  public class TomatoRating
+  public class MovieDetailsTomatoRating
   {
     public int tomatometer { get; set; }
     public int ratingCount { get; set; }
     public string consensus { get; set; }
-    public IconImage iconImage { get; set; }
+    public MovieDetailsIconImage iconImage { get; set; }
     public LargeIconImage largeIconImage { get; set; }
   }
 }

@@ -16,6 +16,9 @@ import { TheatersComponent } from './theaters/theaters.component';
 
 import { HomeComponent } from './home/home.component';
 import { TheaterDetailsComponent } from './theater-details/theater-details.component';
+import { NewsComponent } from './news/news.component';
+import { NewsStoryComponent } from './news-story/news-story.component';
+import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { TheaterDetailsComponent } from './theater-details/theater-details.compo
     NavComponent,
     TheatersComponent,
     HomeComponent,
-    TheaterDetailsComponent
+    TheaterDetailsComponent,
+    NewsComponent,
+    NewsStoryComponent,
+    UpcomingMovieDetailsComponent
 
   ],
   imports: [

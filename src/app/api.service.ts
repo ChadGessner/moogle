@@ -7,19 +7,18 @@ import { TheaterDetails } from './models/theater-details.interface';
   providedIn: 'root'
 })
 export class FlixterApiService {
-  // theaterUri:string = 'https://flixster.p.rapidapi.com/theaters/list?zipCode=49519&radius=50';
-  // defaultHeaders =  {
-	// 	'X-RapidAPI-Key': '8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944',
-	// 	'X-RapidAPI-Host': 'flixster.p.rapidapi.com'
-	// }
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   baseUri:string = 'https://localhost:7239/api/';
   user:any;
   theaters:any;
   theaterDetails:any;
+  upcomingMovieDetails:any;
+  news:any;
+  @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<User> = new EventEmitter();
   @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
   @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
+  @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   constructor(private http:HttpClient) {
 
    }
@@ -45,6 +44,29 @@ export class FlixterApiService {
       }
     )
    }
+  //  getUpcomingMovieDetails() {
+  //   let uriEnd = `Movie/GetUpcomingMovieDetails`
+  //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         this.upcomingMovieDetails = x;
+  //         this.upcomingMovieDetailsEvent.emit(this.upcomingMovieDetails);
+  //       }
+  //     }
+  //   )
+  //  }
+  //  getNewsStoryList() {
+  //   let uriEnd = `News/GetNewsStoryList`;
+  //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         this.news = x;
+  //         this.newsEvent.emit(this.news);
+  //         console.log(JSON.stringify(x));
+  //       }
+  //     }
+  //   )
+  //  }
   //  getTheaters(username:string, password:string) {
     
   //   let uriEnd = `User/GetTheaters/${username}/${password}`;

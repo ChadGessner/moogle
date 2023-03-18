@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.MovieDetails
 {
-  public class Movie
+  public class MovieDetailsMovie
   {
     public string emsId { get; set; }
     public string fandangoId { get; set; }
@@ -23,15 +23,15 @@ namespace Moogle_Models.API_Models.MovieDetails
     public string ovdReleaseDate { get; set; }
     public string totalGross { get; set; }
     public Trailer trailer { get; set; }
-    public PosterImage posterImage { get; set; }
+    public MovieDetailsPosterImage posterImage { get; set; }
     public BackgroundImage backgroundImage { get; set; }
-    public UserRating userRating { get; set; }
-    public TomatoRating tomatoRating { get; set; }
+    public MovieDetailsUserRating userRating { get; set; }
+    public MovieDetailsTomatoRating tomatoRating { get; set; }
     public List<Genre> genres { get; set; }
     public List<Image> images { get; set; }
     public List<Cast> cast { get; set; }
     public List<Crew> crew { get; set; }
-    public MotionPictureRating motionPictureRating { get; set; }
+    public MovieDetailsMotionPictureRating motionPictureRating { get; set; }
     public List<Ovd> ovds { get; set; }
     public object criticReviews { get; set; }
     public AudienceReviews audienceReviews { get; set; }

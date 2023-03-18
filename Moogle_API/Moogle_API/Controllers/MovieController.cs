@@ -24,16 +24,15 @@ namespace Moogle_API.Controllers
       _db = new Interactor();
     }
 
-    //[HttpGet("GetMovieDetails{emsVersionId}")]
-    //public MovieDetailsRoot MovieDetails(string emsVersionId)
-    //{
-    //  return Client.MakeMovieDetailsRequest(emsVersionId);
-    //}
-
     [HttpGet("GetUpcomingMovieDetails")]
     public UpcomingMovies UpcomingMovieDetails()
     {
       return Client.MakeUpcomingMovieRequest();
+    }
+    [HttpGet("GetMovieDetailsByTitle/{emsVersionId}")]
+    public MovieDetailsRoot GetMovieDetailsByTitle(string emsVersionId)
+    {
+      return Client.MakeMovieDetailsRequest(emsVersionId);
     }
   }
 }

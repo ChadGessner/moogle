@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let detail of upcomingMovieDetails.data.upcoming">
+        <p>{{detail.name}}</p>
+        <hr>
+        <p>{{detail.emsVersionId}}</p>
+        <img height="100px" width="100px" src={{detail.posterImage.url}}>
+        <p>{{detail.releaseDate}}</p>
+        <hr>
+    </div>
+</div>

@@ -11,7 +11,7 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230316202727_first")]
+    [Migration("20230318142220_first")]
     partial class first
     {
         /// <inheritdoc />

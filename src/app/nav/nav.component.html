@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark ">
+  <div class="container-fluid ">
+    <h1 class="display-4 navbar-brand  text-warning " >Moogle</h1>
+    <button 
+      class="navbar-toggler " 
+      
+      (click)="toggleHamburger($event)">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse show">
+      <ul *ngIf="isHamburger" class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="dropdown-item float-down">
+          <a class="nav-link" aria-current="page" routerLink="home">Home</a>
+        </li>
+        <li class="dropdown-item float-down">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+        <li class="dropdown-item float-down">
+          <a class="nav-link " routerLink="theater-details">Theater Details</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse " id="navbarDark">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="nav-item">
+          <a class="nav-link " routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" >Register</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

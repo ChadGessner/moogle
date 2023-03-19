@@ -1,0 +1,36 @@
+<div *ngIf="movieDetail" >
+    <h4 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h4>
+    
+    <div class="card">
+        <img src={{movieDetail.data.movie.posterImage.url}} height="220.5px" width="148.7px"  alt="card-img-top">
+        <div class="card-body bg-dark border">
+          <h5 class="card-title text-warning">Description</h5>
+          <hr>
+          <p class="card-text text-success font-monospace">{{movieDetail.data.movie.synopsis}}</p>
+          <p class="card-text card-footer "><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div *ngIf="movieDetail.data.movie.trailer.url" class="container-sm">
+        <vg-player class="card-img-top" >
+                
+            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+                <source 
+                src={{movieDetail.data.movie.trailer.url}} 
+                type="video/mp4">
+            </video>
+        </vg-player>
+        <div class="card-body">
+            <h5 class="card-title text-warning">Trailer</h5>
+            
+        </div>
+        
+        <div *ngIf="!movieDetail.data.movie.trailer.url">
+            <p>There is currently no trailer for this film...</p>
+        </div>
+    </div>
+    
+    
+    
+</div>
+
+

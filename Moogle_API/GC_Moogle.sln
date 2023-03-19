@@ -3,15 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_API", "Moogle_API\Moogle_API.csproj", "{319576DC-CEF1-472E-B846-4F4ED2D8AE16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_API", "Moogle_API\Moogle_API.csproj", "{319576DC-CEF1-472E-B846-4F4ED2D8AE16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Repo", "Moogle_Repo\Moogle_Repo.csproj", "{7C0E4B4C-97E0-45AD-A400-8D8E7BBE897A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Repo", "Moogle_Repo\Moogle_Repo.csproj", "{7C0E4B4C-97E0-45AD-A400-8D8E7BBE897A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Domain", "Moogle_Domain\Moogle_Domain.csproj", "{93F79A6C-1529-4867-BE79-C79C7BF4C6F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Domain", "Moogle_Domain\Moogle_Domain.csproj", "{93F79A6C-1529-4867-BE79-C79C7BF4C6F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_MVC", "Moogle_MVC\Moogle_MVC.csproj", "{419C7697-EAF2-4ED9-A5B5-CD37045A30C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_MVC", "Moogle_MVC\Moogle_MVC.csproj", "{419C7697-EAF2-4ED9-A5B5-CD37045A30C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Moogle_Console", "Moogle_Console\Moogle_Console.csproj", "{DACB19D8-E97C-4586-B209-138FA469D5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Console", "Moogle_Console\Moogle_Console.csproj", "{DACB19D8-E97C-4586-B209-138FA469D5DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Models", "Moogle_Models\Moogle_Models.csproj", "{32D29D31-8009-4262-8991-6A82C8E6B225}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Moogle_Flixter_Domain", "Moogle_Flixter_Domain\Moogle_Flixter_Domain.csproj", "{02D69F67-E108-476E-B4E3-93DADC6562D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4764F311-90B8-40C0-AFD0-81D8CCC7AA40}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +48,14 @@ Global
 		{DACB19D8-E97C-4586-B209-138FA469D5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DACB19D8-E97C-4586-B209-138FA469D5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DACB19D8-E97C-4586-B209-138FA469D5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32D29D31-8009-4262-8991-6A82C8E6B225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32D29D31-8009-4262-8991-6A82C8E6B225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32D29D31-8009-4262-8991-6A82C8E6B225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32D29D31-8009-4262-8991-6A82C8E6B225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D69F67-E108-476E-B4E3-93DADC6562D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

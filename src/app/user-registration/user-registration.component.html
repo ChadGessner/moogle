@@ -1,29 +1,66 @@
-    <div class="container col-2 col-sm-2">
-        <form class="list-group" #newUser="ngForm" (ngSubmit)="register(newUser)" novalidate> 
-            <label class="text-success" for="firstName"  >First Name</label>
-            <input name="firstName" [ngModel] />
-            <label for="lastName" class="text-success" >Last Name</label>
-            <input name="lastName"  [ngModel] />
-            <label for="userName" class="text-success" >User Name</label>
-            <input name="userName" [ngModel] />
-            <label for="password" class="text-success" >Password</label>
-            <input name="password"  [ngModel] />
-            <label for="email" class="text-success" >Email Address</label>
-            <input name="email"  [ngModel] />
-            <label for="phone" class="text-success" >Phone Number</label>
-            <input name="phone"  [ngModel] />
-            <label for="address" class="text-success" >Home Address</label>
-            <input name="address"  [ngModel] />
-            <label for="city" class="text-success" >City</label>
-            <input name="city"  [ngModel] />
-            <label for="state" class="text-success" >State</label>
-            <input name="state"  [ngModel] />
-            <label for="zipCode" class="text-success" >Zip Code</label>
-            <input name="zipCode"  [ngModel] />
-            <label for="submit" class="text-success" >Submit</label>
-            <Button  type="submit" class="btn btn-secondary" >Submit</Button>
+    <div class="border border-success p-1 m-4 rounded bg-secondary">
+        <form class="form-group p-4 m-4 bg bg-dark rounded " #newUser="ngForm" (ngSubmit)="register(newUser)" novalidate> 
+            <h4 class="text-warning text-center font-monospace" >Register Moogle Account</h4>
+            <div class="row row-cols-2">
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" for="floating-input" type="username" name="firstName" placeholder="name" [ngModel] />
+                    <label class="form-label text-light" for="floating-input"  >First Name</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary " name="lastName" type="username" placeholder="Last Name"  [ngModel] />
+                    <label for="lastName" class="form-label text-light" >Last Name</label>
+                </div>
+                <div class="form-floating mb-2 ">
+                    
+                        <input class="form-control bg-secondary" name="userName" placeholder="Username" [ngModel] />
+                        <label for="userName" class="form-label text-light" >User Name</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="password" placeholder="Password"  [ngModel] />
+                    <label for="password" class="form-label text-light" >Password</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="email" placeholder="Email"  [ngModel] />
+                    <label for="email" class="form-label text-light" >Email Address</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="phone" placeholder="Phone Number"  [ngModel] />
+                    <label for="phone" class="form-label text-light" >Phone Number</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="address" placeholder="Address"  [ngModel] />
+                    <label for="address" class="form-label text-light" >Home Address</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="city" placeholder="City"  [ngModel] />
+                    <label for="city" class="form-label text-light" >City</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="state" placeholder="State"  [ngModel] />
+                    <label  for="state" class="form-label text-light" >State</label>
+                </div>
+                <div class="form-floating mb-2">
+                    
+                    <input class="form-control bg-secondary" name="zipCode" placeholder="Zip"  [ngModel] />
+                    <label for="zipCode" class="form-label text-light" >Zip Code</label>
+                </div>
+            </div>
+            <div class="row p-2" >
+                <Button  type="submit" class="btn btn-secondary border border-success text-success" >Submit</Button>
+            </div>
         </form>
     </div>
+        
+        
+    
     
 
 

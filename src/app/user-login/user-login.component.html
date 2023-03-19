@@ -1,14 +1,23 @@
+<div class="border border-success p-1 m-4 rounded bg-secondary">
+    
+    <form class="form-group p-4 m-4 bg bg-dark rounded " (ngSubmit)="onSubmit(login)" #login="ngForm" >
+        <h4 class="text-warning text-center font-monospace" >Register Moogle Account</h4>
+        <div class="form-floating mb-3">
 
-<form class="card container-fluid p-2 m-2 bg-success" (ngSubmit)="onSubmit(login)" #login="ngForm" >
-    <div class="col-1">
-        <label class="form-label" for="userName">Enter Username</label>
-        <input class="form-control-lg" type="text" name="userName" ngModel>
-    </div>
-    <div class="col-1">
-        <label class="form-label" for="password">Enter Password</label>
-        <input class="form-control-lg" name="password" ngModel>
-    </div>
-    <div class="col-1">
-        <button type="submit" class="btn btn-warning m-2" >Submit</button>
-    </div>
-</form>
+            <input class="form-control bg-secondary border-success" type="name" name="userName" placeholder="username" ngModel>
+            <label class=" text-light  rounded " for="floating-input" >Enter Username</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            
+            <input class="form-control bg-secondary border-success " for="floating-input" name="password" placeholder="password" ngModel>
+            <label class=" text-light  rounded " for="password">Enter Password</label>
+        </div>
+
+        <div class="row m-1 border border-success p-1 rounded bg-dark">
+            <button type="submit" class="btn  bg-secondary text-success  " >Submit</button>
+        </div>
+    </form> 
+        
+</div>
+

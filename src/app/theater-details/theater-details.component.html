@@ -12,9 +12,14 @@
                     <label class="text-warning" >Title</label>
                     <hr>
                     <h4>{{movie.name}}</h4>
-                    <img height="200px" width="200px" src="{{movie.posterImage.url}}">
+                    <img 
+                    (click)="passEmsVersionId(movie.emsVersionId)" 
+                    routerLink="/movie-detail" 
+                    height="200px" 
+                    width="200px" 
+                    src="{{movie.posterImage.url}}">
                 </div>
-            
+                
                 <div class="list-group col ">
                     <label class="text-success">Age Restriction</label>
                     <hr>

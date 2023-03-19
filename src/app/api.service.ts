@@ -13,12 +13,14 @@ export class FlixterApiService {
   theaters:any;
   theaterDetails:any;
   upcomingMovieDetails:any;
+  movieDetailsById:any;
   news:any;
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<User> = new EventEmitter();
   @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
   @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
   @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
   constructor(private http:HttpClient) {
 
    }
@@ -44,6 +46,18 @@ export class FlixterApiService {
       }
     )
    }
+  //  getMovieDetailsById(emsVersionId:string){
+  //   let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
+  //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         this.movieDetailsById = x;
+  //         this.movieDetailsByIdEvent.emit(this.movieDetailsById);
+  //         console.log(JSON.stringify(x));
+  //       }
+  //     }
+  //   )
+  //  }
   //  getUpcomingMovieDetails() {
   //   let uriEnd = `Movie/GetUpcomingMovieDetails`
   //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(

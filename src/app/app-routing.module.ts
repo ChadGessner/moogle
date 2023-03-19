@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { TheaterDetailsComponent } from './theater-details/theater-details.component';
 import { NewsStoryComponent } from './news-story/news-story.component';
 import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,9 @@ const routes: Routes = [
   },{
     path: 'theaters',
      component: TheatersComponent
+  },{
+    path: 'movie-detail',
+     component: MovieDetailComponent
   },{
     path: 'home',
      component: HomeComponent

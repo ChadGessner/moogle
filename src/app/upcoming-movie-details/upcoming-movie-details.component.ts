@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FlixterApiService } from '../api.service';
+import { ComponentTelephoneService } from '../component-telephone.service';
 import { UpcomingMovieDetailsTest } from '../dataForTesting/upcomingMovieDetailsTest';
 @Component({
   selector: 'app-upcoming-movie-details',
@@ -8,8 +9,11 @@ import { UpcomingMovieDetailsTest } from '../dataForTesting/upcomingMovieDetails
 })
 export class UpcomingMovieDetailsComponent implements OnInit {
   @Input()upcomingMovieDetails:any;
-  constructor(private api:FlixterApiService){}
 
+  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){}
+  passEmsVersionId(id:string){
+    this.phone.getEmsVersionId(id);
+  }
   ngOnInit(): void {
     this.upcomingMovieDetails = UpcomingMovieDetailsTest;
     console.log(this.upcomingMovieDetails)

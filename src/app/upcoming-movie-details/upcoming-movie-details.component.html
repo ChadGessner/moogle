@@ -2,7 +2,12 @@
     <div *ngFor="let detail of upcomingMovieDetails.data.upcoming">
         <p>{{detail.name}}</p>
         <hr>
-        <p>{{detail.emsVersionId}}</p>
+        <p>
+            <a 
+            class="btn btn-success" 
+            (click)="passEmsVersionId(detail.emsVersionId)"
+            routerLink="/movie-detail">See Movie Details</a>
+        </p>
         <img height="100px" width="100px" src={{detail.posterImage.url}}>
         <p>{{detail.releaseDate}}</p>
         <hr>

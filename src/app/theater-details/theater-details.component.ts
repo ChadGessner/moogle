@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterDetails } from '../models/theater-details.interface';
 import {Jesus} from '../dataForTesting/theaterDetail';
+import { ComponentTelephoneService } from '../component-telephone.service';
 
 @Component({
   selector: 'app-theater-details',
@@ -11,7 +12,7 @@ import {Jesus} from '../dataForTesting/theaterDetail';
 export class TheaterDetailsComponent implements OnInit {
   theaterDetails:any;
   isShowTimes:boolean = false
-  constructor(private api:FlixterApiService){}
+  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){}
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
   }
@@ -31,6 +32,9 @@ export class TheaterDetailsComponent implements OnInit {
       return 'assets/images/G.png';
     }
    }
+   passEmsVersionId(id:string){
+    return this.phone.getEmsVersionId(id);
+  }
   ngOnInit(): void {
     
     this.theaterDetails =  Jesus;

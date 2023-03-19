@@ -11,14 +11,6 @@
       <div *ngIf="registeredUser">
         <p>Hello {{registeredUser.firstName }} {{registeredUser.lastName}}</p>
       </div>
-      <vg-player [ngStyle]="{'width': '400px', 'height' : '400px'}" >
-        <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
-            <source 
-            src="https://playerservice.services.fandango.com/v1/clip/8628C319-94F1-4BC4-9054-83729F78D88F" 
-            type="video/mp4">
-        </video>
-    </vg-player>
-      
     </div>
   </div>
 </div>

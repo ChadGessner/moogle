@@ -1,12 +1,11 @@
 
-
-<div >
+<!-- <div >
     <div>
         <ul class="card bg-dark" *ngIf="theaterDetails">
             
-            <div class="row mg-1 " *ngFor="let movie of theaterDetails.data.theaterShowtimeGroupings.movies" >
-                
-                 
+            <div 
+            class="row mg-1 " 
+            *ngFor="let movie of theaterDetails.data.theaterShowtimeGroupings.movies" >
                 <hr class="m-4" >
                 <div class="list-group col ">
                     <label class="text-warning" >Title</label>
@@ -61,18 +60,52 @@
                                         <li class="dropdown-item" >{{show.providerTime}}</li>
                                     </div>
                                 </div>
-                            
-                                
-                                    
-                                
-                                
                             </div>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-        
         </ul>
     </div>
-</div>
+</div> -->
+<div id="carouselCrossfade" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item align-middle active">
+        <div class="card d-flex align-content-center w-75 h-50" >
+            <h4 class="card-title">
+                {{currentTitle.name}}
+                
+            </h4>
+            <hr>
+            <div class="card-img-top align-middle">
+                <img height="200px"  src={{currentTitle.posterImage.url}} class="image-fluid " alt="Slide 1">
+            </div>
+            <div class="card-text">
+                {{currentTitle.description}}
+            </div>
+            <div class="card-body">
+                <div class="list-group col ">
+                    <label class="text-success">Tomato Rating</label>
+                    <hr>
+                    <p>
+                    <img 
+                        class="image-fluid" 
+                        height="20px" 
+                        width="20px" 
+                        src="{{currentTitle.tomatoRating.iconImage.url}}" >Tomato Rating: {{currentTitle.tomatoRating.state}} {{currentTitle.tomatoRating.tomatometer}}</p>
+                </div>
+            </div>
+            
+            
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" (click)="previousTitle()" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" (click)="nextTitle()" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>

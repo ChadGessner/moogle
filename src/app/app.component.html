@@ -1,6 +1,12 @@
 
 <div class="row-cols-7" >
   <app-nav></app-nav>
+  <div class="m-4 p-4" *ngIf="registeredUser">
+    <h4 class="text-success text-center" >Welcome {{registeredUser.userName }}</h4>
+  </div>
+  <div class="m-4 p-4" >
+    <hr [ngStyle]="{'color' : 'red'}" >
+  </div>
   <router-outlet></router-outlet>
   <div class="row">
     
@@ -8,9 +14,7 @@
     <!-- <button (click)="getShow()" class="btn btn-success">Hello Bootstrap</button> -->
     <div  class="col-xs-12">
       
-      <div *ngIf="registeredUser">
-        <p>Hello {{registeredUser.firstName }} {{registeredUser.lastName}}</p>
-      </div>
+      
     </div>
   </div>
 </div>

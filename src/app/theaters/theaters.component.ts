@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
-import {BobSaget} from '../dataForTesting/bobSagetLoginData'
+import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
+import { ComponentTelephoneService } from '../component-telephone.service';
 @Component({
   selector: 'app-theaters',
   templateUrl: './theaters.component.html',
@@ -10,7 +11,7 @@ import {BobSaget} from '../dataForTesting/bobSagetLoginData'
 })
 export class TheatersComponent implements OnInit {
   @Input()theaters:any;
-  constructor(private api:FlixterApiService ){}
+  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService ){}
   getTheaters(){
     // if(this.theaters){
     //   return this.theaters as data;
@@ -19,10 +20,11 @@ export class TheatersComponent implements OnInit {
     // }
   }
   clickTheaterLink(theaterId:string) {
-    //this.api.getTheaterDetails(theaterId);
+    // console.log(theaterId)
+    // this.phone.getTheaterId(theaterId);
   }
   ngOnInit(): void {
-    this.theaters = BobSaget;
+    this.theaters = ChadsTheaters;
     // this.api.theatersEvent.subscribe(
     //   (x)=>{
     //     if(x){

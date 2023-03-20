@@ -68,25 +68,53 @@
         </ul>
     </div>
 </div> -->
-<div id="carouselCrossfade" class="carousel slide carousel-fade pointer-event" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item align-middle active">
-        <div class="card d-flex align-content-center w-75 h-50" >
-            <h4 class="card-title">
+
+<div class="">
+    
+
+<div id="carouselCrossfade" class="carousel slide carousel-fade pointer-event w-100" data-bs-ride="carousel">
+    <div class="carousel-inner mx-auto w-100">
+      <div class="carousel-item active">
+        
+        <div class="card mx-auto w-75" >
+            <h4 class="card-title text-center">
                 {{currentTitle.name}}
                 
             </h4>
-            <hr>
-            <div class="card-img-top align-middle">
-                <img height="200px"  src={{currentTitle.posterImage.url}} class="image-fluid " alt="Slide 1">
+            <hr >
+            <div class="card-img-top w-25 mx-auto">
+                <img height="200px"  src={{currentTitle.posterImage.url}} class="image-fluid" alt="Slide 1">
             </div>
-            <div class="card-text">
-                {{currentTitle.description}}
+            <div class="container-fluid w-25 mx-auto p-5">
+                <img width="200px" class="image-fluid" src={{setRatingImagePath(currentTitle.motionPictureRating.code)}}>
             </div>
-            <div class="card-body">
-                <div class="list-group col ">
-                    <label class="text-success">Tomato Rating</label>
-                    <hr>
+            
+            <p></p>
+            <div class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
+                <button (click)="toggleDates()" class="btn btn-primary dropdown-toggle">
+                    Show Times
+                </button>
+                <ul *ngIf="isDate" class="list-group">
+                    <div *ngFor="let variant of currentTitle.movieVariants" class="">
+                        
+                        <div class="list-group bg-primary" *ngFor="let group of variant.amenityGroups">
+                            <li 
+                            class="list-group-item float-down" 
+                            *ngFor="let date of group.showtimes">
+                                <a>Todays Show Times | {{date.providerDate + '/' + date.providerTime | date:'shortTime' }}</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+                
+            </div>
+            
+            <div class="card-body  ">
+                
+                <label class="text-success">Tomato Rating</label>
+                <hr>
+                <div class="list-group ">
+                    
                     <p>
                     <img 
                         class="image-fluid" 
@@ -95,8 +123,6 @@
                         src="{{currentTitle.tomatoRating.iconImage.url}}" >Tomato Rating: {{currentTitle.tomatoRating.state}} {{currentTitle.tomatoRating.tomatometer}}</p>
                 </div>
             </div>
-            
-            
         </div>
       </div>
     </div>
@@ -109,3 +135,4 @@
       <span class="visually-hidden">Next</span>
     </a>
   </div>
+</div>

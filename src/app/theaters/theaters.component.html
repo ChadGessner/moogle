@@ -1,7 +1,12 @@
-<div class="container">
+<div class="container mt-4">
     <div *ngIf="theaters" >
         <ul *ngFor="let theater of theaters">
-            <li class="list-inline" ><a class="text-warning" (click)="clickTheaterLink(theater.id)" >{{theater.name}}</a> </li>
+            <li 
+            class="list-inline" >
+            <a 
+            class="text-warning" 
+            routerLink="/theater-details"
+            (click)="clickTheaterLink(theater.id)" >{{theater.name}}</a> </li>
         </ul>
     </div>
 </div>

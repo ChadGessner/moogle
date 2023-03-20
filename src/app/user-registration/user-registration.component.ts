@@ -25,7 +25,11 @@ export class UserRegistrationComponent {
       state: newUser.form.value.state,
       zipCode: newUser.form.value.zipCode
     }
-    console.log(user)
-    return this.api.registerNewUser(user);
+    
+    return this.clearForm(newUser);
+    // this.api.registerNewUser(user);
+  }
+  clearForm(newUser: NgForm) {
+    newUser.form.reset();
   }
 }

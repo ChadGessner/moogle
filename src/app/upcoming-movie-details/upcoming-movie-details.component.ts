@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { UpcomingMovieDetailsTest } from '../dataForTesting/upcomingMovieDetailsTest';
+import { UpcomingMovieDetails } from '../models/upcoming-movie-details.interface';
 @Component({
   selector: 'app-upcoming-movie-details',
   templateUrl: './upcoming-movie-details.component.html',
@@ -16,7 +17,7 @@ export class UpcomingMovieDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.upcomingMovieDetails = UpcomingMovieDetailsTest;
-    console.log(this.upcomingMovieDetails)
+    //console.log(this.upcomingMovieDetails)
     // this.api.getUpcomingMovieDetails();
     // this.api.upcomingMovieDetailsEvent.subscribe(
     //   (x)=>{

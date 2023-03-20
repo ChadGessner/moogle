@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
-import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
+//import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
 import { MovieDetail } from '../dataForTesting/movieDetail';
 @Component({
   selector: 'app-movie-detail',
@@ -20,8 +20,7 @@ export class MovieDetailComponent implements OnInit {
     //   (x)=>{
     //     if(x){
     //       this.emsVersionId = x;
-    //       this.api.getMovieDetailsById(this.emsVersionId)
-          
+    //       console.log(this.emsVersionId)
     //     }
     //   }
     // )
@@ -29,6 +28,7 @@ export class MovieDetailComponent implements OnInit {
     //   (x)=>{
     //     if(x){
     //       this.movieDetail = x;
+          
     //       console.log(JSON.stringify(this.movieDetail))
     //     }
     //   }

@@ -25,26 +25,31 @@ export class FlixterApiService {
 
    }
 
-   registerNewUser(user:User) {
-      this.http.post<User>(this.serverUri, user)
-      .subscribe((x)=>{
-        if(x){
-          this.user = x
-        }
-        return this.registerEvent.emit(this.user)
-      })
-   }
+  //  registerNewUser(user:User) {
+  //     this.http.post<User>(this.serverUri, user)
+  //     .subscribe((x)=>{
+  //       if(x){
+  //         this.user = x
+  //       }
+  //       return this.registerEvent.emit(this.user)
+  //     })
+  //  }
    userLogin(username:string, password:string){
     let uriEnd = `User/GetUser/${username}/${password}`;
     this.http.get<{}>(this.baseUri + uriEnd).subscribe(
       (x)=>{
         if(x) {
           this.user = x;
+          //console.log(JSON.stringify(x));
+          
           this.registerEvent.emit(this.user);
           //return this.getTheaters(this.user.userName, this.user.password)
         }
       }
     )
+   }
+   userLogout() {
+    this.user = null;
    }
   //  getMovieDetailsById(emsVersionId:string){
   //   let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
@@ -53,7 +58,7 @@ export class FlixterApiService {
   //       if(x){
   //         this.movieDetailsById = x;
   //         this.movieDetailsByIdEvent.emit(this.movieDetailsById);
-  //         console.log(JSON.stringify(x));
+  //         //console.log(JSON.stringify(x));
   //       }
   //     }
   //   )
@@ -84,7 +89,7 @@ export class FlixterApiService {
   //  getTheaters(username:string, password:string) {
     
   //   let uriEnd = `User/GetTheaters/${username}/${password}`;
-  //   this.http.get<data>(this.baseUri + uriEnd).subscribe(
+  //   this.http.get<TheaterData>(this.baseUri + uriEnd).subscribe(
   //     (x)=>{
   //       if(x){
   //         this.theaters = x;
@@ -99,14 +104,11 @@ export class FlixterApiService {
   //     .subscribe(
   //       (x)=> {
   //         if(x){
+  //           console.log(JSON.stringify(x));
   //           this.theatersDetailsEvent.emit(x as TheaterDetails);
   //         }
   //       }
   //     )
   //  }
-  //  getLocalTheaterData() {
-  //   return this.http.get<data>(this.theaterUri, {
-  //     "headers" : this.defaultHeaders
-  //   }, )
-  //  }
+  
 }

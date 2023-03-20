@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
-import {BobSaget} from '../dataForTesting/bobSagetLoginData'
+import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
+import { ComponentTelephoneService } from '../component-telephone.service';
+import { TheaterDetails } from '../models/theater-details.interface';
 @Component({
   selector: 'app-theaters',
   templateUrl: './theaters.component.html',
@@ -10,7 +12,12 @@ import {BobSaget} from '../dataForTesting/bobSagetLoginData'
 })
 export class TheatersComponent implements OnInit {
   @Input()theaters:any;
-  constructor(private api:FlixterApiService ){}
+  currentTheaterName:string = '';
+  selectedTheater:TheaterDetails|null = null;
+  isToggleTheaters:boolean = false;
+  showTimes:any
+  isShowTimes:boolean = false;
+  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService ){}
   getTheaters(){
     // if(this.theaters){
     //   return this.theaters as data;
@@ -18,11 +25,30 @@ export class TheatersComponent implements OnInit {
     //   return;
     // }
   }
-  clickTheaterLink(theaterId:string) {
-    //this.api.getTheaterDetails(theaterId);
+  getShowTimes(e:{
+    time:string,
+    date:string
+  }[]) {
+    this.showTimes = e;
+  }
+  toggleShowTimes() {
+    this.isShowTimes = !this.isShowTimes;
+  }
+  toggleTheaters() {
+    this.isToggleTheaters = !this.isToggleTheaters;
+  }
+  clickTheaterLink(index:number, theaterName:string) {
+    this.selectedTheater = this.theaters[index];
+    this.currentTheaterName = theaterName;
+    this.toggleTheaters()
+    //this.theaterNameEvent.emit(name)
+    //this.phone.getTheaterName(this.theaterName);
+    // console.log(theaterId)
+    // this.phone.getTheaterId(theaterId);
   }
   ngOnInit(): void {
-    this.theaters = BobSaget;
+    this.theaters = ChadsTheaters;
+    this.phone.getTheaterList(this.theaters);
     // this.api.theatersEvent.subscribe(
     //   (x)=>{
     //     if(x){

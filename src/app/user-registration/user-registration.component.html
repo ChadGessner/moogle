@@ -53,9 +53,15 @@
                     <label for="zipCode" class="form-label text-light" >Zip Code</label>
                 </div>
             </div>
-            <div class="row p-2" >
-                <Button  type="submit" class="btn btn-secondary border border-success text-success" >Submit</Button>
+            <div class="form-floating mb-2">
+                <div class="row p-2" >
+                    <Button  type="submit" class="btn btn-secondary border border-success text-success" >Submit</Button>
+                </div>
+                <div class="row p-2" >
+                    <Button (click)="clearForm(newUser)" type="submit" class="btn btn-primary border border-primary text-info" >Clear Form</Button>
+                </div>
             </div>
+            
         </form>
     </div>
         

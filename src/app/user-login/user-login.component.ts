@@ -18,17 +18,19 @@ export class UserLoginComponent implements OnInit {
     let password = user.form.value.password;
     this.api.userLogin(userName,password);
     user.resetForm()
-    
   }
-
+  logout() {
+    this.user = null;
+    this.api.userLogout();
+  }
   ngOnInit(): void {
     
-    this.api.registerEvent.subscribe(
-      (x)=>{
-        if(x){
-          this.user = x;
-        }
-      }
-    )
+    // this.api.registerEvent.subscribe(
+    //   (x)=>{
+    //     if(x){
+    //       this.user = x;
+    //     }
+    //   }
+    // )
   }
 }

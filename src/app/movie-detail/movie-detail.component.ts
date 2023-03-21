@@ -11,11 +11,43 @@ import { MovieDetail } from '../dataForTesting/movieDetail';
 export class MovieDetailComponent implements OnInit {
   @Input()movieDetail:any;
   @Input()emsVersionId:string = ''
+  imagesList:any[]|null = null;
+  currentImageIndex:number = 0;
+  
   constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){
 
   }
+
+  carouselPlus() {
+
+    this.currentImageIndex++;
+    return this.validateImageIndex(this.currentImageIndex)
+  }
+  subImageIndex(){
+    return this.validateImageIndex(this.currentImageIndex-1);
+  }
+  addImageIndex() {
+    return this.validateImageIndex(this.currentImageIndex+1);
+  }
+  validateImageIndex(index:number) {
+    let images = this.imagesList as any[];
+    if(index < 0) {
+      index = images.length - 1;
+    }
+    if(index === images.length){
+      index = 0;
+    }
+    return index;
+  }
+  carouselMinus() {
+
+    this.currentImageIndex--;
+    return this.validateImageIndex(this.currentImageIndex)
+  }
   ngOnInit(): void {
     this.movieDetail = MovieDetail;
+    this.imagesList = this.movieDetail.data.movie.images;
+    
     // this.phone.emsVersionIdEvent.subscribe(
     //   (x)=>{
     //     if(x){

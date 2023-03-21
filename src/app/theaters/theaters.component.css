@@ -1,0 +1,17 @@
+.scrollable-menu {
+    height: auto;
+    
+    max-height: 30px;
+    width:300px;
+    z-index: 2;
+    /* display:flex;
+    overflow-x: hidden;
+    flex-flow:column;
+    justify-content:right;
+    align-items: flex-start;
+    position:inherit;
+    margin-top:50px; */
+}
+.theater-list {
+    z-index:2;
+}

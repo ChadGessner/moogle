@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TestNews } from '../dataForTesting/theNews';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -12,7 +12,13 @@ export class NewsComponent implements OnInit{
   //news:any;
   news = TestNews;
   
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){}
+  constructor(
+    private api:FlixterApiService,
+     private phone:ComponentTelephoneService){}
+      navigate(url:string) {
+
+        window.location.href = url;
+      }
   getStory(event:string) {
     return this.phone.getNewsURL(event);
   }

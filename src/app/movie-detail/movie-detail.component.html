@@ -1,15 +1,54 @@
 <div *ngIf="movieDetail" >
     <h4 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h4>
     
-    <div class="card">
-        <img src={{movieDetail.data.movie.posterImage.url}} height="220.5px" width="148.7px"  alt="card-img-top">
+    <div class="card ">
+        <div class="images-container">
+            <img class="poster " 
+            src={{movieDetail.data.movie.posterImage.url}} 
+            >
+            <div id="carouselWithControls" class="carousel slide col" >
+                <div class="carousel-inner bg-success">
+                  <div class="images-container">
+                    <img 
+                    src={{movieDetail.data.movie.images[subImageIndex()].url}} 
+                    class="carousel-image"
+                    [ngStyle]="{'width' : '8rem'}"
+                    alt="Slide 1">
+                    <img 
+                    src={{movieDetail.data.movie.images[currentImageIndex].url}} 
+                    class="carousel-image"
+                    
+                    alt="Slide 2">
+                    <img 
+                    src={{movieDetail.data.movie.images[addImageIndex()].url}} 
+                    class="carousel-image"
+                    [ngStyle]="{'width' : '8rem'}"
+                    alt="Slide 3">
+                  </div>
+                  
+                </div>
+                <a class="carousel-control-prev"  role="button" (click)="carouselMinus()">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next"  role="button" (click)="carouselPlus()">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
+        </div>
+        
+        <!-- <div class="col" *ngFor="let image of movieDetail.data.movie.images">
+            <img height="100px" width="100px" src={{image.url}}>
+          </div> -->
         <div class="card-body bg-dark border">
-          <h5 class="card-title text-warning">Description</h5>
+          <h5 class="card-title text-warning">Description&#8217;</h5>
           <hr>
           <p class="card-text text-success font-monospace">{{movieDetail.data.movie.synopsis}}</p>
           <p class="card-text card-footer "><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
+      
       <div *ngIf="movieDetail.data.movie.trailer.url" class="container-sm">
         <vg-player class="card-img-top" >
                 

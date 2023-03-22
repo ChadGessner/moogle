@@ -8,6 +8,7 @@ using Moogle_Models.API_Models.Reviews;
 using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.UpcomingMovies;
 using Moogle_Models.API_Models.Actor;
+using Moogle_Models.API_Models.Search;
 
 namespace Moogle_Flixter_Domain
 {
@@ -118,6 +119,19 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
 
       ActorRoot result = apiTask.Result;
+      return result;
+    }
+    public SearchRoot GetSearchQuery(string query, string userZip)
+    {
+      string apiUri = BaseUri + $"search?query={query}&zipCode={userZip}&radius=50";
+      var header = apiUri
+          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+          .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+      var apiTask = header.GetJsonAsync<SearchRoot>();
+      apiTask.Wait();
+
+      SearchRoot result = apiTask.Result;
       return result;
     }
   }

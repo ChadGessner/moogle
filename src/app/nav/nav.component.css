@@ -1,4 +1,8 @@
-
+.toasty {
+    margin-top: 70px;
+    z-index: 9000;
+    overflow:none;
+}
 /* .floaty {
     
     overflow:none;

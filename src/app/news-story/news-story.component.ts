@@ -12,7 +12,9 @@ import { ComponentTelephoneService } from '../component-telephone.service';
 })
 export class NewsStoryComponent implements OnInit {
   @Input()newsLink:any;
-  constructor(private sanitized:DomSanitizer, private phone:ComponentTelephoneService){}
+  constructor(
+    private sanitized:DomSanitizer,
+     private phone:ComponentTelephoneService){}
   getURL(x:string) {
     this.newsLink = this.sanitized.bypassSecurityTrustUrl(x);
   }

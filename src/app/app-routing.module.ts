@@ -8,6 +8,8 @@ import { TheaterDetailsComponent } from './theater-details/theater-details.compo
 import { NewsStoryComponent } from './news-story/news-story.component';
 import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { SearchComponent } from './search/search.component';
+import { ActorsComponent } from './actors/actors.component';
 
 const routes: Routes = [
   {
@@ -29,8 +31,14 @@ const routes: Routes = [
     path: 'theaters',
      component: TheatersComponent
   },{
+    path: 'actor',
+    component: ActorsComponent
+  },{
     path: 'movie-detail',
      component: MovieDetailComponent
+  },{
+    path: 'search',
+    component: SearchComponent
   },{
     path: 'home',
      component: HomeComponent

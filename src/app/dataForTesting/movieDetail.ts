@@ -1,1 +1,621 @@
-export const MovieDetail = {"errors":[{"message":"Critic Service is not available.","locations":[{"line":1,"column":852}],"path":["movie","criticReviews"]}],"data":{"movie":{"emsId":"8d105e95-5da8-4ca8-a3d3-cba0ba2fa45f","fandangoId":"229145","rtMovieId":"771521746","name":"Jesus Revolution","durationMinutes":119,"synopsis":"JESUS REVOLUTION is the story of one young hippie's quest in the 1970s for belonging and liberation that leads not only to peace, love, and rock and roll, but that sets into motion a new counterculture crusade--a Jesus Movement--changing the course of history. Inspired by a true movement, JESUS REVOLUTION tells the story of a young Greg Laurie (Joel Courtney) being raised by his struggling mother, Charlene (Kimberly Williams-Paisley) in the 1970s. Laurie and a sea of young people descend on sunny Southern California to redefine truth through all means of liberation. Inadvertently, Laurie meets Lonnie Frisbee (Jonathan Roumie), a charismatic hippie-street-preacher, and Pastor Chuck Smith (Kelsey Grammer) who have thrown open the doors of Smith's languishing church to a stream of wandering youth. What unfolds becomes the greatest spiritual awakening in American history. Rock and roll, newfound love, and a twist of faith lead to a JESUS REVOLUTION that turns one counterculture movement into a revival that changes the world.","directedBy":"Jon Erwin","releaseDate":"2023-02-24","showReleaseDate":"2023-02-24","dvdReleaseDate":null,"availabilityWindow":"In Theaters","ovdReleaseDate":null,"totalGross":"39409800","trailer":{"url":"https://playerservice.services.fandango.com/v1/clip/95E669BF-A074-44BE-8346-5EDD878D8920","freewheelId":"fandango_2087769155628","duration":"125.610667"},"posterImage":{"url":"https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://resizing.flixster.com/FLuS1mtbLsmLtJCuxgvnN8PZ1Bg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU5ODQ1Y2M1LWY1MWEtNDIzOS04NDRjLTcwMTlkY2Q5MGE3NS5qcGc=","type":null,"width":null,"height":null},"backgroundImage":{"url":"https://resizing.flixster.com/HgTv-yhyFjIGZnjTiqwFXcrvp2A=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NiY2QwNDY1LTUxYmMtNDcxMi1hYzcxLTRlYTlmZmRmYTQ1MC5qcGc=","type":null,"width":3600,"height":2400},"userRating":{"dtlLikedScore":99,"dtlWtsScore":null,"ratingCount":null,"iconImage":{"url":"https://images.fandango.com/cms/assets/b2570160-9be3-11eb-954b-43250906bea9--red-popcorn.png"}},"tomatoRating":{"tomatometer":62,"ratingCount":47,"consensus":"<em>Jesus Revolution</em> fumbles an opportunity to bring fascinating real-life history vibrantly to life, but deserves credit for avoiding the preachiness common to faith-based films.","iconImage":{"url":"https://images.fandango.com/cms/assets/7928a380-9be3-11eb-954b-43250906bea9--fresh.png"},"largeIconImage":{"url":"https://images.fandango.com/cms/assets/7928a380-9be3-11eb-954b-43250906bea9--fresh.png"}},"genres":[{"id":null,"name":"Drama"},{"id":null,"name":"History"}],"images":[{"url":"https://resizing.flixster.com/HgTv-yhyFjIGZnjTiqwFXcrvp2A=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NiY2QwNDY1LTUxYmMtNDcxMi1hYzcxLTRlYTlmZmRmYTQ1MC5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/FLuS1mtbLsmLtJCuxgvnN8PZ1Bg=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzU5ODQ1Y2M1LWY1MWEtNDIzOS04NDRjLTcwMTlkY2Q5MGE3NS5qcGc=","type":null,"width":2000,"height":3000},{"url":"https://resizing.flixster.com/RNZorW4jhEmz2jRSOFPiFPnFb4M=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzc5ZWZhZWQ3LWNiNDktNDgxNy1hYTU3LTNiZGVmNzFmNzg3ZC5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/aoBsGIuEtF9LYQcnmazGkAihIac=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzZhMjcwMTExLWMyZDQtNDJmMC05MzIwLTc2ZTYzMWRmMmU1MS5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/D4kfa2sgudfkCVUqK1iA3Yaor4Y=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2QzMWE3NTRiLTUxOTAtNDJlNi1iMDRiLWYxMDgzMzExNWU0MC5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/qHcnkp4UjoxlAVwbs0W67GuV2-w=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzNkZjZmMmMzLTVkYWItNDdiMS04YTY3LTUzMzFlYTRmMjE1Yi5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/l-Ip8p4WFLdL554VvqF3mijIjbU=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2ZkMWEyMDFkLTFmNTctNDc4Ni05MzVmLTI0YjNkOTAzODA5Yy5qcGc=","type":null,"width":2400,"height":3600},{"url":"https://resizing.flixster.com/kySihDNqGBLOCLCAINn0R9cZ3Vw=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzdhZGQzN2Y2LWZiNWUtNDE5Yi05MjY3LWMyNzU2OWQ1MDI2Mi5qcGc=","type":null,"width":3600,"height":2400},{"url":"https://resizing.flixster.com/1W--KOVC1ZJM1Y7efdaVK_3sGWk=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NkMjRiNGEyLTZlMTEtNDgyZS04OWZlLWFmNzUzNWU3NGYzNC5qcGc=","type":null,"width":3600,"height":2400}],"cast":[{"id":609755,"role":"Actor","name":"Joel Courtney","characterName":"Greg Laurie","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":742774,"role":"Actor","name":"Jonathan Roumie","characterName":"Lonnie Frisbee","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":275127,"role":"Actor","name":"Kimberly Williams-Paisley","characterName":"Charlene","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":915077,"role":"Actor","name":"Anna Grace Barlow","characterName":"Cathe","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":676,"role":"Actor","name":"Kelsey Grammer","characterName":"Chuck Smith","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":210646,"role":"Actor","name":"Nic Bishop","characterName":"Dick","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":907696,"role":"Actor","name":"Jackson Robert Scott","characterName":"Young Greg","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":911064,"role":"Actor","name":"Nicholas Cirillo","characterName":"Charlie","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":825205,"role":"Actor","name":"Ally Ioannides","characterName":"Janette Smith","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":75253,"role":"Actor","name":"Julia Campbell","characterName":"Kay","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":820687,"role":"Actor","name":"Mina Sundwall","characterName":"Dodie","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":804473,"role":"Actor","name":"DeVon Franklin","characterName":"Josiah","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":796572,"role":"Actor","name":"Charlie Morgan Patton","characterName":"Connie","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":166552,"role":"Actor","name":"Jolie Jenkins","characterName":"Pilar","headShotImage":{"url":[],"type":[],"width":[],"height":[]}},{"id":214050,"role":"Actor","name":"Jean St. James","characterName":"Kathryn Kuhlman","headShotImage":null}],"crew":[{"id":null,"role":"Director","name":"Jon Erwin","headShotImage":null},{"id":null,"role":"Director","name":"Brent McCorkle","headShotImage":null},{"id":null,"role":"Screenwriter","name":"Jon Gunn","headShotImage":null},{"id":null,"role":"Screenwriter","name":"Jon Erwin","headShotImage":null},{"id":null,"role":"Producer","name":"Kevin Downes","headShotImage":null},{"id":null,"role":"Producer","name":"Andrew Erwin","headShotImage":null},{"id":null,"role":"Producer","name":"Jon Erwin","headShotImage":null},{"id":null,"role":"Producer","name":"Greg Laurie","headShotImage":null},{"id":null,"role":"Producer","name":"Josh Walsh","headShotImage":null},{"id":null,"role":"Producer","name":"Daryl Lefever","headShotImage":null},{"id":null,"role":"Cinematographer","name":"Akis Konstantakopoulos","headShotImage":null},{"id":null,"role":"Production Design","name":"Aimee Holmberg","headShotImage":null},{"id":null,"role":"Art Director","name":"Jenny Wentling","headShotImage":null},{"id":null,"role":"Set Decoration","name":"Nik Morgan","headShotImage":null},{"id":null,"role":"Costume Design","name":"Anna Redmon","headShotImage":null},{"id":null,"role":"Casting","name":"Anthony J. Kraus","headShotImage":null}],"motionPictureRating":{"area":null,"code":"PG-13","description":"Parents Strongly Cautioned"},"ovds":[{"videoId":"2acce2be-5286-3611-a59a-9961bc334540","url":"https://www.vudu.com/content/movies/details/Jesus-Revolution/2262311","lastSeen":"2023-03-18","host":{"hostId":"70906","name":"VUDU","alphaLight":"https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png","alphaDark":"https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png","solidLight":"https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png","solidDark":"https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png"}}],"criticReviews":null,"audienceReviews":{"totalCount":10115,"nextOffset":4,"hasNextPage":true,"hasPreviousPage":false,"items":[{"userFullName":null,"userImage":null,"iconImage":null,"rating":5,"isInterested":null,"comment":"This is a clean, wholesome movie!  It gives you a little hope for the future of this country.  Kelsey Grammar is amazing."},{"userFullName":null,"userImage":null,"iconImage":null,"rating":5,"isInterested":null,"comment":"Fabulous movie that shows how Christianity spread in the 1960s."},{"userFullName":null,"userImage":null,"iconImage":null,"rating":5,"isInterested":null,"comment":"Very good portrayal of late 60's and early 70's. (Except the term, \"you've got this.\" No one said that then.)  Loved the true story.  Loved the sideburns, bell bottoms, granny/maxi dresses, the fashion, the cars and all the detail.  Loved the casting, acting, filming and all the efforts to make a great experience at the theatre. Loved it."},{"userFullName":null,"userImage":null,"iconImage":null,"rating":5,"isInterested":null,"comment":"Enjoyed the history, comedy and music.  Great feel good movie."}]},"showtimeGroupings":{"fandangoId":"229145","movieId":"kOmSdPSq9FJXsoAibv","displayDates":["2023-03-19","2023-03-20","2023-03-21","2023-03-22","2023-03-23","2023-03-31","2023-04-01","2023-04-02","2023-04-03","2023-04-04","2023-04-05","2023-04-06"],"displayDate":"2022-08-21","mppBaseUrl":"https://www.flixster.com/switchboard/internal-checkout?mid={mid}&tid={tid}&a={a}&date={sdate}&datetime={sdate}","theaters":[]}}}}
+export const MovieDetail = {
+    "errors": {
+        "errors": [
+          {
+            "message": "only absolute urls are supported",
+            "locations": [
+              {
+                "line": 1,
+                "column": 220
+              }
+            ],
+            "path": [
+              "movie",
+              "trailer"
+            ]
+          }
+        ],
+    },
+        "data": {
+          "movie": {
+            "emsId": "8d5e02e8-e2b9-3e3a-b0db-10c175b97ef4",
+            "fandangoId": "2198",
+            "rtMovieId": "13043",
+            "name": "Army of Darkness",
+            "durationMinutes": 81,
+            "synopsis": "3rd Evil Dead movie. Ash (Bruce Campbell) finds himself trapped in medieval times. He must quest for the Necronomicon, a book of evil which can return him to his time. Unfortunately, he releases the evil trapped inside the book and unleashes an army of the dead.",
+            "directedBy": "Sam Raimi",
+            "releaseDate": "1992-02-19",
+            "showReleaseDate": "1992-02-19",
+            "dvdReleaseDate": "2010-09-07",
+            "availabilityWindow": "At Home",
+            "ovdReleaseDate": "2012-06-15",
+            "totalGross": "10482305",
+            "trailer": null,
+            "posterImage": {
+              "url": "https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://flxt.tmsimg.com/assets/p14322_p_v12_ah.jpg",
+              "type": null,
+              "width": null,
+              "height": null
+            },
+            "backgroundImage": {
+              "url": "https://flxt.tmsimg.com/assets/p14322_i_h10_ab.jpg",
+              "type": "image/jpg",
+              "width": 1920,
+              "height": 1080
+            },
+            "userRating": {
+              "dtlLikedScore": 87,
+              "dtlWtsScore": null,
+              "ratingCount": null,
+              "iconImage": {
+                "url": "https://images.fandango.com/cms/assets/b2570160-9be3-11eb-954b-43250906bea9--red-popcorn.png"
+              }
+            },
+            "tomatoRating": {
+              "tomatometer": 77,
+              "ratingCount": 53,
+              "consensus": "<em>Army of Darkness</em> is a madcap adventure worth taking thanks to Bruce Campbell's hammy charm and Sam Raimi's acrobatic direction, although an intentional lack of shocks make this a discordant capper to the <em>Evil Dead</em> franchise.",
+              "iconImage": {
+                "url": "https://images.fandango.com/cms/assets/7928a380-9be3-11eb-954b-43250906bea9--fresh.png"
+              },
+              "largeIconImage": {
+                "url": "https://images.fandango.com/cms/assets/7928a380-9be3-11eb-954b-43250906bea9--fresh.png"
+              }
+            },
+            "genres": [
+              {
+                "id": null,
+                "name": "Fantasy"
+              },
+              {
+                "id": null,
+                "name": "Adventure"
+              },
+              {
+                "id": null,
+                "name": "Horror"
+              },
+              {
+                "id": null,
+                "name": "Comedy"
+              }
+            ],
+            "images": [
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_d_v8_aa.jpg",
+                "type": "image/jpg",
+                "width": 960,
+                "height": 1440
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_k_v12_ac.jpg",
+                "type": "image/jpg",
+                "width": 1920,
+                "height": 2880
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_i_h10_ab.jpg",
+                "type": "image/jpg",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_p_v12_ah.jpg",
+                "type": "image/jpg",
+                "width": 1920,
+                "height": 2880
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_i_h9_ab.jpg",
+                "type": "image/jpg",
+                "width": 1440,
+                "height": 1080
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_v_v10_am.jpg",
+                "type": "image/jpg",
+                "width": 1536,
+                "height": 2048
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_v_h9_ao.jpg",
+                "type": "image/jpg",
+                "width": 1440,
+                "height": 1080
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_i_v9_ab.jpg",
+                "type": "image/jpg",
+                "width": 1080,
+                "height": 1440
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_v_v12_bh.jpg",
+                "type": "image/jpg",
+                "width": 1920,
+                "height": 2880
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_p_v13_ae.jpg",
+                "type": "image/jpg",
+                "width": 2160,
+                "height": 2880
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_v_h8_ap.jpg",
+                "type": "image/jpg",
+                "width": 3840,
+                "height": 2160
+              },
+              {
+                "url": "https://flxt.tmsimg.com/NowShowing/2390/2390_ac.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/2390_ac.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_k_h8_ad.jpg",
+                "type": "image/jpg",
+                "width": 3840,
+                "height": 2160
+              },
+              {
+                "url": "https://flxt.tmsimg.com/NowShowing/2390/2390_ab.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/2390_ad.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/NowShowing/2390/2390_ae.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/NowShowing/2390/2390_ad.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/2390_ab.jpg",
+                "type": "image/jpg",
+                "width": 432,
+                "height": 288
+              },
+              {
+                "url": "https://flxt.tmsimg.com/assets/p14322_p_v8_ah.jpg",
+                "type": "image/jpg",
+                "width": 960,
+                "height": 1440
+              }
+            ],
+            "cast": [
+              {
+                "id": 75044,
+                "role": "Actor",
+                "name": "Bruce Campbell",
+                "characterName": "Ash",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 19479,
+                "role": "Actor",
+                "name": "Embeth Davidtz",
+                "characterName": "Sheila",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 98050,
+                "role": "Actor",
+                "name": "Marcus Gilbert",
+                "characterName": "Arthur",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 97071,
+                "role": "Actor",
+                "name": "Ian Abercrombie",
+                "characterName": "Wiseman Joe",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 227744,
+                "role": "Actor",
+                "name": "Richard Grove",
+                "characterName": "Duke Henry",
+                "headShotImage": null
+              },
+              {
+                "id": 45349,
+                "role": "Actor",
+                "name": "Michael Earl Reid",
+                "characterName": "Gold Tooth",
+                "headShotImage": null
+              },
+              {
+                "id": 167249,
+                "role": "Actor",
+                "name": "Timothy Patrick Quill",
+                "characterName": "Blacksmith",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 566,
+                "role": "Actor",
+                "name": "Bridget Fonda",
+                "characterName": "Linda",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              }
+            ],
+            "crew": [
+              {
+                "id": 1412,
+                "role": "Director",
+                "name": "Sam Raimi",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 1412,
+                "role": "Writer",
+                "name": "Sam Raimi",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 463985,
+                "role": "Writer",
+                "name": "Ivan Raimi",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 75044,
+                "role": "Co-Producer",
+                "name": "Bruce Campbell",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 430316,
+                "role": "Producer",
+                "name": "Robert G. Tapert",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 79342,
+                "role": "Original Music",
+                "name": "Danny Elfman",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 463986,
+                "role": "Original Music",
+                "name": "Joseph LoDuca",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 459328,
+                "role": "Cinematographer",
+                "name": "Bill Pope",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 75044,
+                "role": "Film Editing",
+                "name": "Bruce Campbell",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 464785,
+                "role": "Film Editing",
+                "name": "Bob Murawski",
+                "headShotImage": {
+                  "url": [],
+                  "type": [],
+                  "width": [],
+                  "height": []
+                }
+              },
+              {
+                "id": 463988,
+                "role": "Production Design",
+                "name": "Anthony Tremblay",
+                "headShotImage": null
+              },
+              {
+                "id": 463987,
+                "role": "Casting",
+                "name": "Ira Belgrade",
+                "headShotImage": null
+              },
+              {
+                "id": 463990,
+                "role": "Art Director",
+                "name": "Aram Allan",
+                "headShotImage": null
+              },
+              {
+                "id": 463989,
+                "role": "Set Decoration",
+                "name": "Michele Poulik",
+                "headShotImage": null
+              },
+              {
+                "id": 463991,
+                "role": "Costume Design",
+                "name": "Ida Gearon",
+                "headShotImage": null
+              }
+            ],
+            "motionPictureRating": {
+              "area": null,
+              "code": "R",
+              "description": "Restricted"
+            },
+            "ovds": [
+              {
+                "videoId": "20fd362f-23dc-3ea7-9ca7-c5da05c4621f",
+                "url": "https://www.vudu.com/content/movies/details/Army-of-Darkness/5877",
+                "lastSeen": "2023-03-17",
+                "host": {
+                  "hostId": "70906",
+                  "name": "VUDU",
+                  "alphaLight": "https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png",
+                  "alphaDark": "https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png",
+                  "solidLight": "https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png",
+                  "solidDark": "https://images.fandango.com/cms/assets/0440efb0-b514-11eb-8d70-c5bf5e872b28--vudu-fandango-logo.png"
+                }
+              },
+              {
+                "videoId": "203525409",
+                "url": "http://www.amazon.com/gp/product/B000I8COBW/ref=atv_feed_catalog?ref=atv_feed_catalog&tag=rottetomao_aiv_mv-20",
+                "lastSeen": "2023-03-22",
+                "host": {
+                  "hostId": "70865",
+                  "name": "Amazon.com",
+                  "alphaLight": "https://images.fandango.com/cms/assets/322db5b0-9be3-11eb-bd50-d166e33e886a--amazon.png",
+                  "alphaDark": "https://images.fandango.com/cms/assets/322db5b0-9be3-11eb-bd50-d166e33e886a--amazon.png",
+                  "solidLight": "https://images.fandango.com/cms/assets/322db5b0-9be3-11eb-bd50-d166e33e886a--amazon.png",
+                  "solidDark": "https://images.fandango.com/cms/assets/322db5b0-9be3-11eb-bd50-d166e33e886a--amazon.png"
+                }
+              },
+              {
+                "videoId": "270100949",
+                "url": "https://itunes.apple.com/us/movie/army-of-darkness/id280526877?at=10l9IP&ct=Flixster_2.0_android",
+                "lastSeen": "2023-03-22",
+                "host": {
+                  "hostId": "70899",
+                  "name": "iTunes Store",
+                  "alphaLight": "https://images.fandango.com/cms/assets/4e7ba6a0-9be3-11eb-b5d9-dd031ef2e6cb--i-tunes.png",
+                  "alphaDark": "https://images.fandango.com/cms/assets/4e7ba6a0-9be3-11eb-b5d9-dd031ef2e6cb--i-tunes.png",
+                  "solidLight": "https://images.fandango.com/cms/assets/4e7ba6a0-9be3-11eb-b5d9-dd031ef2e6cb--i-tunes.png",
+                  "solidDark": "https://images.fandango.com/cms/assets/4e7ba6a0-9be3-11eb-b5d9-dd031ef2e6cb--i-tunes.png"
+                }
+              }
+            ],
+            "criticReviews": [
+              [
+                [
+                  [
+                    [
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ]
+              ],
+              [
+                [
+                  [
+                    [
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ]
+              ],
+              [
+                [
+                  [
+                    [
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ]
+              ],
+              [
+                [
+                  [
+                    [
+                      []
+                    ]
+                  ]
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ],
+                [
+                  []
+                ]
+              ]
+            ],
+            "audienceReviews": {
+              "totalCount": 218931,
+              "nextOffset": 4,
+              "hasNextPage": true,
+              "hasPreviousPage": false,
+              "items": [
+                {
+                  "userFullName": null,
+                  "userImage": null,
+                  "iconImage": null,
+                  "rating": 3.5,
+                  "isInterested": null,
+                  "comment": "Grab a couple beers and saddle up to see the best of the very worst movies ever made...I present to you: Army Of Darkness!  \n\nJust terrible special effects that make the original Clash of the Titans look fantastic.\n\nSome really awful acting that made this a funny comedy!  \n\nIt just works and has a beautiful running time of an hr and 20 mins!\n\nFun for the whole family, (if each family member is over 18!)\n\nEnjoy!  (Released in 1992!)"
+                },
+                {
+                  "userFullName": null,
+                  "userImage": null,
+                  "iconImage": null,
+                  "rating": 4.5,
+                  "isInterested": null,
+                  "comment": "A Classic Fantasy-Horror-Comedy Hybrid. This has such a unique tone to it that works for and against it throughout. The cinematography is the best part of this with really imaginative sets, fun special effects, and a memorable setting with creative camera angles to boot. The music is very well done with a unique action / mid-evil vibe that really works but I wouldn't call it catchy. The acting is really good with the only complaint being Ash is over the top most of the time and it would've been nice to see that toned down a bit but it works for the most part. Everyone is good but kind of forgettable especially the love interest. The pacing is excellent also, never does this feel like it drags as it is extremely short but still perfect run time. The editing is good but probably the weakest element in terms of tone. That is because the jokes while most are good feel a bit over the top and out of place. This gets to slap sticky at times and takes away from the creativity and seriousness of scenes throughout. I wish that would've been toned down a bit  like the second one that a much better balance of it with action and horror. Overall though this is a unique fantasy horror comedy that any fan of those genres or Raimi & Campbell should definitely check out. Like I & II its unlike anything else I've ever seen and a really entertaining time throughout."
+                },
+                {
+                  "userFullName": null,
+                  "userImage": null,
+                  "iconImage": null,
+                  "rating": 4,
+                  "isInterested": null,
+                  "comment": "Not as good as either of the original two Evil Dead films, but Army of Darkness fully embraces the goofy comedy aspects that were introduced in Evil Dead 2.  An overall really fun time with Ash."
+                },
+                {
+                  "userFullName": null,
+                  "userImage": null,
+                  "iconImage": null,
+                  "rating": 5,
+                  "isInterested": null,
+                  "comment": "Looks Groovy in Ultra HD"
+                }
+              ]
+            },
+            "showtimeGroupings": {
+              "fandangoId": "2198",
+              "movieId": "wLDS6YsmZFxg",
+              "displayDates": [
+                "2023-04-07",
+                "2023-04-22"
+              ],
+              "displayDate": "2022-08-21",
+              "mppBaseUrl": "https://www.flixster.com/switchboard/internal-checkout?mid={mid}&tid={tid}&a={a}&date={sdate}&datetime={sdate}",
+              "theaters": []
+            }
+          }
+        }
+      }

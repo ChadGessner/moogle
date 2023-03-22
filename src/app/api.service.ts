@@ -21,10 +21,22 @@ export class FlixterApiService {
   @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
   @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   constructor(private http:HttpClient) {
 
    }
-
+  //  searchQuery(query:string, user:User) {
+  //   let uriEnd = `Search/GetSearchQuery/${query}/${user.zipCode}`;
+  //   return this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         console.log(JSON.stringify(x))
+  //         return this.searchQueryEvent.emit(x);
+  //       }
+  //     }
+  //   )
+  //  }
   //  registerNewUser(user:User) {
   //     this.http.post<User>(this.serverUri, user)
   //     .subscribe((x)=>{
@@ -51,6 +63,17 @@ export class FlixterApiService {
    userLogout() {
     this.user = null;
    }
+
+  //  getActorData(actorId:string) {
+  //   let uriEnd = `Search/GetActorData/${actorId}`
+  //   return this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         return this.celebrityDetailsEvent.emit(x)
+  //       }
+  //     }
+  //   )
+  //  }
   //  getMovieDetailsById(emsVersionId:string){
   //   let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
   //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(

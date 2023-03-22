@@ -1,36 +1,123 @@
-<div *ngIf="movieDetail" >
-    <h4 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h4>
+<div class="card m-4 border border-success bg-dark rounded">
+    <div class="card-header">
+        <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
+        <hr class="text-success" >
+        <ul class="nav nav-tabs card-header-tabs" >
+        
+        <li class="nav-item bg-secondary m-1" >
+            <a class="nav-link" id="card-tab-one">Description</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+            <a class="nav-link" id="card-tab-two">Cast</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+            <a class="nav-link" id="card-tab-three">Images</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+            <a class="nav-link" id="card-tab-four">General Information</a>
+        </li>
+        </ul>
+    </div>
+</div>
+<div class="card m-4 p-4 border border-success bg-dark rounded">
     
-    <div class="card">
-        <img src={{movieDetail.data.movie.posterImage.url}} height="220.5px" width="148.7px"  alt="card-img-top">
-        <div class="card-body bg-dark border">
-          <h5 class="card-title text-warning">Description</h5>
-          <hr>
-          <p class="card-text text-success font-monospace">{{movieDetail.data.movie.synopsis}}</p>
-          <p class="card-text card-footer "><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div *ngIf="movieDetail.data.movie.trailer.url" class="container-sm">
-        <vg-player class="card-img-top" >
-                
-            <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
-                <source 
-                src={{movieDetail.data.movie.trailer.url}} 
-                type="video/mp4">
-            </video>
-        </vg-player>
-        <div class="card-body">
-            <h5 class="card-title text-warning">Trailer</h5>
+    <div class="row" *ngIf="movieDetail" >
+        <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>
+        <hr>
+        <div class=" ">
+            <div class="row card-body bg-dark border">
+                <div class="row m-4 float-left">
+                    <img class="col poster " 
+                    src={{movieDetail.data.movie.posterImage.url}}>
+                    <div *ngIf="notIsActive[0].isActive" class="col">
+                        <h5 class="card-title text-warning">Description&#8217;</h5>
+                        <hr>
+                        <p class="card-text text-success font-monospace">{{movieDetail.data.movie.synopsis}}</p>
+                        <p class="card-text card-footer "><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                    <div *ngIf="notIsActive[1].isActive" class="col">
+                        
+                        <ul class="list-group col" >
+                            <li class="card border border-warning" *ngFor="let cast of movieDetail.data.movie.cast;index as i">
+                                <div class="p-2" *ngIf="i === 0">
+                                    <label class="text-small text-muted text-warning" >Name</label>
+                                    
+                                    <p class="text-success">{{cast.name}}</p>
+                                    <hr>
+                                    <label class="text-muted">Role</label>
+                                    <p class="text-success" >{{cast.role}}</p>
+                                    <hr>
+                                    <label *ngIf="cast.characterName" class="text-muted" >Character Name</label>
+                                    <p *ngIf="cast.characterName" class="text-success">
+                                        {{cast.characterName}}
+                                    </p>
+                                    <hr>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    <div *ngIf="notIsActive[2].isActive" class="col">
+                        <div class="card ">
             
+                            <div id="carouselWithControls" class="carousel slide col" >
+                              <div class="carousel-inner bg-success">
+                                <div class="images-container">
+                                  <img 
+                                  src={{movieDetail.data.movie.images[addImageIndex()].url}} 
+                                  class="carousel-image"
+                                  [ngStyle]="{'width' : '8rem'}"
+                                  alt="Slide 1">
+                                  <img 
+                                  src={{movieDetail.data.movie.images[currentImageIndex].url}} 
+                                  class="carousel-image"
+                                  
+                                  alt="Slide 2">
+                                  <img 
+                                  src={{movieDetail.data.movie.images[subImageIndex()].url}} 
+                                  class="carousel-image"
+                                  [ngStyle]="{'width' : '8rem'}"
+                                  alt="Slide 3">
+                                </div>
+                                
+                              </div>
+                              <a class="carousel-control-prev"  role="button" (click)="carouselMinus()">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </a>
+                              <a class="carousel-control-next"  role="button" (click)="carouselPlus()">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </a>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
         </div>
         
-        <div class="container display-1 m-4 p-4" *ngIf="!movieDetail.data.movie.trailer.url">
-            <p>There is currently no trailer for this film...</p>
+        
+        
+          <div *ngIf="movieDetail.data.movie.trailer" class="container-sm">
+            <vg-player class="card-img-top" >
+                    
+                <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+                    <source 
+                    src={{movieDetail.data.movie.trailer.url}} 
+                    type="video/mp4">
+                </video>
+            </vg-player>
+            <div class="card-body">
+                <h5 class="card-title text-warning">Trailer</h5>
+                
+            </div>
+            
+            <div class="container display-1 m-4 p-4" *ngIf="!movieDetail.data.movie.trailer.url">
+                <p>There is currently no trailer for this film...</p>
+            </div>
         </div>
     </div>
-    
-    
-    
 </div>
+
 
 

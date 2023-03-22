@@ -14,10 +14,13 @@ export class UserLoginComponent implements OnInit {
   constructor(private api:FlixterApiService){}
   onSubmit(user:NgForm){
     
-    let userName = user.form.value.userName;
+    let userName = user
+    .form
+    .value
+    .userName;
     let password = user.form.value.password;
     this.api.userLogin(userName,password);
-    user.resetForm()
+    user.resetForm();
   }
   logout() {
     this.user = null;
@@ -25,12 +28,12 @@ export class UserLoginComponent implements OnInit {
   }
   ngOnInit(): void {
     
-    // this.api.registerEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.user = x;
-    //     }
-    //   }
-    // )
+    this.api.registerEvent.subscribe(
+      (x)=>{
+        if(x){
+          this.user = x;
+        }
+      }
+    )
   }
 }

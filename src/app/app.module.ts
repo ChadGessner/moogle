@@ -18,6 +18,8 @@ import { NewsComponent } from './news/news.component';
 import { NewsStoryComponent } from './news-story/news-story.component';
 import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { ActorsComponent } from './actors/actors.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
     NewsComponent,
     NewsStoryComponent,
     UpcomingMovieDetailsComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    ActorsComponent,
+    SearchComponent
 
   ],
   imports: [

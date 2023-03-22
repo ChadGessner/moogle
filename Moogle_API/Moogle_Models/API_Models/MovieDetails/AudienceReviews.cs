@@ -8,10 +8,10 @@ namespace Moogle_Models.API_Models.MovieDetails
 {
   public class AudienceReviews
   {
-    public int totalCount { get; set; }
-    public int nextOffset { get; set; }
-    public bool hasNextPage { get; set; }
-    public bool hasPreviousPage { get; set; }
-    public List<Item> items { get; set; }
+    public int? totalCount { get; set; }
+    public int? nextOffset { get; set; }
+    public bool? hasNextPage { get; set; }
+    public bool? hasPreviousPage { get; set; }
+    public List<Item>? items { get; set; }
   }
 }

@@ -1,0 +1,73 @@
+<div class="card m-4 border border-success bg-dark rounded">
+
+    <div class="card-header">
+        <h2 class="text-warning" >Query Results</h2>
+        <hr class="text-success" >
+        <ul class="nav nav-tabs card-header-tabs" >
+        
+        <li class="nav-item bg-secondary m-1" >
+            <a class="nav-link" id="card-tab-one">People</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+            <a class="nav-link" id="card-tab-two">Movies</a>
+        </li>
+        </ul>
+    </div>
+    
+<table *ngIf="notIsActive[0].isActive" class="table table-bordered ">
+    <thead >
+      <tr class="m-4 p-4 bg-success " >
+        <th class="text-dark" scope="col">#</th>
+        <th class="text-dark"  scope="col">Details</th>
+        <th class="text-dark"  scope="col">Full Name</th>
+        <th class="text-dark"  scope="col">Head Shot</th>
+      </tr>
+      
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let person of queryData.data.search.people;index as i" >
+        
+        <th class="text-success" scope="row">{{i+1}})</th>
+        <div>
+            <a (click)="getCelebrityDetails(person.id)" class="btn btn-outline-success text-warning" routerLink="/actor">Celebrity Details</a>
+        </div>
+        <td class="text-warning" >{{person.name}}</td>
+        <div>
+            <img *ngIf="person.headShotImage" height="100px" width="auto" src={{person.headShotImage.url}}> 
+            <p class="text-danger" *ngIf="!person.headShotImage">N/A</p>
+        </div>
+      </tr>
+    </tbody>
+    
+  </table>
+  
+  <table *ngIf="notIsActive[1].isActive" class="table table-bordered ">
+    <thead>
+      <tr class="border alert alert-primary text-info" >
+        <th class="text-dark" scope="col">#</th>
+        <th class="text-dark" scope="col">Details</th>
+        <th class="text-dark" scope="col">Title</th>
+        <th class="text-dark" scope="col">Poster Image</th>
+        
+      </tr>
+      <hr>
+    </thead>
+    <tbody>
+        
+      <tr *ngFor="let movie of queryData.data.search.movies;index as i" >
+        <th *ngIf="movie && movie.name && movie.posterImage" class="text-success" scope="row">{{i+1}})</th>
+        <div *ngIf="movie && movie.name && movie.posterImage" >
+            <a (click)="getMovieDetails(movie.emsVersionId)" class="btn btn-outline-success text-warning" routerLink="/movie-detail">Motion Picture Details</a>
+        </div>
+        <td *ngIf="movie && movie.name && movie.posterImage" class="text-warning" >{{movie.name}}</td>
+        <div *ngIf="movie && movie.name && movie.posterImage" >
+            <img width="100px" height="auto" src={{movie.posterImage.url}}>
+        </div>
+    
+      </tr>
+    
+    </tbody>
+  </table>
+
+</div>

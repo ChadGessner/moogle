@@ -1,7 +1,19 @@
 
-<div *ngFor="let story of news.data.newsStories">
+<!-- <div *ngFor="let story of news.data.newsStories"> -->
     <!-- <p [innerHTML]="story.title" ></p> -->
-    <img height="100px" width="100px" src={{story.mainImage.url}} >
-    <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a>
+    <!-- <img height="100px" width="100px" src={{story.mainImage.url}} > -->
+    <!-- <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a> -->
+<!-- </div> -->
+
+<div class="horizontal">
+<div *ngFor="let story of news.data.newsStories">
     
+    
+    <p><img width="75%" src={{story.mainImage.url}}>
+    <!-- <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a> -->
+   <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title"></p> </a></button></p> 
+ 
 </div>
+</div>
+
+  

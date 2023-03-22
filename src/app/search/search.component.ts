@@ -48,7 +48,12 @@ export class SearchComponent implements OnInit{
       )
     }
   }
-
+  getCelebrityDetails(id:string) {
+    //this.api.getActorData(id)
+  }
+  getMovieDetails(id:string) {
+    //this.api.getMovieDetailsById(id);
+  }
 
   ngOnInit(): void {
     this.queryData = Search;

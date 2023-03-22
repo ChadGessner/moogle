@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 //import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
@@ -13,11 +13,53 @@ export class MovieDetailComponent implements OnInit {
   @Input()emsVersionId:string = ''
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
-  
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){
+  notIsActive:{
+    id:string,
+    isActive:boolean}[] = [{
+
+    id:'card-tab-one',
+    isActive:true
+  },{
+    id:'card-tab-two',
+    isActive:false
+  },{
+    id:'card-tab-three',
+    isActive:false
+  },{
+    id:'card-tab-four',
+    isActive:false
+  }]
+  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService, private render:Renderer2 ){
 
   }
-
+  @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
+    const target = e.target as HTMLElement;
+    if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
+      
+      this.notIsActive.forEach(
+        (x)=>{
+          if(x){
+            x.isActive = x.id === target.id;
+            this.render.removeClass(
+              document.getElementById(x.id),
+              'bg-primary'
+            )
+            this.render.removeClass(
+              document.getElementById(x.id),
+              'bg-secondary'
+            )
+             this.render.addClass(
+              document.getElementById(x.id),
+              `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
+            )
+        }
+      }
+      )
+    }
+  }
+  categoryName() {
+    return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;
+  }
   carouselPlus() {
 
     this.currentImageIndex++;
@@ -60,7 +102,7 @@ export class MovieDetailComponent implements OnInit {
     //   (x)=>{
     //     if(x){
     //       this.movieDetail = x;
-          
+    //       this.imagesList = this.movieDetail.data.movie.images;
     //       console.log(JSON.stringify(this.movieDetail))
     //     }
     //   }

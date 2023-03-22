@@ -50,8 +50,8 @@ export class ActorsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.actor = Actor;
-    console.log(this.actor.data.person.name)
-    // this.api.getActorData('382200').subscribe(
+    //console.log(this.actor.data.person.name)
+    // this.api.celebrityDetailsEvent.subscribe(
     //   (x)=>{
     //     if(x) {
     //       console.log(JSON.stringify(x))

@@ -55,7 +55,7 @@ namespace Moogle_Repo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Theaters");
+                    b.ToTable("Theaters", (string)null);
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
@@ -78,7 +78,7 @@ namespace Moogle_Repo.Migrations
 
                     b.HasIndex("TheaterId");
 
-                    b.ToTable("TheaterZips");
+                    b.ToTable("TheaterZips", (string)null);
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.User", b =>
@@ -131,7 +131,7 @@ namespace Moogle_Repo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>

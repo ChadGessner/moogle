@@ -22,6 +22,7 @@ export class FlixterApiService {
   @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   constructor(private http:HttpClient) {
 
    }
@@ -63,10 +64,16 @@ export class FlixterApiService {
     this.user = null;
    }
 
-   getActorData(actorId:string) {
-    let uriEnd = `Search/GetActorData/${actorId}`
-    return this.http.get<{}>(this.baseUri + uriEnd)
-   }
+  //  getActorData(actorId:string) {
+  //   let uriEnd = `Search/GetActorData/${actorId}`
+  //   return this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+  //     (x)=>{
+  //       if(x){
+  //         return this.celebrityDetailsEvent.emit(x)
+  //       }
+  //     }
+  //   )
+  //  }
   //  getMovieDetailsById(emsVersionId:string){
   //   let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
   //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(

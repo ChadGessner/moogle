@@ -1,6 +1,7 @@
 
 
-<div class="card">
+<div *ngIf="actor" class="card">
+    <h1 class="text-success m-4" >{{actor.data.person.name}}</h1>
     <div class="card-header">
         
       <ul class="nav nav-tabs card-header-tabs" >
@@ -15,10 +16,10 @@
           <a class="nav-link " id="card-tab-three" >General Info</a>
         </li>
       </ul>
-      <h1 class="text-success m-4" >{{actor.data.person.name}}</h1>
+      
       <hr>
       <div class="row bg-primary">
-        <div class="col bg-success m-4">
+        <div *ngIf="actor.data.person.headShotImage.url" class="col bg-success m-4">
             <img 
             height="200px" 
             width="200px" 
@@ -43,9 +44,9 @@
                 <li class="list-group-item">
                     {{film.releaseDate}}
                 </li>
-                <li class="list-group-item text-success">
+                <li *ngIf="film.tomatoRating" class="list-group-item text-success">
                     <span>
-                        <span  >
+                        <span *ngIf="film.tomatoRating.iconImage" >
                             <img height="20px" width="auto" src={{film.tomatoRating.iconImage.url}}>
                             &nbsp;
                         </span>Tomato Meter: {{film.tomatoRating.tomatometer}}</span>

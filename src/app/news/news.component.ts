@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit{
      private phone:ComponentTelephoneService){}
       navigate(url:string) {
 
-        window.location.href = url;
+        window.open(url);
       }
   getStory(event:string) {
     return this.phone.getNewsURL(event);

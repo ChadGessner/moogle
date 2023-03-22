@@ -14,7 +14,10 @@ export class UserLoginComponent implements OnInit {
   constructor(private api:FlixterApiService){}
   onSubmit(user:NgForm){
     
-    let userName = user.form.value.userName;
+    let userName = user
+    .form
+    .value
+    .userName;
     let password = user.form.value.password;
     this.api.userLogin(userName,password);
     user.resetForm()

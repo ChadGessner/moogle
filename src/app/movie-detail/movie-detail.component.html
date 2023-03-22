@@ -10,7 +10,7 @@
                 <div class="carousel-inner bg-success">
                   <div class="images-container">
                     <img 
-                    src={{movieDetail.data.movie.images[subImageIndex()].url}} 
+                    src={{movieDetail.data.movie.images[addImageIndex()].url}} 
                     class="carousel-image"
                     [ngStyle]="{'width' : '8rem'}"
                     alt="Slide 1">
@@ -20,7 +20,7 @@
                     
                     alt="Slide 2">
                     <img 
-                    src={{movieDetail.data.movie.images[addImageIndex()].url}} 
+                    src={{movieDetail.data.movie.images[subImageIndex()].url}} 
                     class="carousel-image"
                     [ngStyle]="{'width' : '8rem'}"
                     alt="Slide 3">

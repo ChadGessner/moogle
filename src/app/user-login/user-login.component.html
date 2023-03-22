@@ -1,7 +1,9 @@
 <div *ngIf="!user">
     <div class="border border-success p-1 m-4 rounded bg-secondary">
     
-        <form class="form-group p-4 m-4 bg bg-dark rounded " (ngSubmit)="onSubmit(login)" #login="ngForm" >
+        <form 
+        class="form-group p-4 m-4 bg bg-dark rounded " 
+        (ngSubmit)="onSubmit(login)" #login="ngForm" >
             <h4 class="text-warning text-center font-monospace" >Moogle Account Login</h4>
             <div class="form-floating mb-3">
     
@@ -26,7 +28,9 @@
     <div class="border border-success p-4 m-4 rounded bg-secondary">
         <div class="row row-cols-2">
             <div class="row m-1 border border-success p-1 rounded bg-dark">
-                <button routerLink="/home" class="btn bg-secondary text-success m-1" >Home</button>
+                <button 
+                routerLink="/home" 
+                class="btn bg-secondary text-success m-1" >Home</button>
             </div>
             <div class="row m-1 border border-success p-1 rounded bg-dark">
                 <button routerLink="/home" class="btn bg-warning text-danger m-1" (click)="logout()" >Logout</button>

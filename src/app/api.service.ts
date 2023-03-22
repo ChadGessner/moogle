@@ -51,6 +51,11 @@ export class FlixterApiService {
    userLogout() {
     this.user = null;
    }
+
+   getActorData(actorId:string) {
+    let uriEnd = `Search/GetActorData/${actorId}`
+    return this.http.get<{}>(this.baseUri + uriEnd)
+   }
   //  getMovieDetailsById(emsVersionId:string){
   //   let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
   //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(

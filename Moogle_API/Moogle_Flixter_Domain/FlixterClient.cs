@@ -7,6 +7,7 @@ using Moogle_Models.API_Models.MovieDetails;
 using Moogle_Models.API_Models.Reviews;
 using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.UpcomingMovies;
+using Moogle_Models.API_Models.Actor;
 
 namespace Moogle_Flixter_Domain
 {
@@ -104,6 +105,19 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
       NewsRoot result = apiTask.Result;
       //Console.WriteLine(result.ToString());
+      return result;
+    }
+    public ActorRoot GetActorData(string actorId)
+    {
+      string apiUri = BaseUri + $"actors/detail?id={actorId}";
+      var header = apiUri
+          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+          .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+      var apiTask = header.GetJsonAsync<ActorRoot>();
+      apiTask.Wait();
+
+      ActorRoot result = apiTask.Result;
       return result;
     }
   }

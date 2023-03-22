@@ -1,0 +1,72 @@
+
+
+<div class="card">
+    <div class="card-header">
+        
+      <ul class="nav nav-tabs card-header-tabs" >
+        
+        <li class="nav-item bg-secondary m-1" >
+          <a class="nav-link" id="card-tab-one">Bio</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+          <a class="nav-link" id="card-tab-two">Filmography</a>
+        </li>
+        <li class="nav-item bg-primary m-1" >
+          <a class="nav-link " id="card-tab-three" >General Info</a>
+        </li>
+      </ul>
+      <h1 class="text-success m-4" >{{actor.data.person.name}}</h1>
+      <hr>
+      <div class="row bg-primary">
+        <div class="col bg-success m-4">
+            <img 
+            height="200px" 
+            width="200px" 
+            src={{actor.data.person.headShotImage.url}}>
+        </div>
+        <div *ngIf="notIsActive[0].isActive" class="col p-4">
+            <p class="text-info" >{{actor.data.person.biography}}</p>
+        </div>
+        <div *ngIf="notIsActive[1].isActive" class="col p-4">
+            <ul 
+            class="list-group col" 
+            *ngFor="let film of actor.data.person.filmography">
+                <li class="list-group-item text-warning">
+                    {{film.name}}
+                </li>
+                <li class="list-group-item">
+                    <img 
+                    width="50px" 
+                    height="auto" 
+                    src={{film.posterImage.url}}>
+                </li>
+                <li class="list-group-item">
+                    {{film.releaseDate}}
+                </li>
+                <li class="list-group-item text-success">
+                    <span>
+                        <span  >
+                            <img height="20px" width="auto" src={{film.tomatoRating.iconImage.url}}>
+                            &nbsp;
+                        </span>Tomato Meter: {{film.tomatoRating.tomatometer}}</span>
+                </li>
+            </ul>
+        </div>
+        <div 
+        *ngIf="notIsActive[2].isActive" class="col p-4">
+            <ul class="list-group col">
+                <li class="list-group-item text-info">{{actor.data.person.name}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.birthDate}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.birthPlace}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.gender}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" >
+    
+    </div>
+    </div>
+
+
+

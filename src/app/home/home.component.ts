@@ -8,8 +8,19 @@ import { FlixterApiService } from '../api.service';
 })
 export class HomeComponent implements OnInit {
   constructor(private api:FlixterApiService){}
+  isMoviesOrNews: boolean = true;
 
   ngOnInit(): void {
     //this.api.getNewsStoryList()
+  }
+
+  getNews()
+  {
+ this.isMoviesOrNews = false
+
+  }
+  getMovies()
+  {
+    this.isMoviesOrNews = true
   }
 }

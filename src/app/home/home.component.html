@@ -25,5 +25,15 @@
     </a>
     
   </div> -->
-  <!-- <app-movie-detail></app-movie-detail> -->
-  <app-upcoming-movie-details></app-upcoming-movie-details>
+<!-- <app-movie-detail></app-movie-detail> -->
+
+  <div *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
+  </div>
+  <ng-template #thenBlock>
+    <button class="btn btn-success" type="button" (click)="getNews()">See News</button>
+    <app-upcoming-movie-details></app-upcoming-movie-details>
+  </ng-template>
+  <ng-template #elseBlock>
+    <button class="btn btn-success" type="button" (click)="getMovies()">See Upcoming Movies</button>
+    <app-news></app-news>
+  </ng-template>

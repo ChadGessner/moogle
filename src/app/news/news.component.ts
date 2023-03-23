@@ -46,10 +46,10 @@ export class NewsComponent implements OnInit{
     this.startNewsIndex = endIndex++
     this.endNewsIndex = endIndex + 4
     this.startOfNews = false
-    if (this.endNewsIndex >= this.news.data.upcoming.length)
+    if (this.endNewsIndex >= this.news.data.newsStories.length)
     {
-      this.startNewsIndex = this.news.data.upcoming.length - 5
-      this.endNewsIndex = this.news.data.upcoming.length
+      this.startNewsIndex = this.news.data.newsStories.length - 5
+      this.endNewsIndex = this.news.data.newsStories.length
       this.endOfNews = true;
     }
   }

@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
 })
 export class NewsComponent implements OnInit{
   news:any;
+  startNewsIndex: number = 0;
+  endNewsIndex: number = 5;
+  startOfNews: boolean = true;
+  endOfNews: boolean = false;
   // news = TestNews;
   
   constructor(
@@ -36,5 +40,39 @@ export class NewsComponent implements OnInit{
   ngOnInit(): void {
     this.api.getNewsStoryList().subscribe(x => this.news = x);
     // this.newsSubscription();
+  }
+
+  getNextSixStories(startIndex: number, endIndex: number): void {
+    this.startNewsIndex = endIndex++
+    this.endNewsIndex = endIndex + 4
+    this.startOfNews = false
+    if (this.endNewsIndex >= this.news.data.upcoming.length)
+    {
+      this.startNewsIndex = this.news.data.upcoming.length - 5
+      this.endNewsIndex = this.news.data.upcoming.length
+      this.endOfNews = true;
+    }
+  }
+  getLastSixStories(startIndex: number, endIndex: number): void {
+    if (startIndex <= 5)
+    {
+      
+      this.startNewsIndex = startIndex = 0
+      this.endNewsIndex = 5;
+      this.startOfNews = true
+
+    }
+    else
+    {
+      this.startNewsIndex = startIndex - 5
+      this.endNewsIndex = endIndex - 5
+    }
+
+  }
+  getFirstSixStories(): void {
+    this.startNewsIndex = 0
+    this.endNewsIndex = 5
+    this.startOfNews = true;
+    this.endOfNews = false;
   }
 }

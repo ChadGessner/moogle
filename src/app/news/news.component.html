@@ -3,16 +3,18 @@
     <!-- <img height="100px" width="100px" src={{story.mainImage.url}} > -->
     <!-- <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a> -->
 <!-- </div> -->
+<!-- 
+
 
 <div class="horizontal">
 <div *ngFor="let story of news.data.newsStories">
 
-    <p><img width="75%" src={{story.mainImage.url}}>
+    <p><img width="75%" src={{story.mainImage.url}}> -->
     <!-- <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a> -->
-   <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title"></p> </a></button></p> 
+   <!-- <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title"></p> </a></button></p> 
  
 </div>
-</div>
+</div> -->
 
   
 
@@ -31,3 +33,16 @@
 <!-- </div> -->
 <!-- </div> -->
 
+
+<div >
+    <h1 class="text-center" class="card-text text-success font-monospace">Movie News!</h1>
+    <div *ngFor="let story of news.data.newsStories">
+        <a (click)="navigate(story.link)">
+            <p [innerHTML]="story.title"></p>
+        </a>
+
+        <img height="105px" width="105px" src={{story.mainImage.url}}>
+        <!-- <a routerLink="/news-story" (click)="getStory(story.link)" >More Info</a> -->
+
+    </div>
+</div>

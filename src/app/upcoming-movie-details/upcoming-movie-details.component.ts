@@ -9,10 +9,14 @@ import { UpcomingMovieDetails } from '../models/upcoming-movie-details.interface
   styleUrls: ['./upcoming-movie-details.component.css']
 })
 export class UpcomingMovieDetailsComponent implements OnInit {
-  @Input()upcomingMovieDetails:any;
+  @Input() upcomingMovieDetails: any;
+  startMovieIndex: number = 0;
+  endMovieIndex: number = 5;
+  startOfMovies: boolean = true;
+  endOfMovies: boolean = false;
 
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){}
-  passEmsVersionId(id:string){
+  constructor(private api: FlixterApiService, private phone: ComponentTelephoneService) { }
+  passEmsVersionId(id: string) {
     this.phone.getEmsVersionId(id);
   }
   ngOnInit(): void {
@@ -27,5 +31,38 @@ export class UpcomingMovieDetailsComponent implements OnInit {
     //     }
     //   }
     // )
+  }
+  getNextSixMovies(startIndex: number, endIndex: number): void {
+    this.startMovieIndex = endIndex++
+    this.endMovieIndex = endIndex + 4
+    this.startOfMovies = false
+    if (this.endMovieIndex >= this.upcomingMovieDetails.data.upcoming.length)
+    {
+      this.startMovieIndex = this.upcomingMovieDetails.data.upcoming.length - 5
+      this.endMovieIndex = this.upcomingMovieDetails.data.upcoming.length
+      this.endOfMovies = true;
+    }
+  }
+  getLastSixMovies(startIndex: number, endIndex: number): void {
+    if (startIndex <= 5)
+    {
+      
+      this.startMovieIndex = startIndex = 0
+      this.endMovieIndex = 5;
+      this.startOfMovies = true
+
+    }
+    else
+    {
+      this.startMovieIndex = startIndex - 5
+      this.endMovieIndex = endIndex - 5
+    }
+
+  }
+  getFirstSixMovies(): void {
+    this.startMovieIndex = 0
+    this.endMovieIndex = 5
+    this.startOfMovies = true;
+    this.endOfMovies = false;
   }
 }

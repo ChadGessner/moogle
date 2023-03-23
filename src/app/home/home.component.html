@@ -26,7 +26,18 @@
     
   </div> -->
 
-    
-    <app-user-login></app-user-login>
-  
-  <!-- <app-movie-detail></app-movie-detail> -->
+
+<!-- <app-movie-detail></app-movie-detail> -->
+<div class="container-fluid text-left m-4 p-4">
+  <div  *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
+  </div>
+  <ng-template #thenBlock>
+    <button class="btn btn-success" type="button" (click)="getNews()">See News</button>
+    <app-upcoming-movie-details></app-upcoming-movie-details>
+  </ng-template>
+  <ng-template #elseBlock>
+    <button class="btn btn-success" type="button" (click)="getMovies()">See Upcoming Movies</button>
+    <app-news></app-news>
+  </ng-template>
+</div>
+

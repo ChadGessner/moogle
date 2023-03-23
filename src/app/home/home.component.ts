@@ -9,6 +9,7 @@ import { FlixterApiService } from '../api.service';
 export class HomeComponent implements OnInit {
   user:any;
   constructor(private api:FlixterApiService){}
+  isMoviesOrNews: boolean = true;
 
   ngOnInit(): void {
     //this.api.getNewsStoryList()
@@ -19,5 +20,15 @@ export class HomeComponent implements OnInit {
         }
       }
     )
+  }
+
+  getNews()
+  {
+ this.isMoviesOrNews = false
+
+  }
+  getMovies()
+  {
+    this.isMoviesOrNews = true
   }
 }

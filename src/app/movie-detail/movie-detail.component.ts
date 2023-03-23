@@ -13,6 +13,7 @@ export class MovieDetailComponent implements OnInit {
   @Input()emsVersionId:string = ''
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
+  castIndex:number = 0;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -28,12 +29,48 @@ export class MovieDetailComponent implements OnInit {
   },{
     id:'card-tab-four',
     isActive:false
+  },{
+    id:'card-tab-five',
+    isActive:false
   }]
   constructor(private api:FlixterApiService, private phone:ComponentTelephoneService, private render:Renderer2 ){
 
   }
+  castIncrementEvent(e:MouseEvent){
+    const target = e.target as HTMLElement;
+    const len = this.movieDetail.data.movie.cast.length;
+    console.log(target.id)
+    if(target && target.id === 'cast-prev'){
+      this.castIndex--;
+    }
+    if(target && target.id === 'cast-next'){
+      this.castIndex++;
+    }
+    if(this.castIndex >= len){
+      this.castIndex = 0;
+    }
+    if(this.castIndex < 0){
+      this.castIndex = this.castIndex + len;
+    }
+    console.log(this.castIndex)
+    const progress = document.getElementById('progress-bar');
+    // console.log(progress)
+    // this.render.setStyle(
+    //   progress,
+    //   'width',
+    //   `${ ((this.castIndex + 1)/len) * 100 }%`
+    // )
+  }
+  progressBarStyle() {
+    const len = this.movieDetail.data.movie.cast.length;
+    return {
+      'width' :
+      `${ ((this.castIndex + 1)/len) * 100 }%`
+    }
+  }
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
+    console.log(target)
     if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
       
       this.notIsActive.forEach(
@@ -56,6 +93,9 @@ export class MovieDetailComponent implements OnInit {
       }
       )
     }
+  }
+  incrementCastIndex() {
+
   }
   categoryName() {
     return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;

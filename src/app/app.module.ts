@@ -20,6 +20,7 @@ import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { ActorsComponent } from './actors/actors.component';
 import { SearchComponent } from './search/search.component';
+import { AccountDetailsComponent } from './account-details/account-details.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { SearchComponent } from './search/search.component';
     UpcomingMovieDetailsComponent,
     MovieDetailComponent,
     ActorsComponent,
-    SearchComponent
+    SearchComponent,
+    AccountDetailsComponent
 
   ],
   imports: [

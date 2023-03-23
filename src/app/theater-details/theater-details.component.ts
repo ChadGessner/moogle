@@ -56,7 +56,7 @@ export class TheaterDetailsComponent implements OnInit {
     //return this.phone.getEmsVersionId(id);
   }
   nextTitle() {
-    console.log('some other shit');
+    
     this.currentTitleIndex++;
     if(this.currentTitleIndex === this.maxMovieListLength){
       this.currentTitleIndex = 0;
@@ -68,7 +68,7 @@ export class TheaterDetailsComponent implements OnInit {
     this.showShowTimes();
   }
   previousTitle() {
-    console.log('some shit')
+    
     this.currentTitleIndex--;
     if(this.currentTitleIndex === -1){
       this.currentTitleIndex = this.maxMovieListLength-1;

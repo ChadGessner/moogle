@@ -26,8 +26,8 @@
     
   </div> -->
 <!-- <app-movie-detail></app-movie-detail> -->
-
-  <div *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
+<div class="container-fluid text-left m-4 p-4">
+  <div  *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
   </div>
   <ng-template #thenBlock>
     <button class="btn btn-success" type="button" (click)="getNews()">See News</button>
@@ -37,3 +37,4 @@
     <button class="btn btn-success" type="button" (click)="getMovies()">See Upcoming Movies</button>
     <app-news></app-news>
   </ng-template>
+</div>

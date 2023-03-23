@@ -1,4 +1,3 @@
-<div class="m-4 p-4"> 
 <div>
     <h1 class="text-center" class="card-text text-success font-monospace">Top Upcoming Movies!</h1>
 </div>
@@ -29,8 +28,7 @@
 <ng-template #thenBlock><button class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
 </ng-template>
 <ng-template #elseBlock>
-    <button style="margin-right:20px"class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
-    <button class="btn btn-success" type="button" (click)="getLastSixMovies(startMovieIndex,endMovieIndex)">Previous Movies</button>
+    <button style="margin-right:20px"class="btn btn-success" type="button" (click)="getLastSixMovies(startMovieIndex,endMovieIndex)">Previous Movies</button>
+    <button class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
     <button style="margin-left:20px"class="btn btn-success" type="button" (click)="getFirstSixMovies()">Back to Start</button>
 </ng-template>
-</div>

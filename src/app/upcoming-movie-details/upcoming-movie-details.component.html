@@ -1,10 +1,11 @@
 <div>
-    <h1 class="text-center" class="card-text text-success font-monospace">Top Upcoming Movies!</h1>
+     <h1 class="text-center" class="card-text text-success font-monospace">Top Upcoming Movies!</h1>
 </div>
+<div class="card border border-success p-2 mb-2">
 <div class="table-responsive">
     <table class="table align-middle">
         <thead>
-            <tr class= "text-warning">
+            <tr class="text-warning">
                 <th scope="col-sm-12">Movie Poster</th>
                 <th scope="col-sm-12">Movie Name</th>
                 <th scope="col-sm-12">Movie Description</th>
@@ -16,19 +17,28 @@
             <tr *ngFor="let detail of upcomingMovieDetails.data.upcoming.slice(startMovieIndex,endMovieIndex)">
                 <td><img height="105px" width="105px" src={{detail.posterImage.url}}></td>
                 <td>{{detail.name}}</td>
-                <td>This is a the space to talk about all the amazing shit this movie is going to have. Sharks, Explosions and other really cool shit!!!</td>
+                <td>This is a the space to talk about all the amazing shit this movie is going to have. Sharks,
+                    Explosions and other really cool shit!!!</td>
                 <td>{{detail.releaseDate}}</td>
-                <td><a class="btn btn-success" (click)="passEmsVersionId(detail.emsVersionId)"routerLink="/movie-detail">See Movie Details</a></td>
+                <td><a class="btn btn-success" (click)="passEmsVersionId(detail.emsVersionId)"
+                        routerLink="/movie-detail">See Movie Details</a></td>
             </tr>
         </tbody>
-    </table>
+
+    </table>    
+    </div>
 </div>
-<div *ngIf="startOfMovies; then thenBlock else elseBlock">  
-</div>
-<ng-template #thenBlock><button class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
-</ng-template>
-<ng-template #elseBlock>
-    <button style="margin-right:20px"class="btn btn-success" type="button" (click)="getLastSixMovies(startMovieIndex,endMovieIndex)">Previous Movies</button>
-    <button class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
-    <button style="margin-left:20px"class="btn btn-success" type="button" (click)="getFirstSixMovies()">Back to Start</button>
-</ng-template>
+
+    <div *ngIf="startOfMovies; then thenBlock else elseBlock">
+    </div>
+    <ng-template #thenBlock><button class="btn btn-success" type="button"
+            (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More Movies</button>
+    </ng-template>
+    <ng-template #elseBlock>
+        <button style="margin-right:20px" class="btn btn-success" type="button"
+            (click)="getLastSixMovies(startMovieIndex,endMovieIndex)">Previous Movies</button>
+        <button class="btn btn-success" type="button" (click)="getNextSixMovies(startMovieIndex,endMovieIndex)">More
+            Movies</button>
+        <button style="margin-left:20px" class="btn btn-success" type="button" (click)="getFirstSixMovies()">Back to
+            Start</button>
+    </ng-template>

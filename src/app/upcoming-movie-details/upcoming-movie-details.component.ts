@@ -11,7 +11,7 @@ import { UpcomingMovieDetails } from '../models/upcoming-movie-details.interface
 export class UpcomingMovieDetailsComponent implements OnInit {
   @Input() upcomingMovieDetails: any;
   startMovieIndex: number = 0;
-  endMovieIndex: number = 6;
+  endMovieIndex: number = 5;
   startOfMovies: boolean = true;
   endOfMovies: boolean = false;
 
@@ -34,34 +34,34 @@ export class UpcomingMovieDetailsComponent implements OnInit {
   }
   getNextSixMovies(startIndex: number, endIndex: number): void {
     this.startMovieIndex = endIndex++
-    this.endMovieIndex = endIndex + 5
+    this.endMovieIndex = endIndex + 4
     this.startOfMovies = false
-    if (this.endMovieIndex >= 96)
+    if (this.endMovieIndex >= this.upcomingMovieDetails.data.upcoming.length)
     {
-      this.startMovieIndex = 90
-      this.endMovieIndex = 96
+      this.startMovieIndex = this.upcomingMovieDetails.data.upcoming.length - 5
+      this.endMovieIndex = this.upcomingMovieDetails.data.upcoming.length
       this.endOfMovies = true;
     }
   }
   getLastSixMovies(startIndex: number, endIndex: number): void {
-    if (startIndex < 7)
+    if (startIndex <= 5)
     {
       
       this.startMovieIndex = startIndex = 0
-      this.endMovieIndex = 6;
+      this.endMovieIndex = 5;
       this.startOfMovies = true
 
     }
     else
     {
-      this.startMovieIndex = startIndex - 6
-      this.endMovieIndex = endIndex - 6
+      this.startMovieIndex = startIndex - 5
+      this.endMovieIndex = endIndex - 5
     }
 
   }
   getFirstSixMovies(): void {
     this.startMovieIndex = 0
-    this.endMovieIndex = 6
+    this.endMovieIndex = 5
     this.startOfMovies = true;
     this.endOfMovies = false;
   }

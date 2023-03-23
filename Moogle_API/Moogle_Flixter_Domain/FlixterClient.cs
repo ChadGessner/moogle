@@ -99,7 +99,7 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "news/list";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+          .WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<NewsRoot>();

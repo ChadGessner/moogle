@@ -97,18 +97,19 @@ export class FlixterApiService {
   //     }
   //   )
   //  }
-  //  getNewsStoryList() {
-  //   let uriEnd = `News/GetNewsStoryList`;
-  //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(
-  //     (x)=>{
-  //       if(x){
-  //         this.news = x;
-  //         this.newsEvent.emit(this.news);
-  //         console.log(JSON.stringify(x));
-  //       }
-  //     }
-  //   )
-  //  }
+   getNewsStoryList() {
+    let uriEnd = `News/GetNewsStoryList`;
+    return this.http.get<{}>(this.baseUri + uriEnd)
+    // .subscribe(
+      // (x)=>{
+      //   if(x){
+          // this.news = x;
+          // this.newsEvent.emit(this.news);
+          // console.log(JSON.stringify(x));
+    //     }
+    //   }
+    // )
+   }
   //  getTheaters(username:string, password:string) {
     
   //   let uriEnd = `User/GetTheaters/${username}/${password}`;

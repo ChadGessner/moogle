@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,13 +11,14 @@ export class FlixterApiService {
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   baseUri:string = 'https://localhost:7239/api/';
   user:any;
+  
   theaters:any;
   theaterDetails:any;
   upcomingMovieDetails:any;
   movieDetailsById:any;
   news:any;
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
-  @Output()registerEvent:EventEmitter<User> = new EventEmitter();
+  @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
   @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
   @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -54,7 +56,7 @@ export class FlixterApiService {
           this.user = x;
           //console.log(JSON.stringify(x));
           
-          this.registerEvent.emit(this.user);
+          return this.registerEvent.emit(this.user);
           //return this.getTheaters(this.user.userName, this.user.password)
         }
       }

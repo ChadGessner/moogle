@@ -10,6 +10,7 @@ import {Actor} from '../dataForTesting/actor'
 export class ActorsComponent implements OnInit {
   @Input()actorId:string = ''
   @Input()actor:any;
+  filmographyIndex:number = 0
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -23,6 +24,41 @@ export class ActorsComponent implements OnInit {
     isActive:false
   }]
   constructor(private api:FlixterApiService, private render:Renderer2){}
+
+  progressBarStyle() {
+    const len = this.actor.data.person.filmography.length;
+    return {
+      'width' :
+      `${ ((this.filmographyIndex + 1)/len) * 100 }%`
+    }
+  }
+
+  castIncrementEvent(e:MouseEvent){
+    const target = e.target as HTMLElement;
+    const len = this.actor.data.person.filmography.length;
+    console.log(target.id)
+    if(target && target.id === 'cast-prev'){
+      this.filmographyIndex--;
+    }
+    if(target && target.id === 'cast-next'){
+      this.filmographyIndex++;
+    }
+    if(this.filmographyIndex >= len){
+      this.filmographyIndex = 0;
+    }
+    if(this.filmographyIndex < 0){
+      this.filmographyIndex = this.filmographyIndex + len;
+    }
+    console.log(this.filmographyIndex)
+    const progress = document.getElementById('progress-bar');
+    // console.log(progress)
+    // this.render.setStyle(
+    //   progress,
+    //   'width',
+    //   `${ ((this.castIndex + 1)/len) * 100 }%`
+    // )
+  }
+
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){

@@ -45,7 +45,7 @@ const routes: Routes = [
 
   },{
     path: '',
-     redirectTo: '/register',
+     redirectTo: 'home',
       pathMatch: 'full' 
   },
 ];

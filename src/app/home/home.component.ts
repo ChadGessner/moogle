@@ -7,6 +7,7 @@ import { FlixterApiService } from '../api.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  
   user:any;
   constructor(private api:FlixterApiService){}
   isMoviesOrNews: boolean = true;
@@ -20,8 +21,7 @@ export class HomeComponent implements OnInit {
         }
       }
     )
-  }
-
+    }
   getNews()
   {
  this.isMoviesOrNews = false

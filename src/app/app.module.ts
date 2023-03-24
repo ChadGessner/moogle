@@ -21,6 +21,8 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { ActorsComponent } from './actors/actors.component';
 import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { GoogleMapsComponent } from './google-maps/google-maps.component'
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     MovieDetailComponent,
     ActorsComponent,
     SearchComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    GoogleMapsComponent
 
   ],
   imports: [
@@ -49,7 +52,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

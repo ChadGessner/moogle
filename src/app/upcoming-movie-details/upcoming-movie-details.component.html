@@ -6,20 +6,17 @@
     <table class="table align-middle">
         <thead>
             <tr class="text-warning">
-                <th scope="col-sm-12">Movie Poster</th>
-                <th scope="col-sm-12">Movie Name</th>
-                <th scope="col-sm-12">Movie Description</th>
-                <th scope="col-sm-12">Opening Date</th>
-                <th scope="col-sm-12">Details</th>
+                <th scope="col-sm-10">Movie Poster</th>
+                <th scope="col-sm-10">Movie Name</th>
+                <th scope="col-sm-10">Opening Date</th>
+                <th scope="col-sm-10">Details</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let detail of upcomingMovieDetails.data.upcoming.slice(startMovieIndex,endMovieIndex)">
                 <td><img height="105px" width="105px" src={{detail.posterImage.url}}></td>
                 <td>{{detail.name}}</td>
-                <td>This is a the space to talk about all the amazing shit this movie is going to have. Sharks,
-                    Explosions and other really cool shit!!!</td>
-                <td>{{detail.releaseDate}}</td>
+                <td><p>{{detail.releaseDate | date:'fullDate'}}</p></td>
                 <td><a class="btn btn-success" (click)="passEmsVersionId(detail.emsVersionId)"
                         routerLink="/movie-detail">Movie Details <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ticket-perforated" viewBox="0 0 16 16">
                             <path d="M4 4.85v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Zm-7 1.8v.9h1v-.9H4Zm7 0v.9h1v-.9h-1Z"/>

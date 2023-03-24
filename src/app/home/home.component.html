@@ -25,10 +25,10 @@
     </a>
     
   </div> -->
+  <div class="container-fluid text-left m-4 p-4">
 
 <app-news></app-news>
-<!-- <app-movie-detail></app-movie-detail> -->
-<div class="container-fluid text-left m-4 p-4">
+<!-- <div class="container-fluid text-left m-4 p-4"> -->
   <div  *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
   </div>
   <ng-template #thenBlock>

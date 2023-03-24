@@ -17,13 +17,34 @@
 
     <div class="horizontal" >
         <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
-            <div><img width="75%" src={{story.mainImage.url}}>
-            <div><button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:30"></p></a></button></div></div>
+            <div class="card border border-success p-2 mb-2"><img width="75%" src={{story.mainImage.url}}>
+            <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:35"></p></a></button></div>
         </div>
         </div>
     </div>
 
+    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+        <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
+            <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+                <div class="col"><img width="auto" src={{story.mainImage.url}}></div>
+            <div class="d-flex align-items-center bg-light mb-3" style="height: 100px;">
+                <div class="col"><button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:30"></p></a></button></div>
+        </div>
+        </div>
+    </div>
+    </div> -->
 
+
+    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+      </div>
+      <div class="d-flex align-items-center bg-light mb-3" style="height: 100px;">
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+      </div> -->
 
     <!-- <div class="row">
         <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>

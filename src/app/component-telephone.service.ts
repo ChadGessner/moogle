@@ -10,6 +10,8 @@ export class ComponentTelephoneService {
   @Output()emsVersionIdEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()theaterIdEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()theaterNameEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()popularMovieURLEvent:EventEmitter<string> = new EventEmitter<string>();
+
   theaterList:TheaterData|null = null;
   @Input()theaterName:string|null = null;
   constructor(private api:FlixterApiService) { }
@@ -32,5 +34,8 @@ export class ComponentTelephoneService {
     console.log(this.theaterName);
     
     return this.theaterNameEvent.emit(this.theaterName);
+  }
+  getPopularMovieURL(url:string){
+    return this.popularMovieURLEvent.emit(url);
   }
 }

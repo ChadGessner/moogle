@@ -3,3 +3,7 @@
     flex-wrap: nowrap;
     /* width: 100%; */
   }
+
+  a:active { 
+    color: red;
+}

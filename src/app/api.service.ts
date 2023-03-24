@@ -17,6 +17,8 @@ export class FlixterApiService {
   upcomingMovieDetails:any;
   movieDetailsById:any;
   news:any;
+  popularMovies:any;
+  
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
@@ -25,6 +27,8 @@ export class FlixterApiService {
   @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
   @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
+
   constructor(private http:HttpClient) {
 
    }
@@ -101,6 +105,19 @@ export class FlixterApiService {
   //  }
    getNewsStoryList() {
     let uriEnd = `News/GetNewsStoryList`;
+    return this.http.get<{}>(this.baseUri + uriEnd)
+    // .subscribe(
+      // (x)=>{
+      //   if(x){
+          // this.news = x;
+          // this.newsEvent.emit(this.news);
+          // console.log(JSON.stringify(x));
+    //     }
+    //   }
+    // )
+   }
+   getPopularMovieList() {
+    let uriEnd = `PopularMovies/GetPopularMoviesList`;
     return this.http.get<{}>(this.baseUri + uriEnd)
     // .subscribe(
       // (x)=>{

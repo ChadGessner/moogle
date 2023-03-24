@@ -20,15 +20,18 @@ export class PopularMoviesComponent implements OnInit{
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService){}
+     passEmsVersionId(id: string) {
+      this.phone.getEmsVersionId(id);
+    }
       navigate(url:string) {
 
         window.open(url);
       }
-  getStory(event:string) {
-    return this.phone.getNewsURL(event);
+  getPopularMovie(event:string) {
+    return this.phone.getPopularMovieURL(event);
   }
-  newsSubscription(){
-    this.api.newsEvent.subscribe(
+  popularMovieSubscription(){
+    this.api.popularMovieEvent.subscribe(
       (x)=>{
         if(x){
           this.popularMovies = x;
@@ -39,22 +42,22 @@ export class PopularMoviesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.api.getNewsStoryList().subscribe(x => this.popularMovies = x);
+    this.api.getPopularMovieList().subscribe(x => this.popularMovies = x);
     // this.newsSubscription();
   }
 
-  getNextSixStories(startIndex: number, endIndex: number): void {
+  getNextSixPopularMovies(startIndex: number, endIndex: number): void {
     this.startPopularMovieIndex = endIndex++
     this.endPopularMovieIndex = endIndex + 4
     this.startOfPopularMovies = false
-    if (this.endPopularMovieIndex >= this.popularMovies.data.newsStories.length)
+    if (this.endPopularMovieIndex >= this.popularMovies.data.popular.length)
     {
-      this.startPopularMovieIndex = this.popularMovies.data.newsStories.length - 5
-      this.endPopularMovieIndex = this.popularMovies.data.newsStories.length
+      this.startPopularMovieIndex = this.popularMovies.data.popular.length - 5
+      this.endPopularMovieIndex = this.popularMovies.data.popular.length
       this.endOfPopularMovies = true;
     }
   }
-  getLastSixStories(startIndex: number, endIndex: number): void {
+  getLastSixPopularMovies(startIndex: number, endIndex: number): void {
     if (startIndex <= 5)
     {
       
@@ -70,7 +73,7 @@ export class PopularMoviesComponent implements OnInit{
     }
 
   }
-  getFirstSixStories(): void {
+  getFirstSixPopularMovies(): void {
     this.startPopularMovieIndex = 0
     this.endPopularMovieIndex = 5
     this.startOfPopularMovies = true;

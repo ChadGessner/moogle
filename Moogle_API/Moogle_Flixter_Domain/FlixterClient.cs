@@ -9,6 +9,7 @@ using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.UpcomingMovies;
 using Moogle_Models.API_Models.Actor;
 using Moogle_Models.API_Models.Search;
+using Moogle_Models.API_Models.PopularMovies;
 
 namespace Moogle_Flixter_Domain
 {
@@ -132,6 +133,21 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
 
       SearchRoot result = apiTask.Result;
+      return result;
+    }
+
+    public PopularMoviesRoot MakePopularMoviesRequest()
+    {
+      //"https://flixster.p.rapidapi.com/news/list"
+      string apiUri = BaseUri + "movies/get-popularity";
+      var header = apiUri
+          .WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
+          .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+      var apiTask = header.GetJsonAsync<PopularMoviesRoot>();
+      apiTask.Wait();
+      PopularMoviesRoot result = apiTask.Result;
+      //Console.WriteLine(result.ToString());
       return result;
     }
   }

@@ -21,6 +21,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { ActorsComponent } from './actors/actors.component';
 import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     MovieDetailComponent,
     ActorsComponent,
     SearchComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    PopularMoviesComponent
 
   ],
   imports: [

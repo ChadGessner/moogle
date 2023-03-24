@@ -18,7 +18,7 @@
     <div class="horizontal" >
         <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
             <div class="card border border-success p-2 mb-2"><img width="75%" src={{story.mainImage.url}}>
-            <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:35"></p></a></button></div>
+            <a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:45"></p></a></div>
         </div>
         </div>
     </div>

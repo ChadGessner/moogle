@@ -1,9 +1,61 @@
-<nav class="collapse navbar-collapse show " >
-    <div class="container-fluid">
-        <h1 class="text-success">Moogle</h1>
-        <p><a class="text-warning" routerLink="login" >Login</a></p>
-        <p class="text-warning" ><a class="text-warning" routerLink="register" >Register</a></p>
-        <p class="text-warning" >hey there</p>
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
+  <div class="container-fluid ">
+    <h1 class="display-4 navbar-brand  text-warning " >Moogle</h1>
+    <button 
+      class="navbar-toggler " 
+      
+      (click)="toggleHamburger()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse show">
+      <ul *ngIf="isHamburger" class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="dropdown-item float-down">
+          <a (click)="toggleHamburger()" class="nav-link" aria-current="page" routerLink="home">Home</a>
+        </li>
+        <li class="dropdown-item float-down">
+          <a (click)="toggleHamburger()" class="nav-link" routerLink="login">Login</a>
+        </li>
+        <li class="dropdown-item float-down">
+          <a (click)="toggleHamburger()" class="nav-link" routerLink="register">Register</a>
+        </li>
+        <li class="dropdown-item float-down">
+          <a (click)="toggleHamburger()" class="nav-link " routerLink="theaters">Local Theaters</a>
+        </li>
+        <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
+          <input class="form-control me-2" type="search" name="search" for="queryParam" placeholder="Search" aria-label="Search" ngModel>
+          <button routerLink="/search" class="btn btn-outline-light" for="search" type="submit">Search</button>
+        </form>
+      </ul>
     </div>
-    
+
+    <div class="collapse navbar-collapse " id="navbarDark">
+      <ul class="navbar-nav me-auto mb-2 mb-xl-0">
+        <li class="nav-item">
+          <a class="nav-link " routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="register" >Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="theaters" >Local Theaters</a>
+        </li>
+      </ul>
+      <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
+        <input class="form-control me-2" type="search" name="search" for="queryParam" placeholder="Search" aria-label="Search" ngModel>
+        <button routerLink="/search" class="btn btn-outline-light" for="search" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
 </nav>
+<div *ngIf="showToast" class="toast toast-demo fade show toasty" >
+  <div class="toast-body text-warning">
+    Please Login or Register to use this feature...
+    <div class="mt-2 pt-2 border-top">
+      
+      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast" (click)="isNotIsShowToast()" >Close</button>
+    </div>
+  </div>
+</div>

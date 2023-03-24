@@ -18,6 +18,6 @@ namespace Moogle_Models.API_Models.TheaterDetails
         [JsonPropertyName("mppBaseUrl")]
         public string mppBaseUrl { get; set; }
         [JsonPropertyName("movies")]
-        public List<Movie> movies { get; set; }
+        public List<TheaterDetailsMovie> movies { get; set; }
     }
 }

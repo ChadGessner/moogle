@@ -1,0 +1,102 @@
+
+
+<div *ngIf="actor" class="card">
+    
+    <div class="card-header">
+        
+      <ul class="nav nav-tabs card-header-tabs" >
+        
+        <li class="nav-item bg-secondary m-1" >
+          <a class="nav-link" id="card-tab-one">Bio</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+          <a class="nav-link" id="card-tab-two">Filmography</a>
+        </li>
+        <li class="nav-item bg-primary m-1" >
+          <a class="nav-link " id="card-tab-three" >General Info</a>
+        </li>
+      </ul>
+      
+      <hr>
+      <div class="row bg-dark g-3">
+        <h1 class="text-success m-4" >{{actor.data.person.name}}</h1>
+        <hr>
+        <div *ngIf="actor.data.person.headShotImage.url" class="m-4 col-3 container border border-success ">
+            <img 
+            class="img-fluid  rounded"
+            
+            src={{actor.data.person.headShotImage.url}}>
+        </div>
+        <div *ngIf="notIsActive[0].isActive" class="card col-7 m-4 border border-success">
+            <p class="text-info" >{{actor.data.person.biography}}</p>
+        </div>
+        <div *ngIf="notIsActive[1].isActive" class="card bg-dark col-7 m-4 border border-success">
+            <div *ngIf="notIsActive[1].isActive" class="row bg-success">
+                <div class="btn-group ">
+                    <div class="m-1 col">
+                        <button 
+                        (click)="castIncrementEvent($event)"
+                        id="cast-prev"
+                        class="btn btn-dark text-info ">Prev</button>
+                    </div>
+                    
+                    <div class="m-1">
+                        <button 
+                        (click)="castIncrementEvent($event)"
+                        id="cast-next"
+                        class="btn btn-dark text-info">Next</button>
+                    </div>
+                </div>
+            </div>
+            <div class="progress m-1">
+                <div 
+                id="progress-bar"
+                [ngStyle]="progressBarStyle()"
+                class="progress-bar"></div>
+            </div>
+            <ul 
+            class="list-group  col-12" 
+            *ngFor="let film of actor.data.person.filmography;index as i">
+            <div class="p-4 m-4 row bg-primary " *ngIf="i === filmographyIndex">
+                <li class="list-group-item text-warning">
+                    <h4>{{film.name}}</h4>
+                    <hr>
+                </li>
+                <li class="col-3 list-group-item ">
+                    <img 
+                    class="img-fluid"
+                    src={{film.posterImage.url}}>
+                </li>
+                
+                <li class="list-group-item ">
+                    {{film.releaseDate}}
+                </li>
+                <li *ngIf="film.tomatoRating" class="list-group-item text-success">
+                    <span>
+                        <span *ngIf="film.tomatoRating.iconImage" >
+                            <img height="20px" width="auto" src={{film.tomatoRating.iconImage.url}}>
+                            &nbsp;
+                        </span>Tomato Meter: {{film.tomatoRating.tomatometer}}</span>
+                </li>
+            </div>
+                
+            </ul>
+        </div>
+        <div 
+        *ngIf="notIsActive[2].isActive" class="col p-4">
+            <ul class="list-group col">
+                <li class="list-group-item text-info">{{actor.data.person.name}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.birthDate}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.birthPlace}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.gender}}</li>
+                <li class="list-group-item text-info">{{actor.data.person.name}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" >
+    
+    </div>
+</div>
+
+
+

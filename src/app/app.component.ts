@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { FlixterApiService } from './api.service';
-import {data} from 'src/app/models/theater-data.interface';
+import {TheaterData} from 'src/app/models/theater-data.interface';
 import {theater} from 'src/app/models/theater.interface';
 import { NgForm } from '@angular/forms';
 
@@ -23,5 +23,6 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
   this.api.registerEvent.subscribe((x)=> this.registeredUser = x)
+  
   }
 }

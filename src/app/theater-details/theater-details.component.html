@@ -1,0 +1,138 @@
+
+<!-- <div >
+    <div>
+        <ul class="card bg-dark" *ngIf="theaterDetails">
+            
+            <div 
+            class="row mg-1 " 
+            *ngFor="let movie of theaterDetails.data.theaterShowtimeGroupings.movies" >
+                <hr class="m-4" >
+                <div class="list-group col ">
+                    <label class="text-warning" >Title</label>
+                    <hr>
+                    <h4>{{movie.name}}</h4>
+                    <img 
+                    (click)="passEmsVersionId(movie.emsVersionId)" 
+                    routerLink="/movie-detail" 
+                    height="200px" 
+                    width="200px" 
+                    src="{{movie.posterImage.url}}">
+                </div>
+                
+                <div class="list-group col ">
+                    <label class="text-success">Age Restriction</label>
+                    <hr>
+                    <p> 
+                        <span 
+                        class="text-danger" >{{movie.motionPictureRating.code}}</span> {{movie.motionPictureRating.description}}</p>
+                        <img height="20%" width="100%" src="{{setRatingImagePath(movie.motionPictureRating.code)}}">
+                </div>
+            
+                <div class="list-group col ">
+                    <label class="text-success">Tomato Rating</label>
+                    <hr>
+                    <p>
+                    <img 
+                        class="image-fluid" 
+                        height="20px" 
+                        width="20px" 
+                        src="{{movie.tomatoRating.iconImage.url}}" >Tomato Rating: {{movie.tomatoRating.state}} {{movie.tomatoRating.tomatometer}}</p>
+                </div>
+                
+                <div class="list-group col " *ngFor="let variant of movie.movieVariants">
+                    <label class="text-warning" >Show Times</label>
+                    <hr>
+                    <button 
+                    class="btn btn-success"
+                    (click)="toggleShowTimes()">Show Times</button>
+                    <div *ngIf="isShowTimes" >
+                        <div class="dropdown" *ngFor="let amenity of variant.amenityGroups">
+                            <div class="dropdown-item" *ngFor="let show of amenity.showtimes">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="text-light" >Date</label>
+                                        <li class="dropdown-item" >{{show.providerDate}}</li> 
+                                    </div>
+                                
+                                
+                                    <div class="col">
+                                        <label class="text-light">Time</label>
+                                        <li class="dropdown-item" >{{show.providerTime}}</li>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div> -->
+
+<div class="m-4 p-4">
+    
+
+    <div id="carouselCrossfade" class="carousel slide carousel-fade pointer-event w-100" data-bs-ride="carousel">
+    <div class="carousel-inner mx-auto w-100">
+      <div class="carousel-item active">
+        
+        <div class="card mx-auto w-75" >
+            <h4 class="card-title text-center">
+                {{currentTitle.name}}
+                
+            </h4>
+            <hr >
+            <div class="card-img-top w-25 mx-auto">
+                <img height="200px"  src={{currentTitle.posterImage.url}} class="image-fluid" alt="Slide 1">
+            </div>
+            <div class="container-fluid w-25 mx-auto p-5">
+                <img width="200px" class="image-fluid" src={{setRatingImagePath(currentTitle.motionPictureRating.code)}}>
+            </div>
+            
+            <p></p>
+            <div class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
+                <button (click)="toggleDates()" class="btn btn-primary dropdown-toggle">
+                    Show Times
+                </button>
+                <!-- <ul *ngIf="isDate" class="list-group">
+                    <div *ngFor="let variant of currentTitle.movieVariants" class="">
+                        
+                        <div class="list-group bg-primary" *ngFor="let group of variant.amenityGroups">
+                            <li 
+                            class="list-group-item float-down" 
+                            *ngFor="let date of group.showtimes">
+                                <a>Todays Show Times | {{date.providerDate + '/' + date.providerTime | date:'shortTime' }}</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul> -->
+                
+            </div>
+            
+            <div class="card-body  ">
+                
+                <label class="text-success">Tomato Rating</label>
+                <hr>
+                <div class="list-group ">
+                    
+                    <p>
+                    <img 
+                        class="image-fluid" 
+                        height="20px" 
+                        width="20px" 
+                        src="{{currentTitle.tomatoRating.iconImage.url}}" >Tomato Rating: {{currentTitle.tomatoRating.state}} {{currentTitle.tomatoRating.tomatometer}}</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" (click)="previousTitle()" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" (click)="nextTitle()" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+</div>

@@ -2,7 +2,8 @@
     /* display: flex; */
     /* flex-wrap: nowrap; */
     display: inline-flex;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
+    overflow-x: scroll;
     /* width: 100%; */
 } 
 
@@ -12,13 +13,14 @@
 
 .news {
   max-width: 360px;
+  /* max-width: 500px; */
+
 }
 
-/* a {
-  font-size: medium;
-  color: currentColor;
-  text-align: center;
-} */
+a {
+  display: inline-block;
+
+}
 
 .news-link{
   font-size: medium;

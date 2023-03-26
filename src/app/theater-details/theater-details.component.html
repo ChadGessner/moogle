@@ -91,9 +91,9 @@
             
             <p></p>
             <div class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
-                <button (click)="toggleDates()" class="btn btn-primary dropdown-toggle">
-                    Show Times
-                </button>
+                <button routerLink={{getCurrentMovieId()}} class="btn btn-primary dropdown-toggle">
+                    {{currentTitle.name}} Details
+                 </button>
                 <!-- <ul *ngIf="isDate" class="list-group">
                     <div *ngFor="let variant of currentTitle.movieVariants" class="">
                         

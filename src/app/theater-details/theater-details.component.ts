@@ -1,4 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+   Component,
+    EventEmitter,
+     Input,
+      OnInit,
+       Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterDetails } from '../models/theater-details.interface';
 import {TheaterDetailTest} from '../dataForTesting/theaterDetail';
@@ -43,6 +48,12 @@ export class TheaterDetailsComponent implements OnInit {
       return 'assets/images/G.png';
     }
    }
+   getCurrentMovieId() {
+    if(this.currentTitle){
+      return `/movie-detail/${this.currentTitle.emsVersionId}`;
+    }
+    return ''
+   }
    showShowTimes() {
     
     return this.showTimesEvent
@@ -82,7 +93,7 @@ export class TheaterDetailsComponent implements OnInit {
   
   ngOnInit(): void {
     
-    this.theaterDetails =  TheaterDetailTest;
+    //this.theaterDetails =  TheaterDetailTest;
     this.currentTitlesList = this.theaterDetails.data.theaterShowtimeGroupings.movies;
     this.maxMovieListLength = this.currentTitlesList.length;
     this.currentTitle = this.currentTitlesList[this.currentTitleIndex];

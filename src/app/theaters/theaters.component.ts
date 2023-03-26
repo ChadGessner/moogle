@@ -5,6 +5,7 @@ import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterDetails } from '../models/theater-details.interface';
+import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-theaters',
   templateUrl: './theaters.component.html',
@@ -17,7 +18,10 @@ export class TheatersComponent implements OnInit {
   isToggleTheaters:boolean = false;
   showTimes:any
   isShowTimes:boolean = false;
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService ){}
+  constructor(
+    private api:FlixterApiService,
+     private phone:ComponentTelephoneService,
+      private route:ActivatedRoute ){}
   getTheaters(){
     // if(this.theaters){
     //   return this.theaters as data;
@@ -25,6 +29,7 @@ export class TheatersComponent implements OnInit {
     //   return;
     // }
   }
+
   getShowTimes(e:{
     time:string,
     date:string
@@ -47,8 +52,18 @@ export class TheatersComponent implements OnInit {
     // this.phone.getTheaterId(theaterId);
   }
   ngOnInit(): void {
-    this.theaters = ChadsTheaters;
-    this.phone.getTheaterList(this.theaters);
+    this.route.params.subscribe(
+      (p:Params)=>{
+        this.api.getTheaters(p['userName'], p['password']).subscribe(
+          (x)=>{
+            this.theaters = x
+          }
+        )
+      }
+      
+    )
+    //this.theaters = ChadsTheaters;
+    //this.phone.getTheaterList(this.theaters);
     // this.api.theatersEvent.subscribe(
     //   (x)=>{
     //     if(x){

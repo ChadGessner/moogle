@@ -23,7 +23,9 @@
         </form> 
     </div>
 </div>
+<div *ngIf="user">
 <app-account-details [registeredUser]="user" ></app-account-details>
+</div>
 <div *ngIf="user">
     <h4 class="text-center text-success" >Login Successfull!</h4>
     <div class="border border-success p-4 m-4 rounded bg-secondary">

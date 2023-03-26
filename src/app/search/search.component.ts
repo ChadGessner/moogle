@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlixterApiService } from '../api.service';
 import { Search } from '../dataForTesting/search';
 
@@ -27,7 +27,8 @@ export class SearchComponent implements OnInit{
   constructor(
     private api:FlixterApiService, 
      private render:Renderer2,
-      private route:ActivatedRoute){}
+      private route:ActivatedRoute,
+       private router:Router){}
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
@@ -53,15 +54,14 @@ export class SearchComponent implements OnInit{
       )
     }
   }
-  getOutgoingRouteData() {
-    console.log(this.outgoingRouteData)
-    return this.outgoingRouteData;
-  }
+
   getCelebrityDetails(id:string) {
-    this.outgoingRouteData = `/actor/${id}`
+    this.router.navigate(
+      ['/actor',id]
+    )
   }
   getMovieDetails(id:string) {
-    this.outgoingRouteData = `/movie-details/${id}`
+    this.router.navigate([`/movie-detail/${id}`]) 
   }
 
   ngOnInit(): void {

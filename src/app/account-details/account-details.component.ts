@@ -57,7 +57,7 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    this.registeredUser = Chad
+    this.registeredUser = this.api.user;
     // this.api.registerEvent.subscribe(
     //   x=> this.registeredUser = x
     // )

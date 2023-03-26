@@ -44,11 +44,11 @@ export class TheatersComponent implements OnInit {
   }
   clickTheaterLink(index:number, theaterName:string) {
     this.selectedTheater = this.theaters[index];
-    console.log(this.route.toString().split('/'))
-    this.router.navigate([
-        this.selectedTheater.id
-      ],{
+    console.log(this.route.paramMap );
+    
+    this.router.navigate([this.selectedTheater.id],{
         relativeTo: this.route
+        
       })
     console.log(this.selectedTheater);
     this.currentTheaterName = theaterName;
@@ -61,7 +61,7 @@ export class TheatersComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(
       (p:Params)=>{
-        this.api.getTheaters(p['userName'], p['password']).subscribe(
+        this.api.getTheaters(p['zip']).subscribe(
           (x)=>{
             this.theaters = x
           }

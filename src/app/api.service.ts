@@ -116,9 +116,9 @@ export class FlixterApiService {
     //   }
     // )
    }
-   getTheaters(username:string, password:string) {
+   getTheaters(zip:string) {
     
-    let uriEnd = `User/GetTheaters/${username}/${password}`;
+    let uriEnd = `User/GetTheaters/${zip}`;
     return this.http.get<TheaterData>(this.baseUri + uriEnd)
     // .subscribe(
     //   (x)=>{

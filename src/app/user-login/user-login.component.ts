@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FlixterApiService } from '../api.service';
 import { User } from '../models/user.interface';
@@ -10,7 +10,7 @@ import { User } from '../models/user.interface';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  user:any;
+  @Input()user:any;
   constructor(private api:FlixterApiService){}
   onSubmit(user:NgForm){
     
@@ -20,6 +20,7 @@ export class UserLoginComponent implements OnInit {
     .userName;
     let password = user.form.value.password;
     this.api.userLogin(userName,password);
+    this.user = this.api.user;
     user.resetForm();
   }
   logout() {

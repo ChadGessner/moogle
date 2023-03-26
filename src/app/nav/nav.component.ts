@@ -28,7 +28,7 @@ export class NavComponent implements OnInit{
   }
   getTheaterListRoute() {
     if(this.api.user){
-      return `/theaters/${this.api.user.userName}/${this.api.user.password}`;
+      return `/theaters/${this.api.user.zipCode}`;
     }
     return '/theaters'
   }

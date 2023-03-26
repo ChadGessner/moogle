@@ -28,10 +28,10 @@ const routes: Routes = [
     path: 'upcoming-movies',
      component: UpcomingMovieDetailsComponent
   },{
-    path: 'theaters/:userName/:password',
+    path: 'theaters/:zip',
      component: TheatersComponent
   },{
-    path: 'theaters/:userName/:password/:theaterId',
+    path: 'theaters/:zip/:theaterId',
     component: TheatersComponent
   },{
     path: 'actor/:id',

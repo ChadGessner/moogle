@@ -30,7 +30,7 @@
         
         <th class="text-success" scope="row">{{i+1}})</th>
         <div>
-            <a (click)="getCelebrityDetails(person.id)" class="btn btn-outline-success text-warning" routerLink={{getOutgoingRouteData()}}>Celebrity Details</a>
+            <a (click)="getCelebrityDetails(person.id)" class="btn btn-outline-success text-warning" >Celebrity Details</a>
         </div>
         <td class="text-warning" >{{person.name}}</td>
         <div>
@@ -63,8 +63,7 @@
         <div *ngIf="movie && movie.name && movie.posterImage" >
             <a 
             (click)="getMovieDetails(movie.emsVersionId)" 
-            class="btn btn-outline-success text-warning" 
-            routerLink={{getOutgoingRouteData()}}>Motion Picture Details</a>
+            class="btn btn-outline-success text-warning">Motion Picture Details</a>
         </div>
         <td *ngIf="movie && movie.name && movie.posterImage" class="text-warning" >{{movie.name}}</td>
         <div *ngIf="movie && movie.name && movie.posterImage" >

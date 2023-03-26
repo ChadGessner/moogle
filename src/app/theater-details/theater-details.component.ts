@@ -98,7 +98,7 @@ export class TheaterDetailsComponent implements OnInit {
           this.api.getTheaterDetails(p['theaterId']).subscribe(
             (x)=>{
               console.log(x);
-              
+              this.currentlySelectedTheater=x;
               if(x){
                 this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
                 this.maxMovieListLength = this.currentTitlesList.length;
@@ -112,7 +112,7 @@ export class TheaterDetailsComponent implements OnInit {
     
     
     
-    this.showShowTimes();
+    //this.showShowTimes();
     // this.phone.theaterNameEvent.subscribe(
     //   (x)=>{
     //     if(x){

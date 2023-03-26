@@ -39,7 +39,7 @@
         
     </th>
 </table>
-<div *ngIf="selectedTheater" class="row" >
+<div class="row" >
     <app-theater-details 
     (showTimesEvent)="getShowTimes($event)"
     [currentlySelectedTheater]="selectedTheater" ></app-theater-details>

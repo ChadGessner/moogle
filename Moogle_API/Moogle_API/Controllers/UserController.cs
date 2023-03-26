@@ -40,11 +40,11 @@ namespace Moogle_API.Controllers
       User newUser = ModelConverter.GetUserFromAngular(user);
       return _db.RegisterUser(newUser, theaters);
     }
-    [HttpGet("GetTheaters/{username}/{password}")]
-    public List<Theater> GetUserTheaters(string username, string password)
+    [HttpGet("GetTheaters/{zipCode}")]
+    public List<Theater> GetUserTheaters(string zipCode)
     {
-      User user = _db.GetUser(username, password);
-      return _db.GetTheatersByUserZip(user);
+      //User user = _db.GetUser(username, password);
+      return _db.GetTheatersByUserZip(zipCode);
     }
     [HttpGet("GetTheaterDetails/{theaterId}")]
     public TheaterDetailData GetTheaterDetails(string theaterId)

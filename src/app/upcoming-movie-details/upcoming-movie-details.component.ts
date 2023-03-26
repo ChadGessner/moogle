@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { UpcomingMovieDetailsTest } from '../dataForTesting/upcomingMovieDetailsTest';
@@ -15,9 +16,15 @@ export class UpcomingMovieDetailsComponent implements OnInit {
   startOfMovies: boolean = true;
   endOfMovies: boolean = false;
 
-  constructor(private api: FlixterApiService, private phone: ComponentTelephoneService) { }
+  constructor(
+    private api: FlixterApiService,
+     private phone: ComponentTelephoneService, 
+      private route: ActivatedRoute,
+       private router:Router) { }
   passEmsVersionId(id: string) {
-    this.phone.getEmsVersionId(id);
+    this.router.navigate([
+      '/movie-detail', id
+    ])
   }
   ngOnInit(): void {
     this.upcomingMovieDetails = UpcomingMovieDetailsTest;

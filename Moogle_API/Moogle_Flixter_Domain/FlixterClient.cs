@@ -100,7 +100,7 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "news/list";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
+          .WithHeader("X-RapidAPI-Key", "f126303238mshb0ca04fe3d5056ep12846bjsncbdcff9eea5d")
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<NewsRoot>();
@@ -141,7 +141,7 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "movies/get-popularity";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
+          .WithHeader("X-RapidAPI-Key", "f126303238mshb0ca04fe3d5056ep12846bjsncbdcff9eea5d")
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<PopularMoviesRoot>();

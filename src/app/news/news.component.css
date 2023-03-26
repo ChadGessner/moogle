@@ -1,9 +1,20 @@
 .horizontal {
-    display: flex;
-    flex-wrap: nowrap;
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    display: inline-flex;
+    flex-flow: row wrap;
     /* width: 100%; */
-  }
+} 
 
   a:active { 
     color: red;
 }
+
+.news {
+  max-width: 360px;
+}
+
+/* .news-image {
+  background-size: cover;
+  
+} */

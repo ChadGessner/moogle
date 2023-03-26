@@ -3,12 +3,25 @@ import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TestNews } from '../dataForTesting/theNews';
 import { Router } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import {Observable, Observer} from 'rxjs';
+
+export interface ExampleTab {
+  label: string;
+  content: string;
+}
+
+
+
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit{
+  asyncTabs: Observable<ExampleTab[]>;
+
   news:any;
   startNewsIndex: number = 0;
   endNewsIndex: number = 5;
@@ -18,7 +31,16 @@ export class NewsComponent implements OnInit{
   
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService){}
+     private phone:ComponentTelephoneService){    this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
+      setTimeout(() => {
+        observer.next([
+          {label: 'First', content: 'Content 1sdsdaContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadd'},
+          {label: 'Second', content: 'Content 2'},
+          {label: 'Third', content: 'Content 3'},
+        ]);
+      }, 1000);
+    });
+  }
       navigate(url:string) {
 
         window.open(url);
@@ -76,3 +98,4 @@ export class NewsComponent implements OnInit{
     this.endOfNews = false;
   }
 }
+

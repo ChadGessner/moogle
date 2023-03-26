@@ -22,6 +22,9 @@ import { ActorsComponent } from './actors/actors.component';
 import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 
 @NgModule({
@@ -51,7 +54,9 @@ import { PopularMoviesComponent } from './popular-movies/popular-movies.componen
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

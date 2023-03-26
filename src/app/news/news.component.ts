@@ -19,8 +19,8 @@ export interface ExampleTab {
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css']
 })
+
 export class NewsComponent implements OnInit{
-  asyncTabs: Observable<ExampleTab[]>;
 
   news:any;
   startNewsIndex: number = 0;
@@ -31,16 +31,7 @@ export class NewsComponent implements OnInit{
   
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService){    this.asyncTabs = new Observable((observer: Observer<ExampleTab[]>) => {
-      setTimeout(() => {
-        observer.next([
-          {label: 'First', content: 'Content 1sdsdaContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadContent 1sdsdadd'},
-          {label: 'Second', content: 'Content 2'},
-          {label: 'Third', content: 'Content 3'},
-        ]);
-      }, 1000);
-    });
-  }
+     private phone:ComponentTelephoneService){}
       navigate(url:string) {
 
         window.open(url);

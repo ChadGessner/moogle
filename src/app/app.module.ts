@@ -24,6 +24,7 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
 import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { TruncatePipe } from './shared/truncate-pipe';
 
 
 
@@ -43,7 +44,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     ActorsComponent,
     SearchComponent,
     AccountDetailsComponent,
-    PopularMoviesComponent
+    PopularMoviesComponent,
+    TruncatePipe
 
   ],
   imports: [

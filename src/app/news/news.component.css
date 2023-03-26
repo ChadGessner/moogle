@@ -14,7 +14,13 @@
   max-width: 360px;
 }
 
-a {
+/* a {
+  font-size: medium;
+  color: currentColor;
+  text-align: center;
+} */
+
+.news-link{
   font-size: medium;
   color: currentColor;
   text-align: center;

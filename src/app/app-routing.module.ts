@@ -26,11 +26,13 @@ const routes: Routes = [
      component: NewsStoryComponent
   },{
     path: 'upcoming-movies',
-    
      component: UpcomingMovieDetailsComponent
   },{
     path: 'theaters/:userName/:password',
      component: TheatersComponent
+  },{
+    path: 'theaters/:userName/:password/:theaterId',
+    component: TheatersComponent
   },{
     path: 'actor/:id',
     component: ActorsComponent

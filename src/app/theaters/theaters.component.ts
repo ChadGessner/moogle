@@ -5,7 +5,7 @@ import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterDetails } from '../models/theater-details.interface';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-theaters',
   templateUrl: './theaters.component.html',
@@ -14,13 +14,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class TheatersComponent implements OnInit {
   @Input()theaters:any;
   currentTheaterName:string = '';
-  selectedTheater:TheaterDetails|null = null;
+  selectedTheater:any;
   isToggleTheaters:boolean = false;
   showTimes:any
   isShowTimes:boolean = false;
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService,
+     private router:Router,
       private route:ActivatedRoute ){}
   getTheaters(){
     // if(this.theaters){
@@ -44,6 +44,13 @@ export class TheatersComponent implements OnInit {
   }
   clickTheaterLink(index:number, theaterName:string) {
     this.selectedTheater = this.theaters[index];
+    console.log(this.route.toString().split('/'))
+    this.router.navigate([
+        this.selectedTheater.id
+      ],{
+        relativeTo: this.route
+      })
+    console.log(this.selectedTheater);
     this.currentTheaterName = theaterName;
     this.toggleTheaters()
     //this.theaterNameEvent.emit(name)
@@ -60,7 +67,6 @@ export class TheatersComponent implements OnInit {
           }
         )
       }
-      
     )
     //this.theaters = ChadsTheaters;
     //this.phone.getTheaterList(this.theaters);

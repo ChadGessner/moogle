@@ -130,16 +130,16 @@ export class FlixterApiService {
     //   }
     // )
    }
-  //  getTheaterDetails(theaterId:string) {
-  //     this.http.get<TheaterDetails>(this.baseUri + `User/GetTheaterDetails/${theaterId}`)
-  //     .subscribe(
-  //       (x)=> {
-  //         if(x){
-  //           console.log(JSON.stringify(x));
-  //           this.theatersDetailsEvent.emit(x as TheaterDetails);
-  //         }
-  //       }
-  //     )
-  //  }
+   getTheaterDetails(theaterId:string) {
+      return this.http.get<TheaterDetails>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
+      // .subscribe(
+      //   (x)=> {
+      //     if(x){
+      //       console.log(JSON.stringify(x));
+      //       this.theatersDetailsEvent.emit(x as TheaterDetails);
+      //     }
+      //   }
+      // )
+   }
   
 }

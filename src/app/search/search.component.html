@@ -25,12 +25,12 @@
       
     </thead>
     
-    <tbody>
+    <tbody *ngIf="queryData.data.search.people" >
       <tr *ngFor="let person of queryData.data.search.people;index as i" >
         
         <th class="text-success" scope="row">{{i+1}})</th>
         <div>
-            <a (click)="getCelebrityDetails(person.id)" class="btn btn-outline-success text-warning" routerLink="/actor">Celebrity Details</a>
+            <a (click)="getCelebrityDetails(person.id)" class="btn btn-outline-success text-warning" >Celebrity Details</a>
         </div>
         <td class="text-warning" >{{person.name}}</td>
         <div>
@@ -56,9 +56,14 @@
     <tbody>
         
       <tr *ngFor="let movie of queryData.data.search.movies;index as i" >
-        <th *ngIf="movie && movie.name && movie.posterImage" class="text-success" scope="row">{{i+1}})</th>
+        <th 
+        *ngIf="movie && movie.name && movie.posterImage" 
+        class="text-success" 
+        scope="row">{{i+1}})</th>
         <div *ngIf="movie && movie.name && movie.posterImage" >
-            <a (click)="getMovieDetails(movie.emsVersionId)" class="btn btn-outline-success text-warning" routerLink="/movie-detail">Motion Picture Details</a>
+            <a 
+            (click)="getMovieDetails(movie.emsVersionId)" 
+            class="btn btn-outline-success text-warning">Motion Picture Details</a>
         </div>
         <td *ngIf="movie && movie.name && movie.posterImage" class="text-warning" >{{movie.name}}</td>
         <div *ngIf="movie && movie.name && movie.posterImage" >

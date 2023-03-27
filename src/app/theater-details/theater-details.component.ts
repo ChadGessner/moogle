@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+   Component,
+    EventEmitter,
+     Input,
+      OnInit,
+       Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterDetails } from '../models/theater-details.interface';
 import {TheaterDetailTest} from '../dataForTesting/theaterDetail';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterData } from '../models/theater-data.interface';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-theater-details',
@@ -23,9 +29,18 @@ export class TheaterDetailsComponent implements OnInit {
   isDate:boolean = false;
   @Input()currentlySelectedTheater:TheaterDetails|null = null;
   
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService){}
+  constructor(
+    private api:FlixterApiService,
+     private route:ActivatedRoute,
+      private router:Router){}
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
+  }
+  movieDetails(emsVersionId:string){
+    this.router.navigate([
+      'movie-detail',
+      emsVersionId
+    ])
   }
    setRatingImagePath(rating:string) {
     switch(rating){
@@ -52,9 +67,6 @@ export class TheaterDetailsComponent implements OnInit {
     console.log(this.isDate)
     this.isDate = !this.isDate
    }
-   passEmsVersionId(id:string){
-    //return this.phone.getEmsVersionId(id);
-  }
   nextTitle() {
     
     this.currentTitleIndex++;
@@ -81,12 +93,33 @@ export class TheaterDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.router.events.subscribe(e =>{
+      console.log(e)
+    })
+    this.route.params.subscribe(
+      (p)=>{
+        if(p['theaterId']){
+          return this.api.getTheaterDetails(p['theaterId']).subscribe(
+            (x)=>{
+              console.log(x);
+              this.currentlySelectedTheater=x;
+              if(x){
+                this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
+                this.maxMovieListLength = this.currentTitlesList.length;
+                this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+                this.showShowTimes()
+              }
+            }
+          )
+          
+        }
+        return;
+      }
+    )
     
-    this.theaterDetails =  TheaterDetailTest;
-    this.currentTitlesList = this.theaterDetails.data.theaterShowtimeGroupings.movies;
-    this.maxMovieListLength = this.currentTitlesList.length;
-    this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
-    this.showShowTimes();
+    
+    
+    //this.showShowTimes();
     // this.phone.theaterNameEvent.subscribe(
     //   (x)=>{
     //     if(x){

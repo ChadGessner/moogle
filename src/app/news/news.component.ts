@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
-import { ComponentTelephoneService } from '../component-telephone.service';
 import { TestNews } from '../dataForTesting/theNews';
 import { Router } from '@angular/router';
 @Component({
@@ -17,15 +16,11 @@ export class NewsComponent implements OnInit{
   // news = TestNews;
   
   constructor(
-    private api:FlixterApiService,
-     private phone:ComponentTelephoneService){}
+    private api:FlixterApiService){}
       navigate(url:string) {
 
         window.open(url);
       }
-  getStory(event:string) {
-    return this.phone.getNewsURL(event);
-  }
   newsSubscription(){
     this.api.newsEvent.subscribe(
       (x)=>{

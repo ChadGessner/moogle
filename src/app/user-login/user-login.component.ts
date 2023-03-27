@@ -25,6 +25,7 @@ export class UserLoginComponent implements OnInit {
         if(x){
           this.api.user = x
           this.user = x
+          console.log(this.user.id)
         }
       }
     );

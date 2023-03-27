@@ -143,5 +143,17 @@ export class FlixterApiService {
       //   }
       // )
    }
+   updateUser(user:User){
+    return this.http.post<User>(this.baseUri + 'User/UpdateUser', {
+      user 
+    })
+    .subscribe(
+      (x)=>{
+        if(x){
+          this.user = x
+        }
+      }
+    )
+   }
   
 }

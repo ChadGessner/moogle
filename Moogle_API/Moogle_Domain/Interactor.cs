@@ -1,3 +1,4 @@
+using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.Db_Models;
 using Moogle_Repo;
 
@@ -22,6 +23,11 @@ namespace Moogle_Domain
     public List<Theater> GetTheatersByUserZip(string zipCode)
     {
       return _db.GetTheatersByUserZip(zipCode).Result;
+    }
+    public User UpdateUser(User user)
+    {
+
+      return _db.UpdateUser(user).Result;
     }
   }
 }

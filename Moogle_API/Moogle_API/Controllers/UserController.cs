@@ -5,9 +5,11 @@ using Moogle_Flixter_Domain;
 using Moogle_Models;
 using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
-
+using Newtonsoft.Json;
 using Moogle_Models.API_Models.TheaterDetails;
 using Moogle_Models.Db_Models;
+using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 
 namespace Moogle_API.Controllers
 {
@@ -51,7 +53,17 @@ namespace Moogle_API.Controllers
     {
       return Client.MakeTheaterDetailRequest(theaterId);
     }
-
+    [HttpPost("UpdateUser")]
+    public User UpdateUser([FromBody] JsonObject user)
+    {
+      //Console.WriteLine(user.ToString());
+      //Console.WriteLine(  user);
+      //Console.WriteLine(user.ToString());
+      Console.WriteLine(user["city"]);
+      AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
+      Console.WriteLine(  userUser.city);
+      return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
+    }
 
   }
 }

@@ -1,72 +1,97 @@
-<h1  class="text-center text-success alert alert-dark m-4  " >{{currentTheaterName ? currentTheaterName : 'Theater Details'}} </h1>
-<hr>
-<table class="container-fluid row mt-4 width-100 p-4 border border-success">
-    
-    <th *ngIf="theaters" class="dropdown  col  " >
+
+
+<div class="card m-4 border border-success bg-dark rounded">
+    <div class="card-header">
+        <h2 
+        class="text-warning" >
+        {{currentTheaterName ? currentTheaterName : 'Theater Details'}}
+    </h2>
+        <hr 
+        class="text-success" >
+        <ul 
+        class="nav nav-tabs card-header-tabs" >
         
-        <button (click)="toggleTheaters()" class="btn btn-primary dropdown-toggle float-left ">
-            Theaters in your area 
-        </button>
-        
-        <ul *ngIf="isToggleTheaters" class="position-absolute theater-list">
-            <li *ngFor="let theater of theaters;index as i" class="list-group-item float-down ">
-                
-                <span 
-                class="text-warning" 
-                (click)="clickTheaterLink(i, theater.name)"
-                >{{theater.name}}</span> 
-            
+        <li 
+        class="nav-item bg-secondary m-1" >
+            <a 
+            class="nav-link" 
+            id="card-tab-one">Movie Details</a>
         </li>
-    </ul>
-</th>
-    <th *ngIf="showTimes " class="col">
-        <div class="btn-group dropstart" >
-            <button 
-            *ngIf="showTimes" 
+        <li class="nav-item bg-primary m-1"  >
+            <a 
+            class="nav-link" 
+            (click)="toggleTheaters()"
+            id="card-tab-two">Theaters</a>
+        </li>
+        <li class="nav-item bg-primary m-1"  >
+            <a 
+            class="nav-link" 
             (click)="toggleShowTimes()"
-            class="btn btn-info dropdown-toggle row" 
-             >Show Times</button>
-            <ul 
-            *ngIf="isShowTimes" 
-            class="dropdown-list-group scrollable-menu ">
-                <li 
-                *ngFor="let time of showTimes" 
-                class="list-group-item text-warning float-right" >
-                    <span  >Todays Show Times | {{time.providerDate + '/' + time.providerTime | date: 'shortTime'}}</span>
-                </li>
-            </ul>
-        </div>
+            id="card-tab-three">Show Times</a>
+        </li>
         
-    </th>
-</table>
-<div *ngIf="selectedTheater" class="row" >
-    <app-theater-details 
-    (showTimesEvent)="getShowTimes($event)"
-    [currentlySelectedTheater]="selectedTheater" ></app-theater-details>
-</div>
-<div *ngIf="!selectedTheater" class="container width-100 vh-100 bg-dark">
-    <p >Try Selecting a theater...</p>
+        </ul>
+    </div>
 </div>
 
-
-
-
-<!-- <div 
-    class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
-    <button (click)="toggleDates()" class="btn btn-primary dropdown-toggle">
+<!-- <div class="row">
+    <h1 
+class="text-center text-success alert alert-dark m-4  " >
+    {{currentTheaterName ? currentTheaterName : 'Theater Details'}} 
+</h1>
+    <div class="btn-group">
+        <button 
+        (click)="toggleTheaters()" 
+        class="btn btn-outline-success dropdown-toggle ">
+                Theaters in your area 
+        </button>
+        <button 
+        (click)="toggleShowTimes()"
+        class="btn btn-outline-success dropdown-toggle " >
         Show Times
     </button>
-    <ul *ngIf="isDate" class="list-group">
-        <div *ngFor="let variant of currentTitle.movieVariants" class="">
-            
-            <div class="list-group bg-primary" *ngFor="let group of variant.amenityGroups">
-                <li 
-                class="list-group-item float-down" 
-                *ngFor="let date of group.showtimes">
-                    <a>Todays Show Times | {{date.providerDate + '/' + date.providerTime | date:'shortTime' }}</a>
-                </li>
-            </div>
-        </div>
-    </ul>
-    
+    <button 
+        (click)="toggleShowTimes()"
+        class="btn btn-outline-success dropdown-toggle " >
+        Show Times
+    </button>
+    </div>
+
 </div> -->
+<th *ngIf="showTimes " class="row">
+        <ul 
+        *ngIf="isShowTimes" 
+        class="position-absolute theater-list bg-dark">
+            <li 
+            *ngFor="let time of showTimes" 
+            class="list-group-item text-warning float-down" >
+                <span  >
+                    Todays Show Times | {{time.providerDate + '/' + time.providerTime | date: 'shortTime'}}
+                </span>
+            </li>
+        </ul>
+</th>
+    
+    <th *ngIf="theaters" class="dropdown row" >
+        <ul 
+        *ngIf="isToggleTheaters" 
+        class="position-absolute theater-list bg-dark">
+            <li 
+            *ngFor="let theater of theaters;index as i" 
+            class="list-group-item float-down col">
+                    <span 
+                    class="text-warning text-center" 
+                    (click)="clickTheaterLink(i, theater.name)"
+                    >{{theater.name}}</span> 
+            </li>
+        </ul>
+    </th>
+    <div *ngIf="!selectedTheater" 
+    class="container width-100 vh-100 bg-dark">
+        <p >Try Selecting a theater...</p>
+    </div>
+    <div  class="row" >
+        <app-theater-details 
+        (showTimesEvent)="getShowTimes($event)"
+        [currentlySelectedTheater]="selectedTheater" ></app-theater-details>
+    </div>

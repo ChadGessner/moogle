@@ -9,6 +9,7 @@ import { User } from '../models/user.interface';
 })
 export class AccountDetailsComponent implements OnInit, OnChanges{
   @Input()registeredUser:any
+  
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -57,10 +58,9 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    this.registeredUser = Chad
-    // this.api.registerEvent.subscribe(
-    //   x=> this.registeredUser = x
-    // )
+    
+    //console.log(this.registeredUser)
+    
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)

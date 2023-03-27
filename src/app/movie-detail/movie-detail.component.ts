@@ -2,6 +2,7 @@ import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 //import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
+import { ActivatedRoute, Params } from '@angular/router';
 import { MovieDetail } from '../dataForTesting/movieDetail';
 @Component({
   selector: 'app-movie-detail',
@@ -33,7 +34,11 @@ export class MovieDetailComponent implements OnInit {
     id:'card-tab-five',
     isActive:false
   }]
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService, private render:Renderer2 ){
+  constructor(
+    private api:FlixterApiService,
+     private phone:ComponentTelephoneService,
+      private render:Renderer2,
+       private route:ActivatedRoute ){
 
   }
   castIncrementEvent(e:MouseEvent){
@@ -54,12 +59,6 @@ export class MovieDetailComponent implements OnInit {
     }
     console.log(this.castIndex)
     const progress = document.getElementById('progress-bar');
-    // console.log(progress)
-    // this.render.setStyle(
-    //   progress,
-    //   'width',
-    //   `${ ((this.castIndex + 1)/len) * 100 }%`
-    // )
   }
   progressBarStyle() {
     const len = this.movieDetail.data.movie.cast.length;
@@ -94,9 +93,7 @@ export class MovieDetailComponent implements OnInit {
       )
     }
   }
-  incrementCastIndex() {
 
-  }
   categoryName() {
     return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;
   }
@@ -127,25 +124,17 @@ export class MovieDetailComponent implements OnInit {
     return this.validateImageIndex(this.currentImageIndex)
   }
   ngOnInit(): void {
-    this.movieDetail = MovieDetail;
-    this.imagesList = this.movieDetail.data.movie.images;
-    
-    // this.phone.emsVersionIdEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.emsVersionId = x;
-    //       console.log(this.emsVersionId)
-    //     }
-    //   }
-    // )
-    // this.api.movieDetailsByIdEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.movieDetail = x;
-    //       this.imagesList = this.movieDetail.data.movie.images;
-    //       console.log(JSON.stringify(this.movieDetail))
-    //     }
-    //   }
-    // )
+    this.route.params.subscribe(
+      (p:Params)=>{
+        console.log(p['emsVersionId'])
+        this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
+          (x:{})=>{
+            console.log(x)
+            this.movieDetail = x
+            this.imagesList = this.movieDetail.data.movie.images;
+          }
+        )
+      }
+    )
   }
 }

@@ -86,11 +86,11 @@ namespace Moogle_Repo
                 return user;
             }
         }
-        public async Task<List<Theater>> GetTheatersByUserZip(User user)
+        public async Task<List<Theater>> GetTheatersByUserZip(string zipCode)
         {
             using (var db = new ApplicationDbContext())
             {
-                return await db.TheaterZips.Where(x=> x.ZipCode == user.ZipCode).Select(x=> x.Theater).ToListAsync();
+                return await db.TheaterZips.Where(x=> x.ZipCode == zipCode).Select(x=> x.Theater).ToListAsync();
             }
         }
     }

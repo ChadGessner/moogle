@@ -6,6 +6,7 @@ import { TheaterData } from './models/theater-data.interface';
   providedIn: 'root'
 })
 export class ComponentTelephoneService {
+
   @Output()newsURLEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()emsVersionIdEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()theaterIdEvent:EventEmitter<string> = new EventEmitter<string>();
@@ -38,4 +39,5 @@ export class ComponentTelephoneService {
   getPopularMovieURL(url:string){
     return this.popularMovieURLEvent.emit(url);
   }
+
 }

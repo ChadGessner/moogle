@@ -9,7 +9,7 @@ import { TheaterDetails } from '../models/theater-details.interface';
 import {TheaterDetailTest} from '../dataForTesting/theaterDetail';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterData } from '../models/theater-data.interface';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-theater-details',
@@ -29,9 +29,18 @@ export class TheaterDetailsComponent implements OnInit {
   isDate:boolean = false;
   @Input()currentlySelectedTheater:TheaterDetails|null = null;
   
-  constructor(private api:FlixterApiService, private route:ActivatedRoute){}
+  constructor(
+    private api:FlixterApiService,
+     private route:ActivatedRoute,
+      private router:Router){}
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
+  }
+  movieDetails(emsVersionId:string){
+    this.router.navigate([
+      'movie-detail',
+      emsVersionId
+    ])
   }
    setRatingImagePath(rating:string) {
     switch(rating){
@@ -48,12 +57,6 @@ export class TheaterDetailsComponent implements OnInit {
       default: 
       return 'assets/images/G.png';
     }
-   }
-   getCurrentMovieId() {
-    if(this.currentTitle){
-      return `/movie-detail/${this.currentTitle.emsVersionId}`;
-    }
-    return ''
    }
    showShowTimes() {
     
@@ -90,12 +93,13 @@ export class TheaterDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    
-    //this.theaterDetails =  TheaterDetailTest;
+    this.router.events.subscribe(e =>{
+      console.log(e)
+    })
     this.route.params.subscribe(
       (p)=>{
         if(p['theaterId']){
-          this.api.getTheaterDetails(p['theaterId']).subscribe(
+          return this.api.getTheaterDetails(p['theaterId']).subscribe(
             (x)=>{
               console.log(x);
               this.currentlySelectedTheater=x;
@@ -103,10 +107,13 @@ export class TheaterDetailsComponent implements OnInit {
                 this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
                 this.maxMovieListLength = this.currentTitlesList.length;
                 this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+                this.showShowTimes()
               }
             }
           )
+          
         }
+        return;
       }
     )
     

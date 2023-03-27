@@ -42,15 +42,15 @@ export class FlixterApiService {
     //   }
     // )
    }
-  //  registerNewUser(user:User) {
-  //     this.http.post<User>(this.serverUri, user)
-  //     .subscribe((x)=>{
-  //       if(x){
-  //         this.user = x
-  //       }
-  //       return this.registerEvent.emit(this.user)
-  //     })
-  //  }
+   registerNewUser(user:User) {
+      this.http.post<User>(this.serverUri, user)
+      .subscribe((x)=>{
+        if(x){
+          this.user = x
+        }
+        return this.registerEvent.emit(this.user)
+      })
+   }
    userLogin(username:string, password:string){
     let uriEnd = `User/GetUser/${username}/${password}`;
     //this.user = Chad;

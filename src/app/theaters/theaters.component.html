@@ -18,10 +18,16 @@
             id="card-tab-one">Movie Details</a>
         </li>
         <li class="nav-item bg-primary m-1"  >
-            <a class="nav-link" (click)="toggleTheaters()">Theaters</a>
+            <a 
+            class="nav-link" 
+            (click)="toggleTheaters()"
+            id="card-tab-two">Theaters</a>
         </li>
         <li class="nav-item bg-primary m-1"  >
-            <a class="nav-link" (click)="toggleShowTimes()">Show Times</a>
+            <a 
+            class="nav-link" 
+            (click)="toggleShowTimes()"
+            id="card-tab-three">Show Times</a>
         </li>
         
         </ul>
@@ -84,7 +90,7 @@ class="text-center text-success alert alert-dark m-4  " >
     class="container width-100 vh-100 bg-dark">
         <p >Try Selecting a theater...</p>
     </div>
-    <div *ngIf="selectedTheater" class="row" >
+    <div  class="row" >
         <app-theater-details 
         (showTimesEvent)="getShowTimes($event)"
         [currentlySelectedTheater]="selectedTheater" ></app-theater-details>

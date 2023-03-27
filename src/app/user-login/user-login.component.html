@@ -1,7 +1,8 @@
 
-    <div class="border border-success p-1 m-4 rounded bg-dark">
+    <div class="border border-success p-1 m-4 rounded bg-primary">
     
         <form 
+        *ngIf="!user"
         class="form-group p-4 m-4 bg bg-dark rounded " 
         (ngSubmit)="onSubmit(login)" #login="ngForm" >
             <h4 class="text-warning text-center font-monospace" >Moogle Account Login</h4>

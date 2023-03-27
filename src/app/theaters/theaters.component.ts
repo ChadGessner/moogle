@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
@@ -12,6 +12,18 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./theaters.component.css']
 })
 export class TheatersComponent implements OnInit {
+  notIsActive:{
+    id:string,
+    isActive:boolean}[] = [{
+    id:'card-tab-one',
+    isActive:true
+  },{
+    id:'card-tab-two',
+    isActive:false
+  },{
+    id:'card-tab-three',
+    isActive:false
+  }]
   @Input()theaters:any;
   currentTheaterName:string = '';
   selectedTheater:any;
@@ -21,14 +33,39 @@ export class TheatersComponent implements OnInit {
   constructor(
     private api:FlixterApiService,
      private router:Router,
-      private route:ActivatedRoute ){}
-  getTheaters(){
-    // if(this.theaters){
-    //   return this.theaters as data;
-    // }else{
-    //   return;
-    // }
-  }
+      private route:ActivatedRoute, 
+       private render:Renderer2 ){}
+      @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
+        const target = e.target as HTMLElement;
+        if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
+          console.log('anything')
+          this.notIsActive.forEach(
+            (x)=>{
+              if(x){
+                let el = document.getElementById(x.id) as HTMLElement
+                x.isActive = x.id === target.id;
+                if(el){
+                  if(el?.classList.contains('bg-primary') || el?.classList.contains('bg-secondary')){
+                    this.render.removeClass(
+                      el,
+                      'bg-primary'
+                    )
+                    this.render.removeClass(
+                      el,
+                      'bg-secondary'
+                    )
+                  }
+                    this.render.addClass(
+                      document.getElementById(x.id),
+                      `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
+                    )
+                }
+            }
+          }
+          )
+        }
+      }
+
 
   getShowTimes(e:{
     time:string,
@@ -53,10 +90,7 @@ export class TheatersComponent implements OnInit {
     console.log(this.selectedTheater);
     this.currentTheaterName = theaterName;
     this.toggleTheaters()
-    //this.theaterNameEvent.emit(name)
-    //this.phone.getTheaterName(this.theaterName);
-    // console.log(theaterId)
-    // this.phone.getTheaterId(theaterId);
+    
   }
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -68,18 +102,5 @@ export class TheatersComponent implements OnInit {
         )
       }
     )
-    //this.theaters = ChadsTheaters;
-    //this.phone.getTheaterList(this.theaters);
-    // this.api.theatersEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       console.log(x)
-    //       return this.theaters = x as data;
-    //     }else{
-    //       return;
-    //     }
-        
-    //   }
-    // )
   }
 }

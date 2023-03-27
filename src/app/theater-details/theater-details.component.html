@@ -1,15 +1,27 @@
 
 <div *ngIf="currentlySelectedTheater">
     <div class="card m-4 p-4 border border-primary">
+      <div class="row container-fluid">
+        <div class="col-10"></div>
+        <div class="col">
+          <button 
+          (click)="movieDetails(currentTitle.emsVersionId)"
+          class="btn btn-outline-success">Movie Details</button>
+        </div>
+      </div>
+      
+      
         <div class="card-body">
-          <h4></h4>
-    
+          <h4 class="text-success" >
+            <p class="card-text">{{this.currentTitle.name}}</p>
+          </h4>
+          
           <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
           <div class="row" >
 
         </div>
         
-          <p class="card-text">{{this.currentTitle.name}}</p>
+          
           <img 
           class="image-fluid" 
           height="200px" 

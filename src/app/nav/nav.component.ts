@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlixterApiService } from '../api.service';
+import { Chad } from '../dataForTesting/loggedInUser';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,7 @@ import { FlixterApiService } from '../api.service';
 })
 export class NavComponent implements OnInit{
   isHamburger:boolean = false;
-  registeredUser:any;
+  registeredUser = Chad;
   showToast:boolean = false;
   searchRouteWithParams:string = ''
   constructor(
@@ -28,15 +29,21 @@ export class NavComponent implements OnInit{
   }
   getTheaterListRoute() {
     if(this.api.user){
-      return `/theaters/${this.api.user.zipCode}`;
+      this.router.navigate([
+        '/theaters',
+        this.api.user.zipCode
+      ]) 
     }
-    return '/theaters'
   }
   searchQuery(queryParam:NgForm){
     if(this.registeredUser){
       console.log(queryParam.form.value.search)
       //this.api.searchQuery(queryParam.form.value.search, this.registeredUser)
-      this.searchRouteWithParams = `/search/${queryParam.form.value.search}/${this.api.user.zipCode}`;
+      this.router.navigate([
+        '/search',
+        queryParam.form.value.search,
+        this.api.user.zipCode
+      ])
     }else{
       this.isNotIsShowToast();
       this.isHamburger ? this.toggleHamburger() : this.isHamburger;
@@ -44,12 +51,12 @@ export class NavComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.api.registerEvent.subscribe(
-      (x)=>{
-        if(x){
-          this.registeredUser = x;
-        }
-      }
-    )
+    // this.api.registerEvent.subscribe(
+    //   (x)=>{
+    //     if(x){
+    //       this.registeredUser = x;
+    //     }
+    //   }
+    // )
   }
 }

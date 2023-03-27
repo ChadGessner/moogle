@@ -5,6 +5,7 @@ import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Chad } from './dataForTesting/loggedInUser';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,20 +53,21 @@ export class FlixterApiService {
   //  }
    userLogin(username:string, password:string){
     let uriEnd = `User/GetUser/${username}/${password}`;
-    this.http.get<{}>(this.baseUri + uriEnd).subscribe(
-      (x)=>{
-        if(x) {
-          this.user = x;
-          //console.log(JSON.stringify(x));
-          
-          return this.registerEvent.emit(this.user);
-          //return this.getTheaters(this.user.userName, this.user.password)
-        }
-      }
-    )
+    //this.user = Chad;
+    return this.http.get<{}>(this.baseUri + uriEnd)
+    // .subscribe(
+    //   (x)=>{
+    //     if(x) {
+    //       this.user = x;
+    //       console.log(JSON.stringify(x));
+    //       this.registerEvent.emit(this.user);
+    //       //return this.getTheaters(this.user.userName, this.user.password)
+    //     }
+    //   }
+    // )
    }
    userLogout() {
-    this.user = null;
+    //this.user = null;
    }
 
    getActorData(actorId:string) {

@@ -106,6 +106,7 @@ export class ActorsComponent implements OnInit {
         .subscribe(
           (x)=>{
             if(x){
+              console.log(JSON.stringify(x))
               this.actor = x
             }
           }

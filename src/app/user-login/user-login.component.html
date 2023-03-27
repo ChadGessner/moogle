@@ -1,5 +1,5 @@
-<div *ngIf="!user">
-    <div class="border border-success p-1 m-4 rounded bg-secondary">
+
+    <div class="border border-success p-1 m-4 rounded bg-dark">
     
         <form 
         class="form-group p-4 m-4 bg bg-dark rounded " 
@@ -7,33 +7,49 @@
             <h4 class="text-warning text-center font-monospace" >Moogle Account Login</h4>
             <div class="form-floating mb-3">
     
-                <input class="form-control bg-secondary border-success" type="name" name="userName" placeholder="username" ngModel>
-                <label class=" text-light  rounded " for="floating-input" >Enter Username</label>
+                <input 
+                class="form-control  border-success" 
+                type="name" 
+                name="userName" 
+                placeholder="username" 
+                ngModel>
+                <label 
+                class=" text-light  rounded " 
+                for="floating-input" >Enter Username</label>
             </div>
     
             <div class="form-floating mb-3">
                 
-                <input class="form-control bg-secondary border-success " for="floating-input" name="password" placeholder="password" ngModel>
+                <input class="form-control border border-success " 
+                for="floating-input" 
+                name="password" 
+                placeholder="password" ngModel>
                 <label class=" text-light  rounded " for="password">Enter Password</label>
             </div>
     
             <div class="row m-1 border border-success p-1 rounded bg-dark">
-                <button type="submit" class="btn bg-secondary text-success" >Submit</button>
+                <button 
+                type="submit" 
+                class="btn btn-outline-info text-success" >Submit</button>
             </div>
         </form> 
     </div>
-</div>
-<div *ngIf="user">
-<app-account-details [registeredUser]="user" ></app-account-details>
-</div>
+
+
+<app-account-details [registeredUser]="user" >
+
+</app-account-details>
+
 <div *ngIf="user">
     <h4 class="text-center text-success" >Login Successfull!</h4>
-    <div class="border border-success p-4 m-4 rounded bg-secondary">
+    <div class="border border-success p-4 m-4 rounded bg-dark">
         <div class="row row-cols-2">
             <div class="row m-1 border border-success p-1 rounded bg-dark">
                 <button 
                 routerLink="/home" 
-                class="btn bg-secondary text-success m-1" >Home</button>
+                class="btn bg-secondary text-success m-1" >
+                Home
+            </button>
             </div>
             <div class="row m-1 border border-success p-1 rounded bg-dark">
                 <button routerLink="/home" class="btn bg-warning text-danger m-1" (click)="logout()" >Logout</button>

@@ -29,7 +29,7 @@ export class TheaterDetailsComponent implements OnInit {
   isDate:boolean = false;
   @Input()currentlySelectedTheater:TheaterDetails|null = null;
   
-  constructor(private api:FlixterApiService, private phone:ComponentTelephoneService, private route:ActivatedRoute){}
+  constructor(private api:FlixterApiService, private route:ActivatedRoute){}
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
   }

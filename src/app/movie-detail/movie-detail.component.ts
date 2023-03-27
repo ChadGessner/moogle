@@ -59,12 +59,6 @@ export class MovieDetailComponent implements OnInit {
     }
     console.log(this.castIndex)
     const progress = document.getElementById('progress-bar');
-    // console.log(progress)
-    // this.render.setStyle(
-    //   progress,
-    //   'width',
-    //   `${ ((this.castIndex + 1)/len) * 100 }%`
-    // )
   }
   progressBarStyle() {
     const len = this.movieDetail.data.movie.cast.length;
@@ -99,9 +93,7 @@ export class MovieDetailComponent implements OnInit {
       )
     }
   }
-  incrementCastIndex() {
 
-  }
   categoryName() {
     return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;
   }
@@ -132,8 +124,6 @@ export class MovieDetailComponent implements OnInit {
     return this.validateImageIndex(this.currentImageIndex)
   }
   ngOnInit(): void {
-    // this.movieDetail = MovieDetail;
-    // this.imagesList = this.movieDetail.data.movie.images;
     this.route.params.subscribe(
       (p:Params)=>{
         console.log(p['emsVersionId'])
@@ -141,27 +131,10 @@ export class MovieDetailComponent implements OnInit {
           (x:{})=>{
             console.log(x)
             this.movieDetail = x
+            this.imagesList = this.movieDetail.data.movie.images;
           }
         )
       }
-      
     )
-    // this.phone.emsVersionIdEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.emsVersionId = x;
-    //       console.log(this.emsVersionId)
-    //     }
-    //   }
-    // )
-    // this.api.movieDetailsByIdEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.movieDetail = x;
-    //       this.imagesList = this.movieDetail.data.movie.images;
-    //       console.log(JSON.stringify(this.movieDetail))
-    //     }
-    //   }
-    // )
   }
 }

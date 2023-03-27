@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FlixterApiService } from '../api.service';
-import { ComponentTelephoneService } from '../component-telephone.service';
 import { UpcomingMovieDetailsTest } from '../dataForTesting/upcomingMovieDetailsTest';
 import { UpcomingMovieDetails } from '../models/upcoming-movie-details.interface';
 @Component({
@@ -18,7 +17,6 @@ export class UpcomingMovieDetailsComponent implements OnInit {
 
   constructor(
     private api: FlixterApiService,
-     private phone: ComponentTelephoneService, 
       private route: ActivatedRoute,
        private router:Router) { }
   passEmsVersionId(id: string) {

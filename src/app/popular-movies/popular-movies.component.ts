@@ -20,6 +20,9 @@ export class PopularMoviesComponent implements OnInit{
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService){}
+
+
+     
      passEmsVersionId(id: string) {
       this.phone.getEmsVersionId(id);
     }
@@ -40,7 +43,7 @@ export class PopularMoviesComponent implements OnInit{
       }
     )
   }
-
+// addIndex(){this.endPopularMovieIndex++}
   ngOnInit(): void {
     this.api.getPopularMovieList().subscribe(x => this.popularMovies = x);
     // this.newsSubscription();

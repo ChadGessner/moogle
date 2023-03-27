@@ -13,20 +13,11 @@ import { ComponentTelephoneService } from '../component-telephone.service';
 export class NewsStoryComponent implements OnInit {
   @Input()newsLink:any;
   constructor(
-    private sanitized:DomSanitizer,
-     private phone:ComponentTelephoneService){}
+    private sanitized:DomSanitizer){}
   getURL(x:string) {
     this.newsLink = this.sanitized.bypassSecurityTrustUrl(x);
   }
   ngOnInit(): void {
-    this.phone.newsURLEvent.subscribe(
-      (x)=>{
-        if(x){
-          console.log(x)
-          this.getURL(x);
-          console.log(this.newsLink.changingThisBreaksApplicationSecurity)
-        }
-      }
-    )
+    
   }
 }

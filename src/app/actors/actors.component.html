@@ -21,7 +21,7 @@
       <div class="row bg-dark g-3">
         <h1 class="text-success m-4" >{{actor.data.person.name}}</h1>
         <hr>
-        <div *ngIf="actor.data.person.headShotImage.url" class="m-4 col-3 container border border-success ">
+        <div *ngIf="actor.data.person.headShotImage" class="m-4 col-3 container border border-success ">
             <img 
             class="img-fluid  rounded"
             
@@ -62,7 +62,7 @@
                     <h4>{{film.name}}</h4>
                     <hr>
                 </li>
-                <li class="col-3 list-group-item ">
+                <li *ngIf="film.posterImage && film.posterImage.url" class="col-3 list-group-item ">
                     <img 
                     class="img-fluid"
                     src={{film.posterImage.url}}>

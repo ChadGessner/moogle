@@ -28,16 +28,19 @@ const routes: Routes = [
     path: 'upcoming-movies',
      component: UpcomingMovieDetailsComponent
   },{
-    path: 'theaters',
+    path: 'theaters/:zip',
      component: TheatersComponent
   },{
-    path: 'actor',
+    path: 'theaters/:zip/:theaterId',
+    component: TheatersComponent
+  },{
+    path: 'actor/:id',
     component: ActorsComponent
   },{
-    path: 'movie-detail',
+    path: 'movie-detail/:emsVersionId',
      component: MovieDetailComponent
   },{
-    path: 'search',
+    path: 'search/:id/:zip',
     component: SearchComponent
   },{
     path: 'home',

@@ -25,7 +25,7 @@ export class UserRegistrationComponent {
       state: newUser.form.value.state,
       zipCode: newUser.form.value.zipCode
     }
-    
+    this.api.registerNewUser(user);
     return this.clearForm(newUser);
     // this.api.registerNewUser(user);
   }

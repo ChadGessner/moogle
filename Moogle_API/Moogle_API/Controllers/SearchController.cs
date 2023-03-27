@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Moogle_Flixter_Domain;
 using Moogle_Models.API_Models.Actor;
 using Moogle_Models.API_Models.Search;
+using Moogle_Flixter_Domain.Configs;
+
 
 namespace Moogle_API.Controllers
 {
@@ -10,10 +12,12 @@ namespace Moogle_API.Controllers
   [ApiController]
   public class SearchController : ControllerBase
   {
+        private readonly MoogleConfig _config;
+
     private FlixterClient _client;
     public SearchController()
     {
-      _client = new FlixterClient();
+      _client = new FlixterClient(_config);
     }
     [HttpGet("GetActorData/{actorId}")]
     public ActorRoot GetActorData(string actorId)

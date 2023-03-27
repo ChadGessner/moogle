@@ -1,6 +1,12 @@
+using Moogle_Flixter_Domain.Configs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var moogleConfig = new MoogleConfig();
+builder.Configuration.Bind("MoogleApiConfigs", moogleConfig);
+
+builder.Services.AddSingleton<MoogleConfig>(moogleConfig);
 
 builder.Services.AddControllers();
 builder.Services

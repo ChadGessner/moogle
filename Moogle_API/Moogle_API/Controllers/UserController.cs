@@ -5,22 +5,27 @@ using Moogle_Flixter_Domain;
 using Moogle_Models;
 using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
+using Moogle_Flixter_Domain.Configs;
+
 
 using Moogle_Models.API_Models.TheaterDetails;
 using Moogle_Models.Db_Models;
 
 namespace Moogle_API.Controllers
 {
+
   [Route("api/[controller]")]
   [ApiController]
   public class UserController : ControllerBase
   {
+        private readonly MoogleConfig _config;
+
     private FlixterClient Client { get; set; }
     private ModelConverter ModelConverter { get; set; }
     private Interactor _db { get; set; }
     public UserController()
     {
-      Client = new FlixterClient();
+      Client = new FlixterClient(_config);
       ModelConverter = new ModelConverter();
       _db = new Interactor();
     }

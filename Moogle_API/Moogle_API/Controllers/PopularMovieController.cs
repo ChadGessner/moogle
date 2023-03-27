@@ -11,6 +11,8 @@ using Moogle_Models;
 using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
 using Moogle_Models.API_Models.PopularMovies;
+using Moogle_Flixter_Domain.Configs;
+
 
 namespace Moogle_API.Controllers
 {
@@ -18,12 +20,14 @@ namespace Moogle_API.Controllers
   [ApiController]
   public class PopularMoviesController : ControllerBase
   {
+        private readonly MoogleConfig _config;
+
     private FlixterClient Client { get; set; }
     private ModelConverter ModelConverter { get; set; }
     private Interactor _db { get; set; }
     public PopularMoviesController()
     {
-      Client = new FlixterClient();
+      Client = new FlixterClient(_config);
       ModelConverter = new ModelConverter();
       _db = new Interactor();
     }

@@ -6,6 +6,7 @@ using Moogle_Models;
 using Moogle_Models.API_Models.MovieDetails;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
 using Moogle_Models.API_Models.UpcomingMovies;
+using Moogle_Flixter_Domain.Configs;
 
 namespace Moogle_API.Controllers
 {
@@ -13,13 +14,14 @@ namespace Moogle_API.Controllers
   [ApiController]
   public class MovieController : ControllerBase
   {
+    private readonly MoogleConfig _config;
     private FlixterClient Client { get; set; }
     private ModelConverter ModelConverter { get; set; }
     private Interactor _db { get; set; }
 
     public MovieController()
     {
-      Client = new FlixterClient();
+      Client = new FlixterClient(_config);
       ModelConverter = new ModelConverter();
       _db = new Interactor();
     }

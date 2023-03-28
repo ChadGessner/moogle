@@ -71,31 +71,27 @@ export class ActorsComponent implements OnInit {
         (x)=>{
           if(x){
             let el = document.getElementById(x.id) as HTMLElement
-            x.isActive = x.id === target.id;
-            if(el && el?.classList.contains('bg-primary')){
-              this.render.removeClass(
-                el,
-                'bg-primary'
-              )
-              this.render.addClass(
-                document.getElementById(x.id),
-                `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
-              )
-            }
-            if(el && el?.classList.contains('bg-secondary')){
-              this.render.removeClass(
-                el,
-                'bg-secondary'
-              )
-              this.render.addClass(
-                document.getElementById(x.id),
-                `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
-              )
+            x.isActive = x.id === target.id ? true : false;
+            console.log(target)
+            
+              if(el?.classList.contains('bg-primary') || el?.classList.contains('bg-secondary')){
+                this.render.removeClass(
+                  el,
+                  'bg-primary'
+                )
+                this.render.removeClass(
+                  el,
+                  'bg-secondary'
+                )
+                this.render.addClass(
+                  e.target,
+                  `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
+                )
+              }
             }
             
-             
         }
-      }
+      
       )
     }
   }

@@ -94,7 +94,7 @@ export class TheaterDetailsComponent implements OnInit {
   
   ngOnInit(): void {
     this.router.events.subscribe(e =>{
-      console.log(e)
+      
     })
     this.route.params.subscribe(
       (p)=>{

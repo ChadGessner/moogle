@@ -94,15 +94,15 @@ namespace Moogle_Repo
                 return await db.TheaterZips.Where(x=> x.ZipCode == zipCode).Select(x=> x.Theater).ToListAsync();
             }
         }
-    public async Task<User> UpdateUser(User user)
-    {
-      using (var db = new ApplicationDbContext())
-      {
+        public async Task<User> UpdateUser(User user)
+        {
+          using (var db = new ApplicationDbContext())
+          {
         
-        db.Users.Update(user);
-        db.SaveChanges();
-        return await db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id);
-      }
-    }
+            db.Users.Update(user);
+            db.SaveChanges();
+            return await db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id);
+          }
+        }
   }
 }

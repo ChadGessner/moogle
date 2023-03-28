@@ -1,6 +1,6 @@
 .horizontal {
     /* display: flex; */
-    /* flex-wrap: nowrap; */
+    flex-wrap: nowrap;
     display: inline-flex;
     /* flex-flow: row wrap; */
     overflow-x: scroll;

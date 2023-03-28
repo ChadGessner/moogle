@@ -39,16 +39,26 @@ namespace Moogle_API.Controllers
     }
 
     [HttpGet("GetPopularMoviesListTest")]
-    public PopularMoviesRoot GetPopularMoviesListTest()
+    public List<PopularMoviesRoot> GetPopularMoviesListTest()
     {
-
+        List<PopularMoviesRoot> testList1 = new();
       var test = Client.MakePopularMoviesRequest();
       var json = Newtonsoft.Json.JsonConvert.SerializeObject(test);
       var response = JsonConvert.DeserializeObject<dynamic>(json);
       
-      
+      foreach(var r in response)
+      {
+        if(r[0].data.popularity.name)
+        {
+          PopularMoviesRoot testObject = new();
+          testList1.Add(r);
 
-      return response;
+        }
+        JArray test1 = r[0].data.popularity;
+        var list = test1.ToList();
+      }
+
+      return testList1;
     }
   }
 }

@@ -1,5 +1,88 @@
 
+<!-- <div class="horizontal">
+    <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
+        
+        
+        <p><img width="75%" src={{story.mainImage.url}}>
+       <button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:6"></p> </a></button></p> 
+     
+    </div>
+    </div> -->
+<!-- <ng-container *ngIf="(asyncTabs | async) === null">
+  Loading tabs...
+</ng-container>
+
+<mat-tab-group>
+  <mat-tab *ngFor="let tab of asyncTabs | async">
+    <ng-template mat-tab-label>{{tab.label}}</ng-template>
+    {{tab.content}}
+  </mat-tab>
+</mat-tab-group> -->
+    <!-- class="card border border-success p-2 mb-2" -->
+
+    <div class="card border border-success p-2 mb-2">
+
+    <div>
+        <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
+   </div>
+
+
+    <div class="horizontal">
+        <!-- <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)"> -->
+          <div *ngFor="let story of news.data.newsStories">
+            <div class="news card border border-success p-2 mb-2" >
+              <!-- <a href="http://www.google.com"> -->
+                <img class="news-image" src={{story.mainImage.url}}>
+              <!-- </a> -->
+          </div>
+            <a class="news-link" href={{story.link}} target="_blank"><p [innerHTML]="story.title | truncatePipe:[40, '...']"></p></a></div>
+        </div>
+        </div>
+
+    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+        <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
+            <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+                <div class="col"><img width="auto" src={{story.mainImage.url}}></div>
+            <div class="d-flex align-items-center bg-light mb-3" style="height: 100px;">
+                <div class="col"><button><a href={{story.link}} target="_blank"><p [innerHTML]="story.title | slice:0:30"></p></a></button></div>
+        </div>
+        </div>
+    </div>
+    </div> -->
+
+
+    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+      </div>
+      <div class="d-flex align-items-center bg-light mb-3" style="height: 100px;">
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+        <div class="col">One of three columns</div>
+      </div> -->
+
+    <!-- <div class="row">
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+      
+        <div class="w-100"></div>
+      
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+      </div> -->
+
+
+
+
+
+
+
+<!-- <div>
+
+
 <div>
+
     <h1 class="text-center" class="card-text text-success font-monospace">Movie News!</h1>
 
 </div>
@@ -50,4 +133,4 @@
         <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
       </svg> Back to
            Start</button>
-   </ng-template>
+   </ng-template> -->

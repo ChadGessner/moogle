@@ -122,24 +122,7 @@ export class FlixterApiService {
     //   }
     // )
    }
-
-   getPopularMovieList() {
-    let uriEnd = `PopularMovies/GetPopularMoviesList`;
-    return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-      // (x)=>{
-      //   if(x){
-          // this.news = x;
-          // this.newsEvent.emit(this.news);
-          // console.log(JSON.stringify(x));
-    //     }
-    //   }
-    // )
-   }
-  //  getTheaters(username:string, password:string) {
-
    getTheaters(zip:string) {
-
     
     let uriEnd = `User/GetTheaters/${zip}`;
     return this.http.get<TheaterData>(this.baseUri + uriEnd)
@@ -165,7 +148,7 @@ export class FlixterApiService {
       // )
    }
    updateUser(user:User){
-    return this.http.post<User>(this.baseUri + 'User/UpdateUser', {
+    return this.http.post(this.baseUri + 'User/UpdateUser', {
       user 
     })
     .subscribe(

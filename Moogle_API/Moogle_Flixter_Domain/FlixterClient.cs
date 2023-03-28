@@ -9,6 +9,7 @@ using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.UpcomingMovies;
 using Moogle_Models.API_Models.Actor;
 using Moogle_Models.API_Models.Search;
+using Moogle_Models.API_Models.PopularMovies;
 
 namespace Moogle_Flixter_Domain
 {
@@ -102,7 +103,8 @@ namespace Moogle_Flixter_Domain
     {
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "news/list";
-      var header = apiUri 
+      var header = apiUri
+          .WithHeader("X-RapidAPI-Key", "f126303238mshb0ca04fe3d5056ep12846bjsncbdcff9eea5d")
         .WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
         //.WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
           //.WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
@@ -140,6 +142,21 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
 
       SearchRoot result = apiTask.Result;
+      return result;
+    }
+
+    public PopularMoviesRoot MakePopularMoviesRequest()
+    {
+      //"https://flixster.p.rapidapi.com/news/list"
+      string apiUri = BaseUri + "movies/get-popularity";
+      var header = apiUri
+          .WithHeader("X-RapidAPI-Key", "f126303238mshb0ca04fe3d5056ep12846bjsncbdcff9eea5d")
+          .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+      var apiTask = header.GetJsonAsync<PopularMoviesRoot>();
+      apiTask.Wait();
+      PopularMoviesRoot result = apiTask.Result;
+      //Console.WriteLine(result.ToString());
       return result;
     }
   }

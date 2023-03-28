@@ -27,7 +27,7 @@ export class TheaterDetailsComponent implements OnInit {
   @Input()currentTheaterName:string = '';
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
-  @Input()currentlySelectedTheater:TheaterDetails|null = null;
+  @Input()currentlySelectedTheater:any;
   
   constructor(
     private api:FlixterApiService,

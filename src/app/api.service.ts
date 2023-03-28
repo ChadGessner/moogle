@@ -23,16 +23,20 @@ export class FlixterApiService {
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
-  @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
-  @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
+  // @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
+  // @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
+  // @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+   @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
 
   constructor(private http:HttpClient) {
 
+   }
+   getPopularMovieList(){
+    let uriEnd = 'PopularMovies/GetPopularMoviesList';
+    return this.http.get<{}>(this.baseUri + uriEnd)
    }
    searchQuery(query:string, zip:string) {
     let uriEnd = `Search/GetSearchQuery/${query}/${zip}`;
@@ -125,7 +129,7 @@ export class FlixterApiService {
    getTheaters(zip:string) {
     
     let uriEnd = `User/GetTheaters/${zip}`;
-    return this.http.get<TheaterData>(this.baseUri + uriEnd)
+    return this.http.get<any>(this.baseUri + uriEnd)
     // .subscribe(
     //   (x)=>{
     //     if(x){
@@ -137,7 +141,7 @@ export class FlixterApiService {
     // )
    }
    getTheaterDetails(theaterId:string) {
-      return this.http.get<TheaterDetails>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
+      return this.http.get<any>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
       // .subscribe(
       //   (x)=> {
       //     if(x){

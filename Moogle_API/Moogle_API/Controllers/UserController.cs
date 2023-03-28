@@ -60,17 +60,17 @@ namespace Moogle_API.Controllers
     {
       return Client.MakeTheaterDetailRequest(theaterId);
     }
-    [HttpPost("UpdateUser")]
-    public User UpdateUser([FromBody] JsonObject user)
-    {
-      //Console.WriteLine(user.ToString());
-      //Console.WriteLine(  user);
-      //Console.WriteLine(user.ToString());
-      Console.WriteLine(user["city"]);
-      AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
-      Console.WriteLine(  userUser.city);
-      return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
-    }
+    //[HttpPost("UpdateUser")]
+    //public User UpdateUser([FromBody] JsonObject user)
+    //{
+    //  //Console.WriteLine(user.ToString());
+    //  //Console.WriteLine(  user);
+    //  //Console.WriteLine(user.ToString());
+    //  Console.WriteLine(user["city"]);
+    //  AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
+    //  Console.WriteLine(  userUser.city);
+    //  return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
+    //}
 
   }
 }

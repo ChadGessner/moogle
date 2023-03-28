@@ -9,22 +9,22 @@ namespace Moogle_Domain
     private readonly MoogleRepository _db;
     public Interactor()
     {
-        _db = new MoogleRepository();
+      _db = new MoogleRepository();
     }
     public User RegisterUser(User user, List<Theater> theaters)
     {
-        Console.WriteLine(user.FirstName + " " + user.LastName);
-        return _db.AddUser(user, theaters).Result;
+      Console.WriteLine(user.FirstName + " " + user.LastName);
+      return _db.AddUser(user, theaters).Result;
     }
     public User GetUser(string username, string password)
     {
       return _db.GetUser(username, password);
     }
 
-    public User UpdateUser(User user)
-    {
-      return _db.UpdateUser(user);
-    }
+    // public User UpdateUser(User user)
+    // {
+    //   return _db.UpdateUser(user);
+    // }
     public List<Theater> GetTheatersByUserZip(string zipCode)
     {
       return _db.GetTheatersByUserZip(zipCode).Result;

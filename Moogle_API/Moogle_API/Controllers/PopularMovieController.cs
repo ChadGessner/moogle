@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,6 +12,9 @@ using Moogle_Models;
 using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
 using Moogle_Models.API_Models.PopularMovies;
+using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
+using System.Text.Json;
 
 namespace Moogle_API.Controllers
 {
@@ -33,5 +37,30 @@ namespace Moogle_API.Controllers
     {
       return Client.MakePopularMoviesRequest();
     }
+
+    [HttpGet("GetPopularMoviesListTest")]
+    public PopularMoviesRoot GetPopularMoviesListTest()
+    {
+
+      var test = Client.MakePopularMoviesRequest();
+      var json = Newtonsoft.Json.JsonConvert.SerializeObject(test);
+      var response = JsonConvert.DeserializeObject<dynamic>(json);
+      
+      
+
+      return response;
+    }
   }
 }
+
+    // [HttpPost("UpdateUser")]
+    // public User UpdateUser([FromBody] JsonObject user)
+    // {
+    //   //Console.WriteLine(user.ToString());
+    //   //Console.WriteLine(  user);
+    //   //Console.WriteLine(user.ToString());
+    //   Console.WriteLine(user["city"]);
+    //   AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
+    //   Console.WriteLine(  userUser.city);
+    //   return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
+    // }

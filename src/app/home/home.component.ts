@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  getNews()
+  getPopularMovies()
   {
  this.isMoviesOrNews = false
 

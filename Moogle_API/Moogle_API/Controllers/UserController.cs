@@ -40,6 +40,13 @@ namespace Moogle_API.Controllers
       User newUser = ModelConverter.GetUserFromAngular(user);
       return _db.RegisterUser(newUser, theaters);
     }
+    [HttpPatch("UpdateUser")]
+    public User UpdateUser(User user)
+    {
+       //User updateUser = ModelConverter.GetUserFromAngular(user);
+      return _db.UpdateUser(user);
+    }
+
     [HttpGet("GetTheaters/{zipCode}")]
     public List<Theater> GetUserTheaters(string zipCode)
     {

@@ -86,7 +86,18 @@ namespace Moogle_Repo
                 return user;
             }
         }
-        public async Task<List<Theater>> GetTheatersByUserZip(string zipCode)
+
+        public User UpdateUser(User user)
+        {
+          using (var db = new ApplicationDbContext())
+          {
+            db.Users.Update(user);
+            db.SaveChanges();
+            return user;
+          }
+        }
+
+    public async Task<List<Theater>> GetTheatersByUserZip(string zipCode)
         {
             using (var db = new ApplicationDbContext())
             {

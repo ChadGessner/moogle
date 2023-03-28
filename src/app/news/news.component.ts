@@ -2,12 +2,25 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TestNews } from '../dataForTesting/theNews';
 import { Router } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
+import {Observable, Observer} from 'rxjs';
+
+export interface ExampleTab {
+  label: string;
+  content: string;
+}
+
+
+
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css']
 })
+
 export class NewsComponent implements OnInit{
+
   news:any;
   startNewsIndex: number = 0;
   endNewsIndex: number = 5;
@@ -71,3 +84,4 @@ export class NewsComponent implements OnInit{
     this.endOfNews = false;
   }
 }
+

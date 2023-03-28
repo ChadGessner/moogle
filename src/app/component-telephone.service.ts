@@ -7,4 +7,37 @@ import { TheaterData } from './models/theater-data.interface';
 })
 export class ComponentTelephoneService {
 
+  @Output()newsURLEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()emsVersionIdEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()theaterIdEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()theaterNameEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()popularMovieURLEvent:EventEmitter<string> = new EventEmitter<string>();
+
+  theaterList:TheaterData|null = null;
+  @Input()theaterName:string|null = null;
+  constructor(private api:FlixterApiService) { }
+  getEmsVersionId(id:string){
+    //this.api.getMovieDetailsById(id);
+    return this.emsVersionIdEvent.emit(id);
+  }
+  getTheaterList(theaters:TheaterData){
+    this.theaterList = theaters;
+  }
+  getTheaterId(id:string) {
+   // this.api.getTheaterDetails(id)
+    return this.theaterIdEvent.emit(id);
+  }
+  getNewsURL(url:string){
+    return this.newsURLEvent.emit(url);
+  }
+  getTheaterName(theaterName:string) {
+    this.theaterName = theaterName;
+    console.log(this.theaterName);
+    
+    return this.theaterNameEvent.emit(this.theaterName);
+  }
+  getPopularMovieURL(url:string){
+    return this.popularMovieURLEvent.emit(url);
+  }
+
 }

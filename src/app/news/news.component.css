@@ -1,5 +1,33 @@
 .horizontal {
-    display: flex;
+    /* display: flex; */
     flex-wrap: nowrap;
+    display: inline-flex;
+    /* flex-flow: row wrap; */
+    overflow-x: scroll;
     /* width: 100%; */
-  }
+} 
+
+  a:active { 
+    color: red;
+}
+
+.news {
+  max-width: 360px;
+  /* max-width: 500px; */
+
+}
+
+a {
+  text-align: center;
+
+}
+
+.news-link{
+  font-size: medium;
+  color: currentColor;
+  text-align: center;
+}
+/* .news-image {
+  background-size: cover;
+  
+} */

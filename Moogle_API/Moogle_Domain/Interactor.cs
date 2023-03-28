@@ -20,6 +20,11 @@ namespace Moogle_Domain
     {
       return _db.GetUser(username, password);
     }
+
+    public User UpdateUser(User user)
+    {
+      return _db.UpdateUser(user);
+    }
     public List<Theater> GetTheatersByUserZip(string zipCode)
     {
       return _db.GetTheatersByUserZip(zipCode).Result;

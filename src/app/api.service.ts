@@ -59,6 +59,9 @@ export class FlixterApiService {
         return this.registerEvent.emit(this.user)
       })
    }
+   getLoggedInUser(){
+    return this.user;
+   }
    userLogin(username:string, password:string){
     let uriEnd = `User/GetUser/${username}/${password}`;
     //this.user = Chad;
@@ -162,6 +165,13 @@ export class FlixterApiService {
         }
       }
     )
+   }
+
+   addUserZip(user:User, zip:string){
+    let uriEnd = `User/AddUserZip/${zip}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {
+      user
+    })
    }
   
 }

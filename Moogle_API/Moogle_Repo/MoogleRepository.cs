@@ -4,6 +4,7 @@ using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.Db_Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -40,7 +41,6 @@ namespace Moogle_Repo
           db.Users.Add(user);
           db.SaveChangesAsync().Wait();
           return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
-
         }
 
         db.Users.Add(user);
@@ -97,7 +97,40 @@ namespace Moogle_Repo
     //     return user;
     //   }
     // }
-
+    public async Task<List<Theater>> AddTheatersByZip(string zipCode, List<Theater> theaters)
+    {
+      using (var db = new ApplicationDbContext())
+      {
+        foreach (Theater theater in theaters)
+        {
+          if(theater != null)
+          {
+            Theater theaterToAdd = db.Theaters.FirstOrDefaultAsync(t => t.Tid == theater.Tid).Result;
+            if (theaterToAdd != null)
+            {
+              db.TheaterZips.Add(new TheaterZip()
+              {
+                ZipCode = zipCode,
+                Theater = theaterToAdd
+              });
+              db.SaveChangesAsync().Wait();
+            }
+            else
+            {
+              db.TheaterZips.Add(new TheaterZip()
+              {
+                ZipCode = zipCode,
+                Theater = theater
+              });
+              db.SaveChangesAsync().Wait();
+            }
+          }
+          
+        }
+        return GetTheatersByUserZip(zipCode).Result;
+      }
+      
+    }
     public async Task<List<Theater>> GetTheatersByUserZip(string zipCode)
     {
       using (var db = new ApplicationDbContext())
@@ -113,6 +146,21 @@ namespace Moogle_Repo
         db.Users.Update(user);
         db.SaveChanges();
         return await db.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
+      }
+    }
+    public bool AddUserZip(User user, string zip)
+    {
+      using (var db = new ApplicationDbContext())
+      {
+        bool result = db.UserZip.Any(x => x.User == user && x.ZipCode == zip);
+        Console.WriteLine(result);
+        if (!result)
+        {
+          User userZipAdder = db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id).Result;
+          db.UserZip.Add(new UserZip { ZipCode = zip, User = userZipAdder });
+          db.SaveChangesAsync().Wait();
+        }
+        return result;
       }
     }
   }

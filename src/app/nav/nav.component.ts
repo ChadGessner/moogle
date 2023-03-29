@@ -11,7 +11,7 @@ import { Chad } from '../dataForTesting/loggedInUser';
 })
 export class NavComponent implements OnInit{
   isHamburger:boolean = false;
-  registeredUser = Chad;
+  registeredUser:any;
   showToast:boolean = false;
   searchRouteWithParams:string = ''
   constructor(
@@ -51,12 +51,12 @@ export class NavComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    // this.api.registerEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.registeredUser = x;
-    //     }
-    //   }
-    // )
+    this.api.registerEvent.subscribe(
+      (x)=>{
+        if(x){
+          this.registeredUser = x;
+        }
+      }
+    )
   }
 }

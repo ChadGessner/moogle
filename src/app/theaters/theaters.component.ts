@@ -26,8 +26,7 @@ export class TheatersComponent implements OnInit {
     isActive:false
   }]
   @Input()theaters:any;
-  theaterName:string = 'Theater Details'
-  @ViewChild('heading',{static:false}) heading:ElementRef<any>|null = null;
+  @Input()theaterName:string = 'Theater Details'
   selectedTheater:any;
   isToggleTheaters:boolean = false;
   showTimes:any
@@ -49,6 +48,17 @@ export class TheatersComponent implements OnInit {
 
       @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
         const target = e.target as HTMLElement;
+        console.log(target.classList)
+        if(target && target.classList.contains('theater-list-item') ){
+          console.log('user host listener stupid');
+          let hTwo = document.getElementById('theater-name');
+          if(hTwo){
+            
+            hTwo.innerText = target.innerText
+            console.log(hTwo.innerText)
+          }  
+          
+        }
         if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
           console.log('anything')
           this.notIsActive.forEach(
@@ -94,23 +104,27 @@ export class TheatersComponent implements OnInit {
   clickTheaterLink(index:number, e:MouseEvent) {
     const target = e.target as HTMLElement;
     this.selectedTheater = this.theaters[index];
-    console.log(this.route.paramMap );
+    console.log(this.route);
     
-    this.router.navigate([this.selectedTheater.id],{
-        relativeTo: this.route
+    this.router.navigate([
+      'theaters',
+      this.api.user.zipCode,
+       this.selectedTheater.id
+      ],{
+        
         
       })
+    const hTwo = document.getElementById('')  
     this.theaterName = target.innerText;
-    console.log(this.heading)
-    this.render.removeAttribute(
-      this.heading,
-      'innerText'
-    )
-    this.render.setAttribute(
-      this.heading,
-      'innerText',
-      this.selectedTheater.name
-    )
+    // this.render.removeAttribute(
+    //   this.heading.nativeElement,
+    //   'innerText'
+    // )
+    // this.render.setAttribute(
+    //   this.heading.nativeElement,
+    //   'innerText',
+    //   this.selectedTheater.name
+    // )
     
     this.toggleTheaters()
     

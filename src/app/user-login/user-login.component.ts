@@ -10,7 +10,7 @@ import { Chad } from '../dataForTesting/loggedInUser';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  @Input()user:any;
+  @Input()registeredUser:any;
   constructor(private api:FlixterApiService){}
   onSubmit(user:NgForm){
     
@@ -24,27 +24,30 @@ export class UserLoginComponent implements OnInit {
       (x)=>{
         if(x){
           this.api.user = x
-          this.user = x
-          console.log(this.user.id)
+          this.registeredUser = x
+          return this.api.registerEvent.emit(this.api.user);
         }
       }
     );
     //this.user = Chad
     user.resetForm();
-    this.user = this.api.user
+    //this.user = this.api.user
+  }
+  getLoggedInUser() {
+    return this.api.getLoggedInUser();
   }
   logout() {
-    this.user = null;
+    this.registeredUser = null;
     this.api.userLogout();
   }
   ngOnInit(): void {
     
     // this.api.registerEvent.subscribe(
     //   (x)=>{
-    //     if(x){
+        
     //       console.log(this.api.user)
-    //       this.user = x
-    //     }
+    //       return this.user = x;
+        
     //   }
     // )
   }

@@ -58,6 +58,19 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
       
     }
   }
+  
+  submitZip(userZip:NgForm) {
+    const newZip = userZip.form.value.userZip;
+    this.api.addUserZip(this.api.user, newZip).subscribe(
+      (x)=>{
+        if(x){
+          console.log(x)
+          this.api.theaters = x;
+        }
+      }
+    )
+  }
+
   onSubmit(updatedUser:NgForm){
     
     console.log(updatedUser.form.controls)

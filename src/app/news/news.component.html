@@ -62,8 +62,9 @@
 
 <section class="list-with-scroll">
 
-	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="150">
+	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="720">
 		<div *ngFor="let story of news.data.newsStories">
+      <div class="test">
       <div class="news">
         <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
       </div>
@@ -77,8 +78,9 @@
 
 
 
-
     </div>
+    </div>
+    
 	</div>
 
 	<button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>

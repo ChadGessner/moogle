@@ -1,4 +1,7 @@
 import { Component, OnChanges, SimpleChanges,OnInit, Input, HostListener, Renderer2 } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+
 import { FlixterApiService } from '../api.service';
 import {Chad} from '../dataForTesting/loggedInUser';
 import { User } from '../models/user.interface';
@@ -9,7 +12,7 @@ import { User } from '../models/user.interface';
 })
 export class AccountDetailsComponent implements OnInit, OnChanges{
   @Input()registeredUser:any
-  
+  @Input()userZips:string[] = [];
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -36,8 +39,16 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
   },{
     id:'btn-8',
     isActive:false
+  },{
+    id:'btn-9',
+    isActive:false
+  },{
+    id:'btn-10',
+    isActive:false
   }]
-  constructor(private api:FlixterApiService, private render:Renderer2){
+  constructor(
+    private api:FlixterApiService,
+     private render:Renderer2){
     
   }
   @HostListener('click', ['$event'])getForm(e:MouseEvent) {
@@ -47,20 +58,57 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
       
     }
   }
-  getFullName() {
-    return this.registeredUser.firstName + " " + this.registeredUser.lastName
+  
+  submitZip(userZip:NgForm) {
+    const newZip = userZip.form.value.userZip;
+    this.api.addUserZip(this.api.user, newZip).subscribe(
+      (x)=>{
+        if(x){
+          console.log(x)
+          this.api.theaters = x;
+        }
+      }
+    )
   }
+  getUserZips(){
+    return this.api.passUserZips();
+  }
+  onSubmit(updatedUser:NgForm){
+    
+    console.log(updatedUser.form.controls)
+    console.log(updatedUser.form.contains('userName'));
+    let upDootUser : {[key:string]: string} = {};
+    const keys = this.registeredUser as object;
+    let i = 0
+    for(let key of Object.keys(keys)){
+      if(updatedUser.form.contains(key)){
+        if(updatedUser.form.value[key]){
+          upDootUser[key] = updatedUser.form.value[key]
+        }
+      }else{
+        if(key !== 'id'){
+          console.log(Object.values(keys));
+        
+          upDootUser[key] = Object.values(keys)[i]
+        }
+        
+      }
+      i++;
+    }
+    console.log(upDootUser)
+     this.api.updateUser(JSON.parse(JSON.stringify(upDootUser)));
+  }
+
   isSubmit() {
     return this.notIsActive.some(x=>x.isActive)
   }
-  logUser(){
-    console.log(this.registeredUser)
-  }
-
+  
   ngOnInit(): void {
-    
-    //console.log(this.registeredUser)
-    
+    this.api.registerEvent.subscribe(
+      (x)=>{
+        return this.registeredUser = x
+      }
+    )
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)

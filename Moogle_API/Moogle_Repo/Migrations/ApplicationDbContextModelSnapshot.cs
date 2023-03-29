@@ -55,7 +55,7 @@ namespace Moogle_Repo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Theaters", (string)null);
+                    b.ToTable("Theaters");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
@@ -78,7 +78,7 @@ namespace Moogle_Repo.Migrations
 
                     b.HasIndex("TheaterId");
 
-                    b.ToTable("TheaterZips", (string)null);
+                    b.ToTable("TheaterZips");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.User", b =>
@@ -131,7 +131,29 @@ namespace Moogle_Repo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Moogle_Models.Db_Models.UserZip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserZip");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
@@ -143,6 +165,17 @@ namespace Moogle_Repo.Migrations
                         .IsRequired();
 
                     b.Navigation("Theater");
+                });
+
+            modelBuilder.Entity("Moogle_Models.Db_Models.UserZip", b =>
+                {
+                    b.HasOne("Moogle_Models.Db_Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

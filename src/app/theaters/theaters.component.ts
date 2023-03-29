@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterDetails } from '../models/theater-details.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-theaters',
   templateUrl: './theaters.component.html',
@@ -25,7 +26,9 @@ export class TheatersComponent implements OnInit {
     isActive:false
   }]
   @Input()theaters:any;
-  currentTheaterName:string = '';
+  @Input()theaterName:string = 'Theater Details';
+  @Input()userZips:string[] = [];
+  isToggleZips:boolean = false;
   selectedTheater:any;
   isToggleTheaters:boolean = false;
   showTimes:any
@@ -34,9 +37,37 @@ export class TheatersComponent implements OnInit {
     private api:FlixterApiService,
      private router:Router,
       private route:ActivatedRoute, 
-       private render:Renderer2 ){}
+       private render:Renderer2,
+         ){}
+      getUserZips(){
+        return this.api.passUserZips();
+      }
+      toggleZips() {
+        this.isToggleZips = !this.isToggleZips;
+        this.userZips = this.getUserZips();
+        
+      }
+
+
       @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
         const target = e.target as HTMLElement;
+        console.log(target.classList)
+        if(target && target.classList.contains('theater-list-item') ){
+          console.log('user host listener stupid');
+          let hTwo = document.getElementById('theater-name');
+          if(hTwo){
+            
+            hTwo.innerText = target.innerText
+            console.log(hTwo.innerText)
+          }  
+          
+        }
+        if(target && target.classList.contains('user-zip-item')){
+          this.api.user.zipCode = target.innerText;
+          this.router.navigate(
+            ['theaters', target.innerText]
+          )
+        }
         if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
           console.log('anything')
           this.notIsActive.forEach(
@@ -79,16 +110,31 @@ export class TheatersComponent implements OnInit {
   toggleTheaters() {
     this.isToggleTheaters = !this.isToggleTheaters;
   }
-  clickTheaterLink(index:number, theaterName:string) {
+  clickTheaterLink(index:number, e:MouseEvent) {
+    const target = e.target as HTMLElement;
     this.selectedTheater = this.theaters[index];
-    console.log(this.route.paramMap );
+    console.log(this.route);
     
-    this.router.navigate([this.selectedTheater.id],{
-        relativeTo: this.route
+    this.router.navigate([
+      'theaters',
+      this.api.user.zipCode,
+       this.selectedTheater.id
+      ],{
+        
         
       })
-    console.log(this.selectedTheater);
-    this.currentTheaterName = theaterName;
+    const hTwo = document.getElementById('')  
+    this.theaterName = target.innerText;
+    // this.render.removeAttribute(
+    //   this.heading.nativeElement,
+    //   'innerText'
+    // )
+    // this.render.setAttribute(
+    //   this.heading.nativeElement,
+    //   'innerText',
+    //   this.selectedTheater.name
+    // )
+    
     this.toggleTheaters()
     
   }

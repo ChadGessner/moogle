@@ -3,8 +3,9 @@
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
         <h2 
-        class="text-warning" >
-        {{currentTheaterName ? currentTheaterName : 'Theater Details'}}
+        id="theater-name"
+        class="text-warning" #heading >
+        Theater Details
     </h2>
         <hr 
         class="text-success" >
@@ -14,8 +15,9 @@
         <li 
         class="nav-item bg-secondary m-1" >
             <a 
-            class="nav-link" 
-            id="card-tab-one">Movie Details</a>
+            class="nav-link"
+            (click)="toggleZips()" 
+            id="card-tab-one">Select Zip Code</a>
         </li>
         <li class="nav-item bg-primary m-1"  >
             <a 
@@ -77,21 +79,35 @@ class="text-center text-success alert alert-dark m-4  " >
         *ngIf="isToggleTheaters" 
         class="position-absolute theater-list bg-dark">
             <li 
+            
             *ngFor="let theater of theaters;index as i" 
-            class="list-group-item float-down col">
+            class="list-group-item float-down col ">
                     <span 
-                    class="text-warning text-center" 
-                    (click)="clickTheaterLink(i, theater.name)"
+                    class="text-warning text-center theater-list-item" 
+                    (click)="clickTheaterLink(i, $event)"
                     >{{theater.name}}</span> 
             </li>
         </ul>
     </th>
-    <div *ngIf="!selectedTheater" 
-    class="container width-100 vh-100 bg-dark">
-        <p >Try Selecting a theater...</p>
-    </div>
+    <th *ngIf="userZips" class="dropdown row" >
+        <ul 
+        *ngIf="isToggleZips" 
+        class="position-absolute theater-list bg-dark">
+            <li 
+            
+            *ngFor="let zip of getUserZips();index as i" 
+            class="list-group-item float-down col ">
+                    <span 
+                    class="text-warning text-center user-zip-item" 
+                    
+                    >{{zip}}</span> 
+                    <hr>
+            </li>
+        </ul>
+    </th>
     <div  class="row" >
         <app-theater-details 
-        (showTimesEvent)="getShowTimes($event)"
-        [currentlySelectedTheater]="selectedTheater" ></app-theater-details>
+        
+        [currentlySelectedTheater]="selectedTheater"
+        (showTimesEvent)="getShowTimes($event)" ></app-theater-details>
     </div>

@@ -13,7 +13,7 @@ export class FlixterApiService {
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   baseUri:string = 'https://localhost:7239/api/';
   user:any;
-  
+  userZips:any;
   theaters:any;
   theaterDetails:any;
   upcomingMovieDetails:any;
@@ -23,16 +23,20 @@ export class FlixterApiService {
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
-  @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
-  @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-  @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
+  // @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
+  // @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
+  // @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
+  // @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
+   @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
 
   constructor(private http:HttpClient) {
 
+   }
+   getPopularMovieList(){
+    let uriEnd = 'PopularMovies/GetPopularMoviesList';
+    return this.http.get<{}>(this.baseUri + uriEnd)
    }
    searchQuery(query:string, zip:string) {
     let uriEnd = `Search/GetSearchQuery/${query}/${zip}`;
@@ -54,6 +58,9 @@ export class FlixterApiService {
         }
         return this.registerEvent.emit(this.user)
       })
+   }
+   getLoggedInUser(){
+    return this.user;
    }
    userLogin(username:string, password:string){
     let uriEnd = `User/GetUser/${username}/${password}`;
@@ -122,27 +129,10 @@ export class FlixterApiService {
     //   }
     // )
    }
-
-   getPopularMovieList() {
-    let uriEnd = `PopularMovies/GetPopularMoviesList`;
-    return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-      // (x)=>{
-      //   if(x){
-          // this.news = x;
-          // this.newsEvent.emit(this.news);
-          // console.log(JSON.stringify(x));
-    //     }
-    //   }
-    // )
-   }
-  //  getTheaters(username:string, password:string) {
-
    getTheaters(zip:string) {
-
     
     let uriEnd = `User/GetTheaters/${zip}`;
-    return this.http.get<TheaterData>(this.baseUri + uriEnd)
+    return this.http.get<any>(this.baseUri + uriEnd)
     // .subscribe(
     //   (x)=>{
     //     if(x){
@@ -154,7 +144,7 @@ export class FlixterApiService {
     // )
    }
    getTheaterDetails(theaterId:string) {
-      return this.http.get<TheaterDetails>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
+      return this.http.get<any>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
       // .subscribe(
       //   (x)=> {
       //     if(x){
@@ -164,5 +154,34 @@ export class FlixterApiService {
       //   }
       // )
    }
+   updateUser(user:User){
+    return this.http.post(this.baseUri + 'User/UpdateUser', {
+      user 
+    })
+    .subscribe(
+      (x)=>{
+        if(x){
+          this.user = x
+        }
+      }
+    )
+   }
+
+   addUserZip(user:User, zip:string){
+    let uriEnd = `User/AddUserZip/${zip}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {
+      user
+    })
+   }
   
+   getUserZips(user:User){
+    let uriEnd = `User/GetUserZips/${user.userName}/${user.password}`;
+    return this.http.get(this.baseUri + uriEnd)
+   }
+   passUserZips(){
+    return this.userZips as string[];
+   }
+   passUser() {
+    return this.user as User;
+   }
 }

@@ -1,4 +1,9 @@
 
+<div *ngIf="!currentlySelectedTheater" 
+    class="container width-100 vh-100 bg-dark">
+        <p >Try Selecting a theater...</p>
+    </div>
+
 <div *ngIf="currentlySelectedTheater">
     <div class="card m-4 p-4 border border-primary">
       <div class="row container-fluid">

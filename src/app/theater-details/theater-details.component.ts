@@ -27,7 +27,7 @@ export class TheaterDetailsComponent implements OnInit {
   @Input()currentTheaterName:string = '';
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
-  @Input()currentlySelectedTheater:TheaterDetails|null = null;
+  @Input()currentlySelectedTheater:any;
   
   constructor(
     private api:FlixterApiService,
@@ -94,7 +94,7 @@ export class TheaterDetailsComponent implements OnInit {
   
   ngOnInit(): void {
     this.router.events.subscribe(e =>{
-      console.log(e)
+      
     })
     this.route.params.subscribe(
       (p)=>{
@@ -102,12 +102,12 @@ export class TheaterDetailsComponent implements OnInit {
           return this.api.getTheaterDetails(p['theaterId']).subscribe(
             (x)=>{
               console.log(x);
-              this.currentlySelectedTheater=x;
+              this.currentlySelectedTheater = x;
               if(x){
                 this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
                 this.maxMovieListLength = this.currentTitlesList.length;
                 this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
-                this.showShowTimes()
+                return this.showShowTimes()
               }
             }
           )

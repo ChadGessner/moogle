@@ -8,6 +8,7 @@ namespace Moogle_Repo
   {
         private static IConfigurationRoot _configuration;
 
+        public DbSet<UserZip> UserZip { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Theater> Theaters { get; set; }
         public DbSet<TheaterZip> TheaterZips { get; set; }

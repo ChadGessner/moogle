@@ -7,7 +7,7 @@ namespace Moogle_Models.API_Models.PopularMovies
 {
     public class PopularMoviesTomatoRating
     {
-        public int tomatometer { get; set; }
+        public int? tomatometer { get; set; }
         public PopularMoviesIconImage iconImage { get; set; }
     }
 }

@@ -183,7 +183,7 @@ namespace Moogle_Flixter_Domain
       {
         if(movies.posterImage.url == null)
         {
-          movies.posterImage.url = "https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://resizing.flixster.com/5zfH_5-Mj-VJMNa4vT6glLV_1D0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NlOGM0OWFiLTk3NmItNDA3YS04NDE5LWQyNzQ1MjMxYzg3ZC5qcGc=";
+          movies.posterImage.url = "https://t4.ftcdn.net/jpg/04/56/20/89/240_F_456208906_h2bZ51348xqpFcYXh4sGUiQDF5zolfRm.jpg";
         }
         if(movies.tomatoRating == null)
         {
@@ -195,6 +195,26 @@ namespace Moogle_Flixter_Domain
           };
           movies.tomatoRating = newTomato;
         }
+
+        if(movies.userRating == null)
+        {
+          PopularMoviesUserRating newUserRating = new(){
+              dtlLikedScore = null,
+              dtlWtsScore = null,
+              iconImage = new PopularMoviesIconImage(){
+                url = "<i class=\"bi bi-x-square\"></i>"
+              }
+          };
+          movies.userRating = newUserRating;
+        }
+
+
+
+
+
+
+
+
       }
       // var test1 = test.Select(x => x.posterImage.url == null ? x.posterImage.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png" : x.posterImage.url).ToList(); 
       return popularMovies;

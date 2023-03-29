@@ -21,20 +21,31 @@ a {
   transition-delay: 0s;
   transition-timing-function: ease;
 }
+
 .news-link{
   font-size: medium;
   display: block;
   color: currentColor;
   text-align: center;
   width:100%;
-} */
+} 
 
 
-.cahgne-list-btn{
+/* .change-list-btn{
   margin: 15px;
   padding: 8px 16px;
-}
+} */
 
+/* .border{
+  border-left: #3f51b5;
+} */
+.news-link{
+  font-size: medium;
+  display: block;
+  color: currentColor;
+  text-align: center;
+  width:100%;
+} 
 .list-with-scroll {
   display: flex;
   margin: 5px;
@@ -57,7 +68,7 @@ a {
   
   /* height: 100px; */
   display: flexbox;
-  border: double;
+  /* border: double; */
   /* object-fit: cover; */
   transition-duration: 0.2s;
   transition-delay: 0s;
@@ -86,6 +97,7 @@ a {
 .scroll-button:hover {
   min-width: 50px;
   font-size: 28px;
+  height: 250px;
   margin: 5px;
   box-shadow: none;
   border: none;

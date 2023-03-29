@@ -58,13 +58,17 @@
   </div>
 </div>
 ###Working### -->
+<div class="card border border-success p-2 mb-2">
 
+  <div>
+    <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
+  </div>
 
 <section class="list-with-scroll">
 
 	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="720">
 		<div *ngFor="let story of news.data.newsStories">
-      <div class="test">
+      <div class="card border border-success p-2 mb-2">
       <div class="news">
         <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
       </div>
@@ -87,7 +91,7 @@
 
 	<button class="scroll-button" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
 </section>
-
+</div>
 
 
 <!-- <section class="list-with-scroll">

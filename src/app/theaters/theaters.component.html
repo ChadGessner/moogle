@@ -93,5 +93,5 @@ class="text-center text-success alert alert-dark m-4  " >
     <div  class="row" >
         <app-theater-details 
         (showTimesEvent)="getShowTimes($event)"
-        [currentlySelectedTheater]="selectedTheater" ></app-theater-details>
+        [currentlySelectedTheater]="selectedTheater" [theaterLatitude]="theaterLatitude" [theaterLongitude]="theaterLongitude"></app-theater-details>
     </div>

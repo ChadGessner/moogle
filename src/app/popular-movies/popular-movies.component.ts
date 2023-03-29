@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
-import { TestNews } from '../dataForTesting/theNews';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-popular-movies',
@@ -19,13 +18,20 @@ export class PopularMoviesComponent implements OnInit{
   
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService){}
+     private phone:ComponentTelephoneService,
+     private router:Router){}
+     
+     passEmsVersionId(id: string) {
+      this.router.navigate([
+        '/movie-detail', id
+      ])
+    }
 
 
      
-     passEmsVersionId(id: string) {
-      this.phone.getEmsVersionId(id);
-    }
+    //  passEmsVersionId(id: string) {
+    //   this.phone.getEmsVersionId(id);
+    // }
       navigate(url:string) {
 
         window.open(url);

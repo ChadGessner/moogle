@@ -28,6 +28,9 @@ export class TheaterDetailsComponent implements OnInit {
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
   @Input()currentlySelectedTheater:TheaterDetails|null = null;
+  @Input()theaterLatitude:number|null = null;
+  @Input()theaterLongitude:number|null = null;
+
   
   constructor(
     private api:FlixterApiService,

@@ -24,6 +24,9 @@ export class TheatersComponent implements OnInit {
     id:'card-tab-three',
     isActive:false
   }]
+  theaterLatitude:number=0;
+  theaterLongitude:number=0;
+
   @Input()theaters:any;
   currentTheaterName:string = '';
   selectedTheater:any;
@@ -88,7 +91,12 @@ export class TheatersComponent implements OnInit {
         
       })
     console.log(this.selectedTheater);
+    // console.log("test test test test test");
     this.currentTheaterName = theaterName;
+    this.theaterLatitude = this.selectedTheater.latitude;
+    this.theaterLongitude = this.selectedTheater.longitude;
+    console.log(this.theaterLatitude);
+    console.log(this.theaterLongitude);
     this.toggleTheaters()
     
   }

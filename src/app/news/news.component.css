@@ -27,11 +27,16 @@ a {
 }
 .news-link{
   font-size: medium;
+  display: block;
   color: currentColor;
   text-align: center;
+  width:100%;
 }
 /* .news-image {
   background-size: cover;
   
 } */
 
+/* .p{
+  text-align: center;
+} */

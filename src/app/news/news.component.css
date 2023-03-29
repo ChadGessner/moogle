@@ -1,3 +1,9 @@
+/*Documentation for scrolling
+https://stackblitz.com/edit/my-angular-scroll-better?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.css
+https://stackoverflow.com/questions/59198238/scroll-buttons-in-angular-application
+*/
+
+
 /* .horizontal {
     flex-wrap: nowrap;
     display: inline-flex;
@@ -60,6 +66,10 @@ a {
   display: flex;
   overflow-x: scroll;
   align-items: center;
+  /* margin-right: 10px;
+  margin-left: 10px; */
+  padding-left:5px;
+  padding-right: 5px;
   
 }
 
@@ -89,7 +99,7 @@ a {
   transition-delay: 0s;
   transition-timing-function: ease;
 }
-.item{
+/* .item{
 
   min-width: 100px;
   height: 100px;
@@ -99,7 +109,7 @@ a {
   background: lightgray;
   margin: 10px;
   border-radius: 5px;
-}
+} */
 
 .scroll-button,
 .scroll-button:hover {

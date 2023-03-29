@@ -87,9 +87,9 @@
     
 	</div>
 
-	<button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+	<button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
 
-	<button class="scroll-button" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
+	<button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
 </section>
 </div>
 

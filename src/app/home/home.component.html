@@ -25,19 +25,22 @@
     </a>
     
   </div> -->
-  <div class="container-fluid text-left m-4 p-4">
+  <div class="m-4 p-4">
+    <div class="container-fluid text-left m-4 p-4">
 
-<app-news></app-news>
-<!-- <div class="container-fluid text-left m-4 p-4"> -->
-  <div  *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
+      <app-news></app-news>
+      <!-- <div class="container-fluid text-left m-4 p-4"> -->
+        <div  *ngIf="isMoviesOrNews; then thenBlock else elseBlock">
+        </div>
+        <ng-template #thenBlock>
+          <button class="btn btn-outline-success" type="button" (click)="getPopularMovies()">Popular Movies <i class="bi bi-film"></i></button>
+          <app-upcoming-movie-details></app-upcoming-movie-details>
+        </ng-template>
+        <ng-template #elseBlock>
+          <button class="btn btn-outline-success" type="button" (click)="getMovies()">Upcoming Movies <i class="bi bi-film"></i></button>
+          <app-popular-movies></app-popular-movies>
+        </ng-template>
+      </div>
   </div>
-  <ng-template #thenBlock>
-    <button class="btn btn-outline-success" type="button" (click)="getPopularMovies()">Popular Movies <i class="bi bi-film"></i></button>
-    <app-upcoming-movie-details></app-upcoming-movie-details>
-  </ng-template>
-  <ng-template #elseBlock>
-    <button class="btn btn-outline-success" type="button" (click)="getMovies()">Upcoming Movies <i class="bi bi-film"></i></button>
-    <app-popular-movies></app-popular-movies>
-  </ng-template>
-</div>
+  
 

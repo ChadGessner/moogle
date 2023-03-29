@@ -25,6 +25,15 @@ export class UserLoginComponent implements OnInit {
         if(x){
           this.api.user = x
           this.registeredUser = x
+          this.api.getUserZips(x as User).subscribe(
+            (z)=>{
+              if(z){
+                console.log(z)
+                return this.api.userZips = z;
+              }
+              return;
+            }
+          )
           return this.api.registerEvent.emit(this.api.user);
         }
       }

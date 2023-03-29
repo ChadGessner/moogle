@@ -13,7 +13,7 @@ export class FlixterApiService {
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   baseUri:string = 'https://localhost:7239/api/';
   user:any;
-  
+  userZips:any;
   theaters:any;
   theaterDetails:any;
   upcomingMovieDetails:any;
@@ -174,4 +174,14 @@ export class FlixterApiService {
     })
    }
   
+   getUserZips(user:User){
+    let uriEnd = `User/GetUserZips/${user.userName}/${user.password}`;
+    return this.http.get(this.baseUri + uriEnd)
+   }
+   passUserZips(){
+    return this.userZips as string[];
+   }
+   passUser() {
+    return this.user as User;
+   }
 }

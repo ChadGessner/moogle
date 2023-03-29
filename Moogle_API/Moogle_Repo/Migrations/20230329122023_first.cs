@@ -71,10 +71,35 @@ namespace Moogle_Repo.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserZip",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserZip", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserZip_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_TheaterZips_TheaterId",
                 table: "TheaterZips",
                 column: "TheaterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserZip_UserId",
+                table: "UserZip",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -84,10 +109,13 @@ namespace Moogle_Repo.Migrations
                 name: "TheaterZips");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "UserZip");
 
             migrationBuilder.DropTable(
                 name: "Theaters");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

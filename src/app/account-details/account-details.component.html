@@ -18,10 +18,16 @@
         </div>
       </div>
     </div>
-
+    
+      
+    
   </form>
 
-
+  <ul>
+    <li *ngFor="let zip of getUserZips()">
+      {{zip}}
+    </li>
+  </ul>
 
 <form (ngSubmit)="onSubmit(updatedUser)" class="row-2 p-4 m-4 bg-dark" #updatedUser="ngForm" >
 <div class="row row-cols-1 row-cols-sm-2 g-3 m-4 p-4 bg-dark">

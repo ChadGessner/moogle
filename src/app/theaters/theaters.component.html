@@ -15,7 +15,8 @@
         <li 
         class="nav-item bg-secondary m-1" >
             <a 
-            class="nav-link" 
+            class="nav-link"
+            (click)="toggleZips()" 
             id="card-tab-one">Select Zip Code</a>
         </li>
         <li class="nav-item bg-primary m-1"  >
@@ -88,7 +89,22 @@ class="text-center text-success alert alert-dark m-4  " >
             </li>
         </ul>
     </th>
-    
+    <th *ngIf="userZips" class="dropdown row" >
+        <ul 
+        *ngIf="isToggleZips" 
+        class="position-absolute theater-list bg-dark">
+            <li 
+            
+            *ngFor="let zip of getUserZips();index as i" 
+            class="list-group-item float-down col ">
+                    <span 
+                    class="text-warning text-center user-zip-item" 
+                    
+                    >{{zip}}</span> 
+                    <hr>
+            </li>
+        </ul>
+    </th>
     <div  class="row" >
         <app-theater-details 
         

@@ -26,7 +26,9 @@ export class TheatersComponent implements OnInit {
     isActive:false
   }]
   @Input()theaters:any;
-  @Input()theaterName:string = 'Theater Details'
+  @Input()theaterName:string = 'Theater Details';
+  @Input()userZips:string[] = [];
+  isToggleZips:boolean = false;
   selectedTheater:any;
   isToggleTheaters:boolean = false;
   showTimes:any
@@ -37,13 +39,14 @@ export class TheatersComponent implements OnInit {
       private route:ActivatedRoute, 
        private render:Renderer2,
          ){}
-      // setTheaterName(e:MouseEvent){
-      //   if(e){
-      //     const target = e.target as HTMLElement;
-      //     return this.currentTheaterName = target.innerText;
-      //   }
-      //   return this.currentTheaterName = 'Theater Details';
-      // }
+      getUserZips(){
+        return this.api.passUserZips();
+      }
+      toggleZips() {
+        this.isToggleZips = !this.isToggleZips;
+        this.userZips = this.getUserZips();
+        
+      }
 
 
       @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
@@ -58,6 +61,12 @@ export class TheatersComponent implements OnInit {
             console.log(hTwo.innerText)
           }  
           
+        }
+        if(target && target.classList.contains('user-zip-item')){
+          this.api.user.zipCode = target.innerText;
+          this.router.navigate(
+            ['theaters', target.innerText]
+          )
         }
         if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
           console.log('anything')

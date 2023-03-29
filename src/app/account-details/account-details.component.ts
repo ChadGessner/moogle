@@ -12,7 +12,7 @@ import { User } from '../models/user.interface';
 })
 export class AccountDetailsComponent implements OnInit, OnChanges{
   @Input()registeredUser:any
-  
+  @Input()userZips:string[] = [];
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -70,7 +70,9 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
       }
     )
   }
-
+  getUserZips(){
+    return this.api.passUserZips();
+  }
   onSubmit(updatedUser:NgForm){
     
     console.log(updatedUser.form.controls)
@@ -97,20 +99,14 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
      this.api.updateUser(JSON.parse(JSON.stringify(upDootUser)));
   }
 
-  getFullName() {
-    return this.registeredUser.firstName + " " + this.registeredUser.lastName
-  }
   isSubmit() {
     return this.notIsActive.some(x=>x.isActive)
   }
-  logUser(){
-    console.log(this.registeredUser)
-  }
-
+  
   ngOnInit(): void {
     this.api.registerEvent.subscribe(
       (x)=>{
-        this.registeredUser = x
+        return this.registeredUser = x
       }
     )
   }

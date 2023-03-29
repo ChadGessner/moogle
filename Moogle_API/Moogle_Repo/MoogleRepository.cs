@@ -163,5 +163,18 @@ namespace Moogle_Repo
         return result;
       }
     }
+
+    public List<string> GetUserZips(User user)
+    {
+      using (var db = new ApplicationDbContext())
+      {
+        List<UserZip> userZips = db.UserZip.Where(z => z.User == user).ToList();
+        if(userZips != null && userZips.Count != 0)
+        {
+          return userZips.Select(z=>z.ZipCode).ToList();
+        }
+        return new List<string>();
+      }
+    }
   }
 }

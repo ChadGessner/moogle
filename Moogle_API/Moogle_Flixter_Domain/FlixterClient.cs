@@ -157,7 +157,6 @@ namespace Moogle_Flixter_Domain
       var apiTask = header.GetJsonAsync<PopularMoviesRoot>();
       apiTask.Wait();
       PopularMoviesRoot result = apiTask.Result;
-      //Console.WriteLine(result.ToString());
       return result;
     }
   }

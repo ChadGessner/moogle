@@ -48,5 +48,9 @@ namespace Moogle_Domain
 
       return _db.UpdateUser(user).Result;
     }
+    public List<string> GetUserZips(User user)
+    {
+      return _db.GetUserZips(user);
+    }
   }
 }

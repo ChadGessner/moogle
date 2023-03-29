@@ -26,17 +26,34 @@ namespace Moogle_API.Controllers
       ModelConverter = new ModelConverter();
       _db = new Interactor();
     }
+
+    [HttpGet("GetUserZips/{userName}/{password}")]
+    public List<string> GetUserZips(string userName, string password)
+    {
+      
+      
+      User userZipGetter = _db.GetUser(userName, password);
+      if(userZipGetter != null)
+      {
+        List<string> zips = _db.GetUserZips(userZipGetter);
+        Console.WriteLine(  zips);
+        return zips;
+      }
+      return null;
+    }
+
     [HttpPost("AddUserZip/{zipCode}")]
     public List<Theater> AddUserZip([FromBody]JsonObject user, string zipCode)
     {
-      AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
+      AngularUser userUser = JsonConvert
+        .DeserializeObject<AngularUser>(user["user"].ToString());
       Console.WriteLine(userUser.zipCode);
       Console.WriteLine(zipCode);
       User userZipAdder = _db.GetUser(userUser.userName, userUser.password);
       if ( userZipAdder != null)
       {
         List<Theater> theaters = _db.AddUserZip(userZipAdder, zipCode);
-        if(theaters == null)
+        if(theaters == null || theaters.Count() == 0)
         {
           theaters = ModelConverter
             .GetTheaterFromAPI(Client

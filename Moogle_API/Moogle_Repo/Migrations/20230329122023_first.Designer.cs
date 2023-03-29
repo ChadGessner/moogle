@@ -11,8 +11,8 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230329120107_userZips")]
-    partial class userZips
+    [Migration("20230329122023_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

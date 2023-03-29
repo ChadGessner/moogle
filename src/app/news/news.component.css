@@ -1,27 +1,30 @@
 .horizontal {
-    /* display: flex; */
     flex-wrap: nowrap;
     display: inline-flex;
-    /* flex-flow: row wrap; */
     overflow-x: scroll;
-    /* width: 100%; */
 } 
 
   a:active { 
     color: red;
 }
 
-.news {
-  max-width: 360px;
-  /* max-width: 500px; */
-
-}
 
 a {
   text-align: center;
-
+  display: inline-flex;
+  align-items:center; 
+  width: 360px;
+  /* height: 72px; */
 }
-
+.news-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition-duration: 0.2s;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+  /* border: 1px solid black; */
+}
 .news-link{
   font-size: medium;
   color: currentColor;
@@ -31,3 +34,4 @@ a {
   background-size: cover;
   
 } */
+

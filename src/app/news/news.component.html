@@ -1,4 +1,3 @@
-
 <!-- <div class="horizontal">
     <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
         
@@ -18,28 +17,115 @@
     {{tab.content}}
   </mat-tab>
 </mat-tab-group> -->
-    <!-- class="card border border-success p-2 mb-2" -->
+<!-- class="card border border-success p-2 mb-2" -->
 
-    <div class="card border border-success p-2 mb-2">
+<!-- <div class="card border border-success p-2 mb-2">
 
-    <div>
-        <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
-   </div>
+  <div>
+    <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
+  </div>
 
 
-    <div class="horizontal">
-        <!-- <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)"> -->
-          <div class="news-loop" *ngFor="let story of news.data.newsStories">
-            <div class="news card border-success p-2 mb-2" >
-              <!-- <a href="http://www.google.com"> -->
-                <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
-              <!-- </a> -->
-          </div>
-            <a class="news-link" href={{story.link}} target="_blank"><p [innerHTML]="story.title | truncatePipe:[40, '...']"></p></a></div>
-        </div>
-        </div>
+  <div class="horizontal">
+    <div class="news-loop" *ngFor="let story of news.data.newsStories">
+      <div class="news card border-success p-2 mb-2">
+        <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+      </div>
+      <a class="news-link" href={{story.link}} target="_blank">
+        <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>
+      </a>
+    </div>
+  </div>
+</div> -->
 
-    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+<!-- ###Working###
+<div class="card border border-success p-2 mb-2">
+
+  <div>
+    <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
+  </div>
+
+
+  <div class="horizontal">
+    <div class="news-loop" *ngFor="let story of news.data.newsStories">
+      <div class="news card border-success p-2 mb-2">
+        <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+      </div>
+      <a class="news-link" href={{story.link}} target="_blank">
+        <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>
+      </a>
+    </div>
+  </div>
+</div>
+###Working### -->
+
+
+<section class="list-with-scroll">
+
+	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="150">
+		<div *ngFor="let story of news.data.newsStories">
+      <div class="news">
+        <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+      </div>
+      <a class="news-link" href={{story.link}} target="_blank">
+        <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>
+      </a>
+
+
+
+
+
+
+
+
+    </div>
+	</div>
+
+	<button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+
+	<button class="scroll-button" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
+</section>
+
+
+
+<!-- <section class="list-with-scroll">
+
+	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="150">
+		<div *ngFor="let story of news.data.newsStories" class="item">
+      <div class="news card border-success p-2 mb-2">
+        <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+      </div>
+
+    
+
+
+    </div>
+	</div> -->
+
+
+	<!-- <button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+
+	<button class="scroll-button" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button> -->
+<!-- </section> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
         <div *ngFor="let story of news.data.newsStories.slice(startNewsIndex,endNewsIndex)">
             <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
                 <div class="col"><img width="auto" src={{story.mainImage.url}}></div>
@@ -51,7 +137,7 @@
     </div> -->
 
 
-    <!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
+<!-- <div class="d-flex align-items-start bg-light mb-3" style="height: 100px;">
         <div class="col">One of three columns</div>
         <div class="col">One of three columns</div>
         <div class="col">One of three columns</div>
@@ -62,7 +148,7 @@
         <div class="col">One of three columns</div>
       </div> -->
 
-    <!-- <div class="row">
+<!-- <div class="row">
         <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
         <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
       

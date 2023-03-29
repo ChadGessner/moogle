@@ -6,9 +6,10 @@
   <div class="m-4 p-4" *ngIf="registeredUser">
     <h4 class="text-success text-center" >Welcome {{registeredUser.userName }}</h4>
   </div>
-  <div class="m-4 p-4" >
-    <hr [ngStyle]="{'color' : 'red'}" >
-  </div>
+  <!-- <div class="m-4 p-4" > -->
+    <!-- This div is adding too much space above the news-component html -->
+    <!-- <hr [ngStyle]="{'color' : 'red'}" > -->
+  <!-- </div> -->
   <router-outlet></router-outlet>
   <div class="row">
     

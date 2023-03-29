@@ -145,7 +145,7 @@ namespace Moogle_Flixter_Domain
       return result;
     }
 
-    public PopularMoviesRoot MakePopularMoviesRequest()
+    public List<PopularMoviesPopularity> MakePopularMoviesRequest()
     {
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "movies/get-popularity";
@@ -157,7 +157,27 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
       PopularMoviesRoot result = apiTask.Result;
       //Console.WriteLine(result.ToString());
-      return result;
+      var popularMovies = result.data.popularity.Where(x => x.name.Length >0).ToList();
+// https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png
+      foreach (var movies in popularMovies)
+      {
+        if(movies.posterImage.url == null)
+        {
+          movies.posterImage.url = "https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://resizing.flixster.com/5zfH_5-Mj-VJMNa4vT6glLV_1D0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NlOGM0OWFiLTk3NmItNDA3YS04NDE5LWQyNzQ1MjMxYzg3ZC5qcGc=";
+        }
+        if(movies.tomatoRating == null)
+        {
+          PopularMoviesTomatoRating newTomato = new(){
+              tomatometer = null,
+              iconImage = new PopularMoviesIconImage(){
+                url = "<i class=\"bi bi-x-square\"></i>"
+              }
+          };
+          movies.tomatoRating = newTomato;
+        }
+      }
+      // var test1 = test.Select(x => x.posterImage.url == null ? x.posterImage.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png" : x.posterImage.url).ToList(); 
+      return popularMovies;
     }
   }
 }

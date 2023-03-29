@@ -29,7 +29,7 @@ namespace Moogle_API.Controllers
     }
 
     [HttpGet("GetPopularMoviesList")]
-    public PopularMoviesRoot GetPopularMoviesList()
+    public List<PopularMoviesPopularity> GetPopularMoviesList()
     {
       return Client.MakePopularMoviesRequest();
     }

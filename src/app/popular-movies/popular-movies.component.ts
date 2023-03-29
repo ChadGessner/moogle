@@ -45,7 +45,16 @@ export class PopularMoviesComponent implements OnInit{
   }
 // addIndex(){this.endPopularMovieIndex++}
   ngOnInit(): void {
-    this.api.getPopularMovieList().subscribe(x => this.popularMovies = x);
+    this.api.getPopularMovieList().subscribe((x) =>{ 
+      this.popularMovies = x;
+      console.log("test");
+      // for(let p of this.popularMovies)
+      // {
+      //   console.log(p.posterImage.url);
+
+      // }
+      // console.log(this.popularMovies.data.posterImage.url);
+    } );
     // this.newsSubscription();
   }
 

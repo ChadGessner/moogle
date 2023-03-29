@@ -10,20 +10,46 @@
       <div class="collapse navbar-collapse show">
       <ul *ngIf="isHamburger" class="navbar-nav me-auto mb-2 mb-xl-0">
         <li class="dropdown-item float-down">
-          <a (click)="toggleHamburger()" class="nav-link" aria-current="page" routerLink="home">Home</a>
+          <a 
+          (click)="toggleHamburger()" 
+          class="nav-link" 
+          aria-current="page" 
+          routerLink="home">Home</a>
         </li>
         <li class="dropdown-item float-down">
-          <a (click)="toggleHamburger()" class="nav-link" routerLink="login">Login</a>
+          <a 
+          (click)="toggleHamburger()" 
+          class="nav-link" 
+          routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
+        </li>
+        <li *ngIf="!registeredUser" class="dropdown-item float-down">
+          <a 
+          (click)="toggleHamburger()" 
+          class="nav-link" 
+          routerLink="register">Register</a>
         </li>
         <li class="dropdown-item float-down">
-          <a (click)="toggleHamburger()" class="nav-link" routerLink="register">Register</a>
+          <a 
+          (click)="toggleHamburger()" 
+          class="nav-link " 
+          (click)="getTheaterListRoute()">Local Theaters</a>
         </li>
-        <li class="dropdown-item float-down">
-          <a (click)="toggleHamburger()" class="nav-link " routerLink="theaters">Local Theaters</a>
-        </li>
-        <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
-          <input class="form-control me-2" type="search" name="search" for="queryParam" placeholder="Search" aria-label="Search" ngModel>
-          <button routerLink="/search" class="btn btn-outline-light" for="search" type="submit">Search</button>
+        <form 
+        class="d-flex" 
+        (ngSubmit)="searchQuery(queryParam)" 
+        #queryParam="ngForm">
+          <input 
+          class="form-control me-2" 
+          type="search" 
+          name="search" 
+          for="queryParam" 
+          placeholder="Search" 
+          aria-label="Search" 
+          ngModel>
+          <button  
+          class="btn btn-outline-light" 
+          for="search" 
+          type="submit">Search</button>
         </form>
       </ul>
     </div>
@@ -34,18 +60,25 @@
           <a class="nav-link " routerLink="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">Login</a>
+          <a class="nav-link" routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!registeredUser" class="nav-item">
           <a class="nav-link" routerLink="register" >Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="theaters" >Local Theaters</a>
+          <a class="nav-link"  (click)="getTheaterListRoute()" >Local Theaters</a>
         </li>
       </ul>
       <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
-        <input class="form-control me-2" type="search" name="search" for="queryParam" placeholder="Search" aria-label="Search" ngModel>
-        <button routerLink="/search" class="btn btn-outline-light" for="search" type="submit">Search</button>
+        <input 
+        class="form-control me-2" 
+        type="search" 
+        name="search" 
+        for="queryParam" 
+        placeholder="Search" 
+        aria-label="Search" 
+        ngModel>
+        <button routerLink={{searchRouteWithParams}} class="btn btn-outline-light" for="search" type="submit">Search</button>
       </form>
     </div>
   </div>

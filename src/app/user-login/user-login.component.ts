@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FlixterApiService } from '../api.service';
 import { User } from '../models/user.interface';
-
+import { Chad } from '../dataForTesting/loggedInUser';
 
 @Component({
   selector: 'app-user-login',
@@ -10,7 +10,7 @@ import { User } from '../models/user.interface';
   styleUrls: ['./user-login.component.css']
 })
 export class UserLoginComponent implements OnInit {
-  user:any;
+  @Input()registeredUser:any;
   constructor(private api:FlixterApiService){}
   onSubmit(user:NgForm){
     
@@ -19,21 +19,45 @@ export class UserLoginComponent implements OnInit {
     .value
     .userName;
     let password = user.form.value.password;
-    this.api.userLogin(userName,password);
+    this.api.userLogin(userName,password)
+    .subscribe(
+      (x)=>{
+        if(x){
+          this.api.user = x
+          this.registeredUser = x
+          this.api.getUserZips(x as User).subscribe(
+            (z)=>{
+              if(z){
+                console.log(z)
+                return this.api.userZips = z;
+              }
+              return;
+            }
+          )
+          return this.api.registerEvent.emit(this.api.user);
+        }
+      }
+    );
+    //this.user = Chad
     user.resetForm();
+    //this.user = this.api.user
+  }
+  getLoggedInUser() {
+    return this.api.getLoggedInUser();
   }
   logout() {
-    this.user = null;
+    this.registeredUser = null;
     this.api.userLogout();
   }
   ngOnInit(): void {
     
-    this.api.registerEvent.subscribe(
-      (x)=>{
-        if(x){
-          this.user = x;
-        }
-      }
-    )
+    // this.api.registerEvent.subscribe(
+    //   (x)=>{
+        
+    //       console.log(this.api.user)
+    //       return this.user = x;
+        
+    //   }
+    // )
   }
 }

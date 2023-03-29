@@ -1,4 +1,35 @@
-<form class="row-2 p-4 m-4 bg-dark" >
+<div *ngIf="registeredUser">
+
+  <form (ngSubmit)="submitZip(userZip)" class="row-2 p-4 m-4 bg-dark" #userZip="ngForm" >
+    <div class="col">
+      <div class="card border border-secondary">
+        
+        <div class="card-body">
+          <h5 class="card-title text-muted">Alternate Zip Code</h5>
+          <p   class="card-text text-success">{{registeredUser.userName}}</p>
+          <input 
+          class="form-control"
+          
+          type="text" 
+          name="userZip" 
+          placeholder={{registeredUser.zipCode}}  
+          ngModel>
+          <button id="btn-1" class="btn btn-outline-light text-warning">Add/Select Zip Code</button>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+  </form>
+
+  <ul>
+    <li *ngFor="let zip of getUserZips()">
+      {{zip}}
+    </li>
+  </ul>
+
+<form (ngSubmit)="onSubmit(updatedUser)" class="row-2 p-4 m-4 bg-dark" #updatedUser="ngForm" >
 <div class="row row-cols-1 row-cols-sm-2 g-3 m-4 p-4 bg-dark">
     <div class="col">
       <div class="card border border-secondary">
@@ -10,7 +41,7 @@
           class="form-control"
           *ngIf="notIsActive[0].isActive" 
           type="text" 
-          name="address" 
+          name="userName" 
           placeholder={{registeredUser.userName}}  
           ngModel>
         </div>
@@ -20,14 +51,14 @@
       <div class="card border border-secondary">
         <button id="btn-2"  class="btn btn-outline-light text-warning" >Edit</button>
         <div class="card-body">
-          <h5 class="card-title text-muted">Full Name</h5>
-          <p *ngIf="!notIsActive[1].isActive"  class="card-text">{{registeredUser.firstName}} {{registeredUser.lastName}}</p>
+          <h5 class="card-title text-muted">First Name</h5>
+          <p *ngIf="!notIsActive[1].isActive"  class="card-text">{{registeredUser.firstName}}</p>
           <input 
           class="form-control"
           *ngIf="notIsActive[1].isActive" 
           type="text" 
-          name="address" 
-          placeholder={{getFullName()}}  
+          name="firstName" 
+          placeholder={{registeredUser.firstName}}  
           ngModel>
         </div>
       </div>
@@ -36,11 +67,27 @@
       <div class="card border border-secondary">
         <button id="btn-3"  class="btn btn-outline-light text-warning" >Edit</button>
         <div class="card-body">
-          <h5 class="card-title text-muted">Address</h5>
-          <p *ngIf="!notIsActive[2].isActive"  class="card-text">{{registeredUser.address}}</p>
+          <h5 class="card-title text-muted">Last Name</h5>
+          <p *ngIf="!notIsActive[2].isActive"  class="card-text">{{registeredUser.lastName}}</p>
           <input 
           class="form-control"
           *ngIf="notIsActive[2].isActive" 
+          type="text" 
+          name="lastName" 
+          placeholder={{registeredUser.lastName}}  
+          ngModel>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card border border-secondary">
+        <button id="btn-4"  class="btn btn-outline-light text-warning" >Edit</button>
+        <div class="card-body">
+          <h5 class="card-title text-muted">Address</h5>
+          <p *ngIf="!notIsActive[3].isActive"  class="card-text">{{registeredUser.address}}</p>
+          <input 
+          class="form-control"
+          *ngIf="notIsActive[3].isActive" 
           type="text" 
           name="address" 
           placeholder={{registeredUser.address}}  
@@ -50,15 +97,15 @@
     </div>
     <div class="col">
       <div class="card border border-secondary">
-        <button id="btn-4"  class="btn btn-outline-light text-warning" >Edit</button>
+        <button id="btn-5"  class="btn btn-outline-light text-warning" >Edit</button>
         <div class="card-body">
           <h5 class="card-title text-muted">City</h5>
-          <p *ngIf="!notIsActive[3].isActive"  class="card-text">{{registeredUser.city}}</p>
+          <p *ngIf="!notIsActive[4].isActive"  class="card-text">{{registeredUser.city}}</p>
           <input 
           class="form-control"
-          *ngIf="notIsActive[3].isActive" 
+          *ngIf="notIsActive[4].isActive" 
           type="text" 
-          name="address" 
+          name="city" 
           placeholder={{registeredUser.state}}  
           ngModel>
         </div>
@@ -66,13 +113,13 @@
     </div>
     <div class="col">
         <div class="card border border-secondary">
-          <button id="btn-5"  class="btn btn-outline-light text-warning">Edit</button>
+          <button id="btn-6"  class="btn btn-outline-light text-warning">Edit</button>
           <div class="card-body">
             <h5 class="card-title text-muted">Password</h5>
-            <p *ngIf="!notIsActive[4].isActive"  class="card-text text-success" type="password">{{registeredUser.password}}</p>
+            <p *ngIf="!notIsActive[5].isActive"  class="card-text text-success" type="password">{{registeredUser.password}}</p>
             <input 
             class="form-control"
-            *ngIf="notIsActive[4].isActive" 
+            *ngIf="notIsActive[5].isActive" 
             type="password" 
             name="password" 
             for="password" 
@@ -83,15 +130,15 @@
       </div>
       <div class="col">
         <div class="card border border-secondary">
-          <button id="btn-6"  class="btn btn-outline-light text-warning" >Edit</button>
+          <button id="btn-7"  class="btn btn-outline-light text-warning" >Edit</button>
           <div class="card-body">
             <h5 class="card-title text-muted">Phone Number</h5>
-            <p *ngIf="!notIsActive[5].isActive"  class="card-text">{{registeredUser.phone}}</p>
+            <p *ngIf="!notIsActive[6].isActive"  class="card-text">{{registeredUser.phone}}</p>
             <input 
             class="form-control"
-            *ngIf="notIsActive[5].isActive" 
+            *ngIf="notIsActive[6].isActive" 
             type="text" 
-            name="address" 
+            name="phone" 
             placeholder={{registeredUser.phone}}  
             ngModel>
           </div>
@@ -99,15 +146,15 @@
       </div>
     <div class="col">
         <div class="card border border-secondary">
-          <button id="btn-7"  class="btn btn-outline-light text-warning">Edit</button>
+          <button id="btn-8"  class="btn btn-outline-light text-warning">Edit</button>
           <div class="card-body">
             <h5 class="card-title text-muted">State</h5>
-            <p *ngIf="!notIsActive[6].isActive"  class="card-text">{{registeredUser.state}}</p>
+            <p *ngIf="!notIsActive[7].isActive"  class="card-text">{{registeredUser.state}}</p>
             <input 
             class="form-control"
-            *ngIf="notIsActive[6].isActive" 
+            *ngIf="notIsActive[7].isActive" 
             type="text" 
-            name="address" 
+            name="state" 
             placeholder={{registeredUser.state}} 
             ngModel>
           </div>
@@ -115,24 +162,40 @@
       </div>
       <div class="col">
         <div class="card border border-secondary">
-          <button id="btn-8"  class="btn btn-outline-light text-warning" >Edit</button>
+          <button id="btn-9"  class="btn btn-outline-light text-warning" >Edit</button>
           <div class="card-body">
             <h5 class="card-title text-muted">Zip Code</h5>
-            <p *ngIf="!notIsActive[7].isActive" class="card-text">{{registeredUser.zipCode}}</p>
+            <p *ngIf="!notIsActive[8].isActive" class="card-text">{{registeredUser.zipCode}}</p>
             <input 
             class="form-control"
-            *ngIf="notIsActive[7].isActive" 
+            *ngIf="notIsActive[8].isActive" 
             type="text" 
-            name="address" 
+            name="zipCode" 
             placeholder={{registeredUser.zipCode}}  
             ngModel>
           </div>
         </div>
       </div>
-      
+      <div class="col">
+        <div class="card border border-secondary">
+          <button id="btn-10"  class="btn btn-outline-light text-warning" >Edit</button>
+          <div class="card-body">
+            <h5 class="card-title text-muted">Email</h5>
+            <p *ngIf="!notIsActive[9].isActive" class="card-text">{{registeredUser.email}}</p>
+            <input 
+            class="form-control"
+            *ngIf="notIsActive[9].isActive" 
+            type="text" 
+            name="email" 
+            placeholder={{registeredUser.email}}  
+            ngModel>
+          </div>
+        </div>
+      </div>
   </div>
   
   <div *ngIf="isSubmit()" class="row-12">
     <button class="btn btn-dark w-100" >Submit</button>
   </div>
 </form>
+</div>

@@ -1,112 +1,84 @@
 
-<!-- <div >
-    <div>
-        <ul class="card bg-dark" *ngIf="theaterDetails">
-            
-            <div 
-            class="row mg-1 " 
-            *ngFor="let movie of theaterDetails.data.theaterShowtimeGroupings.movies" >
-                <hr class="m-4" >
-                <div class="list-group col ">
-                    <label class="text-warning" >Title</label>
-                    <hr>
-                    <h4>{{movie.name}}</h4>
-                    <img 
-                    (click)="passEmsVersionId(movie.emsVersionId)" 
-                    routerLink="/movie-detail" 
-                    height="200px" 
-                    width="200px" 
-                    src="{{movie.posterImage.url}}">
-                </div>
-                
-                <div class="list-group col ">
-                    <label class="text-success">Age Restriction</label>
-                    <hr>
-                    <p> 
-                        <span 
-                        class="text-danger" >{{movie.motionPictureRating.code}}</span> {{movie.motionPictureRating.description}}</p>
-                        <img height="20%" width="100%" src="{{setRatingImagePath(movie.motionPictureRating.code)}}">
-                </div>
-            
-                <div class="list-group col ">
-                    <label class="text-success">Tomato Rating</label>
-                    <hr>
-                    <p>
-                    <img 
-                        class="image-fluid" 
-                        height="20px" 
-                        width="20px" 
-                        src="{{movie.tomatoRating.iconImage.url}}" >Tomato Rating: {{movie.tomatoRating.state}} {{movie.tomatoRating.tomatometer}}</p>
-                </div>
-                
-                <div class="list-group col " *ngFor="let variant of movie.movieVariants">
-                    <label class="text-warning" >Show Times</label>
-                    <hr>
-                    <button 
-                    class="btn btn-success"
-                    (click)="toggleShowTimes()">Show Times</button>
-                    <div *ngIf="isShowTimes" >
-                        <div class="dropdown" *ngFor="let amenity of variant.amenityGroups">
-                            <div class="dropdown-item" *ngFor="let show of amenity.showtimes">
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="text-light" >Date</label>
-                                        <li class="dropdown-item" >{{show.providerDate}}</li> 
-                                    </div>
-                                
-                                
-                                    <div class="col">
-                                        <label class="text-light">Time</label>
-                                        <li class="dropdown-item" >{{show.providerTime}}</li>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ul>
+<div *ngIf="!currentlySelectedTheater" 
+    class="container width-100 vh-100 bg-dark">
+        <p >Try Selecting a theater...</p>
     </div>
-</div> -->
 
-<div class="m-4 p-4">
+<div *ngIf="currentlySelectedTheater">
+    <div class="card m-4 p-4 border border-primary">
+      <div class="row container-fluid">
+        <div class="col-10"></div>
+        <div class="col">
+          <button 
+          (click)="movieDetails(currentTitle.emsVersionId)"
+          class="btn btn-outline-success">Movie Details</button>
+        </div>
+      </div>
+      
+      
+        <div class="card-body">
+          <h4 class="text-success" >
+            <p class="card-text">{{this.currentTitle.name}}</p>
+          </h4>
+          
+          <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
+          <div class="row" >
+
+        </div>
+        
+          
+          <img 
+          class="image-fluid" 
+          height="200px" 
+          width="200px" 
+          src={{currentTitle.posterImage.url}}>
+          
+          
+        </div>
+        <div class="btn-group">
+            <a 
+            (click)="previousTitle()"
+            class="btn btn-outline-info">Previous</a>
+            <a  
+            (click)="nextTitle()"
+            class="btn btn-outline-info">Next</a>
+          </div>
+      </div>
+<!-- <div class="m-4 p-4">
     
 
-    <div id="carouselCrossfade" class="carousel slide carousel-fade pointer-event w-100" data-bs-ride="carousel">
+    <div 
+    id="carouselCrossfade" 
+    class="carousel slide carousel-fade pointer-event w-100" 
+    data-bs-ride="carousel">
     <div class="carousel-inner mx-auto w-100">
       <div class="carousel-item active">
         
-        <div class="card mx-auto w-75" >
-            <h4 class="card-title text-center">
+        <div 
+        class="card mx-auto w-75" >
+            <h4 
+            class="card-title text-center">
                 {{currentTitle.name}}
                 
             </h4>
             <hr >
-            <div class="card-img-top w-25 mx-auto">
-                <img height="200px"  src={{currentTitle.posterImage.url}} class="image-fluid" alt="Slide 1">
+            <div 
+            class="card-img-top w-25 mx-auto">
+                <img 
+                height="200px"  
+                src={{currentTitle.posterImage.url}} 
+                class="image-fluid" alt="Slide 1">
             </div>
             <div class="container-fluid w-25 mx-auto p-5">
                 <img width="200px" class="image-fluid" src={{setRatingImagePath(currentTitle.motionPictureRating.code)}}>
             </div>
             
             <p></p>
-            <div class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
-                <button (click)="toggleDates()" class="btn btn-primary dropdown-toggle">
-                    Show Times
-                </button>
-                <!-- <ul *ngIf="isDate" class="list-group">
-                    <div *ngFor="let variant of currentTitle.movieVariants" class="">
-                        
-                        <div class="list-group bg-primary" *ngFor="let group of variant.amenityGroups">
-                            <li 
-                            class="list-group-item float-down" 
-                            *ngFor="let date of group.showtimes">
-                                <a>Todays Show Times | {{date.providerDate + '/' + date.providerTime | date:'shortTime' }}</a>
-                            </li>
-                        </div>
-                    </div>
-                </ul> -->
-                
+            <div 
+            class="dropdown container-fluid mx-auto d-block w-25 border border-primary ">
+                <button routerLink={{getCurrentMovieId()}} class="btn btn-primary dropdown-toggle">
+                    {{currentTitle.name}} Details
+                 </button>
             </div>
             
             <div class="card-body  ">
@@ -135,4 +107,5 @@
       <span class="visually-hidden">Next</span>
     </a>
   </div>
+</div> -->
 </div>

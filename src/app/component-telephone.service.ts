@@ -6,10 +6,13 @@ import { TheaterData } from './models/theater-data.interface';
   providedIn: 'root'
 })
 export class ComponentTelephoneService {
+
   @Output()newsURLEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()emsVersionIdEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()theaterIdEvent:EventEmitter<string> = new EventEmitter<string>();
   @Output()theaterNameEvent:EventEmitter<string> = new EventEmitter<string>();
+  @Output()popularMovieURLEvent:EventEmitter<string> = new EventEmitter<string>();
+
   theaterList:TheaterData|null = null;
   @Input()theaterName:string|null = null;
   constructor(private api:FlixterApiService) { }
@@ -33,4 +36,8 @@ export class ComponentTelephoneService {
     
     return this.theaterNameEvent.emit(this.theaterName);
   }
+  getPopularMovieURL(url:string){
+    return this.popularMovieURLEvent.emit(url);
+  }
+
 }

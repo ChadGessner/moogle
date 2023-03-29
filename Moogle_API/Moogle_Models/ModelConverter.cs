@@ -44,6 +44,13 @@ namespace Moogle_Models
         }
   }
 }
+//public AngularUser GetAngularUserFromDbUser(User user)
+//{
+//  retunr new AngularUser()
+//  {
+//    this.
+//  }
+//}
 /*      public string Id { get; set; }
         public string Tid { get; set; }
         public string Name { get; set; }

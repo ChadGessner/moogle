@@ -11,7 +11,7 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230318142220_first")]
+    [Migration("20230329122023_first")]
     partial class first
     {
         /// <inheritdoc />
@@ -137,6 +137,28 @@ namespace Moogle_Repo.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Moogle_Models.Db_Models.UserZip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserZip");
+                });
+
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
                 {
                     b.HasOne("Moogle_Models.Db_Models.Theater", "Theater")
@@ -146,6 +168,17 @@ namespace Moogle_Repo.Migrations
                         .IsRequired();
 
                     b.Navigation("Theater");
+                });
+
+            modelBuilder.Entity("Moogle_Models.Db_Models.UserZip", b =>
+                {
+                    b.HasOne("Moogle_Models.Db_Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

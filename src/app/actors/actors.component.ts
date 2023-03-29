@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { FlixterApiService } from '../api.service';
 import {Actor} from '../dataForTesting/actor'
 @Component({
@@ -23,7 +24,10 @@ export class ActorsComponent implements OnInit {
     id:'card-tab-three',
     isActive:false
   }]
-  constructor(private api:FlixterApiService, private render:Renderer2){}
+  constructor(
+    private api:FlixterApiService,
+     private render:Renderer2,
+      private route:ActivatedRoute){}
 
   progressBarStyle() {
     const len = this.actor.data.person.filmography.length;
@@ -66,26 +70,46 @@ export class ActorsComponent implements OnInit {
       this.notIsActive.forEach(
         (x)=>{
           if(x){
-            x.isActive = x.id === target.id;
-            this.render.removeClass(
-              document.getElementById(x.id),
-              'bg-primary'
-            )
-            this.render.removeClass(
-              document.getElementById(x.id),
-              'bg-secondary'
-            )
-             this.render.addClass(
-              document.getElementById(x.id),
-              `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
-            )
+            let el = document.getElementById(x.id) as HTMLElement
+            x.isActive = x.id === target.id ? true : false;
+            console.log(target)
+            
+              if(el?.classList.contains('bg-primary') || el?.classList.contains('bg-secondary')){
+                this.render.removeClass(
+                  el,
+                  'bg-primary'
+                )
+                this.render.removeClass(
+                  el,
+                  'bg-secondary'
+                )
+                this.render.addClass(
+                  e.target,
+                  `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
+                )
+              }
+            }
+            
         }
-      }
+      
       )
     }
   }
   ngOnInit(): void {
-    this.actor = Actor;
+    this.route.params.subscribe(
+      (x:Params)=>{
+        this.api.getActorData(x['id'])
+        .subscribe(
+          (x)=>{
+            if(x){
+              console.log(JSON.stringify(x))
+              this.actor = x
+            }
+          }
+        )
+      }
+    )
+    //this.actor = Actor;
     //console.log(this.actor.data.person.name)
     // this.api.celebrityDetailsEvent.subscribe(
     //   (x)=>{

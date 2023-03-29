@@ -9,6 +9,7 @@ using Moogle_Models.API_Models.News;
 using Moogle_Models.API_Models.UpcomingMovies;
 using Moogle_Models.API_Models.Actor;
 using Moogle_Models.API_Models.Search;
+using Moogle_Models.API_Models.PopularMovies;
 
 namespace Moogle_Flixter_Domain
 {
@@ -29,7 +30,10 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + $"theaters/list?zipCode={zipCode}&radius=50";
 
       var header = apiUri
-        .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+        //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+        .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<TheaterRequest>();
@@ -42,7 +46,10 @@ namespace Moogle_Flixter_Domain
     {
       string apiUri = BaseUri + $"theaters/detail?id={theaterId}";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<TheaterDetailData>();
@@ -56,7 +63,10 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/movies/=c64b44ca-b562-3a45-bb6a-1f5e81f92968"
       string apiUri = BaseUri + $"movies/detail?emsVersionId={emsVersionId}";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<MovieDetailsRoot>();
@@ -71,7 +81,10 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/reviews/list?emsId=cbad9abb-8440-31a6-8caf-61ae45c2263b&limit=20&offset=0&withComments=true"
       string apiUri = BaseUri + $"reviews/list?emsId={emsId}&limit=20&offset=0&withComments=true";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<ReviewsRoot>();
@@ -85,7 +98,9 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + $"movies/get-upcoming?countryId=usa&limit=100";
       var header = apiUri
 
-        .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+        //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+        .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<UpcomingMovies>();
@@ -99,20 +114,29 @@ namespace Moogle_Flixter_Domain
       //"https://flixster.p.rapidapi.com/news/list"
       string apiUri = BaseUri + "news/list";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
+
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
+          //.WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          //.WithHeader("X-RapidAPI-Key", "52b17fc647msh1f76838d7d2fa42p1bdf0cjsnd8db47c39b4b")
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<NewsRoot>();
       apiTask.Wait();
       NewsRoot result = apiTask.Result;
-      //Console.WriteLine(result.ToString());
+      Console.WriteLine(result.ToString());
       return result;
     }
     public ActorRoot GetActorData(string actorId)
     {
       string apiUri = BaseUri + $"actors/detail?id={actorId}";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          // .WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<ActorRoot>();
@@ -125,7 +149,10 @@ namespace Moogle_Flixter_Domain
     {
       string apiUri = BaseUri + $"search?query={query}&zipCode={userZip}&radius=50";
       var header = apiUri
-          .WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
+
+          //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<SearchRoot>();
@@ -133,6 +160,44 @@ namespace Moogle_Flixter_Domain
 
       SearchRoot result = apiTask.Result;
       return result;
+    }
+
+    public List<PopularMoviesPopularity> MakePopularMoviesRequest()
+    {
+      //"https://flixster.p.rapidapi.com/news/list"
+      string apiUri = BaseUri + "movies/get-popularity";
+      var header = apiUri
+
+          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+
+          .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
+
+      var apiTask = header.GetJsonAsync<PopularMoviesRoot>();
+      apiTask.Wait();
+      PopularMoviesRoot result = apiTask.Result;
+
+      //Console.WriteLine(result.ToString());
+      var popularMovies = result.data.popularity.Where(x => x.name.Length >0).ToList();
+// https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png
+      foreach (var movies in popularMovies)
+      {
+        if(movies.posterImage.url == null)
+        {
+          movies.posterImage.url = "https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://resizing.flixster.com/5zfH_5-Mj-VJMNa4vT6glLV_1D0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NlOGM0OWFiLTk3NmItNDA3YS04NDE5LWQyNzQ1MjMxYzg3ZC5qcGc=";
+        }
+        if(movies.tomatoRating == null)
+        {
+          PopularMoviesTomatoRating newTomato = new(){
+              tomatometer = null,
+              iconImage = new PopularMoviesIconImage(){
+                url = "<i class=\"bi bi-x-square\"></i>"
+              }
+          };
+          movies.tomatoRating = newTomato;
+        }
+      }
+      // var test1 = test.Select(x => x.posterImage.url == null ? x.posterImage.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png" : x.posterImage.url).ToList(); 
+      return popularMovies;
     }
   }
 }

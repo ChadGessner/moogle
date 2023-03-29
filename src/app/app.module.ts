@@ -21,6 +21,13 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { ActorsComponent } from './actors/actors.component';
 import { SearchComponent } from './search/search.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { PopularMoviesComponent } from './popular-movies/popular-movies.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
+import { TruncatePipe } from './shared/truncate-pipe';
+import { ScrollableDirective } from './scrollable.directive';
+
+
 
 
 @NgModule({
@@ -38,7 +45,10 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     MovieDetailComponent,
     ActorsComponent,
     SearchComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    PopularMoviesComponent,
+    TruncatePipe,
+    ScrollableDirective
 
   ],
   imports: [
@@ -49,7 +59,9 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
-    VgBufferingModule
+    VgBufferingModule,
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

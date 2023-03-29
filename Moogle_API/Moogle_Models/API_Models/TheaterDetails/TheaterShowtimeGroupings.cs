@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,14 +10,14 @@ namespace Moogle_Models.API_Models.TheaterDetails
     public class TheaterShowtimeGroupings
     {
         [JsonPropertyName("theaterId")]
-        public string theaterId { get; set; }
+        public string? theaterId { get; set; }
         [JsonPropertyName("displayDates")]
-        public List<string> displayDates { get; set; }
+        public List<string>? displayDates { get; set; }
         [JsonPropertyName("displayDate")]
-        public string displayDate { get; set; }
+        public string? displayDate { get; set; }
         [JsonPropertyName("mppBaseUrl")]
-        public string mppBaseUrl { get; set; }
+        public string? mppBaseUrl { get; set; }
         [JsonPropertyName("movies")]
-        public List<TheaterDetailsMovie> movies { get; set; }
+        public List<TheaterDetailsMovie>? movies { get; set; }
     }
 }

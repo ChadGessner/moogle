@@ -5,9 +5,11 @@ using Moogle_Flixter_Domain;
 using Moogle_Models;
 using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.API_Models.Theater.TheaterRequest;
-
+using Newtonsoft.Json;
 using Moogle_Models.API_Models.TheaterDetails;
 using Moogle_Models.Db_Models;
+using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 
 namespace Moogle_API.Controllers
 {
@@ -23,6 +25,44 @@ namespace Moogle_API.Controllers
       Client = new FlixterClient();
       ModelConverter = new ModelConverter();
       _db = new Interactor();
+    }
+
+    [HttpGet("GetUserZips/{userName}/{password}")]
+    public List<string> GetUserZips(string userName, string password)
+    {
+      
+      
+      User userZipGetter = _db.GetUser(userName, password);
+      if(userZipGetter != null)
+      {
+        List<string> zips = _db.GetUserZips(userZipGetter);
+        Console.WriteLine(  zips);
+        return zips;
+      }
+      return null;
+    }
+
+    [HttpPost("AddUserZip/{zipCode}")]
+    public List<Theater> AddUserZip([FromBody]JsonObject user, string zipCode)
+    {
+      AngularUser userUser = JsonConvert
+        .DeserializeObject<AngularUser>(user["user"].ToString());
+      Console.WriteLine(userUser.zipCode);
+      Console.WriteLine(zipCode);
+      User userZipAdder = _db.GetUser(userUser.userName, userUser.password);
+      if ( userZipAdder != null)
+      {
+        List<Theater> theaters = _db.AddUserZip(userZipAdder, zipCode);
+        if(theaters == null || theaters.Count() == 0)
+        {
+          theaters = ModelConverter
+            .GetTheaterFromAPI(Client
+            .MakeTheaterRequest(zipCode).Result.data)
+            .ToList();
+          return _db.AddTheatersByZip(zipCode, theaters);
+        }
+      }
+      return _db.GetTheatersByUserZip(zipCode);
     }
     [HttpGet("GetUser/{username}/{password}")]
     public User GetUser(string username, string password)
@@ -40,18 +80,35 @@ namespace Moogle_API.Controllers
       User newUser = ModelConverter.GetUserFromAngular(user);
       return _db.RegisterUser(newUser, theaters);
     }
-    [HttpGet("GetTheaters/{username}/{password}")]
-    public List<Theater> GetUserTheaters(string username, string password)
+    [HttpPatch("UpdateUser")]
+    public User UpdateUser(User user)
     {
-      User user = _db.GetUser(username, password);
-      return _db.GetTheatersByUserZip(user);
+       //User updateUser = ModelConverter.GetUserFromAngular(user);
+      return _db.UpdateUser(user);
+    }
+
+    [HttpGet("GetTheaters/{zipCode}")]
+    public List<Theater> GetUserTheaters(string zipCode)
+    {
+      //User user = _db.GetUser(username, password);
+      return _db.GetTheatersByUserZip(zipCode);
     }
     [HttpGet("GetTheaterDetails/{theaterId}")]
     public TheaterDetailData GetTheaterDetails(string theaterId)
     {
       return Client.MakeTheaterDetailRequest(theaterId);
     }
-
+    //[HttpPost("UpdateUser")]
+    //public User UpdateUser([FromBody] JsonObject user)
+    //{
+    //  //Console.WriteLine(user.ToString());
+    //  //Console.WriteLine(  user);
+    //  //Console.WriteLine(user.ToString());
+    //  Console.WriteLine(user["city"]);
+    //  AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
+    //  Console.WriteLine(  userUser.city);
+    //  return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
+    //}
 
   }
 }

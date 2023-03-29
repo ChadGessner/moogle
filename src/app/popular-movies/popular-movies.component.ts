@@ -19,12 +19,15 @@ export class PopularMoviesComponent implements OnInit{
   
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService){}
+     private phone:ComponentTelephoneService,
+     private router:Router){}
 
 
      
      passEmsVersionId(id: string) {
-      this.phone.getEmsVersionId(id);
+      this.router.navigate([
+        '/movie-detail', id
+      ])
     }
       navigate(url:string) {
 

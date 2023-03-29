@@ -18,15 +18,15 @@ export interface ExampleTab {
 
 export class NewsComponent implements OnInit{
 
-  items = ["Item 1"];
+  // items = ["Item 1"];
 
-  add() {
-    this.items.push("Item " + (this.items.length + 1));
-  }
+  // add() {
+  //   this.items.push("Item " + (this.items.length + 1));
+  // }
 
-  remove() {
-    this.items.pop();
-  }
+  // remove() {
+  //   this.items.pop();
+  // }
 
 
 

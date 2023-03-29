@@ -64,33 +64,35 @@
     <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>
   </div>
 
-<section class="list-with-scroll">
+  <section class="list-with-scroll">
 
-	<div class="list" appScrollable #list="appScrollable" [scrollUnit]="720">
-		<div *ngFor="let story of news.data.newsStories">
-      <div class="card border border-success p-2 mb-2">
-      <div class="news">
-        <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+    <div class="list" appScrollable #list="appScrollable" [scrollUnit]="1440">
+      <div *ngFor="let story of news.data.newsStories">
+        <div class="card border border-success p-2 mb-2">
+          <div class="news">
+            <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+          </div>
+          <a class="news-link" href={{story.link}} target="_blank">
+            <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>
+          </a>
+
+
+
+
+
+
+
+        </div>
       </div>
-      <a class="news-link" href={{story.link}} target="_blank">
-        <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>
-      </a>
-
-
-
-
-
-
 
     </div>
-    </div>
-    
-	</div>
 
-	<button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+    <button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart"
+      (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
 
-	<button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button>
-</section>
+    <button class="scroll-button btn btn-outline-success" *ngIf="list.isOverflow" [class.disable]="!list.canScrollEnd"
+      (click)="list.scroll(1)">&#8680;</button>
+  </section>
 </div>
 
 
@@ -109,7 +111,7 @@
 	</div> -->
 
 
-	<!-- <button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+<!-- <button class="scroll-button" *ngIf="list.isOverflow" [class.disable]="!list.canScrollStart" (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
 
 	<button class="scroll-button" *ngIf="list.isOverflow"  [class.disable]="!list.canScrollEnd" (click)="list.scroll(1)">&#8680;</button> -->
 <!-- </section> -->

@@ -9,7 +9,7 @@ import { UpcomingMovieDetails } from '../models/upcoming-movie-details.interface
   styleUrls: ['./upcoming-movie-details.component.css']
 })
 export class UpcomingMovieDetailsComponent implements OnInit {
-  @Input() upcomingMovieDetails: any;
+  upcomingMovieDetails: any;
   startMovieIndex: number = 0;
   endMovieIndex: number = 5;
   startOfMovies: boolean = true;
@@ -25,17 +25,17 @@ export class UpcomingMovieDetailsComponent implements OnInit {
     ])
   }
   ngOnInit(): void {
-    this.upcomingMovieDetails = UpcomingMovieDetailsTest;
+    //this.upcomingMovieDetails = UpcomingMovieDetailsTest;
     //console.log(this.upcomingMovieDetails)
     // this.api.getUpcomingMovieDetails();
-    // this.api.upcomingMovieDetailsEvent.subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.upcomingMovieDetails = x;
-    //       console.log(JSON.stringify(this.upcomingMovieDetails))
-    //     }
-    //   }
-    // )
+     this.api.getUpcomingMovieDetails().subscribe(
+       (x)=>{
+         if(x){
+           this.upcomingMovieDetails = x;
+           JSON.stringify(this.upcomingMovieDetails)
+         }
+       }
+     )
   }
   getNextSixMovies(startIndex: number, endIndex: number): void {
     this.startMovieIndex = endIndex++

@@ -65,10 +65,10 @@ export class PopularMoviesComponent implements OnInit{
     this.startPopularMovieIndex = endIndex++
     this.endPopularMovieIndex = endIndex + 4
     this.startOfPopularMovies = false
-    if (this.endPopularMovieIndex >= this.popularMovies.data.popular.length)
+    if (this.endPopularMovieIndex >= this.popularMovies.length)
     {
-      this.startPopularMovieIndex = this.popularMovies.data.popular.length - 5
-      this.endPopularMovieIndex = this.popularMovies.data.popular.length
+      this.startPopularMovieIndex = this.popularMovies.length - 5
+      this.endPopularMovieIndex = this.popularMovies.length
       this.endOfPopularMovies = true;
     }
   }

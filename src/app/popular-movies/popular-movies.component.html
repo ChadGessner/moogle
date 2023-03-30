@@ -22,26 +22,42 @@
                     <!-- <td>{{detail.posterImage.url}}</td> -->
                     <!-- <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p> -->
                     <ng-template class="item"
-                        *ngIf="detail.tomatoRating.tomatometer == null; then thenBlock1 else elseBlock1">
+                        *ngIf="detail.tomatoRating.tomatometer == null; then tomatoRatingThenBlock else tomatoRatingElseBlock">
                     </ng-template>
-                    <ng-template #thenBlock1>
+                    <ng-template #tomatoRatingThenBlock>
                         <td>
                             <p [innerHTML]="detail.tomatoRating.iconImage.url"></p>
                         </td>
                     </ng-template>
-                    <ng-template #elseBlock1>
+                    <ng-template #tomatoRatingElseBlock>
                         <td>
                             <p>{{detail.tomatoRating.tomatometer}} <img width="40px"
                                     src={{detail.tomatoRating.iconImage.url}}></p>
                         </td>
-
                     </ng-template>
 
-                    <!-- <td><p>{{detail.tomatoRating.tomatometer}} <img width="10%" src={{detail.tomatoRating.iconImage.url}}></p></td> -->
+                    <ng-template class="item"
+                    *ngIf="detail.userRating.dtlLikedScore == null; then userRatingthenBlock else userRatingelseBlock">
+                </ng-template>
+                <ng-template #userRatingthenBlock>
+                    <td>
+                        <p [innerHTML]="detail.userRating.iconImage.url"></p>
+                    </td>
+                </ng-template>
+                <ng-template #userRatingelseBlock>
+                    <td>
+                        <p>{{detail.userRating.dtlLikedScore}}<img width="40px"
+                                src={{detail.userRating.iconImage.url}}></p>
+                    </td>
+                </ng-template>
+
+
+
+                    <!-- <td><p>{{detail.tomatoRating.tomatometer}} <img width="10%" src={{detail.tomatoRating.iconImage.url}}></p></td>
                     <td>
                         <p>{{detail.userRating.dtlLikedScore}} <img width="40px"
                                 src={{detail.userRating.iconImage.url}}></p>
-                    </td>
+                    </td> -->
                     <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                             routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
                 </tr>

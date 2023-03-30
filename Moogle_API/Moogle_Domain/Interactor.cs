@@ -52,5 +52,9 @@ namespace Moogle_Domain
     {
       return _db.GetUserZips(user);
     }
+    public FavoriteMovie AddFavoriteMovie(FavoriteMovie favoriteMovie)
+    {
+      return _db.AddFavoriteMovieRepo(favoriteMovie).Result;
+    }
   }
 }

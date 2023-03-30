@@ -176,5 +176,57 @@ namespace Moogle_Repo
         return new List<string>();
       }
     }
+        public async Task<User> AddFavoriteMovieRepo(User user, List<Theater> theaters)
+    {
+      using (var db = new ApplicationDbContext())
+      {
+        if (db.Users.Any(u => u.UserName == user.UserName))
+        {
+          return null;
+        }
+        TheaterZip zip = await db.TheaterZips.FirstOrDefaultAsync(x => x.ZipCode == user.ZipCode);
+        if (zip != null)
+        {
+          db.Users.Add(user);
+          db.SaveChangesAsync().Wait();
+          return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
+        }
+
+        db.Users.Add(user);
+        db.SaveChangesAsync().Wait();
+        user = GetUser(user.UserName, user.Password);
+        foreach (var theater in theaters)
+        {
+          if (theater != null)
+          {
+
+            Theater theaterToAdd = await db.Theaters.FirstOrDefaultAsync(x => x.Id == theater.Id);
+            zip = new TheaterZip()
+            {
+              ZipCode = user.ZipCode,
+              Theater = theaterToAdd
+            };
+            if (theaterToAdd != null)
+            {
+              db.TheaterZips.Add(zip);
+              db.SaveChangesAsync().Wait();
+
+              continue;
+            }
+            else
+            {
+              theaterToAdd = theater;
+              db.Theaters.Add(theater);
+              db.SaveChangesAsync().Wait();
+              zip.Theater = theaterToAdd;
+              db.TheaterZips.Add(zip);
+              db.SaveChangesAsync().Wait();
+            }
+          }
+        }
+        db.SaveChanges();
+        return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
+      }
+    }
   }
 }

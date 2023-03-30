@@ -41,6 +41,12 @@ export class MovieDetailComponent implements OnInit {
        private route:ActivatedRoute ){
 
   }
+  sendToFavorites(){
+    
+  }
+
+
+
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     const len = this.movieDetail.data.movie.cast.length;

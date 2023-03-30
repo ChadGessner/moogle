@@ -23,7 +23,6 @@ namespace Moogle_Flixter_Domain
     public FlixterClient()
     {
       Client = new HttpClient();
-
     }
     public async Task<TheaterRequest> MakeTheaterRequest(string zipCode)
     {

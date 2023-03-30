@@ -105,9 +105,9 @@ export class FlixterApiService {
     //   }
     // )
    }
-  //  getUpcomingMovieDetails() {
-  //   let uriEnd = `Movie/GetUpcomingMovieDetails`
-  //   this.http.get<{}>(this.baseUri + uriEnd).subscribe(
+    getUpcomingMovieDetails() {
+     let uriEnd = `Movie/GetUpcomingMovieDetails`
+     return this.http.get<{}>(this.baseUri + uriEnd)
   //     (x)=>{
   //       if(x){
   //         this.upcomingMovieDetails = x;
@@ -115,7 +115,7 @@ export class FlixterApiService {
   //       }
   //     }
   //   )
-  //  }
+    }
    getNewsStoryList() {
     let uriEnd = `News/GetNewsStoryList`;
     return this.http.get<{}>(this.baseUri + uriEnd)

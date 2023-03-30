@@ -195,7 +195,6 @@ namespace Moogle_Flixter_Domain
           };
           movies.tomatoRating = newTomato;
         }
-
         if(movies.userRating == null || movies.userRating.dtlLikedScore == null)
         {
           PopularMoviesUserRating newUserRating = new(){
@@ -207,14 +206,6 @@ namespace Moogle_Flixter_Domain
           };
           movies.userRating = newUserRating;
         }
-
-
-
-
-
-
-
-
       }
       // var test1 = test.Select(x => x.posterImage.url == null ? x.posterImage.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png" : x.posterImage.url).ToList(); 
       return popularMovies;

@@ -18,3 +18,17 @@
 .carousel-image {
     max-width:10rem;
 }
+.star {
+    visibility:hidden;
+    font-size:30px;
+    cursor:pointer;
+  }
+  
+  .star:before {
+    content: "\2605";
+    visibility:visible;
+   }
+  
+   .star:checked:before {
+    content: "\2606";
+   }

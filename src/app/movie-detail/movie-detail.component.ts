@@ -17,6 +17,7 @@ export class MovieDetailComponent implements OnInit {
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   castIndex:number = 0;
+  favorites: any;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -43,8 +44,8 @@ export class MovieDetailComponent implements OnInit {
        private route:ActivatedRoute ){
 
   }
-  sendToFavorites(){
-    
+  removeFavorite(){
+    console.log("remove Favorite");
   }
 
 

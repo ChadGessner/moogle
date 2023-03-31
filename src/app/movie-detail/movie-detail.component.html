@@ -12,7 +12,7 @@
 
 
 <div *ngIf="movieDetail">
-
+    <!-- <h1>{{currentUserRxjs.id}}</h1> -->
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
         <!-- <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button> -->
@@ -68,12 +68,12 @@
         
     </div> -->
     <div class="row" *ngIf="movieDetail" >
-
+        
         <ul class="p-2" *ngIf="testBool == true" >
             <button class="btn btn-success" type="button" (click)="addFavorite()" ><i class="bi bi-star-fill"></i> Favorite </button>
         </ul>
         <ul class="p-2" *ngIf="testBool == false" >
-            <button class="btn btn-outline-success" type="button" (click)="removeFavorite()" ><i class="bi bi-star"></i> Favorite</button>
+            <button class="btn btn-success" type="button" (click)="removeFavorite()" ><i class="bi bi-star"></i> Favorite</button>
         </ul>
 
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>

@@ -24,6 +24,7 @@ export class UserLoginComponent implements OnInit {
       (x)=>{
         if(x){
           this.api.user = x
+          this.setUserRxjs(x);
           this.registeredUser = x
           this.api.getUserZips(x as User).subscribe(
             (z)=>{
@@ -48,6 +49,9 @@ export class UserLoginComponent implements OnInit {
   logout() {
     this.registeredUser = null;
     this.api.userLogout();
+  }
+  setUserRxjs(userRxjs: any) {
+    this.api.setUserRxjs(userRxjs);
   }
   ngOnInit(): void {
     

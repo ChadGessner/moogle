@@ -3,9 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
-import { Observable, from } from 'rxjs';
+import { Observable, from, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Chad } from './dataForTesting/loggedInUser';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,9 @@ export class FlixterApiService {
   movieDetailsById:any;
   news:any;
   popularMovies:any;
+
+  private userRxjs = new BehaviorSubject<any>({});
+  currentUserRxjs = this.userRxjs.asObservable();
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -34,6 +38,11 @@ export class FlixterApiService {
   constructor(private http:HttpClient) {
 
    }
+
+   setUserRxjs(userRxjs: any) {
+    this.userRxjs.next(userRxjs);
+  }
+
    getPopularMovieList(){
     let uriEnd = 'PopularMovies/GetPopularMoviesList';
     return this.http.get<{}>(this.baseUri + uriEnd)

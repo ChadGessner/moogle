@@ -40,32 +40,48 @@ namespace Moogle_API.Controllers
     // {
     //   return Client.MakeMovieDetailsRequest(emsVersionId);
     // }
-    [HttpGet("GetFavoriteMovieCast/{favoriteMovieId}")]
-    public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
+    [HttpPost("AddFavoriteMovie/{userId}")]
+    public FavoriteMovieModelDto AddFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
     {
-      return _db.GetFavoriteMovieCast(favoriteMovieId);
+      AngularFavoriteMovieRoot deserializedMovie = JsonConvert
+        .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
+
+      FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
+
+      return _db.AddFavoriteMovie(favoriteMovieConverted, userId);
     }
-    [HttpGet("GetFavoriteMovieImages/{favoriteMovieId}")]
-    public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+
+    [HttpPost("RemoveFavoriteMovie/{userId}")]
+    public FavoriteMovieModelDto RemoveFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
     {
-      return _db.GetFavoriteMovieImages(favoriteMovieId);
+      AngularFavoriteMovieRoot deserializedMovie = JsonConvert
+        .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
+
+      FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
+
+      return _db.RemoveFavoriteMovie(favoriteMovieConverted, userId);
     }
+
     [HttpGet("GetAllFavoriteMovies/{userId}")]
     public List<FavoriteMovieModelDto> GetFavoriteMovies(int userId)
     {
       return _db.GetAllFavoriteMovies(userId);
     }
 
-    [HttpPost("AddFavoriteMovie/{userId}")]
-    public FavoriteMovieModelDto AddFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
+    [HttpGet("GetFavoriteMovieCast/{favoriteMovieId}")]
+    public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
     {
-        AngularFavoriteMovieRoot deserializedMovie = JsonConvert
-        .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
-
-       FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
-
-      return _db.AddFavoriteMovie(favoriteMovieConverted, userId);
+      return _db.GetFavoriteMovieCast(favoriteMovieId);
     }
+
+    [HttpGet("GetFavoriteMovieImages/{favoriteMovieId}")]
+    public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+    {
+      return _db.GetFavoriteMovieImages(favoriteMovieId);
+    }
+
+
+
   }
 }
 

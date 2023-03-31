@@ -11,6 +11,8 @@ import { MovieDetail } from '../dataForTesting/movieDetail';
 })
 export class MovieDetailComponent implements OnInit {
   @Input()movieDetail:any;
+  // @Input()movieDetail1:any;
+
   @Input()emsVersionId:string = ''
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;

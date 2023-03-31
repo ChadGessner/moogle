@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener, ElementRef, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './theaters.component.html',
   styleUrls: ['./theaters.component.css']
 })
-export class TheatersComponent implements OnInit {
+export class TheatersComponent implements OnInit, AfterViewInit {
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -26,10 +26,11 @@ export class TheatersComponent implements OnInit {
     isActive:false
   }]
   @Input()theaters:any;
-  @Input()theaterName:string = 'Theater Details';
+  
   @Input()userZips:string[] = [];
   isToggleZips:boolean = false;
-  selectedTheater:any;
+  @Input()selectedTheater:any;
+  theaterName:string = 'Theater Details'
   isToggleTheaters:boolean = false;
   showTimes:any
   isShowTimes:boolean = false;
@@ -47,18 +48,20 @@ export class TheatersComponent implements OnInit {
         this.userZips = this.getUserZips();
         
       }
-
+      // getTheaterNameGodDamnit(e:MouseEvent){
+      //   const target = e.target as HTMLElement;
+      //   return this.theaterName = target.innerText;
+      // }
 
       @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
         const target = e.target as HTMLElement;
         console.log(target.classList)
         if(target && target.classList.contains('theater-list-item') ){
           console.log('user host listener stupid');
-          let hTwo = document.getElementById('theater-name');
+          let hTwo = document.getElementById('heading');
           if(hTwo){
             
-            hTwo.innerText = target.innerText
-            console.log(hTwo.innerText)
+            //this.getTheaterNameGodDamnit(e)
           }  
           
         }
@@ -110,30 +113,29 @@ export class TheatersComponent implements OnInit {
   toggleTheaters() {
     this.isToggleTheaters = !this.isToggleTheaters;
   }
-  clickTheaterLink(index:number, e:MouseEvent) {
-    const target = e.target as HTMLElement;
+  clickTheaterLink(index:number) {
+   // const target = e.target as HTMLElement;
     this.selectedTheater = this.theaters[index];
-    console.log(this.route);
+    console.log(index);
+    console.log(this.selectedTheater);
+    console.log(this.selectedTheater.name);
+    this.theaterName = this.selectedTheater.name;
+    console.log(this.theaterName);
+    
+    
+    
     
     this.router.navigate([
       'theaters',
       this.api.user.zipCode,
-       this.selectedTheater.id
+       this.selectedTheater.id,
+        this.theaterName
       ],{
         
         
       })
-    const hTwo = document.getElementById('')  
-    this.theaterName = target.innerText;
-    // this.render.removeAttribute(
-    //   this.heading.nativeElement,
-    //   'innerText'
-    // )
-    // this.render.setAttribute(
-    //   this.heading.nativeElement,
-    //   'innerText',
-    //   this.selectedTheater.name
-    // )
+
+
     
     this.toggleTheaters()
     
@@ -146,7 +148,13 @@ export class TheatersComponent implements OnInit {
             this.theaters = x
           }
         )
-      }
+        if(p["theaterName"]){
+          this.theaterName = p["theaterName"]
+        }
+       }
     )
+  }
+  ngAfterViewInit(): void {
+    
   }
 }

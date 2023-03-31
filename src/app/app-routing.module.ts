@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { TheaterDetailsComponent } from './theater-details/theater-details.component';
 import { NewsStoryComponent } from './news-story/news-story.component';
 import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
-import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { MovieDetailComponent } from './movie-details/movie-detail/movie-detail.component';
 import { SearchComponent } from './search/search.component';
 import { ActorsComponent } from './actors/actors.component';
 
@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'theaters/:zip',
      component: TheatersComponent
   },{
-    path: 'theaters/:zip/:theaterId',
+    path: 'theaters/:zip/:theaterId/:theaterName',
     component: TheatersComponent
   },{
     path: 'actor/:id',

@@ -3,8 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
-import { Observable, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 import { Chad } from './dataForTesting/loggedInUser';
 @Injectable({
   providedIn: 'root'

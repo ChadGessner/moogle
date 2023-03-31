@@ -66,6 +66,13 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
         if(x){
           console.log(x)
           this.api.theaters = x;
+          this.api.user.zipCode = newZip;
+          this.api.getUserZips(this.api.user).subscribe(
+            (x)=>{
+              this.api.userZips = x as string[]
+              this.userZips = this.api.passUserZips()
+            }
+          )
         }
       }
     )
@@ -102,7 +109,7 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
   isSubmit() {
     return this.notIsActive.some(x=>x.isActive)
   }
-  
+
   ngOnInit(): void {
     this.api.registerEvent.subscribe(
       (x)=>{

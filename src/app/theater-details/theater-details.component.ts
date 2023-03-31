@@ -59,7 +59,11 @@ export class TheaterDetailsComponent implements OnInit {
     }
    }
    showShowTimes() {
-    
+    if(!this.currentTitle.movieVariants || !this.currentTitle.movieVariants[0].amenityGroups[0]){
+      return this.showTimesEvent.emit(
+        []
+      )
+    }
     return this.showTimesEvent
     .emit(this.currentTitle.movieVariants[0].amenityGroups[0].showtimes);
    }
@@ -93,9 +97,9 @@ export class TheaterDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.router.events.subscribe(e =>{
+    // this.router.events.subscribe(e =>{
       
-    })
+    // })
     this.route.params.subscribe(
       (p)=>{
         if(p['theaterId']){

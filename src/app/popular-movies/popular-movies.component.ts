@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 import { TestNews } from '../dataForTesting/theNews';
@@ -19,8 +19,8 @@ export class PopularMoviesComponent implements OnInit{
   
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService){}
-
+     private phone:ComponentTelephoneService,
+      private render:Renderer2){}
 
      
      passEmsVersionId(id: string) {

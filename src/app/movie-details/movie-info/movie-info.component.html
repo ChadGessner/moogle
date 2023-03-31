@@ -1,0 +1,29 @@
+<div 
+[ngClass]="isActive ? ['card', 'm-4', 'p-4', 'bg-dark', 'rounded', 'border', 'border-success']:['position-absolute']" 
+[@componentState]="isActive ? 'show':'hidden'" >
+
+    <div>
+        <h4 class="text-warning" >DESCRIPTION</h4>
+        <hr>
+        <div class="row">
+            <div  class="row card-body bg-dark border ">
+                <div class="row m-4 float-left">
+                    <img class="col poster " 
+                    src={{movieImage}}>
+
+                    <div *ngIf="isActive" class="col card border border-success">
+                        <label>Director</label>
+                        <p class="text-success" >{{directedBy}}</p>
+                        <hr>
+                        <label>Release Date</label>
+                        <p class="text-success" >{{releaseDate}}</p>
+                        <hr>
+                        <label>Total Gross</label>
+                        <p class="text-success" >{{totalGross | currency}}</p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

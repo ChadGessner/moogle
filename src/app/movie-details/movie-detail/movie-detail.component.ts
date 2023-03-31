@@ -1,20 +1,43 @@
-import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
-import { FlixterApiService } from '../api.service';
-import { ComponentTelephoneService } from '../component-telephone.service';
-//import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
+import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { FlixterApiService } from '../../api.service';
+import { ComponentTelephoneService } from '../../component-telephone.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MovieDetail } from '../dataForTesting/movieDetail';
+import { MovieDetail } from '../../dataForTesting/movieDetail';
+import {
+  animate,
+   state,
+    style,
+     transition,
+      trigger
+} from '@angular/animations';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
+  styleUrls: ['./movie-detail.component.css'],
+  animations: [
+    trigger('componentState', [
+      state('show', style({
+        'transform' : 'translateX(0)'
+      })),
+      state('hidden', style({
+        
+        'transform' : 'translateX(9000px)'
+      })),
+      transition('show => hidden', animate(1000)),
+      transition('hidden => show', animate(1000)),
+    ])
+  ]
 })
+
 export class MovieDetailComponent implements OnInit {
   @Input()movieDetail:any;
   @Input()emsVersionId:string = ''
+  componentState:string = 'hidden'
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   castIndex:number = 0;
+  @Output()showTrailer:boolean = false;
+  @Output()trailerUrl:any;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -33,6 +56,9 @@ export class MovieDetailComponent implements OnInit {
   },{
     id:'card-tab-five',
     isActive:false
+  },{
+    id:'card-tab-six',
+    isActive:false
   }]
   constructor(
     private api:FlixterApiService,
@@ -40,6 +66,26 @@ export class MovieDetailComponent implements OnInit {
       private render:Renderer2,
        private route:ActivatedRoute ){
 
+  }
+//   background-repeat: no-repeat;
+// background-position: center center;
+// -webkit-background-size: cover;
+// -moz-background-size: cover;
+// -o-background-size: cover;
+// background-size: cover;
+  
+  getBackgroundImage() {
+    return {
+      'background' : `url("${this.movieDetail.data.movie.backgroundImage.url}")`,
+      //'image-rendering' : 'auto',
+      'background-repeat ' : 'no-repeat',
+      'background-position' : 'center center',
+      'background-size' : 'cover',
+      //'-webkit-background-size' : 'cover',
+      //'background-size' : '300px 150px',
+      'height' : '100rem',
+      'width' : 'auto'
+    }
   }
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
@@ -88,6 +134,10 @@ export class MovieDetailComponent implements OnInit {
               document.getElementById(x.id),
               `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
             )
+            if(x.id === 'card-tab-six'){
+              this.showTrailer = x.isActive;
+              this.trailerUrl = this.movieDetail.data.movie.trailer.url
+            }
         }
       }
       )
@@ -97,31 +147,40 @@ export class MovieDetailComponent implements OnInit {
   categoryName() {
     return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;
   }
-  carouselPlus() {
+  // carouselPlus() {
 
-    this.currentImageIndex++;
-    return this.validateImageIndex(this.currentImageIndex)
-  }
-  subImageIndex(){
-    return this.validateImageIndex(this.currentImageIndex-1);
-  }
-  addImageIndex() {
-    return this.validateImageIndex(this.currentImageIndex+1);
-  }
-  validateImageIndex(index:number) {
-    let images = this.imagesList as any[];
-    if(index < 0) {
-      index = images.length - 1;
-    }
-    if(index === images.length){
-      index = 0;
-    }
-    return index;
-  }
-  carouselMinus() {
+  //   this.currentImageIndex++;
+  //   return this.validateImageIndex(this.currentImageIndex)
+  // }
+  // subImageIndex(){
+  //   return this.validateImageIndex(this.currentImageIndex-1);
+  // }
+  // addImageIndex() {
+  //   return this.validateImageIndex(this.currentImageIndex+1);
+  // }
+  // validateImageIndex(index:number) {
+  //   let images = this.imagesList as any[];
+  //   if(index < 0) {
+  //     index = images.length - 1;
+  //   }
+  //   if(index === images.length){
+  //     index = 0;
+  //   }
+  //   return index;
+  // }
+  // carouselMinus() {
 
-    this.currentImageIndex--;
-    return this.validateImageIndex(this.currentImageIndex)
+  //   this.currentImageIndex--;
+  //   return this.validateImageIndex(this.currentImageIndex)
+  // }
+  addMovieDetail() {
+    var images = [];
+    this.movieDetail.data.movie.backgroundImage.url;
+    for(let i = 0; i < this.movieDetail.data.movie.images.length; i++){
+      
+      images.push(this.movieDetail.data.movie.images[i])
+    }
+    console.log(images)
   }
   ngOnInit(): void {
     this.route.params.subscribe(

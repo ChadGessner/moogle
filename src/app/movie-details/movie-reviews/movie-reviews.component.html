@@ -1,0 +1,35 @@
+<div 
+[ngClass]="isActive ? ['card', 'm-4', 'p-4', 'bg-dark', 'rounded', 'border', 'border-success']:['position-absolute']" 
+[@componentState]="isActive ? 'show':'hidden'" >
+
+    <div>
+        <h4 class="text-warning" >DESCRIPTION</h4>
+        <hr>
+        <div class="row">
+            <div  class="row card-body bg-dark border ">
+                <div class="row m-4 float-left">
+                    <img class="col poster " 
+                    src={{movieImage}}>
+
+                    <div class="card col border border-danger">
+                        <div *ngIf="isActive" class="col card ">
+                            <div class="card border border-secondary m-1 p-1">
+                                <label class="text-warning" >Tomato Meter</label>
+                                <p class="text-info" >{{tomatometer}}</p>
+                            </div>
+                            <div class="card border border-danger m-1 p-1">
+                                <label class="text-warning" >Rating Count</label>
+                                <p class="text-info" >{{ratingCount}}</p>
+                            </div>
+                            <div class="card border border-danger m-1 p-1">
+                                <label class="text-warning" >Consensus</label>
+                                <p class="text-info" [innerHTML]="consensus" ></p>
+                            </div>
+                            
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

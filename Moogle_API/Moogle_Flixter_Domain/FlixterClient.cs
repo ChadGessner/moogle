@@ -20,6 +20,7 @@ namespace Moogle_Flixter_Domain
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
+    public string ApiKey { get; set; } = "50e846f70bmshb1f6a7281515eb5p1cbd28jsn7849a86f1d92";
     public FlixterClient()
     {
       Client = new HttpClient();
@@ -32,12 +33,11 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-        .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+        .WithHeader("X-RapidAPI-Key", ApiKey)
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<TheaterRequest>();
-
 
       return await apiTask.WaitAsync(new TimeSpan(0, 0, 10));
 
@@ -48,15 +48,33 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<TheaterDetailData>();
       apiTask.Wait();
       TheaterDetailData result = apiTask.Result;
-      Console.WriteLine(result.ToString());
-      return result;
+      bool success = result != null &&
+        result.data.theaterShowtimeGroupings.displayDates != null &&
+        result.data.theaterShowtimeGroupings.displayDates.Count > 0 &&
+        result.data.theaterShowtimeGroupings.movies != null &&
+        result.data.theaterShowtimeGroupings.movies.Count > 0;
+      if (success)
+      {
+        foreach(var movie in result.data.theaterShowtimeGroupings.movies)
+        {
+          if(movie.posterImage == null || movie.posterImage.url == null)
+          {
+            movie.posterImage = new TheaterDetailsPosterImage()
+            {
+              url = "https://media.tenor.com/6uME6Zii8mIAAAAC/samuel-l-jackson-cat.gif"
+            };
+          }
+        }
+        return result;
+      }
+      return null;
     }
     public MovieDetailsRoot MakeMovieDetailsRequest(string emsVersionId)
     {
@@ -65,7 +83,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -83,7 +101,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -99,7 +117,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-        .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+        .WithHeader("X-RapidAPI-Key", ApiKey)
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -115,7 +133,7 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + "news/list";
       var header = apiUri
 
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
           //.WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
@@ -135,7 +153,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           // .WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -151,7 +169,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -168,7 +186,7 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + "movies/get-popularity";
       var header = apiUri
 
-          .WithHeader("X-RapidAPI-Key", "2b3dde1cc9msh5223f3734fe058ep173f6ejsn5cdbc8f19cd8")
+          .WithHeader("X-RapidAPI-Key", ApiKey)
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -190,7 +208,7 @@ namespace Moogle_Flixter_Domain
           PopularMoviesTomatoRating newTomato = new(){
               tomatometer = null,
               iconImage = new PopularMoviesIconImage(){
-                url = "<i class=\"bi bi-x-square\"></i>"
+                url = "<i class=\"bi bi-bandaid\"></i>"
               }
           };
           movies.tomatoRating = newTomato;

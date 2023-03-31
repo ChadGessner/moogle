@@ -22,8 +22,8 @@ export class FlixterApiService {
   news:any;
   popularMovies:any;
 
-  private userRxjs = new BehaviorSubject<any>({});
-  currentUserRxjs = this.userRxjs.asObservable();
+  private userIdRxjs = new BehaviorSubject<any>({});
+  currentUserIdRxjs = this.userIdRxjs.asObservable();
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -39,8 +39,8 @@ export class FlixterApiService {
 
    }
 
-   setUserRxjs(userRxjs: any) {
-    this.userRxjs.next(userRxjs);
+   setUserIdRxjs(userIdRxjs: any) {
+    this.userIdRxjs.next(userIdRxjs);
   }
 
    getPopularMovieList(){

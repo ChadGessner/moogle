@@ -16,7 +16,7 @@ export class MovieDetailComponent implements OnInit {
   @Input()emsVersionId:string = ''
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
-  currentUserRxjs: any;
+  currentUserIdRxjs: any;
   castIndex:number = 0;
   favorites: any;
   testBool: boolean = false;
@@ -152,8 +152,8 @@ export class MovieDetailComponent implements OnInit {
         )
       }
     )
-    this.api.currentUserRxjs.subscribe((value) => {
-      this.currentUserRxjs = value;
+    this.api.currentUserIdRxjs.subscribe((value) => {
+      this.currentUserIdRxjs = value;
     });
   }
 }

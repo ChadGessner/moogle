@@ -9,11 +9,11 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Moogle_Repo
 {
   public class MoogleRepository
   {
+    private ApplicationDbContext _db = new ApplicationDbContext();
     private IConfigurationRoot _configuration;
     private DbContextOptionsBuilder<ApplicationDbContext> _optionsBuilder;
     public MoogleRepository()
@@ -29,29 +29,27 @@ namespace Moogle_Repo
 
     public async Task<User> AddUser(User user, List<Theater> theaters)
     {
-      using (var db = new ApplicationDbContext())
-      {
-        if (db.Users.Any(u => u.UserName == user.UserName))
+        if (_db.Users.Any(u => u.UserName == user.UserName))
         {
           return null;
         }
-        TheaterZip zip = await db.TheaterZips.FirstOrDefaultAsync(x => x.ZipCode == user.ZipCode);
+        TheaterZip zip = await _db.TheaterZips.FirstOrDefaultAsync(x => x.ZipCode == user.ZipCode);
         if (zip != null)
         {
-          db.Users.Add(user);
-          db.SaveChangesAsync().Wait();
-          return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
+          _db.Users.Add(user);
+          _db.SaveChangesAsync().Wait();
+          return await _db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
         }
 
-        db.Users.Add(user);
-        db.SaveChangesAsync().Wait();
+        _db.Users.Add(user);
+        _db.SaveChangesAsync().Wait();
         user = GetUser(user.UserName, user.Password);
         foreach (var theater in theaters)
         {
           if (theater != null)
           {
 
-            Theater theaterToAdd = await db.Theaters.FirstOrDefaultAsync(x => x.Id == theater.Id);
+            Theater theaterToAdd = await _db.Theaters.FirstOrDefaultAsync(x => x.Id == theater.Id);
             zip = new TheaterZip()
             {
               ZipCode = user.ZipCode,
@@ -59,174 +57,123 @@ namespace Moogle_Repo
             };
             if (theaterToAdd != null)
             {
-              db.TheaterZips.Add(zip);
-              db.SaveChangesAsync().Wait();
+              _db.TheaterZips.Add(zip);
+              _db.SaveChangesAsync().Wait();
 
               continue;
             }
             else
             {
               theaterToAdd = theater;
-              db.Theaters.Add(theater);
-              db.SaveChangesAsync().Wait();
+              _db.Theaters.Add(theater);
+              _db.SaveChangesAsync().Wait();
               zip.Theater = theaterToAdd;
-              db.TheaterZips.Add(zip);
-              db.SaveChangesAsync().Wait();
+              _db.TheaterZips.Add(zip);
+              _db.SaveChangesAsync().Wait();
             }
           }
         }
-        db.SaveChanges();
-        return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
-      }
+        _db.SaveChanges();
+        return await _db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
     }
     public User GetUser(string username, string password)
     {
-      using (var db = new ApplicationDbContext())
-      {
-        var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+        var user = _db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
         return user;
-      }
     }
 
     // public User UpdateUser(User user)
     // {
     //   using (var db = new ApplicationDbContext())
     //   {
-    //     db.Users.Update(user);
-    //     db.SaveChanges();
+    //     _db.Users.Update(user);
+    //     _db.SaveChanges();
     //     return user;
     //   }
     // }
     public async Task<List<Theater>> AddTheatersByZip(string zipCode, List<Theater> theaters)
     {
-      using (var db = new ApplicationDbContext())
-      {
         foreach (Theater theater in theaters)
         {
           if(theater != null)
           {
-            Theater theaterToAdd = db.Theaters.FirstOrDefaultAsync(t => t.Tid == theater.Tid).Result;
+            Theater theaterToAdd = _db.Theaters.FirstOrDefaultAsync(t => t.Tid == theater.Tid).Result;
             if (theaterToAdd != null)
             {
-              db.TheaterZips.Add(new TheaterZip()
+              _db.TheaterZips.Add(new TheaterZip()
               {
                 ZipCode = zipCode,
                 Theater = theaterToAdd
               });
-              db.SaveChangesAsync().Wait();
+              _db.SaveChangesAsync().Wait();
             }
             else
             {
-              db.TheaterZips.Add(new TheaterZip()
+              _db.TheaterZips.Add(new TheaterZip()
               {
                 ZipCode = zipCode,
                 Theater = theater
               });
-              db.SaveChangesAsync().Wait();
+              _db.SaveChangesAsync().Wait();
             }
           }
           
         }
         return GetTheatersByUserZip(zipCode).Result;
-      }
-      
     }
     public async Task<List<Theater>> GetTheatersByUserZip(string zipCode)
     {
-      using (var db = new ApplicationDbContext())
-      {
-        return await db.TheaterZips.Where(x => x.ZipCode == zipCode).Select(x => x.Theater).ToListAsync();
-      }
+        return await _db.TheaterZips.Where(x => x.ZipCode == zipCode).Select(x => x.Theater).ToListAsync();
     }
     public async Task<User> UpdateUser(User user)
     {
-      using (var db = new ApplicationDbContext())
-      {
-
-        db.Users.Update(user);
-        db.SaveChanges();
-        return await db.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
-      }
+        _db.Users.Update(user);
+        _db.SaveChanges();
+        return await _db.Users.FirstOrDefaultAsync(u => u.Id == user.Id);
     }
     public bool AddUserZip(User user, string zip)
     {
-      using (var db = new ApplicationDbContext())
-      {
-        bool result = db.UserZip.Any(x => x.User == user && x.ZipCode == zip);
+        bool result = _db.UserZip.Any(x => x.User == user && x.ZipCode == zip);
         Console.WriteLine(result);
         if (!result)
         {
-          User userZipAdder = db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id).Result;
-          db.UserZip.Add(new UserZip { ZipCode = zip, User = userZipAdder });
-          db.SaveChangesAsync().Wait();
+          User userZipAdder = _db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id).Result;
+          _db.UserZip.Add(new UserZip { ZipCode = zip, User = userZipAdder });
+          _db.SaveChangesAsync().Wait();
         }
         return result;
-      }
     }
 
     public List<string> GetUserZips(User user)
     {
-      using (var db = new ApplicationDbContext())
-      {
-        List<UserZip> userZips = db.UserZip.Where(z => z.User == user).ToList();
+        List<UserZip> userZips = _db.UserZip.Where(z => z.User == user).ToList();
         if(userZips != null && userZips.Count != 0)
         {
           return userZips.Select(z=>z.ZipCode).ToList();
         }
         return new List<string>();
-      }
     }
-        public async Task<User> AddFavoriteMovieRepo(User user, List<Theater> theaters)
+    public async Task<FavoriteMovie> AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
     {
-      using (var db = new ApplicationDbContext())
-      {
-        if (db.Users.Any(u => u.UserName == user.UserName))
-        {
-          return null;
-        }
-        TheaterZip zip = await db.TheaterZips.FirstOrDefaultAsync(x => x.ZipCode == user.ZipCode);
-        if (zip != null)
-        {
-          db.Users.Add(user);
-          db.SaveChangesAsync().Wait();
-          return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
-        }
-
-        db.Users.Add(user);
-        db.SaveChangesAsync().Wait();
-        user = GetUser(user.UserName, user.Password);
-        foreach (var theater in theaters)
-        {
-          if (theater != null)
-          {
-
-            Theater theaterToAdd = await db.Theaters.FirstOrDefaultAsync(x => x.Id == theater.Id);
-            zip = new TheaterZip()
-            {
-              ZipCode = user.ZipCode,
-              Theater = theaterToAdd
-            };
-            if (theaterToAdd != null)
-            {
-              db.TheaterZips.Add(zip);
-              db.SaveChangesAsync().Wait();
-
-              continue;
-            }
-            else
-            {
-              theaterToAdd = theater;
-              db.Theaters.Add(theater);
-              db.SaveChangesAsync().Wait();
-              zip.Theater = theaterToAdd;
-              db.TheaterZips.Add(zip);
-              db.SaveChangesAsync().Wait();
-            }
-          }
-        }
-        db.SaveChanges();
-        return await db.Users.FirstOrDefaultAsync(u => u.UserName == user.UserName);
-      }
+       User testUser = _db.Users.FirstOrDefault(x => x.Id == userId);
+       favoriteMovie.User = testUser;
+        _db.FavoriteMovie.Add(favoriteMovie);
+        _db.SaveChanges();
+        return await _db.FavoriteMovie.FirstOrDefaultAsync(x => x.User == testUser);
     }
   }
 }
+
+
+      // using (var db = new ApplicationDbContext())
+      // {
+      //   bool result = _db.UserZip.Any(x => x.User == user && x.ZipCode == zip);
+      //   Console.WriteLine(result);
+      //   if (!result)
+      //   {
+      //     User userZipAdder = _db.Users.FirstOrDefaultAsync(u=> u.Id == user.Id).Result;
+      //     _db.UserZip.Add(new UserZip { ZipCode = zip, User = userZipAdder });
+      //     _db.SaveChangesAsync().Wait();
+      //   }
+      //   return result;
+      // }

@@ -1,3 +1,4 @@
+using System.Data.Common;
 using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.API_Models.TheaterRequest;
 using Moogle_Models.Db_Models;
@@ -42,8 +43,60 @@ namespace Moogle_Models
                 ZipCode = user.zipCode,
             };
         }
+        public static FavoriteMovie GetFavoriteMovieFromAPI(AngularFavoriteMovieRoot favoriteMovie)
+        {
+                    return new FavoriteMovie(){
+                    EmsId = favoriteMovie.EmsId,
+                    Name = favoriteMovie.Name,
+                    PosterImageUrl = favoriteMovie.PosterImageUrl,
+                    MovieCast = favoriteMovie.MovieCast.Select(x => FavoriteMovieCastConverter(x)).ToList(),
+                    Synopsis = favoriteMovie.Synopsis,
+                    DirectedBy = favoriteMovie.DirectedBy,
+                    ReleaseDate = favoriteMovie.ReleaseDate,
+                    TotalGross = favoriteMovie.TotalGross,
+                    TrailerUrl = favoriteMovie.TrailerUrl,
+                    Images = favoriteMovie.Images.Select(x => FavoriteMovieImageConverter(x)).ToList()
+                };
+        } 
+
+        
+        public static FavoriteMovieCast FavoriteMovieCastConverter(AngularFavoriteMovieCast cast)
+        {
+                return new FavoriteMovieCast(){
+                    CharacterName = cast.CharacterName,
+                    Role = cast.Role,
+                    Name = cast.Name
+                };
+        }
+        public static FavoriteMovieImage FavoriteMovieImageConverter(AngularFavoriteMovieImage images)
+        {
+                return new FavoriteMovieImage(){
+                    Url = images.Url,
+                    Height = images.Height,
+                    Width = images.Width
+                };
+        }
   }
 }
+
+
+
+    // public int Id {get; set; }
+    // public string? EmsId { get; set; }
+    // public int UserId { get; set; }
+    // public virtual User User { get; set; }
+    // public string? Name { get; set; }
+    // public string? PosterImageUrl { get; set; }
+    // public virtual List<FavoriteMovieCast> MovieCast { get; set; }
+    // public string? Synopsis { get; set; }
+    // public string? DirectedBy { get; set; }
+    // public string? ReleaseDate { get; set; }
+    // public string? TotalGross { get; set; }
+    // public string? TrailerUrl { get; set; }
+    // public virtual List<FavoriteMovieImage> Image { get; set; }
+
+
+
 //public AngularUser GetAngularUserFromDbUser(User user)
 //{
 //  retunr new AngularUser()

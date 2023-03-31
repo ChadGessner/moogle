@@ -6,55 +6,55 @@ namespace Moogle_Domain
 {
   public class Interactor
   {
-    private readonly MoogleRepository _db;
+    private readonly MoogleRepository _repo;
     public Interactor()
     {
-      _db = new MoogleRepository();
+      _repo = new MoogleRepository();
     }
     public User RegisterUser(User user, List<Theater> theaters)
     {
       Console.WriteLine(user.FirstName + " " + user.LastName);
-      return _db.AddUser(user, theaters).Result;
+      return _repo.AddUser(user, theaters).Result;
     }
     public User GetUser(string username, string password)
     {
-      return _db.GetUser(username, password);
+      return _repo.GetUser(username, password);
     }
 
     // public User UpdateUser(User user)
     // {
-    //   return _db.UpdateUser(user);
+    //   return _repo.UpdateUser(user);
     // }
     public List<Theater> AddUserZip(User user, string zipCode)
     {
-      bool answer = _db.AddUserZip(user, zipCode);
+      bool answer = _repo.AddUserZip(user, zipCode);
       Console.WriteLine(answer);
       if(answer)
       {
-        return _db.GetTheatersByUserZip(zipCode).Result;
+        return _repo.GetTheatersByUserZip(zipCode).Result;
       }
       return new List<Theater>();
     }
     public List<Theater> AddTheatersByZip(string zipCode, List<Theater> theaters)
     {
-      return _db.AddTheatersByZip(zipCode, theaters).Result;
+      return _repo.AddTheatersByZip(zipCode, theaters).Result;
     }
     public List<Theater> GetTheatersByUserZip(string zipCode)
     {
-      return _db.GetTheatersByUserZip(zipCode).Result;
+      return _repo.GetTheatersByUserZip(zipCode).Result;
     }
     public User UpdateUser(User user)
     {
 
-      return _db.UpdateUser(user).Result;
+      return _repo.UpdateUser(user).Result;
     }
     public List<string> GetUserZips(User user)
     {
-      return _db.GetUserZips(user);
+      return _repo.GetUserZips(user);
     }
-    public FavoriteMovie AddFavoriteMovie(FavoriteMovie favoriteMovie)
+    public FavoriteMovie AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId)
     {
-      return _db.AddFavoriteMovieRepo(favoriteMovie).Result;
+      return _repo.AddFavoriteMovie(favoriteMovie, userId).Result;
     }
   }
 }

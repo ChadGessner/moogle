@@ -184,4 +184,11 @@ export class FlixterApiService {
    passUser() {
     return this.user as User;
    }
+
+   addFavoriteMovie(stuff:any, userId:number){
+    let uriEnd = `FavoriteMovie/AddFavoriteMovie/${userId}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {
+      stuff
+    })
+   }
 }

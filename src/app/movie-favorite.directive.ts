@@ -1,6 +1,6 @@
 import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { FlixterApiService } from './api.service';
-import { IFavoriteMovieDetails, IMovieCast } from './models/favorite-movie-details.interface';
+import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from './models/favorite-movie-details.interface';
 
 
 
@@ -11,6 +11,7 @@ export class MovieFavoriteDirective {
   @Input() favoriteMovie: any;
   // @Input() emsVersionId: any;
   movieCastArray: IMovieCast[] = [];
+  movieImageArray: IMovieImage[] = [];
 
   constructor(private api: FlixterApiService, private el: ElementRef) { }
 
@@ -28,15 +29,26 @@ export class MovieFavoriteDirective {
   }
 
   sendToFavorites() {
-    console.log(this.favoriteMovie)
+    // console.log(this.favoriteMovie as IFavoriteMovieDetails )
     console.log("test");
-    // console.log(this.emsVersionId)
+    console.log(this.favoriteMovie.data.movie.trailer)
+    console.log("test");
+    // console.log(JSON.stringify(this.favoriteMovie))
+    // console.log(JSON.stringify(this.favoriteMovie.data.movie.trailer.url))
 
-    function shapeCast(config: IMovieCast): { role: any; name: any; characterName: any; } {
+    function shapeCast(castConfig: IMovieCast): { role: any; name: any; characterName: any; } {
       return {
-        role: config.role,
-        name: config.name,
-        characterName: config.characterName
+        role: castConfig.role,
+        name: castConfig.name,
+        characterName: castConfig.characterName
+      };
+    }
+
+    function shapeImage(imageConfig: IMovieImage): { url: any; height: any; width: any; } {
+      return {
+        url: imageConfig.url,
+        height: imageConfig.height,
+        width: imageConfig.width
       };
     }
     for (let castObj of this.favoriteMovie.data.movie.cast) {
@@ -45,10 +57,14 @@ export class MovieFavoriteDirective {
       let newCast = shapeCast(castOptions);
       this.movieCastArray.push(newCast);
     }
+    for (let imageObj of this.favoriteMovie.data.movie.images) {
+
+      let imageOptions = { url: imageObj.url, height: imageObj.height, width: imageObj.width };
+      let newImage = shapeImage(imageOptions);
+      this.movieImageArray.push(newImage);
+    }
     let newFavorite: IFavoriteMovieDetails = {
       emsId: this.favoriteMovie.data.movie.emsId,
-      emsVersionId: "test",
-      userId: this.api.user,
       name: this.favoriteMovie.data.movie.name,
       posterImageUrl: this.favoriteMovie.data.movie.posterImage.url,
       movieCast: this.movieCastArray,
@@ -56,13 +72,25 @@ export class MovieFavoriteDirective {
       directedBy: this.favoriteMovie.data.movie.directedBy,
       releaseDate: this.favoriteMovie.data.movie.releaseDate,
       totalGross: this.favoriteMovie.data.movie.totalGross,
-      trailerUrl: this.favoriteMovie.data.movie.trailerUrl,
-      images: this.favoriteMovie.data.movie.images
-
-
+      trailerUrl: this.favoriteMovie.data.movie.trailer.url,
+      images: this.movieImageArray
     }
 
     console.log(newFavorite)
+    // console.log(JSON.stringify(newFavorite))
+
+    this.api.addFavoriteMovie(newFavorite, 1).subscribe((x) => {
+
+      if(x){
+        console.log(x);
+      }
+
+
+    })
+
+
+
+
   }
 
 

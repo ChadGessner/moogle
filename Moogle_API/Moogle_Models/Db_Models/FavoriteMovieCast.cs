@@ -11,9 +11,9 @@ namespace Moogle_Models.Db_Models
   public class FavoriteMovieCast
   {
     public int Id {get; set;}
-    public string Name { get; set; }
-    public string CharacterName { get; set; }
-    public string Role { get; set; }
+    public string? Name { get; set; }
+    public string? CharacterName { get; set; }
+    public string? Role { get; set; }
     public virtual FavoriteMovie FavoriteMovie {get; set;}
 
   }

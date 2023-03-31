@@ -46,9 +46,11 @@ export class MovieDetailComponent implements OnInit {
 
 
   removeFavorite(){
+    this.testBool = true;
     console.log("remove Favorite");
   }
   addFavorite(){
+    this.testBool = false;
     console.log("add Favorite");
   }
 

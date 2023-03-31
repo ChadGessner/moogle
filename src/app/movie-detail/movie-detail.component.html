@@ -56,14 +56,24 @@
 
 <div class="card m-4 p-4 border border-success bg-dark rounded">
     
-    <!-- <div *ngIf="testBool == false" id="star1" class="star">
-        <input (click)="removeFavorite()"  class="star" type="checkbox" > 
+    <!-- <div *ngIf="checkFavorite(event.eventId)">
+        <input (click)="removeFavorite(event.eventId)" id="star1" class="star" type="checkbox">
+            <div for="star1" align="center" style="width: 200px;">Remove Favorite</div>
+        </div>
+
+        <div *ngIf="!checkFavorite(event.eventId)">
+            <input (click)="addFavorite(event.eventId)" id="star2" class="star" type="checkbox" checked>
+            <div for="star2" align="center" style="width: 200px;">Add Favorite</div>
+        </div>
         
     </div> -->
     <div class="row" *ngIf="movieDetail" >
 
-        <ul class="p-2" >
-            <button class="btn btn-outline-success" type="button" (click)="removeFavorite()" >Favorite<i id="star1" class="star" ></i></button>
+        <ul class="p-2" *ngIf="testBool == true" >
+            <button class="btn btn-success" type="button" (click)="addFavorite()" ><i class="bi bi-star-fill"></i> Favorite </button>
+        </ul>
+        <ul class="p-2" *ngIf="testBool == false" >
+            <button class="btn btn-outline-success" type="button" (click)="removeFavorite()" ><i class="bi bi-star"></i> Favorite</button>
         </ul>
 
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>

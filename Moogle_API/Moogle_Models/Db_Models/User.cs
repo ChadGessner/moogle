@@ -22,7 +22,7 @@ namespace Moogle_Models.Db_Models
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
-        public virtual List<FavoriteMovie> FavoriteMovies { get; set; }
+        // public virtual List<FavoriteMovie> FavoriteMovies { get; set; }
         
     }
 }

@@ -14,7 +14,7 @@ namespace Moogle_Models.Db_Models
     public string? Url { get; set; }
     public int? Height { get; set; }
     public int? Width { get; set; }
-    public virtual FavoriteMovie FavoriteMovie {get; set;}
+    // public virtual FavoriteMovie FavoriteMovie {get; set;}
   }
 }
 

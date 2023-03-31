@@ -153,13 +153,23 @@ namespace Moogle_Repo
         }
         return new List<string>();
     }
+
+        public List<FavoriteMovie> GetAllFavoritesMovies(User user)
+    {
+        List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Where(x => x.User == user).ToList();
+
+        return favoriteMovieList;
+    }
     public async Task<FavoriteMovie> AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
     {
        User testUser = _db.Users.FirstOrDefault(x => x.Id == userId);
        favoriteMovie.User = testUser;
         _db.FavoriteMovie.Add(favoriteMovie);
         _db.SaveChanges();
-        return await _db.FavoriteMovie.FirstOrDefaultAsync(x => x.User == testUser);
+
+        FavoriteMovie returnFavoriteMovie = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
+
+        return returnFavoriteMovie;
     }
   }
 }

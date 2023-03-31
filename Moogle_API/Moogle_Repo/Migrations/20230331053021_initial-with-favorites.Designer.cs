@@ -12,8 +12,8 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230331012408_init")]
-    partial class init
+    [Migration("20230331053021_initial-with-favorites")]
+    partial class initialwithfavorites
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,7 +78,7 @@ namespace Moogle_Repo.Migrations
                     b.Property<string>("CharacterName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FavoriteMovieId")
+                    b.Property<int?>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -102,7 +102,7 @@ namespace Moogle_Repo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FavoriteMovieId")
+                    b.Property<int?>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Height")
@@ -259,7 +259,7 @@ namespace Moogle_Repo.Migrations
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovie", b =>
                 {
                     b.HasOne("Moogle_Models.Db_Models.User", "User")
-                        .WithMany("FavoriteMovies")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -269,24 +269,16 @@ namespace Moogle_Repo.Migrations
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieCast", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
                         .WithMany("MovieCast")
-                        .HasForeignKey("FavoriteMovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FavoriteMovie");
+                        .HasForeignKey("FavoriteMovieId");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieImage", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
                         .WithMany("Images")
-                        .HasForeignKey("FavoriteMovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("FavoriteMovie");
+                        .HasForeignKey("FavoriteMovieId");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>
@@ -316,11 +308,6 @@ namespace Moogle_Repo.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("MovieCast");
-                });
-
-            modelBuilder.Entity("Moogle_Models.Db_Models.User", b =>
-                {
-                    b.Navigation("FavoriteMovies");
                 });
 #pragma warning restore 612, 618
         }

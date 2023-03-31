@@ -18,6 +18,7 @@ export class MovieDetailComponent implements OnInit {
   currentImageIndex:number = 0;
   castIndex:number = 0;
   favorites: any;
+  testBool: boolean = false;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -41,11 +42,14 @@ export class MovieDetailComponent implements OnInit {
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
       private render:Renderer2,
-       private route:ActivatedRoute ){
+       private route:ActivatedRoute ){}
 
-  }
+
   removeFavorite(){
     console.log("remove Favorite");
+  }
+  addFavorite(){
+    console.log("add Favorite");
   }
 
 

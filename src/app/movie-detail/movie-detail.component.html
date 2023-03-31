@@ -15,16 +15,23 @@
 
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
-        <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button>
+        <!-- <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button> -->
         <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
         <hr class="text-success" >
         <ul class="nav nav-tabs card-header-tabs" >
 
-        <li >
-            
-                <input (click)="removeFavorite()" id="star1" class="star" type="checkbox" for="star1" align="center" style="width: 200px;">Remove Favorite>
+
+            <!-- <div *ngIf="testBool == false">
+                <input (click)="removeFavorite()" id="star1" class="star" type="checkbox">
+                    <div for="star1" align="center" style="width: 200px;">Remove Favorite</div>
+                </div> -->
+        
+                <!-- <div *ngIf="testBool == true">
+                    <input (click)="addFavorite()" id="star2" class="star" type="checkbox" checked>
+                    <div for="star2" align="center" style="width: 200px;">Add Favorite</div>
+                </div>
                     
-                    </li>
+                    </li> -->
         
         <li class="nav-item bg-secondary m-1" >
             <a class="nav-link" id="card-tab-one">Description</a>
@@ -42,7 +49,6 @@
             <a class="nav-link" id="card-tab-five">Reviews</a>
         </li>
         <li class="nav-item bg-primary m-1"  >
-            <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button>
         </li>
         </ul>
     </div>
@@ -50,8 +56,18 @@
 
 <div class="card m-4 p-4 border border-success bg-dark rounded">
     
+    <!-- <div *ngIf="testBool == false" id="star1" class="star">
+        <input (click)="removeFavorite()"  class="star" type="checkbox" > 
+        
+    </div> -->
     <div class="row" *ngIf="movieDetail" >
+
+        <ul class="p-2" >
+            <button class="btn btn-outline-success" type="button" (click)="removeFavorite()" >Favorite<i id="star1" class="star" ></i></button>
+        </ul>
+
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>
+        
         <hr>
         <div *ngIf="notIsActive[1].isActive" class="row ">
             <div class="btn-group">

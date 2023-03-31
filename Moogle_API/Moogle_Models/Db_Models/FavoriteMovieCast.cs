@@ -14,7 +14,7 @@ namespace Moogle_Models.Db_Models
     public string? Name { get; set; }
     public string? CharacterName { get; set; }
     public string? Role { get; set; }
-    // public virtual FavoriteMovie FavoriteMovie {get; set;}
+    public virtual FavoriteMovie FavoriteMovie {get; set;}
 
   }
 }

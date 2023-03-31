@@ -75,7 +75,7 @@ namespace Moogle_Repo.Migrations
                     b.Property<string>("CharacterName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FavoriteMovieId")
+                    b.Property<int>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -99,7 +99,7 @@ namespace Moogle_Repo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("FavoriteMovieId")
+                    b.Property<int>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Height")
@@ -266,16 +266,24 @@ namespace Moogle_Repo.Migrations
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieCast", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
                         .WithMany("MovieCast")
-                        .HasForeignKey("FavoriteMovieId");
+                        .HasForeignKey("FavoriteMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavoriteMovie");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieImage", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
                         .WithMany("Images")
-                        .HasForeignKey("FavoriteMovieId");
+                        .HasForeignKey("FavoriteMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavoriteMovie");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>

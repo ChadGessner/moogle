@@ -9,6 +9,9 @@ using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using Moogle_Models.DTO;
+using static Moogle_Models.DTO.FavoriteMovieDto;
+
 namespace Moogle_Repo
 {
   public class MoogleRepository
@@ -154,20 +157,117 @@ namespace Moogle_Repo
         return new List<string>();
     }
 
-        public List<FavoriteMovie> GetAllFavoritesMovies(User user)
+
+        public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
+        {
+          List<FavoriteMovieCastModelDto> newFavoriteCastDtoList = new List<FavoriteMovieCastModelDto>();
+
+          List <FavoriteMovieCast> favoriteMovieCastList = _db.FavoriteMovieCasts.Where(x => x.FavoriteMovie.Id == favoriteMovieId).ToList();
+
+          foreach(FavoriteMovieCast cast in favoriteMovieCastList)
+          {
+            FavoriteMovieCastModelDto newFavoriteCastDto = new FavoriteMovieCastModelDto(){
+              Name = cast.Name,
+              CharacterName = cast.CharacterName,
+              Role = cast.Role
+            };
+            newFavoriteCastDtoList.Add(newFavoriteCastDto);
+        // User user = _db.Users.FirstOrDefault(x => x.Id == userId);
+
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Where(x => x.User.Id == userId).ToList();
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Select(x => x.User.Id == userId).ToList();
+
+        }
+                return newFavoriteCastDtoList;
+
+        }
+        public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+        {
+          List<FavoriteMovieImageModelDto> newFavoriteImageDtoList = new List<FavoriteMovieImageModelDto>();
+
+          List <FavoriteMovieImage> favoriteMovieImageList = _db.FavoriteMovieImages.Where(x => x.FavoriteMovie.Id == favoriteMovieId).ToList();
+          foreach(FavoriteMovieImage image in favoriteMovieImageList)
+          {
+            FavoriteMovieImageModelDto newFavoriteImageDto = new FavoriteMovieImageModelDto(){
+              Url = image.Url,
+              Height = image.Height,
+              Width = image.Width
+            };
+            newFavoriteImageDtoList.Add(newFavoriteImageDto);
+
+
+
+
+          }
+        // User user = _db.Users.FirstOrDefault(x => x.Id == userId);
+
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Where(x => x.User.Id == userId).ToList();
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Select(x => x.User.Id == userId).ToList();
+
+
+        return newFavoriteImageDtoList;
+        }
+        public List<FavoriteMovieModelDto> GetAllFavoriteMovies(int userId)
     {
-        List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Where(x => x.User == user).ToList();
+        List<FavoriteMovieModelDto> favoriteMovieList = new List<FavoriteMovieModelDto>();
+        List<FavoriteMovie> favoriteMovies = _db.FavoriteMovie.Where(x => x.User.Id == userId).ToList();
+        // List<FavoriteMovie> test = favoriteMovies.
+        
+        foreach(FavoriteMovie movie in favoriteMovies)
+        {
+          User user = _db.Users.FirstOrDefault(x => x.Id == userId);
+          List<FavoriteMovieCastModelDto> movieCast = GetFavoriteMovieCast(movie.Id);
+          List<FavoriteMovieImageModelDto> images = GetFavoriteMovieImages(movie.Id);
+          FavoriteMovieModelDto favoriteMovie = new FavoriteMovieModelDto()
+          {
+            EmsId = movie.EmsId,
+            User = user,
+            Name = movie.Name,
+            PosterImageUrl = movie.PosterImageUrl,
+            MovieCast = movieCast,
+            Synopsis = movie.Synopsis,
+            DirectedBy = movie.DirectedBy,
+            ReleaseDate = movie.ReleaseDate,
+            TotalGross = movie.TotalGross,
+            TrailerUrl = movie.TrailerUrl,
+            Images = images
+          };
+
+          // movie.Images = Images;
+          // movie.MovieCast = MovieCast;
+
+          favoriteMovieList.Add(favoriteMovie);
+
+
+
+
+        }
+
+        // User user = _db.Users.FirstOrDefault(x => x.Id == userId);
+        // List<FavoriteMovieCast> MovieCast = _db.Users.FirstOrDefault(x => x.Id == userId);
+      //  favoriteMovie.User = user;
+        // _db.FavoriteMovie.Add(favoriteMovie);
+        // _db.SaveChanges();
+
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Where(x => x.User.Id == userId).ToList();
+        // List<FavoriteMovie> favoriteMovieList = _db.FavoriteMovie.Select(x => x.User.Id == userId).ToList();
+
 
         return favoriteMovieList;
     }
-    public async Task<FavoriteMovie> AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
+    public async Task<FavoriteMovieModelDto> AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
     {
-       User testUser = _db.Users.FirstOrDefault(x => x.Id == userId);
-       favoriteMovie.User = testUser;
+       User user = _db.Users.FirstOrDefault(x => x.Id == userId);
+       favoriteMovie.User = user;
         _db.FavoriteMovie.Add(favoriteMovie);
         _db.SaveChanges();
 
-        FavoriteMovie returnFavoriteMovie = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
+        FavoriteMovie favoriteMovieDb = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
+
+        FavoriteMovieModelDto returnFavoriteMovie = new FavoriteMovieModelDto(){
+          Name = favoriteMovieDb.Name
+
+        };
 
         return returnFavoriteMovie;
     }

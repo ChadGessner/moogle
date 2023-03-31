@@ -5,7 +5,7 @@
 namespace Moogle_Repo.Migrations
 {
     /// <inheritdoc />
-    public partial class initialwithfavorites : Migration
+    public partial class initialwithfavorite223 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -127,7 +127,7 @@ namespace Moogle_Repo.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CharacterName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FavoriteMovieId = table.Column<int>(type: "int", nullable: true)
+                    FavoriteMovieId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -136,7 +136,8 @@ namespace Moogle_Repo.Migrations
                         name: "FK_FavoriteMovieCasts_FavoriteMovie_FavoriteMovieId",
                         column: x => x.FavoriteMovieId,
                         principalTable: "FavoriteMovie",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,7 +149,7 @@ namespace Moogle_Repo.Migrations
                     Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Height = table.Column<int>(type: "int", nullable: true),
                     Width = table.Column<int>(type: "int", nullable: true),
-                    FavoriteMovieId = table.Column<int>(type: "int", nullable: true)
+                    FavoriteMovieId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -157,7 +158,8 @@ namespace Moogle_Repo.Migrations
                         name: "FK_FavoriteMovieImages_FavoriteMovie_FavoriteMovieId",
                         column: x => x.FavoriteMovieId,
                         principalTable: "FavoriteMovie",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

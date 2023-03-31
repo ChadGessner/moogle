@@ -26,13 +26,13 @@ namespace Moogle_Models.API_Models.AngularModels
         public string? EmsId { get; set; }
         public string? Name { get; set; }
         public string? PosterImageUrl { get; set; }
-        public List<AngularFavoriteMovieCast> MovieCast { get; set; }
+        public List<AngularFavoriteMovieCast>? MovieCast { get; set; }
         public string? Synopsis { get; set; }
         public string? DirectedBy { get; set; }
         public string? ReleaseDate { get; set; }
         public int? TotalGross { get; set; } //shows up as an object?
-        public string TrailerUrl { get; set; }
-        public List<AngularFavoriteMovieImage> Images { get; set; }
+        public string? TrailerUrl { get; set; }
+        public List<AngularFavoriteMovieImage>? Images { get; set; }
     }
 
 

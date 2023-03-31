@@ -12,8 +12,8 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230331053021_initial-with-favorites")]
-    partial class initialwithfavorites
+    [Migration("20230331091102_initial-with-favorite223")]
+    partial class initialwithfavorite223
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,7 +78,7 @@ namespace Moogle_Repo.Migrations
                     b.Property<string>("CharacterName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("FavoriteMovieId")
+                    b.Property<int>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -102,7 +102,7 @@ namespace Moogle_Repo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("FavoriteMovieId")
+                    b.Property<int>("FavoriteMovieId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Height")
@@ -269,16 +269,24 @@ namespace Moogle_Repo.Migrations
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieCast", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
                         .WithMany("MovieCast")
-                        .HasForeignKey("FavoriteMovieId");
+                        .HasForeignKey("FavoriteMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavoriteMovie");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.FavoriteMovieImage", b =>
                 {
-                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", null)
+                    b.HasOne("Moogle_Models.Db_Models.FavoriteMovie", "FavoriteMovie")
                         .WithMany("Images")
-                        .HasForeignKey("FavoriteMovieId");
+                        .HasForeignKey("FavoriteMovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FavoriteMovie");
                 });
 
             modelBuilder.Entity("Moogle_Models.Db_Models.TheaterZip", b =>

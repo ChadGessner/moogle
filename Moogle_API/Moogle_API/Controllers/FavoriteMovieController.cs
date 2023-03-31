@@ -9,6 +9,8 @@ using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.Db_Models;
 using System.Text.Json.Nodes;
 using Newtonsoft.Json;
+using Moogle_Models.DTO;
+using static Moogle_Models.DTO.FavoriteMovieDto;
 
 namespace Moogle_API.Controllers
 {
@@ -38,21 +40,30 @@ namespace Moogle_API.Controllers
     // {
     //   return Client.MakeMovieDetailsRequest(emsVersionId);
     // }
+    [HttpGet("GetFavoriteMovieCast/{favoriteMovieId}")]
+    public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
+    {
+      return _db.GetFavoriteMovieCast(favoriteMovieId);
+    }
+    [HttpGet("GetFavoriteMovieImages/{favoriteMovieId}")]
+    public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+    {
+      return _db.GetFavoriteMovieImages(favoriteMovieId);
+    }
+    [HttpGet("GetAllFavoriteMovies/{userId}")]
+    public List<FavoriteMovieModelDto> GetFavoriteMovies(int userId)
+    {
+      return _db.GetAllFavoriteMovies(userId);
+    }
 
     [HttpPost("AddFavoriteMovie/{userId}")]
-    public FavoriteMovie AddFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
+    public FavoriteMovieModelDto AddFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
     {
-        AngularFavoriteMovieRoot testMovie = JsonConvert
+        AngularFavoriteMovieRoot deserializedMovie = JsonConvert
         .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
 
-       FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(testMovie);
+       FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
 
-
-
-
-
-             // Make call to model convert to map angular model to api model?
-        
       return _db.AddFavoriteMovie(favoriteMovieConverted, userId);
     }
   }

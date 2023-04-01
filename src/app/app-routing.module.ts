@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TheatersComponent } from './theaters/theaters.component';
-import { UserLoginComponent } from './user-login/user-login.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
+import { UserLoginComponent } from './login/user-login/user-login.component';
+import { UserRegistrationComponent } from './login/user-registration/user-registration.component';
 import { HomeComponent } from './home/home.component';
-import { TheaterDetailsComponent } from './theater-details/theater-details.component';
-import { NewsStoryComponent } from './news-story/news-story.component';
-import { UpcomingMovieDetailsComponent } from './upcoming-movie-details/upcoming-movie-details.component';
+import { TheaterDetailsComponent } from './theaters/theater-details/theater-details.component';
+import { UpcomingMovieDetailsComponent } from './home/upcoming-movie-details/upcoming-movie-details.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './nav/search/search.component';
 import { ActorsComponent } from './actors/actors.component';
 
 const routes: Routes = [
@@ -22,16 +21,13 @@ const routes: Routes = [
     path: 'theater-details',
      component: TheaterDetailsComponent
   },{
-    path: 'news-story',
-     component: NewsStoryComponent
-  },{
     path: 'upcoming-movies',
      component: UpcomingMovieDetailsComponent
   },{
     path: 'theaters/:zip',
      component: TheatersComponent
   },{
-    path: 'theaters/:zip/:theaterId',
+    path: 'theaters/:zip/:theaterId/:theaterName',
     component: TheatersComponent
   },{
     path: 'actor/:id',

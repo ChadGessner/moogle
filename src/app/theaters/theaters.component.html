@@ -3,9 +3,10 @@
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
         <h2 
-        id="theater-name"
-        class="text-warning" #heading >
-        Theater Details
+        
+        id="heading"
+        class="text-warning">
+        {{theaterName}}
     </h2>
         <hr 
         class="text-success" >
@@ -84,14 +85,14 @@ class="text-center text-success alert alert-dark m-4  " >
             class="list-group-item float-down col ">
                     <span 
                     class="text-warning text-center theater-list-item" 
-                    (click)="clickTheaterLink(i, $event)"
+                    (click)="clickTheaterLink(i)"
                     >{{theater.name}}</span> 
             </li>
         </ul>
     </th>
-    <th *ngIf="userZips" class="dropdown row" >
+    <th *ngIf="isToggleZips && userZips" class="dropdown row" >
         <ul 
-        *ngIf="isToggleZips" 
+        
         class="position-absolute theater-list bg-dark">
             <li 
             
@@ -99,13 +100,14 @@ class="text-center text-success alert alert-dark m-4  " >
             class="list-group-item float-down col ">
                     <span 
                     class="text-warning text-center user-zip-item" 
-                    
+                    (click)="toggleZips()"
                     >{{zip}}</span> 
                     <hr>
             </li>
         </ul>
     </th>
     <div  class="row" >
+        
         <app-theater-details 
         
         [currentlySelectedTheater]="selectedTheater"

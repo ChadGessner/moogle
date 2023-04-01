@@ -1,19 +1,42 @@
 import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { FlixterApiService } from '../api.service';
-import { ComponentTelephoneService } from '../component-telephone.service';
-//import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieDetail } from '../dataForTesting/movieDetail';
 import { IFavoriteMovieDetails } from '../models/favorite-movie-details.interface';
 // import { MovieFavoriteDirective } from '../movie-favorite.directive';
+import {
+  animate,
+   state,
+    style,
+     transition,
+      trigger
+} from '@angular/animations';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrls: ['./movie-detail.component.css']
-})
+  styleUrls: ['./movie-detail.component.css'],
+  animations: [
+    trigger('componentState', [
+      state('show', style({
+         'transform' : 'translateX({{disp}})',
+          'overflow' : 'hidden'
+      }), {params: {disp : '0vw'}}),
+      state('hidden', style({
+        // 'right' : '{{hide}}'
+         'transform' : 'translateX({{disp}})',
+         'overflow' : 'hidden'
+      }), {params : {disp : '100vw'}}),
+      transition('show <=> hidden', animate(500)),
+      
+    ])
+  ]
+ })
+
 export class MovieDetailComponent implements OnInit {
   @Input()movieDetail:any;
   @Input()emsVersionId:string = ''
+  animationDisplayMod = 0;
+  componentState:string = 'hidden'
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   currentUserIdRxjs: any;
@@ -23,30 +46,53 @@ export class MovieDetailComponent implements OnInit {
   favorites: any;
   isFavorited: any = false;
   favoriteMovie: IFavoriteMovieDetails | undefined;
+  currentDisplayIndex:number = 0;
+  
+
+  @Output()showTrailer:boolean = false;
+  @Output()trailerUrl:any;
+
   notIsActive:{
     id:string,
-    isActive:boolean}[] = [{
+    isActive:boolean,
+     defaultPosition:number,
+      paramValue:string}[] = [{
 
     id:'card-tab-one',
-    isActive:true
+    isActive:true,
+    defaultPosition: 0,
+    paramValue: '0vm'
   },{
     id:'card-tab-two',
-    isActive:false
+    isActive:false,
+    defaultPosition: 100,
+    paramValue: '100vm'
   },{
     id:'card-tab-three',
-    isActive:false
+    isActive:false,
+    defaultPosition: 200,
+    paramValue: '200vm'
   },{
     id:'card-tab-four',
-    isActive:false
+    isActive:false,
+    defaultPosition: 300,
+    paramValue: '300vm'
   },{
     id:'card-tab-five',
-    isActive:false
+    isActive:false,
+    defaultPosition: 400,
+    paramValue: '400vm'
+  },{
+    id:'card-tab-six',
+    isActive:false,
+    defaultPosition: 500,
+    paramValue: '500vm'
   }]
   constructor(
     private api:FlixterApiService,
-     private phone:ComponentTelephoneService,
       private render:Renderer2,
        private route:ActivatedRoute){}
+
 
        setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
         this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
@@ -54,39 +100,34 @@ export class MovieDetailComponent implements OnInit {
       setEmsIdRxjs(emsIdRxjs: any) {
         this.api.setEmsIdRxjs(emsIdRxjs);
       };
-  castIncrementEvent(e:MouseEvent){
-    const target = e.target as HTMLElement;
-    const len = this.movieDetail.data.movie.cast.length;
-    console.log(target.id)
-    if(target && target.id === 'cast-prev'){
-      this.castIndex--;
-    }
-    if(target && target.id === 'cast-next'){
-      this.castIndex++;
-    }
-    if(this.castIndex >= len){
-      this.castIndex = 0;
-    }
-    if(this.castIndex < 0){
-      this.castIndex = this.castIndex + len;
-    }
-    console.log(this.castIndex)
-    const progress = document.getElementById('progress-bar');
-  }
-  progressBarStyle() {
-    const len = this.movieDetail.data.movie.cast.length;
+
+
+  getBackgroundImage() {
     return {
-      'width' :
-      `${ ((this.castIndex + 1)/len) * 100 }%`
+      'background' : `url("${this.movieDetail.data.movie.backgroundImage.url}")`,
+      //'image-rendering' : 'auto',
+      'background-repeat ' : 'no-repeat',
+      'background-position' : 'center center',
+      'background-size' : 'cover',
+      //'-webkit-background-size' : 'cover',
+      //'background-size' : '300px 150px',
+      'height' : '100rem',
+      'width' : 'auto'
     }
+  }
+  getAnimationParams(){
+    return (this.currentDisplayIndex * 100)
+  }
+  returnAnimationParam(index:number){
+    return `${this.notIsActive[index].defaultPosition - this.getAnimationParams()}vw`;
   }
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
-    console.log(target)
+    let previousDisplayIndex = this.currentDisplayIndex;
     if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
       
       this.notIsActive.forEach(
-        (x)=>{
+        (x, i)=>{
           if(x){
             x.isActive = x.id === target.id;
             this.render.removeClass(
@@ -101,41 +142,39 @@ export class MovieDetailComponent implements OnInit {
               document.getElementById(x.id),
               `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
             )
+            if(x.id === 'card-tab-six'){
+              this.showTrailer = x.isActive;
+              this.trailerUrl = this.movieDetail.data.movie.trailer.url
+            }
+            if(x.isActive){
+              this.currentDisplayIndex = i;
+            }
+
         }
+        
       }
+
       )
+      
     }
+    let q = 0;
+    this.notIsActive.forEach((x)=>{
+      
+      x.isActive ? q += 1 : q
+      console.log(q + " " + x.isActive)
+    })
+    console.log(this.currentDisplayIndex)
+    console.log(previousDisplayIndex)
+    this.componentState = previousDisplayIndex < this.currentDisplayIndex ? 'show' : 'hidden';
+    
+      this.notIsActive.forEach((x,i)=>{
+        x.paramValue = this.returnAnimationParam(i)
+      })
+    
+    
   }
+ 
 
-  categoryName() {
-    return document.getElementById(this.notIsActive.filter(x=>x.isActive)[0].id)?.innerText;
-  }
-  carouselPlus() {
-
-    this.currentImageIndex++;
-    return this.validateImageIndex(this.currentImageIndex)
-  }
-  subImageIndex(){
-    return this.validateImageIndex(this.currentImageIndex-1);
-  }
-  addImageIndex() {
-    return this.validateImageIndex(this.currentImageIndex+1);
-  }
-  validateImageIndex(index:number) {
-    let images = this.imagesList as any[];
-    if(index < 0) {
-      index = images.length - 1;
-    }
-    if(index === images.length){
-      index = 0;
-    }
-    return index;
-  }
-  carouselMinus() {
-
-    this.currentImageIndex--;
-    return this.validateImageIndex(this.currentImageIndex)
-  }
   ngOnInit(): void {
     this.api.currentEmsVersionIdRxjs.subscribe((value) => {
       this.currentEmsVersionIdRxjs = value;
@@ -149,6 +188,11 @@ export class MovieDetailComponent implements OnInit {
       this.currentEmsIdRxjs = value;
     });
     
+
+    this.notIsActive.forEach((x,i)=>{
+      x.paramValue = this.returnAnimationParam(i)
+    })
+
     this.route.params.subscribe(
       (p:Params)=>{
         console.log(p['emsVersionId'] as string)

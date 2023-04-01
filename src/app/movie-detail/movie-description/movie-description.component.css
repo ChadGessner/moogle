@@ -1,3 +1,6 @@
+div {
+    overflow: hidden;
+}
 .image-container {
     max-width: 376px;
     max-height: 255.3px;
@@ -18,26 +21,3 @@
 .carousel-image {
     max-width:10rem;
 }
-
-.star {
-    visibility:hidden;
-    font-size:15px;
-    cursor:pointer;
-  }
-  
-  .star:before {
-    content: "\2605";
-    visibility:visible;
-   }
-  
-   .star:checked:before {
-    content: "\2606";
-   }
-
-.movie-detail-container {
-    overflow:hidden;
-}
-.vw-100 {
-    width:100vw;
-}
-

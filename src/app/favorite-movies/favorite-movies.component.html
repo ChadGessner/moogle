@@ -1,8 +1,40 @@
 <!-- <h1>{{favoriteMovieDetails}}</h1> -->
 
-<ul class="p-2" *ngIf="isFavorited == false" >
+<!-- <ul class="p-2"  >
     <button class="btn btn-success" type="button" (click)="addFavorite(); isFavorited=true"><i class="bi bi-star"></i> Favorited </button>
 </ul>
 <ul class="p-2" *ngIf="isFavorited == true">
     <button class="btn btn-success" type="button" (click)="removeFavorite(currentUserIdRxjs, currentEmsVersionIdRxjs); isFavorited=true" ><i class="bi bi-star-fill"></i> Favorite</button>
-</ul>
+</ul> -->
+
+<ng-template
+    *ngIf="isFavorited == false; then addFavoriteBlock else removeFavoriteBlock">
+</ng-template>
+
+<ng-template #addFavoriteBlock>
+    <ul class="p-2">
+        <button class="btn btn-success" type="button" (click)="addFavorite(); isFavorited = true"><i class="bi bi-star"></i> Favorite </button>
+    </ul>
+</ng-template>
+<ng-template #removeFavoriteBlock>
+    <ul class="p-2">
+        <button class="btn btn-success" type="button" (click)="removeFavorite(currentEmsVersionIdRxjs);isFavorited = false" ><i class="bi bi-star-fill"></i> Favorited</button>
+    </ul>
+</ng-template>
+
+
+<!-- 
+<ng-template class="item"
+*ngIf="detail.userRating.dtlLikedScore == null; then userRatingthenBlock else userRatingelseBlock">
+</ng-template>
+<ng-template #userRatingthenBlock>
+<td>
+    <p [innerHTML]="detail.userRating.iconImage.url"></p>
+</td>
+</ng-template>
+<ng-template #userRatingelseBlock>
+<td>
+    <p>{{detail.userRating.dtlLikedScore}}<img width="40px"
+            src={{detail.userRating.iconImage.url}}></p>
+</td>
+</ng-template> -->

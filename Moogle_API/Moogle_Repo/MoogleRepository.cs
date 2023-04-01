@@ -259,8 +259,12 @@ namespace Moogle_Repo
     {
        User user = _db.Users.FirstOrDefault(x => x.Id == userId);
        favoriteMovie.User = user;
+       List<FavoriteMovie> favoriteMovieCheck = _db.FavoriteMovie.Where(x => x.User.Id == userId && x.EmsId == favoriteMovie.EmsId).ToList();
+       if(favoriteMovieCheck.Count == 0)
+       {
         _db.FavoriteMovie.Add(favoriteMovie);
         _db.SaveChanges();
+       }
 
         FavoriteMovie favoriteMovieDb = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
 

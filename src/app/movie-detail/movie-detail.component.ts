@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 //import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
@@ -16,6 +16,7 @@ export class MovieDetailComponent implements OnInit {
   // @Input()movieDetail1:any;
 
   @Input()emsVersionId:string = ''
+  // @Output()favoriteMovieDetails:any;
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   currentUserIdRxjs: any;

@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
@@ -9,23 +9,38 @@ import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../models/favori
   templateUrl: './favorite-movies.component.html',
   styleUrls: ['./favorite-movies.component.css']
 })
-export class FavoriteMoviesComponent {
+export class FavoriteMoviesComponent implements OnInit {
 @Input() favoriteMovieDetails: any;
 
   currentEmsVersionIdRxjs: any;
   currentUserIdRxjs: any;
-  isFavorited: boolean = false
+  isFavorited: boolean = false;
   newTrailerUrl: any;
-  movieImageArray: any;
-  movieCastArray: any;
+  movieImageArray: IMovieImage[] = [];
+  movieCastArray: IMovieCast[] = [];
 
-
+  // movieCastArray: IMovieCast[] = [];
+  // movieImageArray: IMovieImage[] = [];
+  // newTrailerUrl: any;
+  // currentEmsVersionIdRxjs: any;
+  // currentUserIdRxjs: any;
 
 constructor(
   private api:FlixterApiService,
    private phone:ComponentTelephoneService,
     private render:Renderer2,
      private route:ActivatedRoute){}
+
+     setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+      this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+    };
+    setEmsIdRxjs(emsIdRxjs: any) {
+      this.api.setEmsIdRxjs(emsIdRxjs);
+    };
+  
+    setUserIdRxjs(userIdRxjs: any) {
+      this.api.setUserIdRxjs(userIdRxjs);
+    }
 
      ngOnInit(): void {
       this.api.currentEmsVersionIdRxjs.subscribe((value) => {
@@ -42,23 +57,56 @@ constructor(
       });
       console.log(this.favoriteMovieDetails)
       console.log(this.favoriteMovieDetails.data.movie.name);
+      console.log(this.currentUserIdRxjs)
+      console.log(this.currentEmsVersionIdRxjs)
+      this.api.checkIfFavorited(this.api.user.id, this.currentEmsVersionIdRxjs)
+      .subscribe(
+        (x)=>{
+          console.log("test")
+          console.log(x)
+          console.log(x)
+          console.log(x)
+          if(x == true){
+            this.isFavorited = true;
+            console.log(this.isFavorited)
+          }
+          else{
+            this.isFavorited = false
+            console.log(this.isFavorited)
+          }
+        }
+      )
+
+    }
+
+
+    checkIfFavorited(favoriteMovieEmsId:string){
+      // console.log(userId);
+      console.log(favoriteMovieEmsId);
+      console.log("checkIfFavoritedFunction");
+      this.api.checkIfFavorited(this.api.user.id, favoriteMovieEmsId)
+      .subscribe(
+        (x)=>{
+          if(x == true){
+            this.isFavorited = true;
+            console.log(this.isFavorited)
+          }
+          else{
+            this.isFavorited = false
+            console.log(this.isFavorited)
+          }
+        }
+      )
     }
 
 
 
-    setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
-      this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
-    };
-    setEmsIdRxjs(emsIdRxjs: any) {
-      this.api.setEmsIdRxjs(emsIdRxjs);
-    };
-
-    removeFavorite(userId: number, emsId: string){
+    removeFavorite(emsId: string){
       // this.isFavorited = true;
       console.log("remove Favorite");
-      console.log(userId)
+      // console.log(userId)
       console.log(emsId)
-      this.api.removeFavoriteMovie(userId, emsId).subscribe(
+      this.api.removeFavoriteMovie(this.api.user.id, emsId).subscribe(
         (x)=>{
           if(x == true){
             this.isFavorited = true;
@@ -132,10 +180,14 @@ constructor(
         images: this.movieImageArray
       }
   
-      console.log(newFavorite)
+      console.log(newFavorite);
+      console.log(this.currentEmsVersionIdRxjs);
+      console.log(this.currentUserIdRxjs);
+      console.log(this.api.user.id);
+      console.log(this.api.user);
       // console.log(JSON.stringify(newFavorite))
   
-      this.api.addFavoriteMovie(newFavorite, this.currentUserIdRxjs).subscribe((x) => {
+      this.api.addFavoriteMovie(newFavorite, this.api.user.id).subscribe((x) => {
   
         if(x){
           console.log(x);

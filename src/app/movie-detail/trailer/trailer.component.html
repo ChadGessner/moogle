@@ -1,7 +1,6 @@
 
-<div 
-[ngClass]="isActive ? ['card', 'm-4', 'p-4', 'bg-dark', 'rounded', 'border', 'border-success']:['position-absolute']" 
-[@componentState]="isActive ? 'show':'hidden'" >
+<div class="card p-4 m-4 bg-dark rounded border border-success "
+ >
 
     <div>
         <h4 class="text-warning" >Trailer</h4>
@@ -13,8 +12,7 @@
 
                     <!-- <div class="card col border border-danger"> -->
                         <div 
-                        [ngClass]="isActive ? ['border', 'border-danger', 'p-4', 'm-4', 'trailer-class']:['trailer-class']" 
-                        [@trailerState]="isActive ? 'show' : 'hidden'" 
+                        
                         class="col card ">
                             <vg-player   >
                                         

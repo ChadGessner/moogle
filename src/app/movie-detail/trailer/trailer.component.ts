@@ -10,7 +10,7 @@ import {
   selector: 'app-trailer',
   templateUrl: './trailer.component.html',
   styleUrls: ['./trailer.component.css'],
-  animations: [
+  //animations: [
     //!!!!! trigger('componentState', [
     //   state('show', style({
     //     'transform' : 'translateX(0)'
@@ -39,38 +39,38 @@ import {
     // ])
     
       
-      trigger('trailerState',[
-        state('show', style({
+  //     trigger('trailerState',[
+  //       state('show', style({
           
-          'width' : '100%',
-          'height' : '100%',
-        })),
-        state('hidden', style({
-          'width' : '0',
-          'height' : '0',
-          'padding' : '0',
-          'border' : 'none',
-        })),
-        transition('show <=> hidden',[
-          animate(5000)
-        ]),
+  //         'width' : '100%',
+  //         'height' : '100%',
+  //       })),
+  //       state('hidden', style({
+  //         'width' : '0',
+  //         'height' : '0',
+  //         'padding' : '0',
+  //         'border' : 'none',
+  //       })),
+  //       transition('show <=> hidden',[
+  //         animate(5000)
+  //       ]),
         
-      ]),
+  //     ]),
     
-    trigger('componentState',[
-      state('show', style({
-        'transform' : `translateX(0)`
-      })),
-      state('hidden', style({
-        'overflow' : 'hidden',
-        'transform' : 'translateX(9000px)'
-      })),
-      transition('show <=> hidden', [
-        animate(1000),
+  //   trigger('componentState',[
+  //     state('show', style({
+  //       'transform' : `translateX(0)`
+  //     })),
+  //     state('hidden', style({
+  //       'overflow' : 'hidden',
+  //       'transform' : 'translateX(9000px)'
+  //     })),
+  //     transition('show <=> hidden', [
+  //       animate(1000),
         
-      ]),
-    ])
-  ]
+  //     ]),
+  //   ])
+  // ]
 })
 export class TrailerComponent {
   trailerState = 'hidden';

@@ -21,3 +21,6 @@
 .movie-detail-container {
     overflow:hidden;
 }
+.vw-100 {
+    width:100vw;
+}

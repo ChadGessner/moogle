@@ -20,7 +20,7 @@ namespace Moogle_Flixter_Domain
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
-    public string ApiKey { get; set; } = "918bde0035mshc23e19c76e30c24p1821a6jsn0f3510e5455a";
+    public string ApiKey { get; set; } = "f056f19375msh9becfb6a69a3332p1e1667jsn4d3ccf8cbc6d";
     public FlixterClient()
     {
       Client = new HttpClient();
@@ -90,8 +90,8 @@ namespace Moogle_Flixter_Domain
       var apiTask = header.GetJsonAsync<MovieDetailsRoot>();
       apiTask.Wait();
       MovieDetailsRoot result = apiTask.Result;
-      //Console.WriteLine(result.ToString());
-      return result;
+      
+      return MovieDetailsRoot.ValidateMovieDetailRoot(result);
     }
     //ReviewsRoot
     public ReviewsRoot MakeMovieReviewsRequest(string emsId)

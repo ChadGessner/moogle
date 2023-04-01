@@ -30,7 +30,24 @@
   </ul>
 
 <form (ngSubmit)="onSubmit(updatedUser)" class="row-2 p-4 m-4 bg-dark" #updatedUser="ngForm" >
+  <!-- <div class="col">
+    <div class="card border border-secondary visually-hidden">
+      <button id="btn-2"  class="btn btn-outline-light text-warning" >Edit</button>
+      <div class="card-body">
+        <h5 class="card-title text-muted">First Name</h5>
+        <p *ngIf="!notIsActive[1].isActive"  class="card-text">{{registeredUser.id}}</p>
+        <input 
+        class="form-control"
+        *ngIf="notIsActive[1].isActive" 
+        type="text" 
+        name="firstName" 
+        placeholder={{registeredUser.id}}  
+        ngModel>
+      </div>
+    </div>
+  </div> -->
 <div class="row row-cols-1 row-cols-sm-2 g-3 m-4 p-4 bg-dark">
+  
     <div class="col">
       <div class="card border border-secondary">
         <button id="btn-1" class="btn btn-outline-light text-warning">Edit</button>
@@ -47,6 +64,7 @@
         </div>
       </div>
     </div>
+    
     <div class="col">
       <div class="card border border-secondary">
         <button id="btn-2"  class="btn btn-outline-light text-warning" >Edit</button>

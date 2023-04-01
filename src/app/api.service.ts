@@ -148,7 +148,7 @@ export class FlixterApiService {
       // )
    }
    updateUser(user:User){
-    return this.http.post(this.baseUri + 'User/UpdateUser', {
+    return this.http.patch(this.baseUri + 'User/UpdateUser', {
       user 
     })
     .subscribe(

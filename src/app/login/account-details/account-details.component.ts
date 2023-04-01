@@ -88,16 +88,17 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
     const keys = this.registeredUser as object;
     let i = 0
     for(let key of Object.keys(keys)){
+      console.log(key)
       if(updatedUser.form.contains(key)){
         if(updatedUser.form.value[key]){
           upDootUser[key] = updatedUser.form.value[key]
         }
       }else{
-        if(key !== 'id'){
+        
           console.log(Object.values(keys));
         
           upDootUser[key] = Object.values(keys)[i]
-        }
+        
         
       }
       i++;

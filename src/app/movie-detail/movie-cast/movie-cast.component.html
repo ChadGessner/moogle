@@ -1,43 +1,47 @@
 <div 
-class="card p-4 m-4 bg-dark rounded border border-success"
+class="card p-4 m-4 bg-dark rounded border border-success "
 >
     <div>
 
     
     <h4 class="text-warning" >CAST</h4>
         <hr>
-        
-    <div class="row">
         <div class="progress">
             <div 
             id="progress-bar"
             [ngStyle]="progressBarStyle()"
             class="progress-bar "></div>
         </div>
-        <div  class="row card-body bg-dark border ">
-            <div class="row m-4 float-left">
-                <img class="col poster " 
-                src={{movieImage}}>
-                    <div class="col">
-                        <div class="btn-group col"> 
-                            <div class="m-1 ">
-                                <button 
-                                (click)="castIncrementEvent($event)"
-                                id="cast-prev"
-                                class="btn btn-dark text-info">Prev</button>
-                            </div>
-                            
-                            <div class="m-1 ">
-    
-                                <button 
-                                (click)="castIncrementEvent($event)"
-                                id="cast-next"
-                                class="btn btn-dark text-info">Next</button>
-                            </div>
-                            
-                        </div>
+        <div class="row">
+            
+            <div  class="row card-body bg-dark border ">
+                <div class="row m-4 float-left">
+                    
+                        <img class="poster col" 
+                        src={{movieImage}}>
+                    
                         
-                                    
+                        <div class="card col border border-danger m-4"> 
+                            <div class="btn-group">
+                                <div class="m-1">
+                                    <button 
+                                    (click)="castIncrementEvent($event)"
+                                    id="cast-prev"
+                                    class="btn btn-outline-info text-info">Prev</button>
+                                </div>
+                                
+                                <div class="m-1">
+        
+                                    <button 
+                                    (click)="castIncrementEvent($event)"
+                                    id="cast-next"
+                                    class="btn btn-outline-info text-info">Next</button>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                        <div class="col">
                             <ul class="list-group col" >
                                 <li class="card border border-warning" *ngFor="let cast of movieCast;index as i">
                                     <div class="p-2" *ngIf="i === castIndex">
@@ -46,23 +50,21 @@ class="card p-4 m-4 bg-dark rounded border border-success"
                                         <p class="text-success">{{cast.name}}</p>
                                         <hr>
                                         <label class="text-muted">Role</label>
-                                        <p class="text-success" >{{cast.role}}</p>
+                                        <div class="text-success" [innerHTML]="cast.role"></div>
                                         <hr>
-                                        <label *ngIf="cast.characterName" class="text-muted" >Character Name</label>
-                                        <p *ngIf="cast.characterName" class="text-success">
-                                            {{cast.characterName}}
-                                        </p>
+                                        <label class="text-muted" >Character Name</label>
+                                        <div  class="text-success" [innerHTML]="cast.characterName">
+                                            
+                                        </div>
                                         <hr>
                                     </div>
                                     
                                 </li>
                             </ul>
+                        </div>
                     </div>
-                    
-                    
-                    
-                
-                </div> 
+                </div>        
+            </div> 
         </div>
     </div>
 </div>   

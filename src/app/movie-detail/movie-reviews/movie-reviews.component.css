@@ -18,6 +18,6 @@
 .carousel-image {
     max-width:10rem;
 }
-* {
+div {
     overflow: hidden;
 }

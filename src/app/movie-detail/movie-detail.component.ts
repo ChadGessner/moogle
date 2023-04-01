@@ -16,15 +16,16 @@ import {
   animations: [
     trigger('componentState', [
       state('show', style({
-         'transform' : 'translateX({{disp}})'
-        // 'left' : '{{disp}}'
+         'transform' : 'translateX({{disp}})',
+          'overflow' : 'hidden'
       }), {params: {disp : '0vw'}}),
       state('hidden', style({
         // 'right' : '{{hide}}'
-         'transform' : 'translateX({{disp}})'
+         'transform' : 'translateX({{disp}})',
+         'overflow' : 'hidden'
       }), {params : {disp : '100vw'}}),
-      transition('show => hidden', animate(2000)),
-      transition('hidden => show', animate(2000)),
+      transition('show <=> hidden', animate(500)),
+      
     ])
   ]
  })
@@ -37,8 +38,7 @@ export class MovieDetailComponent implements OnInit {
   imagesList:any[]|null = null;
   currentDisplayIndex:number = 0;
   castIndex:number = 0;
-  hidey:string= '100vw';
-  dispy:string = '0vw';
+
   @Output()showTrailer:boolean = false;
   @Output()trailerUrl:any;
   notIsActive:{
@@ -83,10 +83,7 @@ export class MovieDetailComponent implements OnInit {
        private route:ActivatedRoute ){
 
   }
-  testClick() {
-    this.componentState = this.componentState === 'hidden' ? 'show' : 'hidden'
-    console.log(this.hidey + " " + this.dispy)
-  }
+
   getBackgroundImage() {
     return {
       'background' : `url("${this.movieDetail.data.movie.backgroundImage.url}")`,
@@ -108,7 +105,7 @@ export class MovieDetailComponent implements OnInit {
   }
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
-    console.log(target)
+    let previousDisplayIndex = this.currentDisplayIndex;
     if(target && this.notIsActive.filter(x=>x.id === target.id).length > 0){
       
       this.notIsActive.forEach(
@@ -132,9 +129,7 @@ export class MovieDetailComponent implements OnInit {
               this.trailerUrl = this.movieDetail.data.movie.trailer.url
             }
             if(x.isActive){
-              this.componentState = this.currentDisplayIndex < i ? 'show' : 'hidden';
               this.currentDisplayIndex = i;
-              
             }
 
         }
@@ -142,14 +137,30 @@ export class MovieDetailComponent implements OnInit {
       }
 
       )
+      
+    }
+    let q = 0;
+    this.notIsActive.forEach((x)=>{
+      
+      x.isActive ? q += 1 : q
+      console.log(q + " " + x.isActive)
+    })
+    console.log(this.currentDisplayIndex)
+    console.log(previousDisplayIndex)
+    this.componentState = previousDisplayIndex < this.currentDisplayIndex ? 'show' : 'hidden';
+    
       this.notIsActive.forEach((x,i)=>{
         x.paramValue = this.returnAnimationParam(i)
       })
-    }
+    
+    
   }
  
 
   ngOnInit(): void {
+    this.notIsActive.forEach((x,i)=>{
+      x.paramValue = this.returnAnimationParam(i)
+    })
     this.route.params.subscribe(
       (p:Params)=>{
         console.log(p['emsVersionId'])

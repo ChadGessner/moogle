@@ -81,10 +81,10 @@ namespace Moogle_API.Controllers
       return _db.RegisterUser(newUser, theaters);
     }
     [HttpPatch("UpdateUser")]
-    public User UpdateUser(User user)
+    public User UpdateUser([FromBody]JsonObject user)
     {
-       //User updateUser = ModelConverter.GetUserFromAngular(user);
-      return _db.UpdateUser(user);
+      User userUser = JsonConvert.DeserializeObject<User>(user["user"].ToString());
+      return _db.UpdateUser(userUser);
     }
 
     [HttpGet("GetTheaters/{zipCode}")]
@@ -98,17 +98,6 @@ namespace Moogle_API.Controllers
     {
       return Client.MakeTheaterDetailRequest(theaterId);
     }
-    //[HttpPost("UpdateUser")]
-    //public User UpdateUser([FromBody] JsonObject user)
-    //{
-    //  //Console.WriteLine(user.ToString());
-    //  //Console.WriteLine(  user);
-    //  //Console.WriteLine(user.ToString());
-    //  Console.WriteLine(user["city"]);
-    //  AngularUser userUser = JsonConvert.DeserializeObject<AngularUser>(user["user"].ToString());
-    //  Console.WriteLine(  userUser.city);
-    //  return _db.UpdateUser(ModelConverter.GetUserFromAngular(userUser));
-    //}
 
   }
 }

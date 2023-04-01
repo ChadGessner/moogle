@@ -9,20 +9,7 @@ import {
 @Component({
   selector: 'app-movie-info',
   templateUrl: './movie-info.component.html',
-  styleUrls: ['./movie-info.component.css'],
-  // animations: [
-  //   trigger('componentState', [
-  //     state('show', style({
-  //       'transform' : 'translateX(0)'
-  //     })),
-  //     state('hidden', style({
-  //       'overflow' : 'hidden',
-  //       'transform' : 'translateX(9000px)'
-  //     })),
-  //     transition('show => hidden', animate(1000)),
-  //     transition('hidden => show', animate(1000)),
-  //   ])
-  // ]
+  styleUrls: ['./movie-info.component.css']
 })
 export class MovieInfoComponent {
   @Input()movieImage:string = '';
@@ -30,4 +17,12 @@ export class MovieInfoComponent {
   @Input()releaseDate:string = '';
   @Input()totalGross:string = '';
   @Input()isActive:boolean = false;
+  constructor(){}
+  getTotalGross() {
+    let USDollar = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    return this.totalGross.startsWith('<') ? this.totalGross : `${USDollar.format(Number(this.totalGross))}`;
+  }
 }

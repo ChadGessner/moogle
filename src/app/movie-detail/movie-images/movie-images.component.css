@@ -1,0 +1,23 @@
+.image-container {
+    max-width: 376px;
+    max-height: 255.3px;
+    display: flex;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.poster {
+    max-width: 10rem;
+}
+.images-container {
+    display:flex;
+    flex-direction: row ;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.carousel-image {
+    max-width:10rem;
+}
+* {
+    overflow: hidden;
+}

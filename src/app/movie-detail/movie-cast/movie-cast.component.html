@@ -1,0 +1,68 @@
+<div 
+class="card p-4 m-4 bg-dark rounded border border-success"
+>
+    <div>
+
+    
+    <h4 class="text-warning" >CAST</h4>
+        <hr>
+        
+    <div class="row">
+        <div class="progress">
+            <div 
+            id="progress-bar"
+            [ngStyle]="progressBarStyle()"
+            class="progress-bar "></div>
+        </div>
+        <div  class="row card-body bg-dark border ">
+            <div class="row m-4 float-left">
+                <img class="col poster " 
+                src={{movieImage}}>
+                    <div class="col">
+                        <div class="btn-group col"> 
+                            <div class="m-1 ">
+                                <button 
+                                (click)="castIncrementEvent($event)"
+                                id="cast-prev"
+                                class="btn btn-dark text-info">Prev</button>
+                            </div>
+                            
+                            <div class="m-1 ">
+    
+                                <button 
+                                (click)="castIncrementEvent($event)"
+                                id="cast-next"
+                                class="btn btn-dark text-info">Next</button>
+                            </div>
+                            
+                        </div>
+                        
+                                    
+                            <ul class="list-group col" >
+                                <li class="card border border-warning" *ngFor="let cast of movieCast;index as i">
+                                    <div class="p-2" *ngIf="i === castIndex">
+                                        <label class="text-small text-muted text-warning" >Name</label>
+                                        
+                                        <p class="text-success">{{cast.name}}</p>
+                                        <hr>
+                                        <label class="text-muted">Role</label>
+                                        <p class="text-success" >{{cast.role}}</p>
+                                        <hr>
+                                        <label *ngIf="cast.characterName" class="text-muted" >Character Name</label>
+                                        <p *ngIf="cast.characterName" class="text-success">
+                                            {{cast.characterName}}
+                                        </p>
+                                        <hr>
+                                    </div>
+                                    
+                                </li>
+                            </ul>
+                    </div>
+                    
+                    
+                    
+                
+                </div> 
+        </div>
+    </div>
+</div>   

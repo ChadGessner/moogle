@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, OnInit, Output, Renderer2, HostListener
 import { FlixterApiService } from '../api.service';
 import { TheaterData } from '../models/theater-data.interface';
 import {ChadsTheaters} from '../dataForTesting/chadsTheaters'
-import { ComponentTelephoneService } from '../component-telephone.service';
 import { TheaterDetails } from '../models/theater-details.interface';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';

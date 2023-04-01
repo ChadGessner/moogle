@@ -22,13 +22,7 @@ export class FlixterApiService {
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
-  // @Output()theatersEvent:EventEmitter<TheaterData> = new EventEmitter();
-  // @Output()theatersDetailsEvent:EventEmitter<TheaterDetails> = new EventEmitter();
-  // @Output()upcomingMovieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-  // @Output()movieDetailsByIdEvent:EventEmitter<any> = new EventEmitter<any>();
-  // @Output()searchQueryEvent:EventEmitter<any> = new EventEmitter<any>();
-  // @Output()celebrityDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
-   @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
+  @Output()popularMovieEvent:EventEmitter<any> = new EventEmitter();
 
   constructor(private http:HttpClient) {
 

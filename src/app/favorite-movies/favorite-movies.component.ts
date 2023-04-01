@@ -1,7 +1,7 @@
 import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FlixterApiService } from '../api.service';
-import { ComponentTelephoneService } from '../component-telephone.service';
+
 import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../models/favorite-movie-details.interface';
 
 @Component({
@@ -21,7 +21,7 @@ export class FavoriteMoviesComponent implements OnInit {
 
 constructor(
   private api:FlixterApiService,
-   private phone:ComponentTelephoneService,
+   
     private render:Renderer2,
      private route:ActivatedRoute){}
 

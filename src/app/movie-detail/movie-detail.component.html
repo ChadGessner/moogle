@@ -76,12 +76,14 @@
     </div> -->
     <div class="row" *ngIf="movieDetail" >
         
-        <ul class="p-2" *ngIf="isFavorited == false" >
+        <!-- <ul class="p-2" *ngIf="isFavorited == false" >
             <button class="btn btn-success" type="button" appMovieFavorite [favoriteMovie]="movieDetail"><i class="bi bi-star"></i> Favorited </button>
         </ul>
         <ul class="p-2" *ngIf="isFavorited == true">
             <button class="btn btn-success" type="button" (click)="removeFavorite(currentUserIdRxjs, currentEmsVersionIdRxjs); isFavorited=true" ><i class="bi bi-star-fill"></i> Favorite</button>
-        </ul>
+        </ul> -->
+
+        <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
 
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>
         

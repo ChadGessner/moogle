@@ -1,10 +1,10 @@
-<div *ngIf="movieDetail" class="movie-detail-container">
 
     <div class="card m-4 border border-success bg-dark rounded">
         <div class="card-header">
             <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
             <hr class="text-success" >
             <ul class="nav nav-tabs card-header-tabs" >
+
             
             <li class="nav-item bg-secondary m-1" >
                 <a class="nav-link" id="card-tab-one">Description</a>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-<!-- <div   class="card m-4 p-4 border border-success bg-dark rounded" *ngIf="movieDetail" > -->
+    <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
    
     <div  class="movie-detail-container">
         <div class="position-absolute vw-100" [@componentState]="{
@@ -102,7 +102,7 @@
                 </div>
         
         </div>
-    </div>
+    <!-- </div> -->
     <p *ngIf="!movieDetail">
         ... Were sorry, there are no details for this movie<a routerLink="home" >Go Back Home</a>
     </p>

@@ -14,18 +14,15 @@ export class PopularMoviesComponent implements OnInit{
   endPopularMovieIndex: number = 5;
   startOfPopularMovies: boolean = true;
   endOfPopularMovies: boolean = false;
-  // news = TestNews;
   
   constructor(
     private api:FlixterApiService,
-      private render:Renderer2, 
-       private router:Router){}
+     private router:Router){}
 
-     
      passEmsVersionId(id: string) {
       this.router.navigate([
-        'movie-detail',
-        id
+        '/movie-detail', id
+
       ])
     }
       navigate(url:string) {
@@ -49,7 +46,7 @@ export class PopularMoviesComponent implements OnInit{
   ngOnInit(): void {
     this.api.getPopularMovieList().subscribe((x) =>{ 
       this.popularMovies = x;
-      console.log("test");
+      console.log(x);
       // for(let p of this.popularMovies)
       // {
       //   console.log(p.posterImage.url);
@@ -64,10 +61,10 @@ export class PopularMoviesComponent implements OnInit{
     this.startPopularMovieIndex = endIndex++
     this.endPopularMovieIndex = endIndex + 4
     this.startOfPopularMovies = false
-    if (this.endPopularMovieIndex >= this.popularMovies.data.popular.length)
+    if (this.endPopularMovieIndex >= this.popularMovies.length)
     {
-      this.startPopularMovieIndex = this.popularMovies.data.popular.length - 5
-      this.endPopularMovieIndex = this.popularMovies.data.popular.length
+      this.startPopularMovieIndex = this.popularMovies.length - 5
+      this.endPopularMovieIndex = this.popularMovies.length
       this.endOfPopularMovies = true;
     }
   }

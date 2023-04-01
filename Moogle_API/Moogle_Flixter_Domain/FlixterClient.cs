@@ -24,7 +24,6 @@ namespace Moogle_Flixter_Domain
     public FlixterClient()
     {
       Client = new HttpClient();
-
     }
     public async Task<TheaterRequest> MakeTheaterRequest(string zipCode)
     {
@@ -33,7 +32,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
         .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -48,7 +49,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -62,9 +65,9 @@ namespace Moogle_Flixter_Domain
         result.data.theaterShowtimeGroupings.movies.Count > 0;
       if (success)
       {
-        foreach(var movie in result.data.theaterShowtimeGroupings.movies)
+        foreach (var movie in result.data.theaterShowtimeGroupings.movies)
         {
-          if(movie.posterImage == null || movie.posterImage.url == null)
+          if (movie.posterImage == null || movie.posterImage.url == null)
           {
             movie.posterImage = new TheaterDetailsPosterImage()
             {
@@ -83,14 +86,16 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
       var apiTask = header.GetJsonAsync<MovieDetailsRoot>();
       apiTask.Wait();
       MovieDetailsRoot result = apiTask.Result;
-      
+
       return MovieDetailsRoot.ValidateMovieDetailRoot(result);
     }
     //ReviewsRoot
@@ -101,7 +106,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -117,7 +124,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
         .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -133,7 +142,9 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + "news/list";
       var header = apiUri
 
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
           //.WithHeader("X-RapidAPI-Key", "8a1920a098mshfc90a10a8464b5ap1cf15ejsndf3b1770a944")
@@ -153,7 +164,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           // .WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -169,7 +182,9 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -186,7 +201,9 @@ namespace Moogle_Flixter_Domain
       string apiUri = BaseUri + "movies/get-popularity";
       var header = apiUri
 
+
           .WithHeader("X-RapidAPI-Key", ApiKey)
+
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
 
@@ -195,23 +212,38 @@ namespace Moogle_Flixter_Domain
       PopularMoviesRoot result = apiTask.Result;
 
       //Console.WriteLine(result.ToString());
-      var popularMovies = result.data.popularity.Where(x => x.name.Length >0).ToList();
-// https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png
+      var popularMovies = result.data.popularity.Where(x => x.name.Length > 0).ToList();
+      // https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png
       foreach (var movies in popularMovies)
       {
-        if(movies.posterImage.url == null)
+        if (movies.posterImage.url == null)
         {
-          movies.posterImage.url = "https://resizing.flixster.com/IaXbRF4gIPh9jireK_4VCPNfdKc=/489x0/v2/https://resizing.flixster.com/5zfH_5-Mj-VJMNa4vT6glLV_1D0=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzL2NlOGM0OWFiLTk3NmItNDA3YS04NDE5LWQyNzQ1MjMxYzg3ZC5qcGc=";
+          movies.posterImage.url = "https://t4.ftcdn.net/jpg/04/56/20/89/240_F_456208906_h2bZ51348xqpFcYXh4sGUiQDF5zolfRm.jpg";
         }
-        if(movies.tomatoRating == null)
+        if (movies.tomatoRating == null)
         {
-          PopularMoviesTomatoRating newTomato = new(){
-              tomatometer = null,
-              iconImage = new PopularMoviesIconImage(){
-                url = "<i class=\"bi bi-bandaid\"></i>"
-              }
+          PopularMoviesTomatoRating newTomato = new()
+          {
+            tomatometer = null,
+            iconImage = new PopularMoviesIconImage()
+            {
+              url = "<i class=\"bi bi-bandaid\"></i>"
+            }
           };
           movies.tomatoRating = newTomato;
+        }
+        if (movies.userRating == null || movies.userRating.dtlLikedScore == null)
+        {
+          PopularMoviesUserRating newUserRating = new()
+          {
+            dtlLikedScore = null,
+            dtlWtsScore = null,
+            iconImage = new PopularMoviesIconImage()
+            {
+              url = "<i class=\"bi bi-x-square\"></i>"
+            }
+          };
+          movies.userRating = newUserRating;
         }
       }
       // var test1 = test.Select(x => x.posterImage.url == null ? x.posterImage.url = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Icons8_flat_film_reel.svg/2048px-Icons8_flat_film_reel.svg.png" : x.posterImage.url).ToList(); 

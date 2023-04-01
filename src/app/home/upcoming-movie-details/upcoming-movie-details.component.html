@@ -16,8 +16,15 @@
             <tr *ngFor="let detail of upcomingMovieDetails.data.upcoming.slice(startMovieIndex,endMovieIndex)">
                 <td><img height="105px" width="105px" src={{detail.posterImage.url}}></td>
                 <td>{{detail.name}}</td>
-
-                <td><p>{{detail.releaseDate | date:'fullDate'}}</p></td>
+                <ng-template class="item"
+                *ngIf="detail.releaseDate == null; then releaseDateThenBlock else releaseDateElseBlock">
+                </ng-template>
+                <ng-template #releaseDateThenBlock>
+                <td>Release Date TBD!</td>
+                </ng-template>
+                <ng-template #releaseDateElseBlock>
+                <td>{{detail.releaseDate | date:'fullDate'}}</td>
+                </ng-template>
                 <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                         routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
 

@@ -2,6 +2,8 @@ import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angu
 import { FlixterApiService } from '../api.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieDetail } from '../dataForTesting/movieDetail';
+import { IFavoriteMovieDetails } from '../models/favorite-movie-details.interface';
+// import { MovieFavoriteDirective } from '../movie-favorite.directive';
 import {
   animate,
    state,
@@ -36,11 +38,20 @@ export class MovieDetailComponent implements OnInit {
   animationDisplayMod = 0;
   componentState:string = 'hidden'
   imagesList:any[]|null = null;
-  currentDisplayIndex:number = 0;
+  currentImageIndex:number = 0;
+  currentUserIdRxjs: any;
+  currentEmsVersionIdRxjs: any;
+  currentEmsIdRxjs: any;
   castIndex:number = 0;
+  favorites: any;
+  isFavorited: any = false;
+  favoriteMovie: IFavoriteMovieDetails | undefined;
+  currentDisplayIndex:number = 0;
+  
 
   @Output()showTrailer:boolean = false;
   @Output()trailerUrl:any;
+
   notIsActive:{
     id:string,
     isActive:boolean,
@@ -80,9 +91,16 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private api:FlixterApiService,
       private render:Renderer2,
-       private route:ActivatedRoute ){
+       private route:ActivatedRoute){}
 
-  }
+
+       setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+        this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+      };
+      setEmsIdRxjs(emsIdRxjs: any) {
+        this.api.setEmsIdRxjs(emsIdRxjs);
+      };
+
 
   getBackgroundImage() {
     return {
@@ -158,12 +176,27 @@ export class MovieDetailComponent implements OnInit {
  
 
   ngOnInit(): void {
+    this.api.currentEmsVersionIdRxjs.subscribe((value) => {
+      this.currentEmsVersionIdRxjs = value;
+    });
+
+    this.api.currentUserIdRxjs.subscribe((value) => {
+      this.currentUserIdRxjs = value;
+    });
+
+    this.api.currentEmsIdRxjs.subscribe((value) => {
+      this.currentEmsIdRxjs = value;
+    });
+    
+
     this.notIsActive.forEach((x,i)=>{
       x.paramValue = this.returnAnimationParam(i)
     })
+
     this.route.params.subscribe(
       (p:Params)=>{
-        console.log(p['emsVersionId'])
+        console.log(p['emsVersionId'] as string)
+        this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(x)
@@ -172,6 +205,7 @@ export class MovieDetailComponent implements OnInit {
           }
         )
       }
+
     )
   }
 }

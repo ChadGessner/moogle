@@ -12,6 +12,12 @@ namespace Moogle_Repo
         public DbSet<User> Users { get; set; }
         public DbSet<Theater> Theaters { get; set; }
         public DbSet<TheaterZip> TheaterZips { get; set; }
+        
+        public DbSet<FavoriteMovie> FavoriteMovie { get; set; }
+        
+        public DbSet<FavoriteMovieCast> FavoriteMovieCasts { get; set; }
+        
+        public DbSet<FavoriteMovieImage> FavoriteMovieImages { get; set; }
 
         public ApplicationDbContext()
         {

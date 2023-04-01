@@ -1,6 +1,8 @@
 using Moogle_Models.API_Models.AngularModels;
 using Moogle_Models.Db_Models;
 using Moogle_Repo;
+using Moogle_Models.DTO;
+using static Moogle_Models.DTO.FavoriteMovieDto;
 
 namespace Moogle_Domain
 {
@@ -29,7 +31,7 @@ namespace Moogle_Domain
     {
       bool answer = _db.AddUserZip(user, zipCode);
       Console.WriteLine(answer);
-      if(answer)
+      if (answer)
       {
         return _db.GetTheatersByUserZip(zipCode).Result;
       }
@@ -51,6 +53,37 @@ namespace Moogle_Domain
     public List<string> GetUserZips(User user)
     {
       return _db.GetUserZips(user);
+    }
+    public List<FavoriteMovieModelDto> GetAllFavoriteMovies(int userId)
+    {
+      return _db.GetAllFavoriteMovies(userId);
+    }
+    public FavoriteMovieModelDto AddFavoriteMovie(FavoriteMovie favoriteMovie, int userId)
+    {
+      return _db.AddFavoriteMovie(favoriteMovie, userId).Result;
+    }
+
+    // public FavoriteMovieModelDto RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId)
+    // {
+    //   return _db.RemoveFavoriteMovie(favoriteMovie, userId).Result;
+    // }
+
+      public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsVersionId)
+    {
+      return _db.RemoveFavoriteMovie(userId, emsVersionId).Result;
+    }
+
+    public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
+    {
+      return _db.GetFavoriteMovieCast(favoriteMovieId);
+    }
+    public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+    {
+      return _db.GetFavoriteMovieImages(favoriteMovieId);
+    }
+    public bool CheckIfFavorited(int userId, string favoriteMovieEmsVersionId)
+    {
+      return _db.CheckIfFavorited(userId, favoriteMovieEmsVersionId);
     }
   }
 }

@@ -5,7 +5,7 @@
 namespace Moogle_Repo.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class workingonfavorites : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -72,6 +72,34 @@ namespace Moogle_Repo.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FavoriteMovie",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmsId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmsVersionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PosterImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Synopsis = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DirectedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReleaseDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalGross = table.Column<int>(type: "int", nullable: true),
+                    TrailerUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteMovie", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FavoriteMovie_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserZip",
                 columns: table => new
                 {
@@ -91,6 +119,65 @@ namespace Moogle_Repo.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "FavoriteMovieCasts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CharacterName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FavoriteMovieId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteMovieCasts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FavoriteMovieCasts_FavoriteMovie_FavoriteMovieId",
+                        column: x => x.FavoriteMovieId,
+                        principalTable: "FavoriteMovie",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FavoriteMovieImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Height = table.Column<int>(type: "int", nullable: true),
+                    Width = table.Column<int>(type: "int", nullable: true),
+                    FavoriteMovieId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FavoriteMovieImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_FavoriteMovieImages_FavoriteMovie_FavoriteMovieId",
+                        column: x => x.FavoriteMovieId,
+                        principalTable: "FavoriteMovie",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavoriteMovie_UserId",
+                table: "FavoriteMovie",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavoriteMovieCasts_FavoriteMovieId",
+                table: "FavoriteMovieCasts",
+                column: "FavoriteMovieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FavoriteMovieImages_FavoriteMovieId",
+                table: "FavoriteMovieImages",
+                column: "FavoriteMovieId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_TheaterZips_TheaterId",
                 table: "TheaterZips",
@@ -106,10 +193,19 @@ namespace Moogle_Repo.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "FavoriteMovieCasts");
+
+            migrationBuilder.DropTable(
+                name: "FavoriteMovieImages");
+
+            migrationBuilder.DropTable(
                 name: "TheaterZips");
 
             migrationBuilder.DropTable(
                 name: "UserZip");
+
+            migrationBuilder.DropTable(
+                name: "FavoriteMovie");
 
             migrationBuilder.DropTable(
                 name: "Theaters");

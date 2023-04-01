@@ -15,27 +15,13 @@ export class PopularMoviesComponent implements OnInit{
   endPopularMovieIndex: number = 5;
   startOfPopularMovies: boolean = true;
   endOfPopularMovies: boolean = false;
-  // news = TestNews;
   
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
      private router:Router){}
 
-
-    //  setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
-    //   this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
-    //   // console.log("test");
-    //   // console.log(this.api.currentEmsVersionIdRxjs)
-    //  }
-
      passEmsVersionId(id: string) {
-      // console.log("test");
-      // this.setEmsVersionIdRxjs(id);
-      // console.log(id)
-      // console.log(id)
-      // console.log(this.api.currentEmsVersionIdRxjs)
-
       this.router.navigate([
         '/movie-detail', id
       ])

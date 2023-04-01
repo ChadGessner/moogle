@@ -1,22 +1,5 @@
-<!-- <div class="w3-row-padding">
-    <div onload="getFavorites()" *ngFor="let event of events" class="w3-col l3 m6 w3-margin-bottom">
-        <div *ngIf="checkFavorite(event.eventId)">
-        <input (click)="removeFavorite(event.eventId)" id="star1" class="star" type="checkbox">
-            <div for="star1" align="center" style="width: 200px;">Remove Favorite</div>
-        </div>
-
-        <div *ngIf="!checkFavorite(event.eventId)">
-            <input (click)="addFavorite(event.eventId)" id="star2" class="star" type="checkbox" checked>
-            <div for="star2" align="center" style="width: 200px;">Add Favorite</div>
-        </div> -->
-
-
 <div *ngIf="movieDetail">
-    <!-- <h1>{{currentUserIdRxjs}}</h1> -->
 
-    <!-- <h1>{{movieDetail.data.movie.emsId}}</h1> -->
-    <!-- <h1>{{movieDetail.data.movie.emsVersionId}}</h1> -->
-    <!-- <h1>{{isFavorited}}</h1> -->
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
         <!-- <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button>
@@ -26,20 +9,6 @@
         <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
         <hr class="text-success" >
         <ul class="nav nav-tabs card-header-tabs" >
-
-
-            <!-- <div *ngIf="testBool == false">
-                <input (click)="removeFavorite()" id="star1" class="star" type="checkbox">
-                    <div for="star1" align="center" style="width: 200px;">Remove Favorite</div>
-                </div> -->
-        
-                <!-- <div *ngIf="testBool == true">
-                    <input (click)="addFavorite()" id="star2" class="star" type="checkbox" checked>
-                    <div for="star2" align="center" style="width: 200px;">Add Favorite</div>
-                </div>
-                    
-                    </li> -->
-        
         <li class="nav-item bg-secondary m-1" >
             <a class="nav-link" id="card-tab-one">Description</a>
         </li>
@@ -62,26 +31,8 @@
 </div>
 
 <div class="card m-4 p-4 border border-success bg-dark rounded">
-    
-    <!-- <div *ngIf="checkFavorite(event.eventId)">
-        <input (click)="removeFavorite(event.eventId)" id="star1" class="star" type="checkbox">
-            <div for="star1" align="center" style="width: 200px;">Remove Favorite</div>
-        </div>
 
-        <div *ngIf="!checkFavorite(event.eventId)">
-            <input (click)="addFavorite(event.eventId)" id="star2" class="star" type="checkbox" checked>
-            <div for="star2" align="center" style="width: 200px;">Add Favorite</div>
-        </div>
-        
-    </div> -->
     <div class="row" *ngIf="movieDetail" >
-        
-        <!-- <ul class="p-2" *ngIf="isFavorited == false" >
-            <button class="btn btn-success" type="button" appMovieFavorite [favoriteMovie]="movieDetail"><i class="bi bi-star"></i> Favorited </button>
-        </ul>
-        <ul class="p-2" *ngIf="isFavorited == true">
-            <button class="btn btn-success" type="button" (click)="removeFavorite(currentUserIdRxjs, currentEmsVersionIdRxjs); isFavorited=true" ><i class="bi bi-star-fill"></i> Favorite</button>
-        </ul> -->
 
         <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
 

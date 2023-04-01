@@ -13,17 +13,13 @@ import { IFavoriteMovieDetails } from '../models/favorite-movie-details.interfac
 })
 export class MovieDetailComponent implements OnInit {
   @Input()movieDetail:any;
-  // @Input()movieDetail1:any;
-
   @Input()emsVersionId:string = ''
-  // @Output()favoriteMovieDetails:any;
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   currentUserIdRxjs: any;
   currentEmsVersionIdRxjs: any;
   currentEmsIdRxjs: any;
   castIndex:number = 0;
-  emsVersionId1:any;
   favorites: any;
   isFavorited: any = false;
   favoriteMovie: IFavoriteMovieDetails | undefined;
@@ -46,7 +42,6 @@ export class MovieDetailComponent implements OnInit {
     id:'card-tab-five',
     isActive:false
   }]
-  emsVersionId2: string = "";
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
@@ -59,58 +54,6 @@ export class MovieDetailComponent implements OnInit {
       setEmsIdRxjs(emsIdRxjs: any) {
         this.api.setEmsIdRxjs(emsIdRxjs);
       };
-
-  removeFavorite(userId: number, emsId: string){
-    // this.isFavorited = true;
-    console.log("remove Favorite");
-    console.log(userId)
-    console.log(emsId)
-    this.api.removeFavoriteMovie(userId, emsId).subscribe(
-      (x)=>{
-        if(x == true){
-          this.isFavorited = true;
-        }
-        else{
-          this.isFavorited = false
-        }
-      }
-    )
-  }
-  // addFavorite(favoriteMovie: IFavoriteMovieDetails, userId: number){
-  //   // this.isFavorited = true;
-  //   console.log("remove Favorite");
-  //   console.log(userId)
-  //   console.log(emsId)
-  //   this.favDirective.sendToFavorites(userId, emsId).subscribe(
-  //     (x)=>{
-  //       if(x == true){
-  //         this.isFavorited = true;
-  //       }
-  //       else{
-  //         this.isFavorited = false
-  //       }
-  //     }
-  //   )
-  // }
-
-  checkIfFavorited(userId:number, favoriteMovieEmsId:string){
-    console.log(userId);
-    console.log(favoriteMovieEmsId);
-    console.log("checkIfFavoritedFunction");
-    this.api.checkIfFavorited(userId, favoriteMovieEmsId).subscribe(
-      (x)=>{
-        if(x == true){
-          this.isFavorited = true;
-          console.log(this.isFavorited)
-        }
-        else{
-          this.isFavorited = false
-          console.log(this.isFavorited)
-        }
-      }
-    )
-  }
-
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     const len = this.movieDetail.data.movie.cast.length;
@@ -210,48 +153,15 @@ export class MovieDetailComponent implements OnInit {
       (p:Params)=>{
         console.log(p['emsVersionId'] as string)
         this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
-        console.log(this.currentEmsVersionIdRxjs)
-        console.log("test")
-        console.log(this.currentUserIdRxjs)
-        console.log("test1")
-
-        // this.setEmsVersionIdRxjs(p['emsVersionId']);
-        console.log("test2")
-        console.log(this.currentUserIdRxjs)
-        console.log("test3")
-
-
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(x)
             this.movieDetail = x
-            // this.emsVersionId1 = (p['emsVersionId'] as string)
-            // console.log(this.emsVersionId1)
-            // this.emsVersionId2 = (p['emsId'] as string)
-            // console.log(this.emsVersionId2)
             this.imagesList = this.movieDetail.data.movie.images;
           }
         )
       }
 
     )
-    console.log(this.currentUserIdRxjs)
-    // console.log(this.movieDetail.data.movie.emsId)
-    // console.log(this.emsVersionId2)
-    // console.log("testasdf")
-    // console.log(this.currentEmsVersionIdRxjs)
-    // console.log("test")
-
-
-
-
-    // console.log("onInit");
-    // // console.log(this.emsVersionId1)
-    // console.log(this.currentUserIdRxjs)
-    // console.log(this.currentEmsVersionIdRxjs)
-
-    this.checkIfFavorited(this.currentUserIdRxjs, this.currentEmsVersionIdRxjs);
-    console.log(this.currentUserIdRxjs)
-    // console.log(this.movieDetail)
   }
 }

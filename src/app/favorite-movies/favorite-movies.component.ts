@@ -19,12 +19,6 @@ export class FavoriteMoviesComponent implements OnInit {
   movieImageArray: IMovieImage[] = [];
   movieCastArray: IMovieCast[] = [];
 
-  // movieCastArray: IMovieCast[] = [];
-  // movieImageArray: IMovieImage[] = [];
-  // newTrailerUrl: any;
-  // currentEmsVersionIdRxjs: any;
-  // currentUserIdRxjs: any;
-
 constructor(
   private api:FlixterApiService,
    private phone:ComponentTelephoneService,
@@ -55,17 +49,9 @@ constructor(
         this.currentUserIdRxjs = value;
         
       });
-      console.log(this.favoriteMovieDetails)
-      console.log(this.favoriteMovieDetails.data.movie.name);
-      console.log(this.currentUserIdRxjs)
-      console.log(this.currentEmsVersionIdRxjs)
       this.api.checkIfFavorited(this.api.user.id, this.currentEmsVersionIdRxjs)
       .subscribe(
         (x)=>{
-          console.log("test")
-          console.log(x)
-          console.log(x)
-          console.log(x)
           if(x == true){
             this.isFavorited = true;
             console.log(this.isFavorited)
@@ -76,14 +62,8 @@ constructor(
           }
         }
       )
-
     }
-
-
     checkIfFavorited(favoriteMovieEmsId:string){
-      // console.log(userId);
-      console.log(favoriteMovieEmsId);
-      console.log("checkIfFavoritedFunction");
       this.api.checkIfFavorited(this.api.user.id, favoriteMovieEmsId)
       .subscribe(
         (x)=>{
@@ -98,14 +78,7 @@ constructor(
         }
       )
     }
-
-
-
     removeFavorite(emsId: string){
-      // this.isFavorited = true;
-      console.log("remove Favorite");
-      // console.log(userId)
-      console.log(emsId)
       this.api.removeFavoriteMovie(this.api.user.id, emsId).subscribe(
         (x)=>{
           if(x == true){
@@ -117,19 +90,7 @@ constructor(
         }
       )
     }
-
-
-
-
     addFavorite() {
-
-      // console.log(this.favoriteMovie as IFavoriteMovieDetails )
-      // console.log("test");
-      // console.log(this.favoriteMovie.data.movie.trailer)
-      // console.log("test");
-      // console.log(JSON.stringify(this.favoriteMovie))
-      // console.log(this.favoriteMovie)
-      // console.log(JSON.stringify(this.favoriteMovie.data.movie.trailer.url))
       if(this.favoriteMovieDetails.data.movie.trailer == null)
       {
         this.newTrailerUrl = null; 
@@ -179,26 +140,9 @@ constructor(
         trailerUrl: this.newTrailerUrl,
         images: this.movieImageArray
       }
-  
-      console.log(newFavorite);
-      console.log(this.currentEmsVersionIdRxjs);
-      console.log(this.currentUserIdRxjs);
-      console.log(this.api.user.id);
-      console.log(this.api.user);
-      // console.log(JSON.stringify(newFavorite))
-  
       this.api.addFavoriteMovie(newFavorite, this.api.user.id).subscribe((x) => {
-  
         if(x){
-          console.log(x);
         }
-  
-  
       })
-  
-  
-
-
-
     }
   }

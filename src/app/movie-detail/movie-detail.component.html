@@ -1,12 +1,14 @@
 <div *ngIf="movieDetail">
 
-
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
+        <!-- <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button>
+        <button (click)="checkIfFavorited(currentUserIdRxjs, currentEmsVersionIdRxjs)">Click Me</button> -->
+
+
         <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
         <hr class="text-success" >
         <ul class="nav nav-tabs card-header-tabs" >
-        
         <li class="nav-item bg-secondary m-1" >
             <a class="nav-link" id="card-tab-one">Description</a>
         </li>
@@ -22,14 +24,20 @@
         <li class="nav-item bg-primary m-1"  >
             <a class="nav-link" id="card-tab-five">Reviews</a>
         </li>
+        <li class="nav-item bg-primary m-1"  >
+        </li>
         </ul>
     </div>
 </div>
 
 <div class="card m-4 p-4 border border-success bg-dark rounded">
-    
+
     <div class="row" *ngIf="movieDetail" >
+
+        <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
+
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>
+        
         <hr>
         <div *ngIf="notIsActive[1].isActive" class="row ">
             <div class="btn-group">

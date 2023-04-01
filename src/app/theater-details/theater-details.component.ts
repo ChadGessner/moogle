@@ -36,6 +36,7 @@ export class TheaterDetailsComponent implements OnInit {
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
   }
+
   movieDetails(emsVersionId:string){
     this.router.navigate([
       'movie-detail',
@@ -93,9 +94,6 @@ export class TheaterDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.router.events.subscribe(e =>{
-      
-    })
     this.route.params.subscribe(
       (p)=>{
         if(p['theaterId']){

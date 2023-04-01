@@ -15,15 +15,12 @@ export class PopularMoviesComponent implements OnInit{
   endPopularMovieIndex: number = 5;
   startOfPopularMovies: boolean = true;
   endOfPopularMovies: boolean = false;
-  // news = TestNews;
   
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
      private router:Router){}
 
-
-     
      passEmsVersionId(id: string) {
       this.router.navigate([
         '/movie-detail', id
@@ -50,7 +47,7 @@ export class PopularMoviesComponent implements OnInit{
   ngOnInit(): void {
     this.api.getPopularMovieList().subscribe((x) =>{ 
       this.popularMovies = x;
-      console.log("test");
+      console.log(x);
       // for(let p of this.popularMovies)
       // {
       //   console.log(p.posterImage.url);

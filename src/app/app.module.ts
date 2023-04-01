@@ -26,6 +26,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { TruncatePipe } from './shared/truncate-pipe';
 import { ScrollableDirective } from './scrollable.directive';
+import { MovieFavoriteDirective } from './movie-favorite.directive';
+import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
 
 
 
@@ -48,7 +50,9 @@ import { ScrollableDirective } from './scrollable.directive';
     AccountDetailsComponent,
     PopularMoviesComponent,
     TruncatePipe,
-    ScrollableDirective
+    ScrollableDirective,
+    MovieFavoriteDirective,
+    FavoriteMoviesComponent
 
   ],
   imports: [

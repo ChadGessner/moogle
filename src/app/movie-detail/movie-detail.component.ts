@@ -1,9 +1,11 @@
-import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { FlixterApiService } from '../api.service';
 import { ComponentTelephoneService } from '../component-telephone.service';
 //import { TheaterDetailsComponent } from '../theater-details/theater-details.component';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieDetail } from '../dataForTesting/movieDetail';
+import { IFavoriteMovieDetails } from '../models/favorite-movie-details.interface';
+// import { MovieFavoriteDirective } from '../movie-favorite.directive';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
@@ -14,7 +16,13 @@ export class MovieDetailComponent implements OnInit {
   @Input()emsVersionId:string = ''
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
+  currentUserIdRxjs: any;
+  currentEmsVersionIdRxjs: any;
+  currentEmsIdRxjs: any;
   castIndex:number = 0;
+  favorites: any;
+  isFavorited: any = false;
+  favoriteMovie: IFavoriteMovieDetails | undefined;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -38,9 +46,14 @@ export class MovieDetailComponent implements OnInit {
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
       private render:Renderer2,
-       private route:ActivatedRoute ){
+       private route:ActivatedRoute){}
 
-  }
+       setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+        this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+      };
+      setEmsIdRxjs(emsIdRxjs: any) {
+        this.api.setEmsIdRxjs(emsIdRxjs);
+      };
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     const len = this.movieDetail.data.movie.cast.length;
@@ -124,9 +137,22 @@ export class MovieDetailComponent implements OnInit {
     return this.validateImageIndex(this.currentImageIndex)
   }
   ngOnInit(): void {
+    this.api.currentEmsVersionIdRxjs.subscribe((value) => {
+      this.currentEmsVersionIdRxjs = value;
+    });
+
+    this.api.currentUserIdRxjs.subscribe((value) => {
+      this.currentUserIdRxjs = value;
+    });
+
+    this.api.currentEmsIdRxjs.subscribe((value) => {
+      this.currentEmsIdRxjs = value;
+    });
+    
     this.route.params.subscribe(
       (p:Params)=>{
-        console.log(p['emsVersionId'])
+        console.log(p['emsVersionId'] as string)
+        this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(x)
@@ -135,6 +161,7 @@ export class MovieDetailComponent implements OnInit {
           }
         )
       }
+
     )
   }
 }

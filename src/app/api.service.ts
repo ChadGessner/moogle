@@ -3,9 +3,10 @@ import {HttpClient} from '@angular/common/http';
 import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
-import { Observable, from } from 'rxjs';
+import { Observable, from, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Chad } from './dataForTesting/loggedInUser';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,15 @@ export class FlixterApiService {
   movieDetailsById:any;
   news:any;
   popularMovies:any;
+
+  private userIdRxjs = new BehaviorSubject<any>({});
+  currentUserIdRxjs = this.userIdRxjs.asObservable();
+
+  private emsVersionIdRxjs = new BehaviorSubject<any>({});
+  currentEmsVersionIdRxjs = this.emsVersionIdRxjs.asObservable();
+
+  private emsIdRxjs = new BehaviorSubject<any>({});
+  currentEmsIdRxjs = this.emsIdRxjs.asObservable();
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -34,6 +44,18 @@ export class FlixterApiService {
   constructor(private http:HttpClient) {
 
    }
+
+   setUserIdRxjs(userIdRxjs: any) {
+    this.userIdRxjs.next(userIdRxjs);
+  }
+
+  setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+    this.emsVersionIdRxjs.next(emsVersionIdRxjs);
+  }
+  setEmsIdRxjs(emsIdRxjs: any) {
+    this.emsIdRxjs.next(emsIdRxjs);
+  }
+
    getPopularMovieList(){
     let uriEnd = 'PopularMovies/GetPopularMoviesList';
     return this.http.get<{}>(this.baseUri + uriEnd)
@@ -183,5 +205,30 @@ export class FlixterApiService {
    }
    passUser() {
     return this.user as User;
+   }
+
+   addFavoriteMovie(stuff:any, userId:number){
+    let uriEnd = `FavoriteMovie/AddFavoriteMovie/${userId}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {
+      stuff
+    })
+   }
+
+   getFavoriteMovieList(stuff:any, userId:number){
+    let uriEnd = `FavoriteMovie/GetAllFavoriteMovies/${userId}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {
+      stuff
+    })
+   }
+
+   removeFavoriteMovie(userId:number, emsId:string){
+    console.log("InApiServie")
+    let uriEnd = `FavoriteMovie/RemoveFavoriteMovie/${userId}/${emsId}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {})
+   }
+
+   checkIfFavorited(userId: number, favoriteMovieEmsVersionId: string){
+    let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
+    return this.http.get<{}>(this.baseUri + uriEnd)
    }
 }

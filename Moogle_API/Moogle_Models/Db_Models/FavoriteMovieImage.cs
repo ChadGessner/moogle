@@ -8,22 +8,13 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.Db_Models
 {
-  public class FavoriteMovie
+  public class FavoriteMovieImage
   {
-    [Key]
-    public int Id {get; set; }
-    public string? EmsId { get; set; }
-    public string? EmsVersionId { get; set; }
-    public virtual User User { get; set; }
-    public string? Name { get; set; }
-    public string? PosterImageUrl { get; set; }
-    public virtual List<FavoriteMovieCast> MovieCast { get; set; }
-    public string? Synopsis { get; set; }
-    public string? DirectedBy { get; set; }
-    public string? ReleaseDate { get; set; }
-    public int? TotalGross { get; set; }
-    public string? TrailerUrl { get; set; }
-    public virtual List<FavoriteMovieImage> Images { get; set; }
+    public int Id {get; set;}
+    public string? Url { get; set; }
+    public int? Height { get; set; }
+    public int? Width { get; set; }
+    public virtual FavoriteMovie FavoriteMovie {get; set;}
   }
 }
 

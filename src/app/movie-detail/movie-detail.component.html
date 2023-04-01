@@ -12,10 +12,17 @@
 
 
 <div *ngIf="movieDetail">
-    <h1>{{currentUserIdRxjs}}</h1>
+    <!-- <h1>{{currentUserIdRxjs}}</h1> -->
+
+    <h1>{{movieDetail.data.movie.emsId}}</h1>
+    <!-- <h1>{{movieDetail.data.movie.emsVersionId}}</h1> -->
+    <!-- <h1>{{isFavorited}}</h1> -->
 <div class="card m-4 border border-success bg-dark rounded">
     <div class="card-header">
-        <!-- <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button> -->
+        <button appMovieFavorite [favoriteMovie]="movieDetail"> Test Button For Favorites</button>
+        <button (click)="checkIfFavorited(currentUserIdRxjs, movieDetail.data.movie.emsId)">Click Me</button>
+
+
         <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
         <hr class="text-success" >
         <ul class="nav nav-tabs card-header-tabs" >
@@ -69,11 +76,11 @@
     </div> -->
     <div class="row" *ngIf="movieDetail" >
         
-        <ul class="p-2" *ngIf="testBool == true" >
-            <button class="btn btn-success" type="button" (click)="addFavorite()" ><i class="bi bi-star-fill"></i> Favorite </button>
+        <ul class="p-2"  >
+            <button class="btn btn-success" type="button" appMovieFavorite [favoriteMovie]="movieDetail"><i class="bi bi-star-fill"></i> Favorite </button>
         </ul>
-        <ul class="p-2" *ngIf="testBool == false" >
-            <button class="btn btn-success" type="button" (click)="removeFavorite()" ><i class="bi bi-star"></i> Favorite</button>
+        <ul class="p-2" >
+            <button class="btn btn-success" type="button" (click)="removeFavorite(currentUserIdRxjs, movieDetail.data.movie.emsId)" ><i class="bi bi-star"></i> Favorite</button>
         </ul>
 
         <h4 class="text-warning" >{{categoryName() | uppercase}}</h4>

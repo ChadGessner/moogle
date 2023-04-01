@@ -51,15 +51,20 @@ namespace Moogle_API.Controllers
       return _db.AddFavoriteMovie(favoriteMovieConverted, userId);
     }
 
-    [HttpPost("RemoveFavoriteMovie/{userId}")]
-    public FavoriteMovieModelDto RemoveFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
+    // [HttpPost("RemoveFavoriteMovie/{userId}")]
+    // public FavoriteMovieModelDto RemoveFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
+    // {
+    //   AngularFavoriteMovieRoot deserializedMovie = JsonConvert
+    //     .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
+
+    //   FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
+
+    //   return _db.RemoveFavoriteMovie(favoriteMovieConverted, userId);
+    // }
+    [HttpPost("RemoveFavoriteMovie/{userId}/{emsId}")]
+    public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsId)
     {
-      AngularFavoriteMovieRoot deserializedMovie = JsonConvert
-        .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());
-
-      FavoriteMovie favoriteMovieConverted = ModelConverter.GetFavoriteMovieFromAPI(deserializedMovie);
-
-      return _db.RemoveFavoriteMovie(favoriteMovieConverted, userId);
+      return _db.RemoveFavoriteMovie(userId, emsId);
     }
 
     [HttpGet("GetAllFavoriteMovies/{userId}")]
@@ -78,6 +83,11 @@ namespace Moogle_API.Controllers
     public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
     {
       return _db.GetFavoriteMovieImages(favoriteMovieId);
+    }
+    [HttpGet("CheckIfFavorited/{userId}/{favoritedMovieEmsId}")]
+    public bool CheckIfFavorited(int userId, string favoritedMovieEmsId)
+    {
+      return _db.CheckIfFavorited(userId, favoritedMovieEmsId);
     }
 
 

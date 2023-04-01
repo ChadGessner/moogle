@@ -287,6 +287,24 @@ namespace Moogle_Repo
 
         return returnFavoriteMovie;
     }
+    public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string favoriteMovieEmsId )
+    {
+       FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovieEmsId);
+        _db.FavoriteMovie.Remove(favoriteMovieToRemove);
+        _db.SaveChanges();
+
+        FavoriteMovieModelDto favoriteMovieToReturn = new FavoriteMovieModelDto(){
+          Name = favoriteMovieToRemove.Name
+
+        };
+        return favoriteMovieToReturn;
+    }
+    public bool CheckIfFavorited(int userId, string favoriteMovieEmsId)
+    {
+       FavoriteMovie favoriteMovieToCheck = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovieEmsId);
+
+      return favoriteMovieToCheck != null;
+    }
   }
 }
 

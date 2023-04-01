@@ -201,17 +201,20 @@ export class FlixterApiService {
     })
    }
 
-   GetFavoriteMovieList(stuff:any, userId:number){
+   getFavoriteMovieList(stuff:any, userId:number){
     let uriEnd = `FavoriteMovie/GetAllFavoriteMovies/${userId}`;
     return this.http.post<{}>(this.baseUri + uriEnd, {
       stuff
     })
    }
 
-   RemoveFavoriteMovie(stuff:any, userId:number){
-    let uriEnd = `FavoriteMovie/RemoveFavoriteMovie/${userId}`;
-    return this.http.post<{}>(this.baseUri + uriEnd, {
-      stuff
-    })
+   removeFavoriteMovie(userId:number, emsId:string){
+    let uriEnd = `FavoriteMovie/RemoveFavoriteMovie/${userId}/${emsId}`;
+    return this.http.post<{}>(this.baseUri + uriEnd, {})
+   }
+
+   checkIfFavorited(userId: number, favoriteMovieEmsId: string){
+    let uriEnd = `FavoriteMovie/CheckIfFavorited/}${userId}/${favoriteMovieEmsId}`;
+    return this.http.get<{}>(this.baseUri + uriEnd)
    }
 }

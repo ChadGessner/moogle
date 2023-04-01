@@ -31,7 +31,7 @@ namespace Moogle_Domain
     {
       bool answer = _db.AddUserZip(user, zipCode);
       Console.WriteLine(answer);
-      if(answer)
+      if (answer)
       {
         return _db.GetTheatersByUserZip(zipCode).Result;
       }
@@ -63,18 +63,27 @@ namespace Moogle_Domain
       return _db.AddFavoriteMovie(favoriteMovie, userId).Result;
     }
 
-    public FavoriteMovieModelDto RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId)
+    // public FavoriteMovieModelDto RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId)
+    // {
+    //   return _db.RemoveFavoriteMovie(favoriteMovie, userId).Result;
+    // }
+
+      public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsId)
     {
-      return _db.RemoveFavoriteMovie(favoriteMovie, userId).Result;
+      return _db.RemoveFavoriteMovie(userId, emsId).Result;
     }
-    
+
     public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
     {
       return _db.GetFavoriteMovieCast(favoriteMovieId);
     }
-        public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
+    public List<FavoriteMovieImageModelDto> GetFavoriteMovieImages(int favoriteMovieId)
     {
       return _db.GetFavoriteMovieImages(favoriteMovieId);
+    }
+    public bool CheckIfFavorited(int userId, string favoriteMovieEmsId)
+    {
+      return _db.CheckIfFavorited(userId, favoriteMovieEmsId);
     }
   }
 }

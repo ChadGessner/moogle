@@ -23,8 +23,19 @@ export class PopularMoviesComponent implements OnInit{
      private router:Router){}
 
 
-     
+    //  setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+    //   this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+    //   // console.log("test");
+    //   // console.log(this.api.currentEmsVersionIdRxjs)
+    //  }
+
      passEmsVersionId(id: string) {
+      // console.log("test");
+      // this.setEmsVersionIdRxjs(id);
+      // console.log(id)
+      // console.log(id)
+      // console.log(this.api.currentEmsVersionIdRxjs)
+
       this.router.navigate([
         '/movie-detail', id
       ])
@@ -50,7 +61,7 @@ export class PopularMoviesComponent implements OnInit{
   ngOnInit(): void {
     this.api.getPopularMovieList().subscribe((x) =>{ 
       this.popularMovies = x;
-      console.log("test");
+      console.log(x);
       // for(let p of this.popularMovies)
       // {
       //   console.log(p.posterImage.url);

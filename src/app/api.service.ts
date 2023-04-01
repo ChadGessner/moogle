@@ -24,6 +24,12 @@ export class FlixterApiService {
 
   private userIdRxjs = new BehaviorSubject<any>({});
   currentUserIdRxjs = this.userIdRxjs.asObservable();
+
+  private emsVersionIdRxjs = new BehaviorSubject<any>({});
+  currentEmsVersionIdRxjs = this.emsVersionIdRxjs.asObservable();
+
+  private emsIdRxjs = new BehaviorSubject<any>({});
+  currentEmsIdRxjs = this.emsIdRxjs.asObservable();
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -41,6 +47,13 @@ export class FlixterApiService {
 
    setUserIdRxjs(userIdRxjs: any) {
     this.userIdRxjs.next(userIdRxjs);
+  }
+
+  setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+    this.emsVersionIdRxjs.next(emsVersionIdRxjs);
+  }
+  setEmsIdRxjs(emsIdRxjs: any) {
+    this.emsIdRxjs.next(emsIdRxjs);
   }
 
    getPopularMovieList(){
@@ -209,12 +222,13 @@ export class FlixterApiService {
    }
 
    removeFavoriteMovie(userId:number, emsId:string){
+    console.log("InApiServie")
     let uriEnd = `FavoriteMovie/RemoveFavoriteMovie/${userId}/${emsId}`;
     return this.http.post<{}>(this.baseUri + uriEnd, {})
    }
 
-   checkIfFavorited(userId: number, favoriteMovieEmsId: string){
-    let uriEnd = `FavoriteMovie/CheckIfFavorited/}${userId}/${favoriteMovieEmsId}`;
+   checkIfFavorited(userId: number, favoriteMovieEmsVersionId: string){
+    let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
     return this.http.get<{}>(this.baseUri + uriEnd)
    }
 }

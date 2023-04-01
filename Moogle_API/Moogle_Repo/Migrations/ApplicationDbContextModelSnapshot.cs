@@ -36,6 +36,9 @@ namespace Moogle_Repo.Migrations
                     b.Property<string>("EmsId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmsVersionId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 

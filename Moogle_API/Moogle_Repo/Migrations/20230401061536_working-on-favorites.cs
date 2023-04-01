@@ -78,6 +78,7 @@ namespace Moogle_Repo.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmsId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmsVersionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PosterImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -13,6 +13,7 @@ namespace Moogle_Models.Db_Models
     [Key]
     public int Id {get; set; }
     public string? EmsId { get; set; }
+    public string? EmsVersionId { get; set; }
     public virtual User User { get; set; }
     public string? Name { get; set; }
     public string? PosterImageUrl { get; set; }

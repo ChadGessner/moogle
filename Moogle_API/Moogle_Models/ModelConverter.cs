@@ -47,6 +47,7 @@ namespace Moogle_Models
         {
                     return new FavoriteMovie(){
                     EmsId = favoriteMovie.EmsId,
+                    EmsVersionId = favoriteMovie.EmsVersionId,
                     Name = favoriteMovie.Name,
                     PosterImageUrl = favoriteMovie.PosterImageUrl,
                     MovieCast = favoriteMovie.MovieCast.Select(x => FavoriteMovieCastConverter(x)).ToList(),

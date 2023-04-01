@@ -28,6 +28,7 @@ export class TheaterDetailsComponent implements OnInit {
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
   @Input()currentlySelectedTheater:any;
+  // currentEmsVersionIdRxjs: any;
   
   constructor(
     private api:FlixterApiService,
@@ -36,7 +37,13 @@ export class TheaterDetailsComponent implements OnInit {
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
   }
+  // setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+  //   this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+  // };
+
   movieDetails(emsVersionId:string){
+    // this.setEmsVersionIdRxjs(emsVersionId);
+    // console.log(this.currentEmsVersionIdRxjs)
     this.router.navigate([
       'movie-detail',
       emsVersionId
@@ -93,9 +100,13 @@ export class TheaterDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.router.events.subscribe(e =>{
+      //   this.api.currentEmsVersionIdRxjs.subscribe((value) => {
+      // this.currentEmsVersionIdRxjs = value
+    // });
+    // console.log(this.currentEmsVersionIdRxjs)
+    // this.router.events.subscribe(e =>{
       
-    })
+    // })
     this.route.params.subscribe(
       (p)=>{
         if(p['theaterId']){

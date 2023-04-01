@@ -68,9 +68,9 @@ namespace Moogle_Domain
     //   return _db.RemoveFavoriteMovie(favoriteMovie, userId).Result;
     // }
 
-      public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsId)
+      public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsVersionId)
     {
-      return _db.RemoveFavoriteMovie(userId, emsId).Result;
+      return _db.RemoveFavoriteMovie(userId, emsVersionId).Result;
     }
 
     public List<FavoriteMovieCastModelDto> GetFavoriteMovieCast(int favoriteMovieId)
@@ -81,9 +81,9 @@ namespace Moogle_Domain
     {
       return _db.GetFavoriteMovieImages(favoriteMovieId);
     }
-    public bool CheckIfFavorited(int userId, string favoriteMovieEmsId)
+    public bool CheckIfFavorited(int userId, string favoriteMovieEmsVersionId)
     {
-      return _db.CheckIfFavorited(userId, favoriteMovieEmsId);
+      return _db.CheckIfFavorited(userId, favoriteMovieEmsVersionId);
     }
   }
 }

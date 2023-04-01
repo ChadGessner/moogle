@@ -19,10 +19,12 @@ export class MovieDetailComponent implements OnInit {
   imagesList:any[]|null = null;
   currentImageIndex:number = 0;
   currentUserIdRxjs: any;
+  currentEmsVersionIdRxjs: any;
+  currentEmsIdRxjs: any;
   castIndex:number = 0;
   emsVersionId1:any;
   favorites: any;
-  isFavorited: any = true;
+  isFavorited: any = false;
   favoriteMovie: IFavoriteMovieDetails | undefined;
   notIsActive:{
     id:string,
@@ -43,12 +45,19 @@ export class MovieDetailComponent implements OnInit {
     id:'card-tab-five',
     isActive:false
   }]
+  emsVersionId2: string = "";
   constructor(
     private api:FlixterApiService,
      private phone:ComponentTelephoneService,
       private render:Renderer2,
        private route:ActivatedRoute){}
 
+       setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
+        this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
+      };
+      setEmsIdRxjs(emsIdRxjs: any) {
+        this.api.setEmsIdRxjs(emsIdRxjs);
+      };
 
   removeFavorite(userId: number, emsId: string){
     // this.isFavorited = true;
@@ -91,9 +100,11 @@ export class MovieDetailComponent implements OnInit {
       (x)=>{
         if(x == true){
           this.isFavorited = true;
+          console.log(this.isFavorited)
         }
         else{
           this.isFavorited = false
+          console.log(this.isFavorited)
         }
       }
     )
@@ -182,26 +193,64 @@ export class MovieDetailComponent implements OnInit {
     return this.validateImageIndex(this.currentImageIndex)
   }
   ngOnInit(): void {
+    this.api.currentEmsVersionIdRxjs.subscribe((value) => {
+      this.currentEmsVersionIdRxjs = value;
+    });
+
+    this.api.currentUserIdRxjs.subscribe((value) => {
+      this.currentUserIdRxjs = value;
+    });
+
+    this.api.currentEmsIdRxjs.subscribe((value) => {
+      this.currentEmsIdRxjs = value;
+    });
+    
     this.route.params.subscribe(
       (p:Params)=>{
-        console.log(p['emsVersionId'])
+        console.log(p['emsVersionId'] as string)
+        this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
+        console.log(this.currentEmsVersionIdRxjs)
+        console.log("test")
+        console.log(this.currentUserIdRxjs)
+        console.log("test1")
+
+        // this.setEmsVersionIdRxjs(p['emsVersionId']);
+        console.log("test2")
+        console.log(this.currentUserIdRxjs)
+        console.log("test3")
+
+
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(x)
             this.movieDetail = x
-            this.emsVersionId1 = (p['emsVersionId'] as string)
+            // this.emsVersionId1 = (p['emsVersionId'] as string)
+            // console.log(this.emsVersionId1)
+            // this.emsVersionId2 = (p['emsId'] as string)
+            // console.log(this.emsVersionId2)
             this.imagesList = this.movieDetail.data.movie.images;
           }
         )
       }
-    )
-    this.api.currentUserIdRxjs.subscribe((value) => {
-      this.currentUserIdRxjs = value;
-    });
-    console.log("onInit");
-    console.log(this.emsVersionId1)
-    console.log(this.currentUserIdRxjs)
 
-    this.checkIfFavorited(this.currentUserIdRxjs, this.emsVersionId1);
+    )
+    console.log(this.currentUserIdRxjs)
+    // console.log(this.movieDetail.data.movie.emsId)
+    // console.log(this.emsVersionId2)
+    // console.log("testasdf")
+    // console.log(this.currentEmsVersionIdRxjs)
+    // console.log("test")
+
+
+
+
+    // console.log("onInit");
+    // // console.log(this.emsVersionId1)
+    // console.log(this.currentUserIdRxjs)
+    // console.log(this.currentEmsVersionIdRxjs)
+
+    this.checkIfFavorited(this.currentUserIdRxjs, this.currentEmsVersionIdRxjs);
+    console.log(this.currentUserIdRxjs)
+    // console.log(this.movieDetail)
   }
 }

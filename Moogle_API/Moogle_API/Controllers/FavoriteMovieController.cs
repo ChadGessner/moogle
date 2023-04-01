@@ -61,10 +61,10 @@ namespace Moogle_API.Controllers
 
     //   return _db.RemoveFavoriteMovie(favoriteMovieConverted, userId);
     // }
-    [HttpPost("RemoveFavoriteMovie/{userId}/{emsId}")]
-    public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsId)
+    [HttpPost("RemoveFavoriteMovie/{userId}/{emsVersionId}")]
+    public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsVersionId)
     {
-      return _db.RemoveFavoriteMovie(userId, emsId);
+      return _db.RemoveFavoriteMovie(userId, emsVersionId);
     }
 
     [HttpGet("GetAllFavoriteMovies/{userId}")]
@@ -84,10 +84,10 @@ namespace Moogle_API.Controllers
     {
       return _db.GetFavoriteMovieImages(favoriteMovieId);
     }
-    [HttpGet("CheckIfFavorited/{userId}/{favoritedMovieEmsId}")]
-    public bool CheckIfFavorited(int userId, string favoritedMovieEmsId)
+    [HttpGet("CheckIfFavorited/{userId}/{favoritedMovieEmsVersionId}")]
+    public bool CheckIfFavorited(int userId, string favoritedMovieEmsVersionId)
     {
-      return _db.CheckIfFavorited(userId, favoritedMovieEmsId);
+      return _db.CheckIfFavorited(userId, favoritedMovieEmsVersionId);
     }
 
 

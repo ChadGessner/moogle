@@ -24,6 +24,7 @@ namespace Moogle_Models.API_Models.AngularModels
     public class AngularFavoriteMovieRoot
     {
         public string? EmsId { get; set; }
+        public string? EmsVersionId { get; set; }
         public string? Name { get; set; }
         public string? PosterImageUrl { get; set; }
         public List<AngularFavoriteMovieCast>? MovieCast { get; set; }

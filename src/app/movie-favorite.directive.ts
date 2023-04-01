@@ -12,6 +12,9 @@ export class MovieFavoriteDirective {
   // @Input() emsVersionId: any;
   movieCastArray: IMovieCast[] = [];
   movieImageArray: IMovieImage[] = [];
+  newTrailerUrl: any;
+  currentEmsVersionIdRxjs: any;
+  currentUserIdRxjs: any;
 
   constructor(private api: FlixterApiService, private el: ElementRef) { }
 
@@ -29,12 +32,28 @@ export class MovieFavoriteDirective {
   }
 
   sendToFavorites() {
+    this.api.currentEmsVersionIdRxjs.subscribe((value) => {
+      this.currentEmsVersionIdRxjs = value
+    });
+    this.api.currentUserIdRxjs.subscribe((value) => {
+      this.currentUserIdRxjs = value
+    });
+    console.log(this.currentEmsVersionIdRxjs)
     // console.log(this.favoriteMovie as IFavoriteMovieDetails )
-    console.log("test");
-    console.log(this.favoriteMovie.data.movie.trailer)
-    console.log("test");
+    // console.log("test");
+    // console.log(this.favoriteMovie.data.movie.trailer)
+    // console.log("test");
     // console.log(JSON.stringify(this.favoriteMovie))
+    // console.log(this.favoriteMovie)
     // console.log(JSON.stringify(this.favoriteMovie.data.movie.trailer.url))
+    if(this.favoriteMovie.data.movie.trailer == null)
+    {
+      this.newTrailerUrl = null; 
+    }
+    else
+    {
+      this.newTrailerUrl = this.favoriteMovie.data.movie.trailer.url
+    }
 
     function shapeCast(castConfig: IMovieCast): { role: any; name: any; characterName: any; } {
       return {
@@ -65,6 +84,7 @@ export class MovieFavoriteDirective {
     }
     let newFavorite: IFavoriteMovieDetails = {
       emsId: this.favoriteMovie.data.movie.emsId,
+      emsVersionId: this.currentEmsVersionIdRxjs,
       name: this.favoriteMovie.data.movie.name,
       posterImageUrl: this.favoriteMovie.data.movie.posterImage.url,
       movieCast: this.movieCastArray,
@@ -72,14 +92,14 @@ export class MovieFavoriteDirective {
       directedBy: this.favoriteMovie.data.movie.directedBy,
       releaseDate: this.favoriteMovie.data.movie.releaseDate,
       totalGross: this.favoriteMovie.data.movie.totalGross,
-      trailerUrl: this.favoriteMovie.data.movie.trailer.url,
+      trailerUrl: this.newTrailerUrl,
       images: this.movieImageArray
     }
 
     console.log(newFavorite)
     // console.log(JSON.stringify(newFavorite))
 
-    this.api.addFavoriteMovie(newFavorite, 1).subscribe((x) => {
+    this.api.addFavoriteMovie(newFavorite, this.currentUserIdRxjs).subscribe((x) => {
 
       if(x){
         console.log(x);

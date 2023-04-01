@@ -12,7 +12,7 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230331204550_working-on-favorites")]
+    [Migration("20230401061536_working-on-favorites")]
     partial class workingonfavorites
     {
         /// <inheritdoc />
@@ -37,6 +37,9 @@ namespace Moogle_Repo.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmsId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmsVersionId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

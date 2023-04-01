@@ -272,36 +272,50 @@ namespace Moogle_Repo
         return returnFavoriteMovie;
     }
 
-    public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
+    // public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
+    // {
+    //    FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovie.EmsId);
+    //     _db.FavoriteMovie.Remove(favoriteMovieToRemove);
+    //     _db.SaveChanges();
+
+    //     FavoriteMovie favoriteMovieDb = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
+
+    //     FavoriteMovieModelDto returnFavoriteMovie = new FavoriteMovieModelDto(){
+    //       Name = favoriteMovieDb.Name
+
+    //     };
+
+    //     return returnFavoriteMovie;
+    // }
+    //     public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(FavoriteMovie favoriteMovie, int userId )
+    // {
+    //    FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovie.EmsId);
+    //     _db.FavoriteMovie.Remove(favoriteMovieToRemove);
+    //     _db.SaveChanges();
+
+    //     FavoriteMovie favoriteMovieDb = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
+
+    //     FavoriteMovieModelDto returnFavoriteMovie = new FavoriteMovieModelDto(){
+    //       Name = favoriteMovieDb.Name
+
+    //     };
+
+    //     return returnFavoriteMovie;
+    // }
+    public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string favoriteMovieEmsVersionId )
     {
-       FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovie.EmsId);
-        _db.FavoriteMovie.Remove(favoriteMovieToRemove);
-        _db.SaveChanges();
-
-        FavoriteMovie favoriteMovieDb = _db.FavoriteMovie.FirstOrDefaultAsync(x => x.Id == favoriteMovie.Id).Result;
-
-        FavoriteMovieModelDto returnFavoriteMovie = new FavoriteMovieModelDto(){
-          Name = favoriteMovieDb.Name
-
-        };
-
-        return returnFavoriteMovie;
-    }
-    public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string favoriteMovieEmsId )
-    {
-       FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovieEmsId);
+       FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsVersionId == favoriteMovieEmsVersionId);
         _db.FavoriteMovie.Remove(favoriteMovieToRemove);
         _db.SaveChanges();
 
         FavoriteMovieModelDto favoriteMovieToReturn = new FavoriteMovieModelDto(){
           Name = favoriteMovieToRemove.Name
-
         };
         return favoriteMovieToReturn;
     }
-    public bool CheckIfFavorited(int userId, string favoriteMovieEmsId)
+    public bool CheckIfFavorited(int userId, string favoriteMovieEmsVersionId)
     {
-       FavoriteMovie favoriteMovieToCheck = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsId == favoriteMovieEmsId);
+       FavoriteMovie favoriteMovieToCheck = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsVersionId == favoriteMovieEmsVersionId);
 
       return favoriteMovieToCheck != null;
     }

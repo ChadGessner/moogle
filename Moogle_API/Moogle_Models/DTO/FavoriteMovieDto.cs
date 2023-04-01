@@ -25,6 +25,7 @@ namespace Moogle_Models.DTO
     public class FavoriteMovieModelDto
     {
       public string? EmsId { get; set; }
+      public string? EmsVersionId { get; set; }
       public User? User { get; set; }
       public string? Name { get; set; }
       public string? PosterImageUrl { get; set; }

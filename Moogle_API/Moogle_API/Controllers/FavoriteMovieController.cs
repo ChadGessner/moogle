@@ -62,7 +62,7 @@ namespace Moogle_API.Controllers
     //   return _db.RemoveFavoriteMovie(favoriteMovieConverted, userId);
     // }
     [HttpPost("RemoveFavoriteMovie/{userId}/{emsVersionId}")]
-    public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsVersionId)
+    public List<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string emsVersionId)
     {
       return _db.RemoveFavoriteMovie(userId, emsVersionId);
     }

@@ -70,7 +70,7 @@ constructor(
       //     }
       //   }
       // )
-      this.getFavorites(1)
+      this.getFavorites(this.currentUserIdRxjs)
       
     }
 
@@ -92,7 +92,16 @@ constructor(
       ])
     }
 
-
+    removeFavorite(emsId: string){
+      this.api.removeFavoriteMovie(this.api.user.id, emsId)
+      .subscribe(
+        (response)=>{
+          this.favoriteMovies = response;
+          console.log(response);
+           console.log(this.favoriteMovies) 
+        }
+      )
+    }
 
     getNextSixFavoriteMovies(startIndex: number, endIndex: number): void {
       this.startFavoriteMovieIndex = endIndex++

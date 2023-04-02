@@ -26,14 +26,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { TruncatePipe } from './shared/truncate-pipe';
 import { ScrollableDirective } from './scrollable.directive';
 import { MovieFavoriteDirective } from './movie-favorite.directive';
-import { FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component';
+import { FavoriteMoviesComponent } from './favorite-movies/favorite/favorite.component';
 import { TrailerComponent } from './movie-detail/trailer/trailer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MovieDescriptionComponent } from './movie-detail/movie-description/movie-description.component';
 import { MovieCastComponent } from './movie-detail/movie-cast/movie-cast.component';
 import { MovieImagesComponent } from './movie-detail/movie-images/movie-images.component';
 import { MovieInfoComponent } from './movie-detail/movie-info/movie-info.component';
-import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-reviews.component'
+import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-reviews.component';
+import { FavoriteListComponent } from './favorite-movies/favorite-list/favorite-list.component'
 
 
 
@@ -62,7 +63,8 @@ import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-review
     MovieCastComponent,
     MovieImagesComponent,
     MovieInfoComponent,
-    MovieReviewsComponent
+    MovieReviewsComponent,
+    FavoriteListComponent
   ],
   imports: [
     BrowserModule,

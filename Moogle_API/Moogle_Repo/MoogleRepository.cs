@@ -221,6 +221,7 @@ namespace Moogle_Repo
           FavoriteMovieModelDto favoriteMovie = new FavoriteMovieModelDto()
           {
             EmsId = movie.EmsId,
+            EmsVersionId = movie.EmsVersionId,
             User = user,
             Name = movie.Name,
             PosterImageUrl = movie.PosterImageUrl,
@@ -306,16 +307,15 @@ namespace Moogle_Repo
 
     //     return returnFavoriteMovie;
     // }
-    public async Task<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string favoriteMovieEmsVersionId )
+    public async Task<List<FavoriteMovieModelDto>> RemoveFavoriteMovie(int userId, string favoriteMovieEmsVersionId )
     {
        FavoriteMovie favoriteMovieToRemove = _db.FavoriteMovie.FirstOrDefault(x => x.User.Id == userId && x.EmsVersionId == favoriteMovieEmsVersionId);
         _db.FavoriteMovie.Remove(favoriteMovieToRemove);
         _db.SaveChanges();
 
-        FavoriteMovieModelDto favoriteMovieToReturn = new FavoriteMovieModelDto(){
-          Name = favoriteMovieToRemove.Name
-        };
-        return favoriteMovieToReturn;
+        List<FavoriteMovieModelDto> favoriteMoviesToReturn = GetAllFavoriteMovies(userId);
+
+        return favoriteMoviesToReturn;
     }
     public bool CheckIfFavorited(int userId, string favoriteMovieEmsVersionId)
     {

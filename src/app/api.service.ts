@@ -210,10 +210,9 @@ export class FlixterApiService {
     })
    }
 
-   getFavoriteMovieList(stuff:any, userId:number){
+   getFavoriteMovieList(userId:number){
     let uriEnd = `FavoriteMovie/GetAllFavoriteMovies/${userId}`;
-    return this.http.post<{}>(this.baseUri + uriEnd, {
-      stuff
+    return this.http.get<{}>(this.baseUri + uriEnd, {
     })
    }
 

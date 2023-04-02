@@ -9,10 +9,10 @@
 
 <div>
     <h1 class="text-center" class="card-text text-success font-monospace">Favorite Movies!</h1>
-    <h1>{{currentUserIdRxjs}}</h1>
+    <!-- <h1>{{currentUserIdRxjs}}</h1>
     <h1>{{registeredUser}} reg</h1>
     <h1>{{user.id}}</h1>
-    <h1>{{isLoggedIn}}</h1>
+    <h1>{{isLoggedIn}}</h1> -->
 </div>
 
 
@@ -38,7 +38,7 @@
                 <tr *ngFor="let detail of favoriteMovies.slice(startFavoriteMovieIndex,endFavoriteMovieIndex)">
                     <!-- <ng-container class="item" *ngIf="detail.name; else addIndex()"> -->
                     <td><img height="105px" width="105px" src={{detail.posterImageUrl}}></td>
-                    <td>{{detail.name}}</td>
+                    <td>{{detail.name}} {{detail.EmsVersionId}}</td>
                     <td>{{detail.synopsis | truncatePipe:[300, '...']}} </td>
                     <!-- <td>{{detail.posterImage.url}}</td> -->
                     <!-- <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p> -->
@@ -56,7 +56,7 @@
 
                     <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                             routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
-                            <td>        <button class="btn btn-success" type="button" (click)="passEmsVersionId(detail.emsVersionId)"><i class="bi bi-star-fill"></i> Favorited</button>
+                            <td>        <button class="btn btn-success" type="button" (click)="removeFavorite(detail.emsVersionId)"><i class="bi bi-star-fill"></i> Favorited</button>
                             </td>
                 </tr>
             </tbody>
@@ -83,56 +83,3 @@
 </ng-template>
 </ng-template>
 
-
-<ng-template [ngIf]="isLoggedIn == false">
-    <h1>test</h1>
-    <div class="card border border-success p-2 mb-2">
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead>
-                    <tr class="text-warning">
-                        <th scope="col-sm-10">Movie Poster</th>
-                        <th scope="col-sm-10">Movie Name</th>
-                        <th scope="col-sm-10">Synopsis</th>
-                        <th scope="col-sm-10">Trailer</th>
-                        <th scope="col-sm-10">Details</th>
-                        <th scope="col-sm-10">Favorites</th>
-    
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let detail of favoriteMovies.slice(startFavoriteMovieIndex,endFavoriteMovieIndex)">
-                        <!-- <ng-container class="item" *ngIf="detail.name; else addIndex()"> -->
-                        <td><img height="105px" width="105px" src={{detail.posterImageUrl}}></td>
-                        <td>{{detail.name}}</td>
-                        <td>{{detail.synopsis | truncatePipe:[300, '...']}} </td>
-                        <!-- <td>{{detail.posterImage.url}}</td> -->
-                        <!-- <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p> -->
-                        
-    
-    
-    
-                        <!-- <td><p>{{detail.tomatoRating.tomatometer}} <img width="10%" src={{detail.tomatoRating.iconImage.url}}></p></td>
-                        <td>
-                            <p>{{detail.userRating.dtlLikedScore}} <img width="40px"
-                                    src={{detail.userRating.iconImage.url}}></p>
-                        </td> -->
-                        <td>        <button class="btn btn-outline-success" type="button" (click)="passEmsVersionId(detail.emsVersionId)"><i class="bi bi-film"></i> Trailer</button>
-                        </td>
-    
-                        <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
-                                routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
-                                <td>        <button class="btn btn-success" type="button" (click)="passEmsVersionId(detail.emsVersionId)"><i class="bi bi-star-fill"></i> Favorited</button>
-                                </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="card border border-success p-2 mb-2">
-        
-<h3>Please Log In To Start Favoriting Movies!</h3>
-        
-    </div>
-    
-</ng-template>

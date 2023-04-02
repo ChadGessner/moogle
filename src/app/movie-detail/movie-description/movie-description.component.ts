@@ -25,6 +25,7 @@ import {
   //]
 })
 export class MovieDescriptionComponent {
+  @Input()movieDetail: any;
   @Input()isActive:boolean = false;
   @Input()synopsis:string = '';
   @Input()movieImage:string = '';

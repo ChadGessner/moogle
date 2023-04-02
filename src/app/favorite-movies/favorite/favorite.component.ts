@@ -1,13 +1,13 @@
 import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FlixterApiService } from '../api.service';
+import { FlixterApiService } from '../../api.service';
 
-import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../models/favorite-movie-details.interface';
+import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../../models/favorite-movie-details.interface';
 
 @Component({
-  selector: 'app-favorite-movies',
-  templateUrl: './favorite-movies.component.html',
-  styleUrls: ['./favorite-movies.component.css']
+  selector: 'app-favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
 })
 export class FavoriteMoviesComponent implements OnInit {
 @Input() favoriteMovieDetails: any;
@@ -38,7 +38,7 @@ constructor(
     }
 
      ngOnInit(): void {
-      console.log(this.api.user.id)
+      // console.log(this.api.user.id)
       this.api.currentEmsVersionIdRxjs.subscribe((value) => {
         this.currentEmsVersionIdRxjs = value;
       });
@@ -62,8 +62,8 @@ constructor(
           }
         }
       )
-      console.log(this.api.user.id)
-      console.log(this.currentUserIdRxjs)
+      // console.log(this.api.user.id)
+      // console.log(this.currentUserIdRxjs)
 
 
     }

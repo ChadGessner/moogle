@@ -1,8 +1,9 @@
 
+
 <ng-template
+
     *ngIf="isFavorited == false; then addFavoriteBlock else removeFavoriteBlock">
 </ng-template>
-
 <ng-template #addFavoriteBlock>
     <ul class="p-2">
         <button class="btn btn-success" type="button" (click)="addFavorite(); isFavorited = true"><i class="bi bi-star"></i> Favorite </button>

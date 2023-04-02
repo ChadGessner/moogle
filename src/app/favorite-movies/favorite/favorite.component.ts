@@ -1,13 +1,13 @@
 import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FlixterApiService } from '../api.service';
+import { FlixterApiService } from '../../api.service';
 
-import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../models/favorite-movie-details.interface';
+import { IFavoriteMovieDetails, IMovieCast, IMovieImage } from '../../models/favorite-movie-details.interface';
 
 @Component({
-  selector: 'app-favorite-movies',
-  templateUrl: './favorite-movies.component.html',
-  styleUrls: ['./favorite-movies.component.css']
+  selector: 'app-favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
 })
 export class FavoriteMoviesComponent implements OnInit {
 @Input() favoriteMovieDetails: any;
@@ -16,6 +16,7 @@ export class FavoriteMoviesComponent implements OnInit {
   currentUserIdRxjs: any;
   isFavorited: boolean = false;
   newTrailerUrl: any;
+  newTotalGross: any;
   movieImageArray: IMovieImage[] = [];
   movieCastArray: IMovieCast[] = [];
 
@@ -37,6 +38,7 @@ constructor(
     }
 
      ngOnInit(): void {
+      // console.log(this.api.user.id)
       this.api.currentEmsVersionIdRxjs.subscribe((value) => {
         this.currentEmsVersionIdRxjs = value;
       });
@@ -47,7 +49,7 @@ constructor(
   
       this.api.currentEmsIdRxjs.subscribe((value) => {
         this.currentUserIdRxjs = value;
-        
+
       });
       this.api.checkIfFavorited(this.api.user.id, this.currentEmsVersionIdRxjs)
       .subscribe(
@@ -56,14 +58,16 @@ constructor(
           
           if(x ){
             this.isFavorited = true;
-            console.log(this.isFavorited)
           }
           else{
             this.isFavorited = false
-            console.log(this.isFavorited)
           }
         }
       )
+      // console.log(this.api.user.id)
+      // console.log(this.currentUserIdRxjs)
+
+
     }
     checkIfFavorited(favoriteMovieEmsId:string){
       this.api.checkIfFavorited(this.api.user.id, favoriteMovieEmsId)
@@ -71,11 +75,9 @@ constructor(
         (x)=>{
           if(x == true){
             this.isFavorited = true;
-            console.log(this.isFavorited)
           }
           else{
             this.isFavorited = false
-            console.log(this.isFavorited)
           }
         }
       )
@@ -100,6 +102,14 @@ constructor(
       else
       {
         this.newTrailerUrl = this.favoriteMovieDetails.data.movie.trailer.url
+      }
+      if(this.favoriteMovieDetails.data.movie.totalGross == ("<i class=\"bi bi-bandaid\"></i>"))
+      {
+        this.newTotalGross = null;
+      }
+      else
+      {
+        this.newTotalGross = this.favoriteMovieDetails.data.movie.totalGross
       }
   
       function shapeCast(castConfig: IMovieCast): { role: any; name: any; characterName: any; } {
@@ -129,6 +139,7 @@ constructor(
         let newImage = shapeImage(imageOptions);
         this.movieImageArray.push(newImage);
       }
+
       let newFavorite: IFavoriteMovieDetails = {
         emsId: this.favoriteMovieDetails.data.movie.emsId,
         emsVersionId: this.currentEmsVersionIdRxjs,
@@ -138,7 +149,7 @@ constructor(
         synopsis: this.favoriteMovieDetails.data.movie.synopsis,
         directedBy: this.favoriteMovieDetails.data.movie.directedBy,
         releaseDate: this.favoriteMovieDetails.data.movie.releaseDate,
-        totalGross: this.favoriteMovieDetails.data.movie.totalGross,
+        totalGross: this.newTotalGross,
         trailerUrl: this.newTrailerUrl,
         images: this.movieImageArray
       }

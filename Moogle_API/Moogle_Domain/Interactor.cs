@@ -68,7 +68,7 @@ namespace Moogle_Domain
     //   return _db.RemoveFavoriteMovie(favoriteMovie, userId).Result;
     // }
 
-      public FavoriteMovieModelDto RemoveFavoriteMovie(int userId, string emsVersionId)
+      public List<FavoriteMovieModelDto> RemoveFavoriteMovie(int userId, string emsVersionId)
     {
       return _db.RemoveFavoriteMovie(userId, emsVersionId).Result;
     }

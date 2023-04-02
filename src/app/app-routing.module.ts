@@ -9,6 +9,7 @@ import { UpcomingMovieDetailsComponent } from './home/upcoming-movie-details/upc
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SearchComponent } from './nav/search/search.component';
 import { ActorsComponent } from './actors/actors.component';
+import { FavoriteListComponent } from './favorite-movies/favorite-list/favorite-list.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,9 @@ const routes: Routes = [
   },{
     path: 'home',
      component: HomeComponent
-
+  },{
+    path: 'favorite-movies',
+      component: FavoriteListComponent
   },{
     path: '',
      redirectTo: 'home',

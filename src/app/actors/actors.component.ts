@@ -1,5 +1,5 @@
 import { Component, HostListener, Input, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FlixterApiService } from '../api.service';
 import {Actor} from '../dataForTesting/actor'
 @Component({
@@ -27,7 +27,8 @@ export class ActorsComponent implements OnInit {
   constructor(
     private api:FlixterApiService,
      private render:Renderer2,
-      private route:ActivatedRoute){}
+      private route:ActivatedRoute,
+       private router:Router){}
 
   progressBarStyle() {
     const len = this.actor.data.person.filmography.length;
@@ -36,7 +37,12 @@ export class ActorsComponent implements OnInit {
       `${ ((this.filmographyIndex + 1)/len) * 100 }%`
     }
   }
-
+  navigateToMovieDetails() {
+    this.router.navigate([
+      'movie-detail',
+      this.actor.data.person.filmography[this.filmographyIndex].emsVersionId
+    ])
+  }
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     const len = this.actor.data.person.filmography.length;
@@ -55,12 +61,6 @@ export class ActorsComponent implements OnInit {
     }
     console.log(this.filmographyIndex)
     const progress = document.getElementById('progress-bar');
-    // console.log(progress)
-    // this.render.setStyle(
-    //   progress,
-    //   'width',
-    //   `${ ((this.castIndex + 1)/len) * 100 }%`
-    // )
   }
 
   @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
@@ -89,9 +89,7 @@ export class ActorsComponent implements OnInit {
                 )
               }
             }
-            
         }
-      
       )
     }
   }
@@ -103,7 +101,7 @@ export class ActorsComponent implements OnInit {
           (x)=>{
             if(x){
               console.log(JSON.stringify(x))
-              this.actor = x
+              //this.actor = x
             }
           }
         )

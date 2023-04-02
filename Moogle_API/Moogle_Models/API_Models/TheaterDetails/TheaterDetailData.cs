@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +7,18 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.TheaterDetails
 {
-    public class TheaterDetailData
+  public class TheaterDetailData
+  {
+    [JsonPropertyName("data")]
+    public TheaterDetailRoot data { get; set; }
+    public static TheaterDetailData ValidateTheaterDetailData(TheaterDetailData? data)
     {
-        [JsonPropertyName("data")]
-        public TheaterDetailRoot data { get; set; }
+      if(data == null || data.data == null)
+      {
+        return null;
+      }
+      data.data = TheaterDetailRoot.ValidateTheaterDetailRoot(data.data);
+      return data;
     }
+  }
 }

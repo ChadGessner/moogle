@@ -20,7 +20,7 @@ namespace Moogle_Flixter_Domain
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
-    public string ApiKey { get; set; } = "3fe1bb744dmshd34d46ad33eb1d9p18135djsncf6cab6f7439";
+    public string ApiKey { get; set; } = "102d0b565cmshc853115aca2193ap1bb28bjsn8bbf500ac940";
     public FlixterClient()
     {
       Client = new HttpClient();
@@ -58,24 +58,16 @@ namespace Moogle_Flixter_Domain
       var apiTask = header.GetJsonAsync<TheaterDetailData>();
       apiTask.Wait();
       TheaterDetailData result = apiTask.Result;
-      bool success = result != null &&
-        result.data.theaterShowtimeGroupings.displayDates != null &&
-        result.data.theaterShowtimeGroupings.displayDates.Count > 0 &&
-        result.data.theaterShowtimeGroupings.movies != null &&
-        result.data.theaterShowtimeGroupings.movies.Count > 0;
+      bool success = result != null;
+        //&&
+        //result.data.theaterShowtimeGroupings.displayDates != null &&
+        //result.data.theaterShowtimeGroupings.displayDates.Count > 0 &&
+        //result.data.theaterShowtimeGroupings.movies != null &&
+        //result.data.theaterShowtimeGroupings.movies.Count > 0;
       if (success)
       {
-        foreach (var movie in result.data.theaterShowtimeGroupings.movies)
-        {
-          if (movie.posterImage == null || movie.posterImage.url == null)
-          {
-            movie.posterImage = new TheaterDetailsPosterImage()
-            {
-              url = "https://media.tenor.com/6uME6Zii8mIAAAAC/samuel-l-jackson-cat.gif"
-            };
-          }
-        }
-        return result;
+        
+        return TheaterDetailData.ValidateTheaterDetailData(result);
       }
       return null;
     }

@@ -27,20 +27,29 @@ export class NavComponent implements OnInit{
     this.showToast = !this.showToast;
     
   }
+  getLoggedInUser() {
+    return this.api.getLoggedInUser();
+  }
   getTheaterListRoute() {
-    if(this.api.user){
+    console.log('clicked')
+    if(this.getLoggedInUser()){
+      console.log(this.getLoggedInUser())
       this.router.navigate([
-        '/theaters',
+        'theaters',
         this.api.user.zipCode
       ]) 
+      
+    }else{
+      this.isNotIsShowToast();
     }
+    this.isHamburger ? this.toggleHamburger() : this.isHamburger;
   }
   searchQuery(queryParam:NgForm){
     if(this.registeredUser){
       console.log(queryParam.form.value.search)
       //this.api.searchQuery(queryParam.form.value.search, this.registeredUser)
       this.router.navigate([
-        '/search',
+        'search',
         queryParam.form.value.search,
         this.api.user.zipCode
       ])

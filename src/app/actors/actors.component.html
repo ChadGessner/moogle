@@ -1,4 +1,6 @@
+<app-loading *ngIf="!actor" ></app-loading>
 
+  
 
 <div *ngIf="actor" class="card">
     
@@ -30,21 +32,27 @@
         <div *ngIf="notIsActive[0].isActive" class="card col-7 m-4 border border-success">
             <p class="text-info" >{{actor.data.person.biography}}</p>
         </div>
-        <div *ngIf="notIsActive[1].isActive" class="card bg-dark col-7 m-4 border border-success">
-            <div *ngIf="notIsActive[1].isActive" class="row bg-success">
-                <div class="btn-group ">
-                    <div class="m-1 col">
+        <div *ngIf="notIsActive[1].isActive" class="card bg-dark col-7 m-4 border border-info">
+            <div *ngIf="notIsActive[1].isActive" class="row bg-info rounded m-2">
+                <div class="btn-group d-flex flex-row justify-content-between rounded m-2">
+                    <div class="float-left">
                         <button 
                         (click)="castIncrementEvent($event)"
                         id="cast-prev"
                         class="btn btn-dark text-info ">Prev</button>
                     </div>
-                    
-                    <div class="m-1">
+                    <div class="float-center">
+                        <button 
+                        (click)="navigateToMovieDetails()"
+                        
+                        class="btn btn-dark text-info ">Movie Details</button>
+                    </div>
+                    <div class=" d-flex justify-end align-end">
                         <button 
                         (click)="castIncrementEvent($event)"
+                        
                         id="cast-next"
-                        class="btn btn-dark text-info">Next</button>
+                        class="btn btn-dark float-right text-info">Next</button>
                     </div>
                 </div>
             </div>

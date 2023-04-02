@@ -58,7 +58,10 @@
   </div>
 </div>
 ###Working### -->
-<div class="card border border-success p-2 mb-2">
+<app-loading *ngIf="!news"></app-loading>
+<div 
+*ngIf="news"
+class="card border border-success p-2 mb-2">
 
   <div>
     <h1 class="text-center" class="card-text text-success font-monospace">Media Headlines</h1>

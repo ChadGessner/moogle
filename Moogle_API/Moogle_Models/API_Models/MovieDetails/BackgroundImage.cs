@@ -8,10 +8,10 @@ namespace Moogle_Models.API_Models.MovieDetails
 {
   public class BackgroundImage
   {
-    public string url { get; set; }
-    public string type { get; set; }
-    public int width { get; set; }
-    public int height { get; set; }
+    public string? url { get; set; }
+    public string? type { get; set; }
+    public int? width { get; set; }
+    public int? height { get; set; }
     public static BackgroundImage ValidateBackgroundImage(BackgroundImage image) 
     {
       if(image == null)

@@ -1,67 +1,45 @@
 
+<app-loading *ngIf="!theaters"></app-loading>
 
-<div class="card m-4 border border-success bg-dark rounded">
-    <div class="card-header">
-        <h2 
-        
-        id="heading"
-        class="text-warning">
-        {{theaterName}}
-    </h2>
-        <hr 
-        class="text-success" >
-        <ul 
-        class="nav nav-tabs card-header-tabs" >
-        
-        <li 
-        class="nav-item bg-secondary m-1" >
-            <a 
-            class="nav-link"
-            (click)="toggleZips()" 
-            id="card-tab-one">Select Zip Code</a>
-        </li>
-        <li class="nav-item bg-primary m-1"  >
-            <a 
-            class="nav-link" 
-            (click)="toggleTheaters()"
-            id="card-tab-two">Theaters</a>
-        </li>
-        <li class="nav-item bg-primary m-1"  >
-            <a 
-            class="nav-link" 
-            (click)="toggleShowTimes()"
-            id="card-tab-three">Show Times</a>
-        </li>
-        
-        </ul>
-    </div>
-</div>
-
-<!-- <div class="row">
-    <h1 
-class="text-center text-success alert alert-dark m-4  " >
-    {{currentTheaterName ? currentTheaterName : 'Theater Details'}} 
-</h1>
-    <div class="btn-group">
-        <button 
-        (click)="toggleTheaters()" 
-        class="btn btn-outline-success dropdown-toggle ">
-                Theaters in your area 
-        </button>
-        <button 
-        (click)="toggleShowTimes()"
-        class="btn btn-outline-success dropdown-toggle " >
-        Show Times
-    </button>
-    <button 
-        (click)="toggleShowTimes()"
-        class="btn btn-outline-success dropdown-toggle " >
-        Show Times
-    </button>
+<div *ngIf="theaters">
+    <div class="card m-4 border border-success bg-dark rounded">
+        <div class="card-header">
+            <h2 
+            
+            id="heading"
+            class="text-warning">
+            {{theaterName}}
+        </h2>
+            <hr 
+            class="text-success" >
+            <ul 
+            class="nav nav-tabs card-header-tabs" >
+            
+            <li 
+            class="nav-item bg-secondary m-1" >
+                <a 
+                class="nav-link"
+                (click)="toggleZips()" 
+                id="card-tab-one">Select Zip Code</a>
+            </li>
+            <li class="nav-item bg-primary m-1"  >
+                <a 
+                class="nav-link" 
+                (click)="toggleTheaters()"
+                id="card-tab-two">Theaters</a>
+            </li>
+            <li class="nav-item bg-primary m-1"  >
+                <a 
+                class="nav-link" 
+                (click)="toggleShowTimes()"
+                id="card-tab-three">Show Times</a>
+            </li>
+            
+            </ul>
+        </div>
     </div>
 
-</div> -->
-<th *ngIf="showTimes " class="row">
+    <th *ngIf="showTimes " class="row">
         <ul 
         *ngIf="isShowTimes" 
         class="position-absolute theater-list bg-dark">
@@ -73,8 +51,8 @@ class="text-center text-success alert alert-dark m-4  " >
                 </span>
             </li>
         </ul>
-</th>
-    
+    </th>
+        
     <th *ngIf="theaters" class="dropdown row" >
         <ul 
         *ngIf="isToggleTheaters" 
@@ -90,6 +68,7 @@ class="text-center text-success alert alert-dark m-4  " >
             </li>
         </ul>
     </th>
+
     <th *ngIf="isToggleZips && userZips" class="dropdown row" >
         <ul 
         
@@ -106,10 +85,13 @@ class="text-center text-success alert alert-dark m-4  " >
             </li>
         </ul>
     </th>
-    <div  class="row" >
+
+    
+    <div *ngIf="selectedTheater" class="row" >
         
         <app-theater-details 
         
         [currentlySelectedTheater]="selectedTheater"
         (showTimesEvent)="getShowTimes($event)" ></app-theater-details>
     </div>
+</div>

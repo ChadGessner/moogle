@@ -1,5 +1,6 @@
 
-<div class="card p-4 m-4 bg-dark rounded border border-success "
+<div
+class="card p-4 m-4 bg-dark rounded border border-success "
  >
 
     <div>
@@ -15,6 +16,7 @@
                         <div 
                         
                         class="col card ">
+                        <app-loading *ngIf="!trailerUrl"></app-loading>
                             <vg-player *ngIf="isActive" >
                                         
                                 <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>

@@ -33,7 +33,8 @@ import { MovieDescriptionComponent } from './movie-detail/movie-description/movi
 import { MovieCastComponent } from './movie-detail/movie-cast/movie-cast.component';
 import { MovieImagesComponent } from './movie-detail/movie-images/movie-images.component';
 import { MovieInfoComponent } from './movie-detail/movie-info/movie-info.component';
-import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-reviews.component'
+import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-reviews.component';
+import { LoadingComponent } from './loading/loading.component'
 
 
 
@@ -63,7 +64,8 @@ import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-review
     MovieImagesComponent,
     MovieInfoComponent,
     MovieReviewsComponent,
-    FavoriteMoviesComponent
+    FavoriteMoviesComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

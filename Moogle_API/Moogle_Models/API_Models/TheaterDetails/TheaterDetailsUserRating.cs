@@ -7,13 +7,21 @@ using System.Threading.Tasks;
 
 namespace Moogle_Models.API_Models.TheaterDetails
 {
-    public class TheaterDetailsUserRating
+  public class TheaterDetailsUserRating
+  {
+    [JsonPropertyName("state")]
+    public string state { get; set; }
+    [JsonPropertyName("dtlLikedScore")]
+    public int? dtlLikedScore { get; set; }
+    [JsonPropertyName("iconImage")]
+    public TheaterDetailsIconImage iconImage { get; set; }
+    public static TheaterDetailsUserRating ValidateTheaterDetailsUserRating(TheaterDetailsUserRating r)
     {
-        [JsonPropertyName("state")]
-        public string state { get; set; }
-        [JsonPropertyName("dtlLikedScore")]
-        public int? dtlLikedScore { get; set; }
-        [JsonPropertyName("iconImage")]
-        public TheaterDetailsIconImage iconImage { get; set; }
+      r = r ?? new();
+      r.state = r.state ?? "";
+      r.dtlLikedScore = r.dtlLikedScore ?? -1;
+      r.iconImage = TheaterDetailsIconImage.ValidateTheaterDetailsIconImage(r.iconImage);
+      return r;
     }
+  }
 }

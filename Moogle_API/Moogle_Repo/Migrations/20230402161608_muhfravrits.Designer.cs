@@ -12,7 +12,7 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230402122209_muhfravrits")]
+    [Migration("20230402161608_muhfravrits")]
     partial class muhfravrits
     {
         /// <inheritdoc />

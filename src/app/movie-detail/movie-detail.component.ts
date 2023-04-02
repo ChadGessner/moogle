@@ -100,7 +100,9 @@ export class MovieDetailComponent implements OnInit {
       setEmsIdRxjs(emsIdRxjs: any) {
         this.api.setEmsIdRxjs(emsIdRxjs);
       };
-
+      getUser(){
+        return this.api.getLoggedInUser()
+      }
 
   getBackgroundImage() {
     return {

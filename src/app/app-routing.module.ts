@@ -9,11 +9,15 @@ import { UpcomingMovieDetailsComponent } from './home/upcoming-movie-details/upc
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SearchComponent } from './nav/search/search.component';
 import { ActorsComponent } from './actors/actors.component';
+import {FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component'
 
 const routes: Routes = [
   {
     path: 'register',
      component: UserRegistrationComponent
+  },{
+    path: 'favorite-movies',
+    component: FavoriteMoviesComponent
   },{
     path: 'login',
      component: UserLoginComponent

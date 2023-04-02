@@ -22,7 +22,7 @@ namespace Moogle_Models.API_Models.MovieDetails
     public object? dvdReleaseDate { get; set; }
     public string availabilityWindow { get; set; }
     public string ovdReleaseDate { get; set; }
-    public string totalGross { get; set; }
+    public string? totalGross { get; set; }
     public Trailer trailer { get; set; }
     public MovieDetailsPosterImage posterImage { get; set; }
     public BackgroundImage backgroundImage { get; set; }

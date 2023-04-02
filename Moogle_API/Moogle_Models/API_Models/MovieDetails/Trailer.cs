@@ -18,14 +18,14 @@ namespace Moogle_Models.API_Models.MovieDetails
       {
         return new Trailer()
         {
-          url = "https://www.youtube.com/embed/wupToqz1e2g",
+          url = "http://link.theplatform.com/s/NGweTC/media/NNthFDolh8hI",
           freewheelId = "foo",
           duration = "foo"
         };
       }
       if(trailer.url == null || trailer.url.Length == 0)
       {
-        trailer.url = "https://www.youtube.com/embed/wupToqz1e2g";
+        trailer.url = "http://link.theplatform.com/s/NGweTC/media/NNthFDolh8hI";
       }
       return trailer;
     }

@@ -5,7 +5,7 @@
 namespace Moogle_Repo.Migrations
 {
     /// <inheritdoc />
-    public partial class workingonfavorites : Migration
+    public partial class muhfravrits : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

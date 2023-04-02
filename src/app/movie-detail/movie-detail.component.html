@@ -27,8 +27,10 @@
             </ul>
         </div>
     </div>
-
-    <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
+    <div *ngIf="getUser()">
+        <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
+    </div>
+    
    
     <div  class="movie-detail-container">
         <div class="position-absolute vw-100" [@componentState]="{
@@ -116,3 +118,15 @@
                
               
 
+                    <!-- <div 
+                        
+                    class="col card ">
+                        <vg-player >
+                                    
+                            <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>
+                                <source 
+                                src={{movieDetail.data.movie.trailer.url}}
+                                type="video/mp4">
+                            </video>
+                        </vg-player>
+                    </div> -->

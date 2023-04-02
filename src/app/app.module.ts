@@ -62,7 +62,8 @@ import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-review
     MovieCastComponent,
     MovieImagesComponent,
     MovieInfoComponent,
-    MovieReviewsComponent
+    MovieReviewsComponent,
+    FavoriteMoviesComponent
   ],
   imports: [
     BrowserModule,

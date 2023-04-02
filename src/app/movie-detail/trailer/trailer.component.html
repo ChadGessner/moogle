@@ -3,6 +3,7 @@
  >
 
     <div>
+        
         <h4 class="text-warning" >Trailer</h4>
         <hr>
         <div class="row">
@@ -10,13 +11,13 @@
                 <div class="row float-left">
                     
 
-                    <!-- <div class="card col border border-danger"> -->
+                    
                         <div 
                         
                         class="col card ">
-                            <vg-player   >
+                            <vg-player *ngIf="isActive" >
                                         
-                                <video  [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" controls>
+                                <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>
                                     <source 
                                     src={{trailerUrl}}
                                     type="video/mp4">

@@ -20,7 +20,7 @@ namespace Moogle_Flixter_Domain
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
-    public string ApiKey { get; set; } = "f056f19375msh9becfb6a69a3332p1e1667jsn4d3ccf8cbc6d";
+    public string ApiKey { get; set; } = "3fe1bb744dmshd34d46ad33eb1d9p18135djsncf6cab6f7439";
     public FlixterClient()
     {
       Client = new HttpClient();

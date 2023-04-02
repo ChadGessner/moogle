@@ -5,7 +5,7 @@ import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
 
 import { Observable, from, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 
 import { Chad } from './dataForTesting/loggedInUser';
 
@@ -223,8 +223,10 @@ export class FlixterApiService {
     return this.http.post<{}>(this.baseUri + uriEnd, {})
    }
 
-   checkIfFavorited(userId: number, favoriteMovieEmsVersionId: string){
-    let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
-    return this.http.get<{}>(this.baseUri + uriEnd)
+   checkIfFavorited(userId: number , favoriteMovieEmsVersionId: string){
+    
+      let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
+      return this.http.get<{}>(this.baseUri + uriEnd)
+    
    }
 }

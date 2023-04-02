@@ -53,8 +53,10 @@ constructor(
       });
       this.api.checkIfFavorited(this.api.user.id, this.currentEmsVersionIdRxjs)
       .subscribe(
+        
         (x)=>{
-          if(x == true){
+          
+          if(x ){
             this.isFavorited = true;
           }
           else{

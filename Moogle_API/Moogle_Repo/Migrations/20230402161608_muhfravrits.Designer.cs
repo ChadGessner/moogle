@@ -12,8 +12,8 @@ using Moogle_Repo;
 namespace Moogle_Repo.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230401061536_working-on-favorites")]
-    partial class workingonfavorites
+    [Migration("20230402161608_muhfravrits")]
+    partial class muhfravrits
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

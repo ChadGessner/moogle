@@ -5,7 +5,7 @@ import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
 
 import { Observable, from, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 
 import { Chad } from './dataForTesting/loggedInUser';
 
@@ -59,14 +59,7 @@ export class FlixterApiService {
    searchQuery(query:string, zip:string) {
     let uriEnd = `Search/GetSearchQuery/${query}/${zip}`;
     return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       console.log(JSON.stringify(x))
-    //       return this.searchQueryEvent.emit(x);
-    //     }
-    //   }
-    // )
+    
    }
    registerNewUser(user:User) {
       this.http.post<User>(this.serverUri, user)
@@ -84,16 +77,7 @@ export class FlixterApiService {
     let uriEnd = `User/GetUser/${username}/${password}`;
     //this.user = Chad;
     return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-    //   (x)=>{
-    //     if(x) {
-    //       this.user = x;
-    //       console.log(JSON.stringify(x));
-    //       this.registerEvent.emit(this.user);
-    //       //return this.getTheaters(this.user.userName, this.user.password)
-    //     }
-    //   }
-    // )
+    
    }
    userLogout() {
     //this.user = null;
@@ -102,75 +86,32 @@ export class FlixterApiService {
    getActorData(actorId:string) {
     let uriEnd = `Search/GetActorData/${actorId}`
     return this.http.get<{}>(this.baseUri + uriEnd)
-  //.subscribe(
-  //     (x)=>{
-  //       if(x){
-  //         return this.celebrityDetailsEvent.emit(x)
-  //       }
-  //     }
-  //   )
+  
     }
    getMovieDetailsById(emsVersionId:string){
     let uriEnd = `Movie/GetMovieDetailsByTitle/${emsVersionId}`;
     return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.movieDetailsById = x;
-    //       this.movieDetailsByIdEvent.emit(this.movieDetailsById);
-    //       //console.log(JSON.stringify(x));
-    //     }
-    //   }
-    // )
+    
    }
     getUpcomingMovieDetails() {
      let uriEnd = `Movie/GetUpcomingMovieDetails`
      return this.http.get<{}>(this.baseUri + uriEnd)
-  //     (x)=>{
-  //       if(x){
-  //         this.upcomingMovieDetails = x;
-  //         this.upcomingMovieDetailsEvent.emit(this.upcomingMovieDetails);
-  //       }
-  //     }
-  //   )
+  
     }
    getNewsStoryList() {
     let uriEnd = `News/GetNewsStoryList`;
     return this.http.get<{}>(this.baseUri + uriEnd)
-    // .subscribe(
-      // (x)=>{
-      //   if(x){
-          // this.news = x;
-          // this.newsEvent.emit(this.news);
-          // console.log(JSON.stringify(x));
-    //     }
-    //   }
-    // )
+    
    }
    getTheaters(zip:string) {
     
     let uriEnd = `User/GetTheaters/${zip}`;
     return this.http.get<any>(this.baseUri + uriEnd)
-    // .subscribe(
-    //   (x)=>{
-    //     if(x){
-    //       this.theaters = x;
-    //       console.log(JSON.stringify(x))
-    //       return this.theatersEvent.emit(this.theaters);
-    //     }
-    //   }
-    // )
+    
    }
    getTheaterDetails(theaterId:string) {
       return this.http.get<any>(this.baseUri + `User/GetTheaterDetails/${theaterId}`);
-      // .subscribe(
-      //   (x)=> {
-      //     if(x){
-      //       console.log(JSON.stringify(x));
-      //       this.theatersDetailsEvent.emit(x as TheaterDetails);
-      //     }
-      //   }
-      // )
+      
    }
    updateUser(user:User){
     return this.http.patch(this.baseUri + 'User/UpdateUser', {
@@ -222,8 +163,10 @@ export class FlixterApiService {
     return this.http.post<{}>(this.baseUri + uriEnd, {})
    }
 
-   checkIfFavorited(userId: number, favoriteMovieEmsVersionId: string){
-    let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
-    return this.http.get<{}>(this.baseUri + uriEnd)
+   checkIfFavorited(userId: number , favoriteMovieEmsVersionId: string){
+    
+      let uriEnd = `FavoriteMovie/CheckIfFavorited/${userId}/${favoriteMovieEmsVersionId}`;
+      return this.http.get<{}>(this.baseUri + uriEnd)
+    
    }
 }

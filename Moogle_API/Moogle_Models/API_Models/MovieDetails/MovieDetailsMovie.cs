@@ -10,23 +10,23 @@ namespace Moogle_Models.API_Models.MovieDetails
 {
   public class MovieDetailsMovie
   {
-    public string emsId { get; set; }
-    public string fandangoId { get; set; }
-    public string rtMovieId { get; set; }
-    public string name { get; set; }
-    public int durationMinutes { get; set; }
-    public string synopsis { get; set; }
-    public string directedBy { get; set; }
-    public string releaseDate { get; set; }
-    public string showReleaseDate { get; set; }
+    public string? emsId { get; set; }
+    public string? fandangoId { get; set; }
+    public string? rtMovieId { get; set; }
+    public string? name { get; set; }
+    public int? durationMinutes { get; set; }
+    public string? synopsis { get; set; }
+    public string? directedBy { get; set; }
+    public string? releaseDate { get; set; }
+    public string? showReleaseDate { get; set; }
     public object? dvdReleaseDate { get; set; }
     public string availabilityWindow { get; set; }
     public string ovdReleaseDate { get; set; }
-    public string totalGross { get; set; }
+    public string? totalGross { get; set; }
     public Trailer trailer { get; set; }
-    public MovieDetailsPosterImage posterImage { get; set; }
-    public BackgroundImage backgroundImage { get; set; }
-    public MovieDetailsUserRating userRating { get; set; }
+    public MovieDetailsPosterImage? posterImage { get; set; }
+    public BackgroundImage? backgroundImage { get; set; }
+    public MovieDetailsUserRating? userRating { get; set; }
     public MovieDetailsTomatoRating? tomatoRating { get; set; }
     public List<Genre> genres { get; set; }
     public List<Image> images { get; set; }

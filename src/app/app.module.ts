@@ -35,6 +35,7 @@ import { MovieImagesComponent } from './movie-detail/movie-images/movie-images.c
 import { MovieInfoComponent } from './movie-detail/movie-info/movie-info.component';
 import { MovieReviewsComponent } from './movie-detail/movie-reviews/movie-reviews.component';
 import { FavoriteListComponent } from './favorite-movies/favorite-list/favorite-list.component'
+import { LoadingComponent } from './loading/loading.component'
 
 
 
@@ -64,7 +65,8 @@ import { FavoriteListComponent } from './favorite-movies/favorite-list/favorite-
     MovieImagesComponent,
     MovieInfoComponent,
     MovieReviewsComponent,
-    FavoriteListComponent
+    FavoriteListComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

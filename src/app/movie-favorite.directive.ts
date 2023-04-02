@@ -91,7 +91,7 @@ export class MovieFavoriteDirective {
       synopsis: this.favoriteMovie.data.movie.synopsis,
       directedBy: this.favoriteMovie.data.movie.directedBy,
       releaseDate: this.favoriteMovie.data.movie.releaseDate,
-      totalGross: this.favoriteMovie.data.movie.totalGross,
+      totalGross: this.favoriteMovie.data.movie.totalGross = this.favoriteMovie.data.movie.totalGross.split('').contains('<') ? null : this.favoriteMovie.data.movie.totalGross,
       trailerUrl: this.newTrailerUrl,
       images: this.movieImageArray
     }

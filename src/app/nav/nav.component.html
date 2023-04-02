@@ -16,13 +16,15 @@
           aria-current="page" 
           routerLink="home">Home</a>
         </li>
-        <li class="dropdown-item float-down">
+        <li 
+        class="dropdown-item float-down">
           <a 
           (click)="toggleHamburger()" 
           class="nav-link" 
           routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
         </li>
-        <li *ngIf="!registeredUser" class="dropdown-item float-down">
+        <li *ngIf="!registeredUser" 
+        class="dropdown-item float-down">
           <a 
           (click)="toggleHamburger()" 
           class="nav-link" 
@@ -30,7 +32,6 @@
         </li>
         <li class="dropdown-item float-down">
           <a 
-          (click)="toggleHamburger()" 
           class="nav-link " 
           (click)="getTheaterListRoute()">Local Theaters</a>
         </li>
@@ -66,7 +67,9 @@
           <a class="nav-link" routerLink="register" >Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  (click)="getTheaterListRoute()" >Local Theaters</a>
+          <a 
+          class="nav-link" 
+           (click)="getTheaterListRoute()" >Local Theaters</a>
         </li>
       </ul>
       <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
@@ -78,17 +81,25 @@
         placeholder="Search" 
         aria-label="Search" 
         ngModel>
-        <button routerLink={{searchRouteWithParams}} class="btn btn-outline-light" for="search" type="submit">Search</button>
+        <button 
+        routerLink={{searchRouteWithParams}} 
+        class="btn btn-outline-light" 
+        for="search" 
+        type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
-<div *ngIf="showToast" class="toast toast-demo fade show toasty" >
+<div *ngIf="showToast" class="toast toast-demo fade show toasty">
   <div class="toast-body text-warning">
     Please Login or Register to use this feature...
     <div class="mt-2 pt-2 border-top">
       
-      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast" (click)="isNotIsShowToast()" >Close</button>
+      <button 
+      type="button" 
+      class="btn btn-secondary btn-sm" 
+      data-bs-dismiss="toast" 
+      (click)="isNotIsShowToast()" >Close</button>
     </div>
   </div>
 </div>

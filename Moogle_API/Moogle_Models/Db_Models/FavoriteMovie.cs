@@ -25,6 +25,7 @@ namespace Moogle_Models.Db_Models
     public string? TrailerUrl { get; set; }
     public virtual List<FavoriteMovieImage> Images { get; set; }
   }
+
 }
 
 

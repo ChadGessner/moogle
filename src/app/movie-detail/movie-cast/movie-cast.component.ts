@@ -6,6 +6,7 @@ import {
      transition,
       trigger
 } from '@angular/animations';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-movie-cast',
   templateUrl: './movie-cast.component.html',
@@ -36,7 +37,18 @@ export class MovieCastComponent {
       name:string,
        characterName:string,
         headShotImage:string}[] = [];
-  constructor(){}
+  constructor(
+    private router:Router
+  ){}
+  navigateToActorDetails() {
+    const actorId = this.movieCast[this.castIndex].id
+    if(actorId) {
+      this.router.navigate([
+        'actor',
+        actorId
+      ])
+    }
+  }
   castIncrementEvent(e:MouseEvent){
     const target = e.target as HTMLElement;
     const len = this.movieCast.length;

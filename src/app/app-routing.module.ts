@@ -10,11 +10,15 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SearchComponent } from './nav/search/search.component';
 import { ActorsComponent } from './actors/actors.component';
 import { FavoriteListComponent } from './favorite-movies/favorite-list/favorite-list.component';
+import {FavoriteMoviesComponent } from './favorite-movies/favorite-movies.component'
 
 const routes: Routes = [
   {
     path: 'register',
      component: UserRegistrationComponent
+  },{
+    path: 'favorite-movies',
+    component: FavoriteMoviesComponent
   },{
     path: 'login',
      component: UserLoginComponent

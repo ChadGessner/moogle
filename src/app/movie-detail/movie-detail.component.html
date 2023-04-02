@@ -28,7 +28,6 @@
         </div>
     </div>
 
-    <app-favorite-movies [favoriteMovieDetails]="movieDetail"></app-favorite-movies>
    
     <div  class="movie-detail-container">
         <div class="position-absolute vw-100" [@componentState]="{
@@ -37,7 +36,7 @@
             }
         }">
             <app-movie-description 
-            
+            [movieDetail]="movieDetail"
             [movieImage]="movieDetail.data.movie.posterImage.url" 
             [synopsis]="movieDetail.data.movie.synopsis" 
             [isActive]="notIsActive[0].isActive" ></app-movie-description>

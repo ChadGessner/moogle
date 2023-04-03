@@ -48,6 +48,10 @@ export class PopularMoviesComponent implements OnInit {
       console.log(x);
     });
   }
+  
+  getUser() {
+    return this.api.getLoggedInUser()
+  }
 
   getNextSixPopularMovies(startIndex: number, endIndex: number): void {
     this.startPopularMovieIndex = endIndex++

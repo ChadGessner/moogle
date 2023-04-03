@@ -13,6 +13,9 @@
                         <th scope="col-sm-10">Tomato Meter</th>
                         <th scope="col-sm-10">User Rating</th>
                         <th scope="col-sm-10">Details</th>
+                        <ng-container *ngIf="getUser()">
+                            <th scope="col-sm-10">Favorites</th>
+                        </ng-container>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,9 +49,16 @@
                                 <p>{{detail.userRating.dtlLikedScore}}<img width="40px"
                                         src={{detail.userRating.iconImage.url}}></p>
                             </td>
+   
                         </ng-template>
                         <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                                 routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
+                        <ng-container *ngIf="getUser()">
+                            <td>
+                                <app-favorite [favoriteMovieDetails]="detail"></app-favorite>
+                            </td>
+
+                        </ng-container>
                     </tr>
                 </tbody>
             </table>

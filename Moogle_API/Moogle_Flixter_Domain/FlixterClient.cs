@@ -58,7 +58,7 @@ namespace Moogle_Flixter_Domain
 
       var apiTask = header.GetJsonAsync<TheaterDetailData>();
       apiTask.Wait();
-      TheaterDetailData result = apiTask.Result;
+      TheaterDetailData result = TheaterDetailData.ValidateTheaterDetailData(apiTask.Result);
       bool success = result != null;
         //&&
         //result.data.theaterShowtimeGroupings.displayDates != null &&

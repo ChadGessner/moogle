@@ -33,9 +33,7 @@ namespace Moogle_Models.API_Models.MovieDetails
     }
     public static List<Image> ValidateImages(List<Image> images)
     {
-      if(images == null || images.Count == 0)
-      {
-        return new List<Image>()
+      List<Image> placeholders = new List<Image>()
         {
           new Image()
         {
@@ -59,8 +57,14 @@ namespace Moogle_Models.API_Models.MovieDetails
           height = -1
         }
       };
+      if (images == null || images.Count == 0)
+      {
+        return placeholders;
       }
-      return images.Select(x=> ValidateImage(x)).ToList();  
+      images = images.Select(x=> ValidateImage(x)).ToList();
+      return images.Count < 3 ? images
+        .Concat(placeholders.Take(Math.Abs(images.Count - 3)))
+        .ToList() : images;
     }
   }
 }

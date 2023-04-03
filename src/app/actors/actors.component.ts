@@ -101,7 +101,7 @@ export class ActorsComponent implements OnInit {
           (x)=>{
             if(x){
               console.log(JSON.stringify(x))
-              //this.actor = x
+              this.actor = x
             }
           }
         )

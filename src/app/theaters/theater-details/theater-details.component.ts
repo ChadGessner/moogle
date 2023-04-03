@@ -107,7 +107,7 @@ export class TheaterDetailsComponent implements OnInit {
               if(x){
                 this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
                 this.maxMovieListLength = this.currentTitlesList.length;
-                this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+                this.currentTitle = this.currentTitlesList[0];
                 return this.showShowTimes()
               }
             }

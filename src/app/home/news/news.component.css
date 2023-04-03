@@ -3,117 +3,53 @@ https://stackblitz.com/edit/my-angular-scroll-better?file=src%2Fapp%2Fapp.compon
 https://stackoverflow.com/questions/59198238/scroll-buttons-in-angular-application
 */
 
-
-/* .horizontal {
-    flex-wrap: nowrap;
-    display: inline-flex;
-    overflow-x: scroll;
-} 
-  a:active { 
-    color: red;
-}
-
-a {
+.news-link {
+  font-size: medium;
+  display: block;
+  color: currentColor;
   text-align: center;
-  display: inline-flex;
-  align-items:center; 
-  width: 360px;
-}
-.news-image{
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition-duration: 0.2s;
-  transition-delay: 0s;
-  transition-timing-function: ease;
 }
-
-.news-link{
-  font-size: medium;
-  display: block;
-  color: currentColor;
-  text-align: center;
-  width:100%;
-} 
-
-
-/* .change-list-btn{
-  margin: 15px;
-  padding: 8px 16px;
-} */
-
-/* .border{
-  border-left: #3f51b5;
-} */
-.news-link{
-
-  font-size: medium;
-  display: block;
-  color: currentColor;
-  text-align: center;
-  width:100%;
-} 
 .list-with-scroll {
-
   display: flex;
   margin: 5px;
 }
 
-.list{
+.list {
   scroll-behavior: smooth;
 
   flex-grow: 1;
   display: flex;
   overflow-x: scroll;
   align-items: center;
-  /* margin-right: 10px;
-  margin-left: 10px; */
-  padding-left:5px;
+
+  padding-left: 5px;
   padding-right: 5px;
-  
 }
 
-.list::-webkit-scrollbar{
-
+.list::-webkit-scrollbar {
   display: none;
 }
 
-.news{
-
+.news {
   width: 360px;
-  
-  /* height: 100px; */
+
   display: flexbox;
-  /* border: double; */
-  /* object-fit: cover; */
+
   transition-duration: 0.2s;
   transition-delay: 0s;
   transition-timing-function: ease;
 }
-.news-image{
-
+.news-image {
   width: 100%;
-  /* height: 100%; */
   object-fit: cover;
   transition-duration: 0.2s;
   transition-delay: 0s;
   transition-timing-function: ease;
 }
-/* .item{
-
-  min-width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: lightgray;
-  margin: 10px;
-  border-radius: 5px;
-} */
 
 .scroll-button,
 .scroll-button:hover {
-
   min-width: 50px;
   font-size: 28px;
   height: 250px;
@@ -121,22 +57,16 @@ a {
   box-shadow: 0px 0px 2px 2px rgba(94, 255, 0, 0);
   border: none;
   border-radius: 5px;
-  /* background-color: #1eff00; */
   color: #fff;
 }
 
 .disable,
 .disable:hover {
-
-  background-color: rgba(0,0,0,.12);
-  color: rgba(0,0,0,.26);
+  background-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.26);
   border: none;
 }
-/* .test{
-  margin-top: 100px;
-} */
 
-#scroll-left{
-
+#scroll-left {
   order: -1; /* To pevent ExpressionChangedAfterItHasBeenCheckedError */
 }

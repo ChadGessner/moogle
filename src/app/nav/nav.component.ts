@@ -14,6 +14,7 @@ export class NavComponent implements OnInit{
   registeredUser:any;
   showToast:boolean = false;
   searchRouteWithParams:string = ''
+  userRxjs: any;
   constructor(
     private api:FlixterApiService,
      private route:ActivatedRoute, 
@@ -60,6 +61,9 @@ export class NavComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.api.currentUserRxjs.subscribe((value) => {
+      this.userRxjs = value;
+    });
     this.api.registerEvent.subscribe(
       (x)=>{
         if(x){
@@ -67,5 +71,6 @@ export class NavComponent implements OnInit{
         }
       }
     )
+
   }
 }

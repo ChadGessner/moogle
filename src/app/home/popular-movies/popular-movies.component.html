@@ -13,22 +13,16 @@
                         <th scope="col-sm-10">Tomato Meter</th>
                         <th scope="col-sm-10">User Rating</th>
                         <th scope="col-sm-10">Details</th>
-    
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let detail of popularMovies.slice(startPopularMovieIndex,endPopularMovieIndex)">
-                        <!-- <ng-container class="item" *ngIf="detail.name; else addIndex()"> -->
                         <td><img height="105px" width="105px" src={{detail.posterImage.url}}></td>
                         <td>{{detail.name}}</td>
-                        <!-- <td>{{detail.posterImage.url}}</td> -->
-                        <!-- <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p> -->
                         <ng-template class="item"
-    
                             *ngIf="detail.tomatoRating.tomatometer == null; then tomatoRatingThenBlock else tomatoRatingElseBlock">
                         </ng-template>
                         <ng-template #tomatoRatingThenBlock>
-    
                             <td>
                                 <div [innerHTML]="detail.tomatoRating.iconImage.url"></div>
                             </td>
@@ -39,30 +33,20 @@
                                         src={{detail.tomatoRating.iconImage.url}}></p>
                             </td>
                         </ng-template>
-    
                         <ng-template class="item"
-                        *ngIf="detail.userRating.dtlLikedScore == null; then userRatingthenBlock else userRatingelseBlock">
-                    </ng-template>
-                    <ng-template #userRatingthenBlock>
-                        <td>
-                            <p [innerHTML]="detail.userRating.iconImage.url"></p>
-                        </td>
-                    </ng-template>
-                    <ng-template #userRatingelseBlock>
-                        <td>
-                            <p>{{detail.userRating.dtlLikedScore}}<img width="40px"
-                                    src={{detail.userRating.iconImage.url}}></p>
-                        </td>
-                    </ng-template>
-    
-    
-    
-                        <!-- <td><p>{{detail.tomatoRating.tomatometer}} <img width="10%" src={{detail.tomatoRating.iconImage.url}}></p></td>
-                        <td>
-                            <p>{{detail.userRating.dtlLikedScore}} <img width="40px"
-                                    src={{detail.userRating.iconImage.url}}></p>
-                        </td> -->
-                      
+                            *ngIf="detail.userRating.dtlLikedScore == null; then userRatingthenBlock else userRatingelseBlock">
+                        </ng-template>
+                        <ng-template #userRatingthenBlock>
+                            <td>
+                                <p [innerHTML]="detail.userRating.iconImage.url"></p>
+                            </td>
+                        </ng-template>
+                        <ng-template #userRatingelseBlock>
+                            <td>
+                                <p>{{detail.userRating.dtlLikedScore}}<img width="40px"
+                                        src={{detail.userRating.iconImage.url}}></p>
+                            </td>
+                        </ng-template>
                         <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                                 routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a></td>
                     </tr>
@@ -70,7 +54,6 @@
             </table>
         </div>
     </div>
-    
     <div *ngIf="startOfPopularMovies; then thenBlock else elseBlock">
     </div>
     <ng-template #thenBlock><button class="btn btn-outline-success" type="button"

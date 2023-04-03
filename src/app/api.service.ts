@@ -32,6 +32,9 @@ export class FlixterApiService {
 
   private emsIdRxjs = new BehaviorSubject<any>({});
   currentEmsIdRxjs = this.emsIdRxjs.asObservable();
+
+  private userRxjs = new BehaviorSubject<any>({});
+  currentUserRxjs = this.userRxjs.asObservable();
   
   @Output()newsEvent:EventEmitter<any> = new EventEmitter();
   @Output()registerEvent:EventEmitter<any> = new EventEmitter<any>();
@@ -44,7 +47,9 @@ export class FlixterApiService {
    setUserIdRxjs(userIdRxjs: any) {
     this.userIdRxjs.next(userIdRxjs);
   }
-
+  setUserRxjs(userRxjs: any) {
+    this.userRxjs.next(userRxjs);
+  }
   setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
     this.emsVersionIdRxjs.next(emsVersionIdRxjs);
   }

@@ -13,3 +13,11 @@
     overflow:none;
     z-index:1;
 } */
+
+#center-nav-bar{
+    margin-left:190px;
+}
+
+#nav-style-test{
+    float:inline-end;
+}

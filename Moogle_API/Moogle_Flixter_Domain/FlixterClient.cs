@@ -167,7 +167,7 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
 
       ActorRoot result = apiTask.Result;
-      return result;
+      return ActorRoot.ValidateActorRoot(result);
     }
     public SearchRoot GetSearchQuery(string query, string userZip)
     {

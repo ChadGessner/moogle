@@ -18,7 +18,7 @@ namespace Moogle_Models.API_Models.MovieDetails
       {
         return new BackgroundImage()
         {
-          url = "https://imgur.com/8XIgCBU.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = "image",
           width = -1,
           height = -1
@@ -27,7 +27,7 @@ namespace Moogle_Models.API_Models.MovieDetails
       }
       if (image.url == null || image.url.Length == 0)
       {
-        image.url = "https://imgur.com/8XIgCBU.jpg";
+        image.url = "https://localhost:7239/Images/image-not-found.gif";
       }
       return image;
     }

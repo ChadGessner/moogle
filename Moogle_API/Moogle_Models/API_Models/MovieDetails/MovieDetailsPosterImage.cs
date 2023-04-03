@@ -19,13 +19,13 @@ namespace Moogle_Models.API_Models.MovieDetails
       {
         return new MovieDetailsPosterImage()
         {
-          url = "https://i.imgur.com/X1cwA6j.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = null,
           width = null,
           height = null
         };
       }
-      image.url = image.url == null || image.url.Length == 0 ? "https://i.imgur.com/X1cwA6j.jpg" : image.url;
+      image.url = image.url == null || image.url.Length == 0 ? "https://localhost:7239/Images/image-not-found.gif" : image.url;
       return image;
     }
   }

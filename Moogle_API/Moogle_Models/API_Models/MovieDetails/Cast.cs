@@ -46,7 +46,7 @@ namespace Moogle_Models.API_Models.MovieDetails
           role = "<i class=\"bi bi-bandaid\"></i>",
           name = "<i class=\"bi bi-bandaid\"></i>",
           characterName = "<i class=\"bi bi-bandaid\"></i>",
-          headShotImage = "https://imgur.com/8kTJOzi.jpg"
+          headShotImage = "https://localhost:7239/Images/image-not-found.gif"
         },
        new  Cast()
         {
@@ -54,7 +54,7 @@ namespace Moogle_Models.API_Models.MovieDetails
           role = "<i class=\"bi bi-bandaid\"></i>",
           name = "<i class=\"bi bi-bandaid\"></i>",
           characterName = "<i class=\"bi bi-bandaid\"></i>",
-          headShotImage = "https://imgur.com/8tNKBtR.jpg"
+          headShotImage = "https://localhost:7239/Images/image-not-found.gif"
         },
         new Cast()
         {
@@ -62,7 +62,7 @@ namespace Moogle_Models.API_Models.MovieDetails
           role = "<i class=\"bi bi-bandaid\"></i>",
           name = "<i class=\"bi bi-bandaid\"></i>",
           characterName = "<i class=\"bi bi-bandaid\"></i>",
-          headShotImage = "https://imgur.com/lWB1YiW.jpg"
+          headShotImage = "https://localhost:7239/Images/image-not-found.gif"
         }
       };
       }

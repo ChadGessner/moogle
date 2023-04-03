@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-
+using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -29,7 +29,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
+var fileProvider = new PhysicalFileProvider(
+    Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\Images"));
+var requestPath = "/Images";
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+     FileProvider = fileProvider,
+    RequestPath = requestPath
+});
+app.UseDirectoryBrowser(new DirectoryBrowserOptions
+{
+  FileProvider = fileProvider,
+  RequestPath = requestPath
+});
 app.UseAuthorization();
 app.UseCors();
 

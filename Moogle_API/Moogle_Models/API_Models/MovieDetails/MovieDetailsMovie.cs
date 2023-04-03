@@ -22,7 +22,7 @@ namespace Moogle_Models.API_Models.MovieDetails
     public object? dvdReleaseDate { get; set; }
     public string availabilityWindow { get; set; }
     public string ovdReleaseDate { get; set; }
-    public string? totalGross { get; set; }
+    public int? totalGross { get; set; }
     public Trailer trailer { get; set; }
     public MovieDetailsPosterImage? posterImage { get; set; }
     public BackgroundImage? backgroundImage { get; set; }
@@ -48,7 +48,7 @@ namespace Moogle_Models.API_Models.MovieDetails
       }
       movie.emsId = StringPlaceHolder(movie.emsId);
       movie.rtMovieId = StringPlaceHolder(movie.rtMovieId);
-      movie.totalGross = StringPlaceHolder(movie.totalGross);
+      movie.totalGross = movie.totalGross ?? -1;
       movie.releaseDate = StringPlaceHolder(movie.releaseDate);
       movie.synopsis = StringPlaceHolder(movie.synopsis);
       movie.availabilityWindow = StringPlaceHolder(movie.availabilityWindow);

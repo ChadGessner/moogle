@@ -43,8 +43,8 @@ namespace Moogle_API.Controllers
     [HttpPost("AddFavoriteMovie/{userId}")]
     public FavoriteMovieModelDto AddFavoriteMovie([FromBody]JsonObject favoriteMovie, int userId)
     {
-      
-      favoriteMovie["stuff"]["totalGross"] = favoriteMovie["stuff"]["totalGross"].ToString().StartsWith('<') ? null : favoriteMovie["stuff"]["totalGross"];
+      Console.WriteLine(favoriteMovie["stuff"]["totalGross"]);
+      favoriteMovie["stuff"]["totalGross"] = favoriteMovie["stuff"]["totalGross"].ToString().StartsWith('<') ? -1 : favoriteMovie["stuff"]["totalGross"];
       
       AngularFavoriteMovieRoot deserializedMovie = JsonConvert
         .DeserializeObject<AngularFavoriteMovieRoot>(favoriteMovie["stuff"].ToString());

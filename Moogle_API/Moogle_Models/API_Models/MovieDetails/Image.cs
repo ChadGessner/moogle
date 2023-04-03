@@ -19,7 +19,7 @@ namespace Moogle_Models.API_Models.MovieDetails
       {
         return new Image()
         {
-          url = "https://imgur.com/br9Z4Vq.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = "image",
           width = -1,
           height = -1
@@ -27,7 +27,7 @@ namespace Moogle_Models.API_Models.MovieDetails
       }
       if(image.url == null || image.url.Length == 0)
       {
-        image.url = "https://imgur.com/br9Z4Vq.jpg";
+        image.url = "https://localhost:7239/Images/image-not-found.gif";
       }
       return image;
     }
@@ -37,21 +37,21 @@ namespace Moogle_Models.API_Models.MovieDetails
         {
           new Image()
         {
-          url = "https://imgur.com/V4hWoRU.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = "image",
           width = -1,
           height = -1
         },
           new Image()
         {
-          url = "https://imgur.com/SrVIhw3.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = "image",
           width = -1,
           height = -1
         },
           new Image()
         {
-          url = "https://imgur.com/br9Z4Vq.jpg",
+          url = "https://localhost:7239/Images/image-not-found.gif",
           type = "image",
           width = -1,
           height = -1

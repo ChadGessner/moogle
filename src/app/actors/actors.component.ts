@@ -93,6 +93,12 @@ export class ActorsComponent implements OnInit {
       )
     }
   }
+
+  getTomatometerValue(value:number){
+    const result = value === -1 ? 'Tomatometer: ' + '<i class="bi bi-bandaid"></i>' : 'Tomatometer: ' + value.toString();
+    return result;
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe(
       (x:Params)=>{
@@ -108,14 +114,6 @@ export class ActorsComponent implements OnInit {
       }
     )
     //this.actor = Actor;
-    //console.log(this.actor.data.person.name)
-    // this.api.celebrityDetailsEvent.subscribe(
-    //   (x)=>{
-    //     if(x) {
-    //       console.log(JSON.stringify(x))
-    //       this.actor = x
-    //     }
-    //   }
-    // )
+    
   }
 }

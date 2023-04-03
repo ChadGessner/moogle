@@ -23,6 +23,6 @@ export class MovieInfoComponent {
       style: 'currency',
       currency: 'USD',
     });
-    return this.totalGross.startsWith('<') ? this.totalGross : `${USDollar.format(Number(this.totalGross))}`;
+    return this.totalGross.toString() === '-1' ? '<i class="bi bi-bandaid"></i>' : `${USDollar.format(Number(this.totalGross))}`;
   }
 }

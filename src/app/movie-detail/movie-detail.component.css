@@ -40,3 +40,8 @@
 .vw-100 {
     width:100vw;
 }
+.nav-item {
+    cursor: pointer;
+    height: 50px;
+}
+

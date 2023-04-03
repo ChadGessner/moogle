@@ -17,15 +17,15 @@ class="card p-4 m-4 bg-dark rounded border border-success"
                         <div  class="col card ">
                             <div class="card border border-secondary m-1 p-1">
                                 <label class="text-warning" >Tomato Meter</label>
-                                <p class="text-info" >{{tomatometer}}</p>
+                                <p class="text-info" [innerHTML]="getTomatometerData(tomatometer)" ></p>
                             </div>
                             <div class="card border border-danger m-1 p-1">
                                 <label class="text-warning" >Rating Count</label>
-                                <p class="text-info" >{{ratingCount}}</p>
+                                <p class="text-info" [innerHTML]="getTomatometerData(ratingCount)" ></p>
                             </div>
                             <div class="card border border-danger m-1 p-1">
                                 <label class="text-warning" >Consensus</label>
-                                <p class="text-info" [innerHTML]="consensus" ></p>
+                                <p class="text-info" [innerHTML]="getTomatometerData(consensus)" ></p>
                             </div>
                             
                         </div>

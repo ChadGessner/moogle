@@ -151,7 +151,6 @@ export class MovieDetailComponent implements OnInit {
             if(x.isActive){
               this.currentDisplayIndex = i;
             }
-
         }
         
       }
@@ -172,8 +171,6 @@ export class MovieDetailComponent implements OnInit {
       this.notIsActive.forEach((x,i)=>{
         x.paramValue = this.returnAnimationParam(i)
       })
-    
-    
   }
  
 
@@ -199,9 +196,11 @@ export class MovieDetailComponent implements OnInit {
       (p:Params)=>{
         console.log(p['emsVersionId'] as string)
         this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
+        // this.movieDetail = MovieDetail;
+        // this.imagesList = this.movieDetail.data.movie.images;
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
-            console.log(x)
+            console.log(JSON.stringify(x))
             this.movieDetail = x
             this.imagesList = this.movieDetail.data.movie.images;
           }

@@ -20,7 +20,8 @@ namespace Moogle_Flixter_Domain
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
-    public string ApiKey { get; set; } = "f9fac99099msh91eba27f949e597p1dc5efjsn0b0dce1ad9bd";
+
+    public string ApiKey { get; set; } = "86b7ccfa8fmsh4fca1ada0d0bf38p1dfee7jsn3fe8d10a991a";
 
     public FlixterClient()
     {
@@ -167,7 +168,7 @@ namespace Moogle_Flixter_Domain
       apiTask.Wait();
 
       ActorRoot result = apiTask.Result;
-      return result;
+      return ActorRoot.ValidateActorRoot(result);
     }
     public SearchRoot GetSearchQuery(string query, string userZip)
     {

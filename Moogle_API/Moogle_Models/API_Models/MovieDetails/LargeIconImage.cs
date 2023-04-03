@@ -15,10 +15,10 @@ namespace Moogle_Models.API_Models.MovieDetails
       {
         return new LargeIconImage()
         {
-          url = "https://imgur.com/4kuJ6Va.jpg",
+          url = "https://images.fandango.com/cms/assets/823eb040-9be3-11eb-b5d9-dd031ef2e6cb--certifiedfresh.png",
         };
       }
-      image.url = image.url == null || image.url.Length == 0 ? "https://imgur.com/4kuJ6Va.jpg" : image.url;
+      image.url = image.url == null || image.url.Length == 0 ? "https://images.fandango.com/cms/assets/823eb040-9be3-11eb-b5d9-dd031ef2e6cb--certifiedfresh.png" : image.url;
       return image;
     }
   }

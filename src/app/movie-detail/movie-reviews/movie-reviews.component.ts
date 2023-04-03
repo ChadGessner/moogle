@@ -10,19 +10,6 @@ import {
   selector: 'app-movie-reviews',
   templateUrl: './movie-reviews.component.html',
   styleUrls: ['./movie-reviews.component.css'],
-  // animations: [
-  //   trigger('componentState', [
-  //     state('show', style({
-  //       'transform' : 'translateX(0)'
-  //     })),
-  //     state('hidden', style({
-  //       'overflow' : 'hidden',
-  //       'transform' : 'translateX(9000px)'
-  //     })),
-  //     transition('show => hidden', animate(1000)),
-  //     transition('hidden => show', animate(1000)),
-  //   ])
-  // ]
 })
 export class MovieReviewsComponent {
   @Input()movieImage:string = '';
@@ -31,5 +18,7 @@ export class MovieReviewsComponent {
   @Input()ratingCount:number = 0;
   @Input()consensus:string = '';
   constructor(){}
-
+  getTomatometerData(data:number|string) {
+    return data = data.toString() === '-1' || data.toString() === 'N/A' ? '<i class="bi bi-bandaid"></i>' : data;
+  }
 }

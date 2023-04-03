@@ -9,30 +9,38 @@
 
             
             <li class="nav-item bg-secondary m-1" >
-                <a class="nav-link" id="card-tab-one">Description</a>
+                <a class="nav-link alert-success" id="card-tab-one">Description</a>
             </li>
             <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link" id="card-tab-two">Cast</a>
+                <a class="nav-link alert-info" id="card-tab-two">Cast</a>
+            </li>
+            <li class="nav-item alert-primary m-1"  >
+                <a class="nav-link alert-success" id="card-tab-three">Images</a>
             </li>
             <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link" id="card-tab-three">Images</a>
+                <a class="nav-link alert-secondary" id="card-tab-four">General Information</a>
             </li>
             <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link" id="card-tab-four">General Information</a>
+                <a class="nav-link alert-danger" id="card-tab-five">Reviews</a>
             </li>
             <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link" id="card-tab-five">Reviews</a>
+                <a class="nav-link alert-warning" id="card-tab-six">Trailer</a>
             </li>
-            <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link" id="card-tab-six">Trailer</a>
+            <li class="nav-item alert-success m-1"  >
+                <div  *ngIf="!getUser()">
+                    <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
+                </div>
             </li>
+            
             </ul>
         </div>
     </div>
 
+
     <!-- <div *ngIf="getUser()">
         <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
     </div> -->
+
     
 
    

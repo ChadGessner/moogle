@@ -18,7 +18,7 @@ class="card p-4 m-4 bg-dark rounded border border-success"
                     src={{movieImage}}>
 
                     <div class="card col border border-danger m-4 p-4">
-                        <p class="card-text text-success font-monospace">{{synopsis}}</p>
+                        <p class="card-text text-success font-monospace"[innerHTML]="synopsis"></p>
                         <hr>
                     </div>                    
                 </div>
@@ -26,4 +26,3 @@ class="card p-4 m-4 bg-dark rounded border border-success"
         </div>
     </div>
 </div>
-        

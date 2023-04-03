@@ -1,0 +1,18 @@
+.bi-star-fill {
+    color: gold;
+}
+
+/* .bi-star-fill:hover {
+    color: transparent;
+} */
+/* .star1:hover, .star1:hover ~ .star1{
+    color:rgb(24, 194, 24);    
+} */
+
+/* .fav-btn:hover {
+    color: red;
+} */
+.btn-success:hover{
+    background-color: red;
+
+}

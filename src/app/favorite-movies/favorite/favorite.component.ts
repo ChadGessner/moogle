@@ -37,6 +37,10 @@ constructor(
       this.api.setUserIdRxjs(userIdRxjs);
     }
 
+    getUser(){
+      return this.api.getLoggedInUser()
+    }
+
      ngOnInit(): void {
       // console.log(this.api.user.id)
       this.api.currentEmsVersionIdRxjs.subscribe((value) => {

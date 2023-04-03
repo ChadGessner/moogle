@@ -1,12 +1,31 @@
+<!-- <ng-template class="item"
+    
+*ngIf="detail.tomatoRating.tomatometer == null; then tomatoRatingThenBlock else tomatoRatingElseBlock">
+</ng-template>
+<ng-template #tomatoRatingThenBlock>
+
+<td>
+    <div [innerHTML]="detail.tomatoRating.iconImage.url"></div>
+</td>
+</ng-template>
+<ng-template #tomatoRatingElseBlock>
+<td>
+    <p>{{detail.tomatoRating.tomatometer}} <img width="40px"
+            src={{detail.tomatoRating.iconImage.url}}></p>
+</td>
+</ng-template>
+ -->
 
 
 
 
 
+ <ng-template *ngIf="getUser(); then userSection else guestSection"></ng-template>
 
 
 
 
+ <ng-template #userSection>
 <div>
     <h1 class="text-center" class="card-text text-success font-monospace">Favorite Movies!</h1>
     <!-- <h1>{{currentUserIdRxjs}}</h1>
@@ -14,11 +33,6 @@
     <h1>{{user.id}}</h1>
     <h1>{{isLoggedIn}}</h1> -->
 </div>
-
-
-<ng-template [ngIf]="isLoggedIn == true">
-
-
 
 <div class="card border border-success p-2 mb-2">
     <div class="table-responsive">
@@ -39,7 +53,9 @@
                     <!-- <ng-container class="item" *ngIf="detail.name; else addIndex()"> -->
                     <td><img height="105px" width="105px" src={{detail.posterImageUrl}}></td>
                     <td>{{detail.name}} {{detail.EmsVersionId}}</td>
-                    <td>{{detail.synopsis | truncatePipe:[300, '...']}} </td>
+                    <td>
+                        <p [innerHTML]="detail.synopsis | truncatePipe:[300, '...']"></p>
+                        </td>
                     <!-- <td>{{detail.posterImage.url}}</td> -->
                     <!-- <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p> -->
                     
@@ -50,8 +66,12 @@
                     <td>
                         <p>{{detail.userRating.dtlLikedScore}} <img width="40px"
                                 src={{detail.userRating.iconImage.url}}></p>
+
+                                <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
                     </td> -->
-                    <td>        <button class="btn btn-outline-success" type="button" (click)="passEmsVersionId(detail.emsVersionId)"><i class="bi bi-film"></i> Trailer</button>
+                    <td>        <button class="btn btn-outline-success" type="button" (click)="openTrailer(detail.trailerUrl)"><i class="bi bi-film"></i> Trailer</button>
+                        <!-- <button class="btn btn-outline-success"><a href={{detail.trailerUrl}} target='_blank'><i class="bi bi-film"></i> Trailer</a></button>` -->
+
                     </td>
 
                     <td><a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
@@ -81,5 +101,10 @@
         (click)="getFirstSixFavoriteMovies()"><i class="bi bi-chevron-double-left"></i> Back to
         Start</button>
 </ng-template>
+</ng-template>
+<ng-template #guestSection>
+    <br>
+    <br>
+    <h2>Registration required to view favorites.</h2>
 </ng-template>
 

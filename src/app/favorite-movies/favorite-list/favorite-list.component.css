@@ -1,16 +1,18 @@
-/* dl {
-    width: 1000px;
+.bi-star-fill {
+    color: gold;
 }
-dl dt {
-    width: 160px;
-    float: left;
-    padding: 0;
-    margin-right: 100px;
-    margin-bottom: 30px;
-}
-dl dd {
-    width: 700px;
-    float: left;
-    padding: 0;
-    margin-bottom: 30px;
+
+/* .bi-star-fill:hover {
+    color: transparent;
 } */
+/* .star1:hover, .star1:hover ~ .star1{
+    color:rgb(24, 194, 24);    
+} */
+
+/* .fav-btn:hover {
+    color: red;
+} */
+.btn-success:hover{
+    background-color: red;
+
+}

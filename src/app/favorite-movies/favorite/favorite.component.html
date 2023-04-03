@@ -1,5 +1,5 @@
 
-
+<ng-container *ngIf="getUser()">
 <ng-template
 
     *ngIf="isFavorited == false; then addFavoriteBlock else removeFavoriteBlock">
@@ -14,3 +14,4 @@
         <button class="btn btn-success" type="button" (click)="removeFavorite(currentEmsVersionIdRxjs);isFavorited = false" ><i class="bi bi-star-fill"></i> Favorited</button>
     </ul>
 </ng-template>
+</ng-container>

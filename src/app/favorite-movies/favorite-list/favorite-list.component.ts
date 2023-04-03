@@ -14,6 +14,7 @@ export class FavoriteListComponent implements OnInit{
   currentUserIdRxjs: any | null;
   favoriteMovies: any;
   registeredUser: any;
+
   FavoriteMovies: any;
   startOfFavoriteMovies: any;
   startFavoriteMovieIndex: any;
@@ -42,6 +43,10 @@ constructor(
   
     setUserIdRxjs(userIdRxjs: any) {
       this.api.setUserIdRxjs(userIdRxjs);
+    }
+
+    getUser(){
+      return this.api.getLoggedInUser()
     }
 
      ngOnInit(): void {
@@ -102,6 +107,9 @@ constructor(
         }
       )
     }
+    openTrailer(trailerUrl:any){
+      window.open(trailerUrl)
+  }
 
     getNextSixFavoriteMovies(startIndex: number, endIndex: number): void {
       this.startFavoriteMovieIndex = endIndex++

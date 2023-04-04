@@ -36,30 +36,29 @@
         </form> 
     </div>
 
+    <div *ngIf="getLoggedInUser()">
+        <!-- <h4 class="text-center text-success" >Login Successful!</h4> -->
+        <div class="border border-success p-2 m-4 rounded bg-dark">
+            <div>
+                <div class="row m-1 border border-success p-1 rounded bg-dark">
+                    <button
+                    routerLink="/home" 
+                    type="button" class="btn btn-outline-info text-success bi bi-house" >
+                    Home
+                </button>
+                <button routerLink="/home" class="btn btn-outline-info text-success bi bi-x-circle" (click)="logout()" > Logout</button>
+                </div>
+            </div>
+            
+        </div>
+        
+    
+    </div>
 
 <app-account-details *ngIf="getLoggedInUser()" [registeredUser]="getLoggedInUser()" >
 
 </app-account-details>
 
-<div *ngIf="getLoggedInUser()">
-    <h4 class="text-center text-success" >Login Successfull!</h4>
-    <div class="border border-success p-4 m-4 rounded bg-dark">
-        <div class="row row-cols-2">
-            <div class="row m-1 border border-success p-1 rounded bg-dark">
-                <button 
-                routerLink="/home" 
-                class="btn bg-secondary text-success m-1" >
-                Home
-            </button>
-            </div>
-            <div class="row m-1 border border-success p-1 rounded bg-dark">
-                <button routerLink="/home" class="btn bg-warning text-danger m-1" (click)="logout()" >Logout</button>
-            </div>
-        </div>
-        
-    </div>
-    
 
-</div>
 
 

@@ -32,9 +32,8 @@ export class NavComponent implements OnInit{
     return this.api.getLoggedInUser();
   }
   getTheaterListRoute() {
-    console.log('clicked')
+   
     if(this.getLoggedInUser()){
-      console.log(this.getLoggedInUser())
       this.router.navigate([
         'theaters',
         this.api.user.zipCode

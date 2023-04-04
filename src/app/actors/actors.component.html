@@ -8,51 +8,71 @@
         
       <ul class="nav nav-tabs card-header-tabs" >
         
-        <li class="nav-item bg-secondary m-1" >
-          <a id="card-tab-one" class="nav-link" >Bio<i class="bi-alarm"></i></a>
+        <li  class="nav-item m-1" >
+          <a 
+          id="card-tab-one"
+          class="nav-link alert-success" >Bio</a>
         </li>
-        <li class="nav-item bg-primary m-1"  >
-          <a id="card-tab-two"  class="nav-link" >Filmography</a>
+        <li  class="nav-item m-1"  >
+          <a   
+          id="card-tab-two"
+          class="nav-link alert-info" >Filmography</a>
         </li>
-        <li   class="nav-item bg-primary m-1" >
-          <a id="card-tab-three" class="nav-link ">General Info</a>
+        <li   class="nav-item m-1" >
+          <a 
+          
+          id="card-tab-three" 
+          class="nav-link alert-info">General Info</a>
         </li>
       </ul>
       
       <hr>
-      <div class="row bg-dark g-3">
-        <h1 class="text-warning m-4" >{{actor.data.person.name}}</h1>
-        <hr>
-        <div *ngIf="actor.data.person.headShotImage" class="m-4 col-3 container border border-success ">
+      <div class="row  g-3">
+        <h3 
+        class="text-warning bg-dark" >{{actor.data.person.name}}</h3>
+        
+        <div 
+        
+        class="m-4 col-3 container">
             <img 
             class="img-fluid  rounded"
             
             src={{actor.data.person.headShotImage.url}}>
         </div>
-        <div *ngIf="notIsActive[0].isActive" class="card col-7 m-4 bg-light border border-success">
-            <p class="text-info alert-success" >{{actor.data.person.biography}}</p>
+        <div 
+        *ngIf="notIsActive[0].isActive" 
+        class="card col-7 m-4 alert-success">
+            <p 
+            class="text-muted" >
+            {{actor.data.person.biography}}
+        </p>
         </div>
-        <div *ngIf="notIsActive[1].isActive" class="card bg-primary col-7 m-4 border border-info">
-            <div *ngIf="notIsActive[1].isActive" class="row alert-primary rounded m-2">
-                <div class="btn-group d-flex flex-row justify-content-between rounded m-2">
+        <div 
+        *ngIf="notIsActive[1].isActive" 
+        class="card bg-dark col-7 m-4 ">
+            <div 
+            *ngIf="notIsActive[1].isActive" 
+            class="row bg-dark rounded m-2">
+                <div 
+                class="btn-group d-flex flex-row justify-content-between rounded p-4 ">
                     <div class="float-left">
                         <button 
                         (click)="castIncrementEvent($event)"
                         id="cast-prev"
-                        class="btn btn-outline-success alert-info text-success ">Prev</button>
+                        class="btn btn-dark text-light ">Prev</button>
                     </div>
                     <div class="float-center">
                         <button 
                         (click)="navigateToMovieDetails()"
                         
-                        class="btn btn-dark text-info ">Movie Details</button>
+                        class="btn btn-dark text-light ">Movie Details</button>
                     </div>
                     <div class=" d-flex justify-end align-end">
                         <button 
                         (click)="castIncrementEvent($event)"
                         
                         id="cast-next"
-                        class="btn btn-dark float-right text-info">Next</button>
+                        class="btn btn-dark float-right text-light ">Next</button>
                     </div>
                 </div>
             </div>
@@ -63,45 +83,76 @@
                     [ngStyle]="progressBarStyle()"
                     class="progress-bar"></div>
                 </div>
-                <ul 
-                class="list-group  col-12" 
+                <div 
+                class="row bg-dark" 
                 *ngFor="let film of actor.data.person.filmography;index as i">
-                <div class="p-4 m-4 row  " *ngIf="i === filmographyIndex">
-                    <li class="list-group-item text-warning bg-dark">
+                <div 
+                class="p-4 m-4 col  bg-dark" 
+                *ngIf="i === filmographyIndex">
+                    <div class="row text-warning  alert-danger">
+                        <div
+                    
+                        class="bg-dark col p-4">
+                            <img 
+                            class="film-poster"
+                            src={{film.posterImage.url}}>
+                        </div>
+                    <div class="col bg-dark ">
                         <h4>{{film.name}}</h4>
                         <hr>
-                    </li>
-                    <li *ngIf="film.posterImage && film.posterImage.url" class="col-3 list-group-item bg-dark">
-                        <img 
-                        class="img-fluid "
-                        src={{film.posterImage.url}}>
-                    </li>
-                    
-                    <li class="list-group-item bg-dark text-warning">
-                        {{film.releaseDate}}
-                    </li>
-                    <li *ngIf="film.tomatoRating" class="list-group-item text-success bg-primary">
-                        
+                        <div class="row ">
+                            <p class="text-warning">Release Date: {{film.releaseDate}}</p>
+                        </div>
+                        <div  
+                        class="row text-success rounded bg-dark ">
+                            
                             <span *ngIf="film.tomatoRating.iconImage" >
-                                <img height="20px" width="auto" src={{film.tomatoRating.iconImage.url}} />
+                                <img 
+                                height="20px" 
+                                width="auto" 
+                                src={{film.tomatoRating.iconImage.url}} />
                             </span>
                             &nbsp;
-                            <span class="text-success" [innerHTML]="getTomatometerValue(film.tomatoRating.tomatometer)"></span>
-                    </li>
+                            <span 
+                            class="text-success bg-dark " 
+                            [innerHTML]="getTomatometerValue(film.tomatoRating.tomatometer)">
+                            </span>
+                        </div>
+                    </div>
+
+                    </div>
+
                 </div>
                     
-                </ul>
+            </div>
             </div>
             </div>
             
         <div 
-        *ngIf="notIsActive[2].isActive" class="col p-4 bg-success">
-            <ul class="list-group col bg-success">
-                <li class="list-group-item text-light bg-dark">{{actor.data.person.name}}</li>
-                <li class="list-group-item text-light bg-dark">{{actor.data.person.birthDate}}</li>
-                <li class="list-group-item text-light bg-dark">{{actor.data.person.birthPlace}}</li>
-                <li class="list-group-item text-light bg-dark">{{actor.data.person.gender}}</li>
-                <li class="list-group-item text-light bg-dark">{{actor.data.person.name}}</li>
+        *ngIf="notIsActive[2].isActive" 
+        class="col p-4 bg-success">
+            <ul 
+            class="list-group col bg-success">
+                <li 
+                    class="list-group-item text-light bg-dark">
+                    {{actor.data.person.name}}
+                </li>
+                <li 
+                    class="list-group-item text-light bg-dark">
+                    {{actor.data.person.birthDate}}
+                </li>
+                <li 
+                    class="list-group-item text-light bg-dark">
+                    {{actor.data.person.birthPlace}}
+                </li>
+                <li 
+                    class="list-group-item text-light bg-dark">
+                    {{actor.data.person.gender}}
+                </li>
+                <li 
+                    class="list-group-item text-light bg-dark">
+                    {{actor.data.person.name}}
+                </li>
             </ul>
         </div>
     </div>

@@ -1,15 +1,22 @@
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
-  <div class="container-fluid ">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <!-- <div class="col"> -->
     <h1 class="display-4 navbar-brand  text-warning " >Moogle</h1>
     <!-- <ng-container id="nav-style-test text-warning" class="display-4 navbar-brand">{{userRxjs.userName}}</ng-container> -->
-
+    <div 
+    *ngIf="registeredUser"
+    id="hamburger-welcome" 
+    class="col  text-center p-2">
+      <a class="nav-link">
+        Hello {{registeredUser.userName}}
+      </a>
+    </div>
     <button 
       class="navbar-toggler " 
       
       (click)="toggleHamburger()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div id="center-nav-bar" class="collapse navbar-collapse show">
+      <div id="center-nav-bar"  class="collapse navbar-collapse show">
       <ul *ngIf="isHamburger" class="navbar-nav me-auto mb-2 mb-xl-0">
         <li class="dropdown-item float-down">
           <a 
@@ -56,27 +63,47 @@
         </form>
       </ul>
     </div>
-
+    
     <div class="collapse navbar-collapse " id="navbarDark">
       <ul class="navbar-nav me-auto mb-2 mb-xl-0">
         <li class="nav-item">
-          <a class="nav-link " routerLink="home">Home</a>
+          <a 
+          class="nav-link " 
+          routerLink="home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
+          <a 
+          class="nav-link" 
+          routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
         </li>
-        <li *ngIf="!registeredUser" class="nav-item">
-          <a class="nav-link" routerLink="register" >Register</a>
+        <li 
+        *ngIf="!registeredUser" 
+        class="nav-item">
+          <a 
+          class="nav-link" 
+          routerLink="register" >Register</a>
         </li>
         <li class="nav-item">
           <a 
           class="nav-link" 
            (click)="getTheaterListRoute()" >Local Theaters</a>
         </li>
+        
       </ul>
-      <form class="d-flex" (ngSubmit)="searchQuery(queryParam)" #queryParam="ngForm">
+      
+      <div 
+      *ngIf="registeredUser"
+      class="col container-fluid text-center p-1">
+        <a class="nav-link text-warning">
+          Welcome {{registeredUser.userName}}!
+        </a>
+      </div>
+      <form class="d-flex" 
+      (ngSubmit)="searchQuery(queryParam)" 
+      #queryParam="ngForm">
         <input 
         class="form-control me-2" 
+        id="search"
         type="search" 
         name="search" 
         for="queryParam" 
@@ -90,16 +117,24 @@
         type="submit">Search</button>
       </form>
     </div>
-  </div>
+  <!-- </div> -->
+
 </nav>
-<div *ngIf="showToast" class="toast toast-demo fade show toasty">
-  <div class="toast-body text-warning">
+<div 
+*ngIf="showToast" 
+class="toast toast-demo fade show toasty ">
+  <div class="toast-body text-warning bg-dark alert-danger">
     Please Login or Register to use this feature...
-    <div class="mt-2 pt-2 border-top">
-      
+    <div class="mt-2 p-2 border-top btn-group ">
       <button 
       type="button" 
-      class="btn btn-secondary btn-sm" 
+      class="btn btn alert-info btn-sm m-1" 
+      data-bs-dismiss="toast" 
+      routerLink="login"
+      (click)="isNotIsShowToast()" >Login</button>
+      <button 
+      type="button" 
+      class="btn btn btn-sm m-1 alert-info" 
       data-bs-dismiss="toast" 
       (click)="isNotIsShowToast()" >Close</button>
     </div>

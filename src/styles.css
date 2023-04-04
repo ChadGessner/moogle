@@ -2,3 +2,6 @@
 .no-scroll {
     overflow-x: hidden;
 }
+* {
+    margin:none;
+}

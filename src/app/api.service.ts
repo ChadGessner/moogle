@@ -15,7 +15,7 @@ import { Chad } from './dataForTesting/loggedInUser';
 export class FlixterApiService {
   serverUri:string = 'https://localhost:7239/api/User/RegisterUser';
   baseUri:string = 'https://localhost:7239/api/';
-  user:any;
+  user:any ;
   userZips:any;
   theaters:any;
   theaterDetails:any;

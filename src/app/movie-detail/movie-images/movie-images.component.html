@@ -1,76 +1,105 @@
 
+   <!--  <div class="row">
+        <div  class="row card-body bg-dark border">
+            <div class="row m-4 float-left">
+            </div>
+        </div>
+    </div>-->
 <div 
-class="card p-4 m-4 bg-dark rounded alert-success"
->
-    <div>
+class="card p-4 m-4 bg-dark rounded border border-success">
+<div>
+    <h4 class="text-warning" >MOVIE IMAGES</h4>
+    <hr>
+    <div class="row">
+        <div  class="row card-body bg-dark border ">
+            <div class="row m-4 float-left">
+                <img class="col poster" src={{movieImage}}>
+
+                <div  class="card col bg-dark alert-danger" >
+                    <section class="list-with-scroll">
+                        <div 
+                        class="list" 
+                        appScrollable #list="appScrollable" 
+                        [scrollUnit]="800">
+                        
+                        <div *ngFor="let image of images; index as i">
+                            
+                            <div class="news">
+                                <img 
+                                class="news-image alert-info" 
+                                src={{image.url}}>
+                            </div>
+                        </div>
+                    </div>
+                            
+    
+    
+                        
+    <button 
+    class="scroll-button btn btn-dark text-info" 
+    *ngIf="list.isOverflow" 
+    [class.disable]="!list.canScrollStart"
+      (click)="list.scroll(-1)" id="scroll-left">&#8678;</button>
+
+    <button 
+    class="scroll-button btn btn-dark text-info" 
+    *ngIf="list.isOverflow" 
+    [class.disable]="!list.canScrollEnd"
+      (click)="list.scroll(1)">&#8680;</button>
+                    </section>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- <div>
         <h4 class="text-warning" >MOVIE IMAGES</h4>
         <hr>
         <div class="row">
-            <div  class="row card-body  ">
+            <div  class="row card-body bg-dark border ">
                 <div class="row m-4 float-left">
                     <img class="col poster" src={{movieImage}}>
 
-                    <div  class="card col bg-dark" >
+                    <div  class="card col bg-dark " >
                         <div class="card">
-                            <section class="list-with-scroll">
 
-                                <div id="carouselWithControls" 
-                                appScrollable 
-                                #list 
-                                class="list-with-scroll" >
-                                <button class="scroll-button btn btn-outline-success">Clc</button>
+                            <div 
+                            *ngIf="images.length >="
+                            id="carouselWithControls" 
+                            class="carousel slide col" >
+                                <div class="card border-success">
                                 <div class="images-container">
-                                    <div class=" alert-light rounded">
-                                        <div class="m-2 bg-dark rounded">
-                                            <div class="p-2 bg-dark rounded">
-                                                <img 
-                                                src={{images[addImageIndex()].url}} 
-                                                class="news-image"
-                                                [ngStyle]="{'width' : '8rem'}"
-                                                alt="Slide 1">
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    
-
+                                    <img 
+                                    src={{images[addImageIndex()].url}} 
+                                    class="carousel-image"
+                                    [ngStyle]="{'width' : '8rem'}"
+                                    alt="Slide 1">
                                     <img 
                                     src={{images[currentIndex].url}} 
-                                    class="news-image"
-                                    [ngStyle]="{'width' : '8rem'}"
+                                    class="carousel-image"
+                                    
                                     alt="Slide 2">
                                     <img 
                                     src={{images[subImageIndex()].url}} 
-                                    class="news-image"
+                                    class="carousel-image"
                                     [ngStyle]="{'width' : '8rem'}"
                                     alt="Slide 3">
                                 </div>
-                                <button class="scroll-button btn btn-outline-success">Clack</button>
-                                </div>
-                            </section>
-                            
-                            
-                                <!-- <div class="card alert-info ">
-                               
                                 
-                                </div> -->
-                                <!-- (click)="carouselMinus()" -->
-                                <!-- (click)="carouselPlus()" -->
-                                <!-- <a class="carousel-control-prev" role="button" >
-                                <span class="carousel-control-prev-icon" 
-                                aria-hidden="true"></span>
+                                </div>
+                                <a class="carousel-control-prev"  role="button" (click)="carouselMinus()">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                                 </a>
-                                <a class="carousel-control-next" role="button" >
-                                <span class="carousel-control-next-icon" 
-                                aria-hidden="true"></span>
+                                <a class="carousel-control-next"  role="button" (click)="carouselPlus()">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
-                                </a> -->
-                            <!-- </div> -->
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 </div> 

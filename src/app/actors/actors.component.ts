@@ -74,19 +74,20 @@ export class ActorsComponent implements OnInit {
             x.isActive = x.id === target.id ? true : false;
             console.log(target)
             
-              if(el?.classList.contains('bg-primary') || el?.classList.contains('bg-secondary')){
+              if(el.classList.contains('alert-success') || el.classList.contains('alert-info')){
                 this.render.removeClass(
                   el,
-                  'bg-primary'
+                  'alert-info'
                 )
                 this.render.removeClass(
                   el,
-                  'bg-secondary'
+                  'alert-success'
                 )
                 this.render.addClass(
-                  e.target,
-                  `${x.isActive ? 'bg-secondary' : 'bg-primary'}`
+                  el,
+                  `${x.isActive ? 'alert-success' : 'alert-info'}`
                 )
+                console.log(el)
               }
             }
         }

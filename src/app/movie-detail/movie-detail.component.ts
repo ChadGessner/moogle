@@ -13,6 +13,9 @@ import {
 } from '@angular/animations';
 @Component({
   selector: 'app-movie-detail',
+  host: {
+    class: 'no-scroll'
+  },
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.css'],
   animations: [
@@ -20,12 +23,12 @@ import {
       state('show', style({
          'transform' : 'translateX({{disp}})',
           'overflow' : 'hidden'
-      }), {params: {disp : '0vw'}}),
+      }), {params: {disp : '0%'}}),
       state('hidden', style({
         // 'right' : '{{hide}}'
          'transform' : 'translateX({{disp}})',
          'overflow' : 'hidden'
-      }), {params : {disp : '100vw'}}),
+      }), {params : {disp : '100%'}}),
       transition('show <=> hidden', animate(500)),
       
     ])
@@ -196,8 +199,8 @@ export class MovieDetailComponent implements OnInit {
       (p:Params)=>{
         console.log(p['emsVersionId'] as string)
         this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
-        // this.movieDetail = MovieDetail;
-        // this.imagesList = this.movieDetail.data.movie.images;
+       // this.movieDetail = MovieDetail;
+       // this.imagesList = this.movieDetail.data.movie.images;
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(JSON.stringify(x))

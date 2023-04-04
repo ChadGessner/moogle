@@ -74,7 +74,7 @@ export const MovieDetail = {
           height: 1080,
         },
         {
-          url: 'https://resizing.flixster.com/bH-N_GCbKzvT9RCEcgymuOSopwk=/ems.cHJkLWVtcy1hc3NldHMvbW92aWVzLzZlMzE4Njc5LTE1NzEtNDgyYi1hNDhjLTE2MTM0M2QyMDg0ZS5qcGc=',
+          url: 'https://localhost:7239/Images/image-not-found.gif',
           type: null,
           width: 11762,
           height: 8429,

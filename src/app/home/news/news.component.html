@@ -8,7 +8,10 @@
       <div *ngFor="let story of news.data.newsStories">
         <div class="card border border-success p-2 mb-2">
           <div class="news">
-            <a href={{story.link}} target="_blank"><img class="news-image" src={{story.mainImage.url}}></a>
+            <a href={{story.link}} 
+            target="_blank"><img 
+            class="news-image" 
+            src={{story.mainImage.url}}></a>
           </div>
           <a class="news-link" href={{story.link}} target="_blank">
             <p [innerHTML]="story.title | truncatePipe:[40, '...']"></p>

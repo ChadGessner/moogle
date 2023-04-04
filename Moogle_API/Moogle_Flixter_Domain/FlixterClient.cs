@@ -21,7 +21,7 @@ namespace Moogle_Flixter_Domain
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
 
-    public string ApiKey { get; set; } = "86b7ccfa8fmsh4fca1ada0d0bf38p1dfee7jsn3fe8d10a991a";
+    public string ApiKey { get; set; } = "3741bbb5bdmsh3165f25a2e7271dp1d1a5fjsn54eb62b9462c";
 
     public FlixterClient()
     {

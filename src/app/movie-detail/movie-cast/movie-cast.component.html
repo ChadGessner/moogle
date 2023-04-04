@@ -2,7 +2,7 @@
 <app-loading *ngIf="!movieCast"></app-loading>
 <div 
 *ngIf="movieCast"
-class="card p-4 m-4 bg-dark rounded border border-success"
+class="card p-4 m-4 bg-dark rounded alert-info"
 >
     <div>
 
@@ -24,7 +24,7 @@ class="card p-4 m-4 bg-dark rounded border border-success"
                         src={{movieImage}}>
                     
                         
-    <div class="card col border border-danger m-4"> 
+    <div class="card col alert-secondary m-4"> 
         <div class="btn-group">
             <div class="m-1">
                 <button 

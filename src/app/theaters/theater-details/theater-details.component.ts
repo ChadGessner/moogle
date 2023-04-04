@@ -23,7 +23,7 @@ export class TheaterDetailsComponent implements OnInit {
   currentTitle:any;
   currentTitleIndex:number = 0;
   maxMovieListLength:number = -1;
-  @Input()currentTheaterName:string = '';
+  currentTheaterName:string = '';
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
   @Input()currentlySelectedTheater:any;

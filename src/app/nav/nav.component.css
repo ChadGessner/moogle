@@ -1,7 +1,38 @@
 .toasty {
-    margin-top: 70px;
+    margin: 100px;
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:center;
+    align-items:center;
     z-index: 9000;
-    overflow:none;
+}
+@media(max-width: 900px){
+    #search{
+        width: 130px;
+    }
+}
+@media(min-width: 768px){
+    #center-navbar{
+        clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+    }
+    
+}
+@media(min-width: 768px){
+    #hamburger-welcome {
+        clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+    }
 }
 /* .floaty {
     
@@ -14,10 +45,10 @@
     z-index:1;
 } */
 
-#center-nav-bar{
+/* #center-nav-bar{
     margin-left:190px;
 }
 
 #nav-style-test{
     float:inline-end;
-}
+} */

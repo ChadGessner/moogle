@@ -19,6 +19,7 @@ export class ScrollableDirective {
   }
 
   scroll(direction: number) {
+    //this.element.scrollLeft += ((this.scrollUnit + window.screenX) /2 ) * direction;
     this.element.scrollLeft += this.scrollUnit * direction;
   }
 
@@ -31,5 +32,10 @@ export class ScrollableDirective {
   }
 
   @HostListener("window:resize")
-  onWindowResize() {} // required for update view when windows resized
+  onWindowResize() {
+    //this.scrollUnit = Math.abs(this.scrollUnit - window.screenX)
+    // console.log(window.screenX);
+    
+    // console.log(this.scrollUnit)
+  } // required for update view when windows resized
 }

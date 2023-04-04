@@ -1,6 +1,6 @@
 <!-- [@componentState]="isActive ? 'show':'hidden'" -->
 <div 
-class="card p-4 m-4 bg-dark rounded border border-success"
+class="card p-1 m-4  rounded alert-success"
  >
 
     <div>
@@ -9,12 +9,12 @@ class="card p-4 m-4 bg-dark rounded border border-success"
         <h4 class="text-warning" >DESCRIPTION</h4>
         <hr>
         <div class="row">
-            <div  class="row card-body bg-dark border ">
+            <div  class="row card-body bg-dark  ">
                 <div class="row m-4 float-left">
                     <img class="col poster " 
                     src={{movieImage}}>
 
-                    <div class="card col border border-danger m-4 p-4">
+                    <div class="card col rounded alert-info m-4 p-4">
                         <p class="card-text text-success font-monospace" [innerHTML]="synopsis" ></p>
                         <hr>
                     </div>                    

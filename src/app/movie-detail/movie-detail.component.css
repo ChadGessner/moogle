@@ -45,3 +45,7 @@
     height: 50px;
 }
 
+.no-scroll {
+    overflow-y:auto;
+    overflow-x: hidden;
+}

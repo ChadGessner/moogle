@@ -10,19 +10,19 @@ import {
   selector: 'app-movie-images',
   templateUrl: './movie-images.component.html',
   styleUrls: ['./movie-images.component.css'],
-  // animations: [
-  //   trigger('componentState', [
-  //     state('show', style({
-  //       'transform' : 'translateX(0)'
-  //     })),
-  //     state('hidden', style({
-  //       'overflow' : 'hidden',
-  //       'transform' : 'translateX(9000px)'
-  //     })),
-  //     transition('show => hidden', animate(1000)),
-  //     transition('hidden => show', animate(1000)),
-  //   ])
-  // ]
+  animations: [
+    trigger('componentState', [
+      state('show', style({
+        'transform' : 'translateX(0)'
+      })),
+      state('hidden', style({
+        'overflow' : 'hidden',
+        'transform' : 'translateX(9000px)'
+      })),
+      transition('show => hidden', animate(1000)),
+      transition('hidden => show', animate(1000)),
+    ])
+  ]
 })
 
 export class MovieImagesComponent {

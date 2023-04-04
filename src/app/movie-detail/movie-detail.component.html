@@ -1,145 +1,159 @@
 
-<app-loading *ngIf="!movieDetail"></app-loading>
-<div *ngIf="movieDetail">
-    <div class="card m-4 border border-success bg-dark rounded">
-        <div class="card-header">
-            <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
-            <hr class="text-success" >
-            <ul class="nav nav-tabs card-header-tabs" >
-
-            
-            <li class="nav-item bg-secondary m-1" >
-                <a class="nav-link alert-success" id="card-tab-one">Description</a>
-            </li>
-            <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link alert-info" id="card-tab-two">Cast</a>
-            </li>
-            <li class="nav-item alert-primary m-1"  >
-                <a class="nav-link alert-success" id="card-tab-three">Images</a>
-            </li>
-            <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link alert-secondary" id="card-tab-four">General Information</a>
-            </li>
-            <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link alert-danger" id="card-tab-five">Reviews</a>
-            </li>
-            <li class="nav-item bg-primary m-1"  >
-                <a class="nav-link alert-warning" id="card-tab-six">Trailer</a>
-            </li>
-            <li class="nav-item alert-success m-1"  >
-                <div  *ngIf="!getUser()">
-                    <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
-                </div>
-            </li>
-            
-            </ul>
-        </div>
-    </div>
 
 
-    <!-- <div *ngIf="getUser()">
-        <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
-    </div> -->
 
+
+
+
+
+
+
+
+
+
+<div class="bg-dark  alert-info rounded">
+    <app-loading *ngIf="!movieDetail"></app-loading>
+    <div class="no-scroll" *ngIf="movieDetail">
+        <div class="card bg-dark  rounded">
+            <div class="card-header">
+                <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
+                <hr class="text-success" >
+                <ul class="nav nav-tabs card-header-tabs" >
     
-
-   
-    <div  class="movie-detail-container">
-        <div class="position-absolute vw-100" [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[0].paramValue
-            }
-        }">
-            <app-movie-description 
-            [movieDetail]="movieDetail"
-            [movieImage]="movieDetail.data.movie.posterImage.url" 
-            [synopsis]="movieDetail.data.movie.synopsis" 
-            [isActive]="notIsActive[0].isActive" ></app-movie-description>
-    </div>
-        <div class="position-absolute vw-100"  [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[1].paramValue
-            }
-        }">
-            <app-movie-cast 
-            [movieImage]="movieDetail.data.movie.posterImage.url" 
-            [movieCast]="movieDetail.data.movie.cast" 
-            [isActive]="notIsActive[1].isActive" ></app-movie-cast>
-    </div>
-        <div class="position-absolute vw-100" [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[2].paramValue
-            }
-        }">
-            <app-movie-images 
-            [movieImage]="movieDetail.data.movie.posterImage.url"
-            [images]="movieDetail.data.movie.images"
-            [isActive]="notIsActive[2].isActive"></app-movie-images>
-    </div>
-        <div class="position-absolute vw-100" [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[3].paramValue
-            }
-        }">
-            <app-movie-info
-            [movieImage]="movieDetail.data.movie.posterImage.url"
-            [directedBy]="movieDetail.data.movie.directedBy"
-            [releaseDate]="movieDetail.data.movie.releaseDate"
-            [totalGross]="movieDetail.data.movie.totalGross"
-            [isActive]="notIsActive[3].isActive"></app-movie-info>
-    </div>
-        <div class="position-absolute vw-100" [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[4].paramValue
-            }
-        }">
-            <app-movie-reviews
-            [movieImage]="movieDetail.data.movie.posterImage.url"
-            [isActive]="notIsActive[4].isActive"
-            [tomatometer]="movieDetail.data.movie.tomatoRating.tomatometer"
-            [ratingCount]="movieDetail.data.movie.tomatoRating.ratingCount"
-            [consensus]="movieDetail.data.movie.tomatoRating.consensus"></app-movie-reviews>
-    </div>
-        <div class="position-absolute vw-100" [@componentState]="{
-            value:componentState, params:{
-                disp: notIsActive[5].paramValue
-            }
-        }">
-            <app-trailer 
-            [isActive]="notIsActive[5].isActive" 
-            [trailerUrl]="movieDetail.data.movie.trailer.url" ></app-trailer>
-                    <div *ngIf="!movieDetail.data.movie.trailer">
-                        <p>There is not currently a trailer for this film...</p>
-                        <hr>
+                
+                <li class="nav-item m-1" >
+                    <a class="nav-link alert-success" id="card-tab-one">Description</a>
+                </li>
+                <li class="nav-item  m-1"  >
+                    <a class="nav-link alert-info" id="card-tab-two">Cast</a>
+                </li>
+                <li class="nav-item  m-1"  >
+                    <a class="nav-link alert-success" id="card-tab-three">Images</a>
+                </li>
+                <li class="nav-item  m-1"  >
+                    <a class="nav-link alert-info" id="card-tab-four">General Information</a>
+                </li>
+                <li class="nav-item  m-1"  >
+                    <a class="nav-link alert-success" id="card-tab-five">Reviews</a>
+                </li>
+                <li class="nav-item  m-1"  >
+                    <a class="nav-link alert-info" id="card-tab-six">Trailer</a>
+                </li>
+                <!-- <li class="nav-item alert-success m-1"  >
+                    <div >
+                        <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
                     </div>
-        
-                </div>
-        
+                </li> -->
+                
+                </ul>
+            </div>
         </div>
-    <!-- </div> -->
-    <p *ngIf="!movieDetail">
-        ... Were sorry, there are no details for this movie<a routerLink="home" >Go Back Home</a>
-    </p>
-        <!-- <div class="row">
-            <div  class="row card-body bg-dark border">
-                <div class="row m-4 float-left"> -->
-                    
-
-
-                    
-               
-              
-
-                    <!-- <div 
+    
+    
+        <div *ngIf="getUser()">
+            <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
+        </div>
+    
+        
+    
+       
+        <div  class=" no-scroll">
+            <div class="position-absolute no-scroll vw-100" [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[0].paramValue
+                }
+            }">
+                <app-movie-description 
+                [movieDetail]="movieDetail"
+                [movieImage]="movieDetail.data.movie.posterImage.url" 
+                [synopsis]="movieDetail.data.movie.synopsis" 
+                [isActive]="notIsActive[0].isActive" ></app-movie-description>
+        </div>
+            <div class="position-absolute no-scroll  vw-100"  [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[1].paramValue
+                }
+            }">
+                <app-movie-cast 
+                [movieImage]="movieDetail.data.movie.posterImage.url" 
+                [movieCast]="movieDetail.data.movie.cast" 
+                [isActive]="notIsActive[1].isActive" ></app-movie-cast>
+        </div>
+            <div class="position-absolute no-scroll  vw-100" [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[2].paramValue
+                }
+            }">
+                <app-movie-images 
+                [movieImage]="movieDetail.data.movie.posterImage.url"
+                [images]="movieDetail.data.movie.images"
+                [isActive]="notIsActive[2].isActive"></app-movie-images>
+        </div>
+            <div class="position-absolute no-scroll  vw-100" [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[3].paramValue
+                }
+            }">
+                <app-movie-info
+                [movieImage]="movieDetail.data.movie.posterImage.url"
+                [directedBy]="movieDetail.data.movie.directedBy"
+                [releaseDate]="movieDetail.data.movie.releaseDate"
+                [totalGross]="movieDetail.data.movie.totalGross"
+                [isActive]="notIsActive[3].isActive"></app-movie-info>
+        </div>
+            <div class="position-absolute no-scroll  vw-100" [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[4].paramValue
+                }
+            }">
+                <app-movie-reviews
+                [movieImage]="movieDetail.data.movie.posterImage.url"
+                [isActive]="notIsActive[4].isActive"
+                [tomatometer]="movieDetail.data.movie.tomatoRating.tomatometer"
+                [ratingCount]="movieDetail.data.movie.tomatoRating.ratingCount"
+                [consensus]="movieDetail.data.movie.tomatoRating.consensus"></app-movie-reviews>
+        </div>
+            <div class="position-absolute no-scroll  vw-100" [@componentState]="{
+                value:componentState, params:{
+                    disp: notIsActive[5].paramValue
+                }
+            }">
+                <app-trailer 
+                [isActive]="notIsActive[5].isActive" 
+                [trailerUrl]="movieDetail.data.movie.trailer.url" ></app-trailer>
+                        <div *ngIf="!movieDetail.data.movie.trailer">
+                            <p>There is not currently a trailer for this film...</p>
+                            <hr>
+                        </div>
+            
+                    </div>
+            
+            </div>
+        <!-- </div> -->
+        <p *ngIf="!movieDetail">
+            ... Were sorry, there are no details for this movie<a routerLink="home" >Go Back Home</a>
+        </p>
+            <!-- <div class="row">
+                <div  class="row card-body bg-dark border">
+                    <div class="row m-4 float-left"> -->
                         
-                    class="col card ">
-                        <vg-player >
-                                    
-                            <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>
-                                <source 
-                                src={{movieDetail.data.movie.trailer.url}}
-                                type="video/mp4">
-                            </video>
-                        </vg-player>
-                    </div> -->
-                </div>
+    
+    
+                        
+                   
+                  
+    
+                        <!-- <div 
+                            
+                        class="col card ">
+                            <vg-player >
+                                        
+                                <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>
+                                    <source 
+                                    src={{movieDetail.data.movie.trailer.url}}
+                                    type="video/mp4">
+                                </video>
+                            </vg-player>
+                        </div> -->
+                    </div>
+</div>

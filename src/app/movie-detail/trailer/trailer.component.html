@@ -8,16 +8,22 @@ class="card p-4 m-4 bg-dark rounded border border-success "
         <h4 class="text-warning" >Trailer</h4>
         <hr>
         <div class="row">
+            
             <div  class="row card-body bg-dark border ">
-                <div class="row float-left">
-                    
+                <div class="row">
+                    <div class="btn-group ">
+                        <button 
+                        class="btn btn-outline-info"
+                        (click)="clicky()" >Clicky</button>
+                    </div>
 
                     
                         <div 
                         
-                        class="col card ">
+                        class="d-flex justify-content-center align-items-center card">
+                        
                         <app-loading *ngIf="!trailerUrl"></app-loading>
-                            <vg-player *ngIf="isActive" >
+                            <vg-player [@trailerState]="trailerState" class="d-flex justify-content-center align-items-center" *ngIf="isActive" >
                                         
                                 <video  [vgMedia]="$any(media)"  #media id="singleVideo" preload="auto" controls>
                                     <source 

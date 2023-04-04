@@ -11,19 +11,7 @@ import { Router } from '@angular/router';
   selector: 'app-movie-cast',
   templateUrl: './movie-cast.component.html',
   styleUrls: ['./movie-cast.component.css'],
-  // animations: [
-  //   trigger('componentState', [
-  //     state('show', style({
-  //       'transform' : 'translateX(0)'
-  //     })),
-  //     state('hidden', style({
-  //       'overflow' : 'hidden',
-  //       'transform' : 'translateX(9000px)'
-  //     })),
-  //     transition('show => hidden', animate(1000)),
-  //     transition('hidden => show', animate(1000)),
-  //   ])
-  // ]
+ 
 })
 
 export class MovieCastComponent {

@@ -25,6 +25,7 @@ export class TheaterDetailsComponent implements OnInit {
   maxMovieListLength:number = -1;
   currentTheaterName:string = '';
   @Output()showTimesEvent:EventEmitter<any> = new EventEmitter<any>();
+  @Output()movieDetailsEvent:EventEmitter<any> = new EventEmitter<any>();
   isDate:boolean = false;
   @Input()currentlySelectedTheater:any;
   
@@ -34,6 +35,10 @@ export class TheaterDetailsComponent implements OnInit {
       private router:Router){}
   toggleShowTimes(){
     this.isShowTimes = !this.isShowTimes
+  }
+
+  passMovieDetails() {
+    return this.movieDetailsEvent.emit(this.currentTitle);
   }
 
   movieDetails(emsVersionId:string){
@@ -77,10 +82,12 @@ export class TheaterDetailsComponent implements OnInit {
     if(this.currentTitleIndex === this.maxMovieListLength){
       this.currentTitleIndex = 0;
       this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+      this.passMovieDetails();
       this.showShowTimes();
       return;
     }
     this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+    this.passMovieDetails();
     this.showShowTimes();
   }
   previousTitle() {
@@ -89,10 +96,12 @@ export class TheaterDetailsComponent implements OnInit {
     if(this.currentTitleIndex === -1){
       this.currentTitleIndex = this.maxMovieListLength-1;
       this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+      this.passMovieDetails();
       this.showShowTimes();
       return;
     }
     this.currentTitle = this.currentTitlesList[this.currentTitleIndex];
+    this.passMovieDetails();
     this.showShowTimes();
   }
   
@@ -108,6 +117,7 @@ export class TheaterDetailsComponent implements OnInit {
                 this.currentTitlesList = x.data.theaterShowtimeGroupings.movies;
                 this.maxMovieListLength = this.currentTitlesList.length;
                 this.currentTitle = this.currentTitlesList[0];
+                this.passMovieDetails()
                 return this.showShowTimes()
               }
             }

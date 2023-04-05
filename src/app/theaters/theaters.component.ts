@@ -34,6 +34,7 @@ export class TheatersComponent implements OnInit, AfterViewInit {
   isToggleTheaters:boolean = false;
   showTimes:any
   isShowTimes:boolean = false;
+  movieDetails:any;
   constructor(
     private api:FlixterApiService,
      private router:Router,
@@ -52,7 +53,9 @@ export class TheatersComponent implements OnInit, AfterViewInit {
       //   const target = e.target as HTMLElement;
       //   return this.theaterName = target.innerText;
       // }
-
+      getMovieDetails(e:any){
+        this.movieDetails = e;
+      }
       @HostListener('click', ['$event'])tabClickEvent(e:MouseEvent){
         const target = e.target as HTMLElement;
         // if(target && target.classList.contains('theater-list-item') ){
@@ -111,7 +114,12 @@ export class TheatersComponent implements OnInit, AfterViewInit {
   toggleTheaters() {
     this.isToggleTheaters = !this.isToggleTheaters;
   }
-
+  navigateMovieDetails() {
+    this.router.navigate([
+      'movie-detail',
+      this.movieDetails.emsVersionId
+    ])
+  }
   clickTheaterLink(index:number) {
     this.toggleTheaters();
     this.selectedTheater = this.theaters[index];

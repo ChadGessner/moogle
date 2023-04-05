@@ -21,14 +21,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let detail of favoriteMovies.slice(startFavoriteMovieIndex,endFavoriteMovieIndex)">
+                    <tr *ngFor="let detail of favoriteMovies">
                         <td><img height="105px" width="105px" src={{detail.posterImageUrl}}></td>
                         <td>{{detail.name}} {{detail.EmsVersionId}}</td>
                         <td>
                             <p [innerHTML]="detail.synopsis | truncatePipe:[300, '...']"></p>
                         </td>
 
-                        <td> 
+                        <td>
                             <button class="btn btn-outline-success" type="button"
                                 (click)="openTrailer(detail.trailerUrl)"><i class="bi bi-film"></i> Trailer</button>
                         </td>
@@ -37,7 +37,7 @@
                             <a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
                                 routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a>
                         </td>
-                        <td> 
+                        <td>
                             <button class="btn btn-success fav-btn" type="button"
                                 (click)="removeFavorite(detail.emsVersionId)"><i class="star2 bi bi-star-fill"></i>
                                 Remove</button>
@@ -48,23 +48,25 @@
         </div>
     </div>
 
-    <div *ngIf="startOfFavoriteMovies; then thenBlock else elseBlock">
-    </div>
-    <ng-template #thenBlock><button class="btn btn-outline-success" type="button"
-            (click)="getNextSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)">More Movies <i
-                class="bi bi-chevron-right"></i></button>
-    </ng-template>
-    <ng-template #elseBlock>
-        <button style="margin-right:20px" class="btn btn-outline-success" type="button"
-            (click)="getLastSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)"><i
-                class="bi bi-chevron-left"></i> Previous Movies</button>
-        <button class="btn btn-outline-success" type="button"
-            (click)="getNextSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)">More
-            Movies <i class="bi bi-chevron-right"></i></button>
-        <button style="margin-left:20px" class="btn btn-outline-success" type="button"
-            (click)="getFirstSixFavoriteMovies()"><i class="bi bi-chevron-double-left"></i> Back to
-            Start</button>
-    </ng-template>
+    <!-- <div *ngIf="favoriteMovies.length > 5">
+        <div *ngIf="startOfFavoriteMovies; then thenBlock else elseBlock">
+        </div>
+        <ng-template #thenBlock><button class="btn btn-outline-success" type="button"
+                (click)="getNextSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)">More Movies <i
+                    class="bi bi-chevron-right"></i></button>
+        </ng-template>
+        <ng-template #elseBlock>
+            <button style="margin-right:20px" class="btn btn-outline-success" type="button"
+                (click)="getLastSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)"><i
+                    class="bi bi-chevron-left"></i> Previous Movies</button>
+            <button class="btn btn-outline-success" type="button"
+                (click)="getNextSixFavoriteMovies(startFavoriteMovieIndex,endFavoriteMovieIndex)">More
+                Movies <i class="bi bi-chevron-right"></i></button>
+            <button style="margin-left:20px" class="btn btn-outline-success" type="button"
+                (click)="getFirstSixFavoriteMovies()"><i class="bi bi-chevron-double-left"></i> Back to
+                Start</button>
+        </ng-template>
+    </div> -->
 </ng-template>
 <ng-template #guestSection>
     <br>

@@ -1,5 +1,6 @@
-import { Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener, Input, OnInit, Output, Renderer2 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { FlixterApiService } from 'src/app/api.service';
 
 @Component({
@@ -11,10 +12,9 @@ export class FavoriteListComponent implements OnInit {
 
   currentEmsVersionIdRxjs: any;
   currentUserIdRxjs: any | null;
-  favoriteMovies: any;
   registeredUser: any;
+  favoriteMovies: any = [];
 
-  FavoriteMovies: any;
   startFavoriteMovieIndex: number = 0;
   endFavoriteMovieIndex: number = 5;
   startOfFavoriteMovies: boolean = true;
@@ -27,7 +27,10 @@ export class FavoriteListComponent implements OnInit {
     private api: FlixterApiService,
     private render: Renderer2,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private cdRef: ChangeDetectorRef) {
+      
+    }
 
   setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
     this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
@@ -57,6 +60,7 @@ export class FavoriteListComponent implements OnInit {
     this.api.getFavoriteMovieList(this.currentUserIdRxjs).subscribe(
       (response) => {
         this.favoriteMovies = response;
+        this.cdRef.detectChanges();
       });
   }
 
@@ -64,6 +68,7 @@ export class FavoriteListComponent implements OnInit {
     this.api.getFavoriteMovieList(userId).subscribe(
       (response) => {
         this.favoriteMovies = response;
+        this.cdRef.detectChanges();
       });
   }
 
@@ -79,6 +84,7 @@ export class FavoriteListComponent implements OnInit {
       .subscribe(
         (response) => {
           this.favoriteMovies = response;
+          this.cdRef.detectChanges();
         }
       )
   }
@@ -88,11 +94,12 @@ export class FavoriteListComponent implements OnInit {
 
   getNextSixFavoriteMovies(startIndex: number, endIndex: number): void {
     this.startFavoriteMovieIndex = endIndex++
-    this.endFavoriteMovieIndex = endIndex + 4
+    this.endFavoriteMovieIndex = endIndex + 5
     this.startOfFavoriteMovies = false
-    if (this.endFavoriteMovieIndex >= this.FavoriteMovies.length) {
-      this.startFavoriteMovieIndex = this.FavoriteMovies.length - 5
-      this.endFavoriteMovieIndex = this.FavoriteMovies.length
+    if (this.endFavoriteMovieIndex >= this.favoriteMovies.length) 
+    {
+      this.startFavoriteMovieIndex = endIndex - this.favoriteMovies.length
+      this.endFavoriteMovieIndex = this.favoriteMovies.length
       this.endOfFavoriteMovies = true;
     }
   }

@@ -34,7 +34,14 @@
                 (click)="toggleShowTimes()"
                 id="card-tab-three">Show Times</a>
             </li>
-            
+            <li 
+                *ngIf="movieDetails"
+                class="nav-item bg-primary m-1"  >
+                <a 
+                class="nav-link" 
+                (click)="navigateMovieDetails()"
+                id="card-tab-three">Movie Details</a>
+            </li>
             </ul>
         </div>
     </div>
@@ -92,6 +99,7 @@
         <app-theater-details 
         
         [currentlySelectedTheater]="selectedTheater"
+        (movieDetailsEvent)="getMovieDetails($event)"
         (showTimesEvent)="getShowTimes($event)" ></app-theater-details>
     </div>
 </div>

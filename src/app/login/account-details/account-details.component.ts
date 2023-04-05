@@ -13,6 +13,9 @@ import { User } from '../../models/user.interface';
 export class AccountDetailsComponent implements OnInit, OnChanges{
   @Input()registeredUser:any
   @Input()userZips:string[] = [];
+  canSubmit:boolean = false;
+  isToggleZips:boolean = false;
+  isSubmitZips:boolean = false;
   notIsActive:{
     id:string,
     isActive:boolean}[] = [{
@@ -58,55 +61,73 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
       
     }
   }
-  
+  toggleZips() {
+    this.isToggleZips = !this.isToggleZips;
+  }
   submitZip(userZip:NgForm) {
-    const newZip = userZip.form.value.userZip;
-    this.api.addUserZip(this.api.user, newZip).subscribe(
-      (x)=>{
-        if(x){
-          console.log(x)
-          this.api.theaters = x;
-          this.api.user.zipCode = newZip;
-          this.api.getUserZips(this.api.user).subscribe(
-            (x)=>{
-              this.api.userZips = x as string[]
-              this.userZips = this.api.passUserZips()
-            }
-          )
+    if(this.isSubmitZips){
+      const newZip = userZip.form.value.userZip;
+      this.api.addUserZip(this.api.user, newZip).subscribe(
+        (x)=>{
+          if(x){
+            
+            this.api.theaters = x;
+            this.api.user.zipCode = newZip;
+            this.api.getUserZips(this.api.user).subscribe(
+              (x)=>{
+                this.api.userZips = x as string[]
+                this.userZips = this.api.passUserZips()
+                this.canSubmitZips();
+              }
+            )
+          }
         }
-      }
-    )
+      )
+    }
+    
+  }
+  canSubmitZips(){
+    this.isSubmitZips = !this.isSubmitZips;
+  }
+  showKeys() {
+    const keys = this.registeredUser as {[key:string]: string};
+    let upDootUser : {[key:string]: string} = {};
+    for(let key of Object.keys(keys)){
+      upDootUser[key] = keys[key];
+    }
+    return upDootUser;
   }
   getUserZips(){
     return this.api.passUserZips();
   }
   onSubmit(updatedUser:NgForm){
     
-    console.log(updatedUser.form.controls)
-    console.log(updatedUser.form.contains('userName'));
+    this.showKeys()
     let upDootUser : {[key:string]: string} = {};
     const keys = this.registeredUser as object;
     let i = 0
     for(let key of Object.keys(keys)){
-      console.log(key)
+      
       if(updatedUser.form.contains(key)){
         if(updatedUser.form.value[key]){
           upDootUser[key] = updatedUser.form.value[key]
         }
       }else{
-        
-          console.log(Object.values(keys));
-        
           upDootUser[key] = Object.values(keys)[i]
         
         
       }
       i++;
     }
-    console.log(upDootUser)
-     this.api.updateUser(JSON.parse(JSON.stringify(upDootUser)));
+    if(this.canSubmit){
+      this.api.updateUser(JSON.parse(JSON.stringify(upDootUser)));
+      this.clickSubmit();
+    }
+     
   }
-
+  clickSubmit() {
+    this.canSubmit = !this.canSubmit;
+  }
   isSubmit() {
     return this.notIsActive.some(x=>x.isActive)
   }

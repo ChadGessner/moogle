@@ -15,3 +15,7 @@
 .theater-list {
     z-index:2;
 }
+
+.nav-item {
+    cursor: pointer;
+}

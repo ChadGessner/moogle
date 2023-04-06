@@ -45,20 +45,24 @@ export class NavComponent implements OnInit{
     this.isHamburger ? this.toggleHamburger() : this.isHamburger;
   }
   searchQuery(queryParam:NgForm){
-    if(this.registeredUser){
-      console.log(queryParam.form.value.search)
-      //this.api.searchQuery(queryParam.form.value.search, this.registeredUser)
+    console.log(queryParam)
       this.router.navigate([
         'search',
-        queryParam.form.value.search,
-        this.api.user.zipCode
+        queryParam.form.value.search
+        
       ])
-    }else{
-      this.isNotIsShowToast();
-      this.isHamburger ? this.toggleHamburger() : this.isHamburger;
-    }
+      this.toggleHamburger()
+    return queryParam.form.reset();
   }
-
+  hamburgerSearch(query:NgForm){
+    console.log(query)
+      this.router.navigate([
+        'search',
+        query.form.value.search
+        
+      ])
+    return query.form.reset();
+  }
   ngOnInit(): void {
     this.api.currentUserRxjs.subscribe((value) => {
       this.userRxjs = value;

@@ -61,8 +61,8 @@ export class FlixterApiService {
     let uriEnd = 'PopularMovies/GetPopularMoviesList';
     return this.http.get<{}>(this.baseUri + uriEnd)
    }
-   searchQuery(query:string, zip:string) {
-    let uriEnd = `Search/GetSearchQuery/${query}/${zip}`;
+   searchQuery(query:string) {
+    let uriEnd = `Search/GetSearchQuery/${query}`;
     return this.http.get<{}>(this.baseUri + uriEnd)
     
    }

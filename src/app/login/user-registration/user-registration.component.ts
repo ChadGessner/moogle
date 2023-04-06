@@ -1,5 +1,6 @@
 import { Component, NgModule, Input } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
 import { FlixterApiService } from '../../api.service';
 import {User} from '../../models/user.interface';
 
@@ -10,7 +11,7 @@ import {User} from '../../models/user.interface';
 })
 export class UserRegistrationComponent {
   
-  constructor(private api:FlixterApiService){}
+  constructor(private api:FlixterApiService, private router:Router){}
   
   register(newUser: NgForm){
     let user:User = {
@@ -26,6 +27,11 @@ export class UserRegistrationComponent {
       zipCode: newUser.form.value.zipCode
     }
     this.api.registerNewUser(user);
+    this.router.navigate(
+      [
+        'home'
+      ]
+    )
     return this.clearForm(newUser);
     // this.api.registerNewUser(user);
   }

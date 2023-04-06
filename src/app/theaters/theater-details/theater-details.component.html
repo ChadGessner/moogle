@@ -1,5 +1,10 @@
+<div class="card col alert-success m-4" *ngIf="!currentlySelectedTheater">
+  <div class="d-flex bg-dark">
+    <h4 class="text-center text-warning">...Please select a theater</h4>
+  </div>
+  <hr>
+</div>
 
-<app-loading *ngIf="!currentlySelectedTheater"></app-loading>
 
 <div *ngIf="currentlySelectedTheater">
     <div class="card m-4 p-4 border border-primary">

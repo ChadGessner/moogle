@@ -20,10 +20,10 @@ namespace Moogle_API.Controllers
     {
       return _client.GetActorData(actorId);
     }
-    [HttpGet("GetSearchQuery/{query}/{userZip}")]
-    public SearchRoot GetSearchQuery(string query, string userZip)
+    [HttpGet("GetSearchQuery/{query}")]
+    public SearchRoot GetSearchQuery(string query)
     {
-      return _client.GetSearchQuery(query, userZip);
+      return _client.GetSearchQuery(query);
     }
   }
 }

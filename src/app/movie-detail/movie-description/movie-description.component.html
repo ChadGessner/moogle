@@ -4,18 +4,20 @@ class="card p-1 m-4  rounded alert-success"
  >
 
     <div>
-        <app-favorite [favoriteMovieDetails]="movieDetail"></app-favorite>
+        
 
         <h4 class="text-warning" >DESCRIPTION</h4>
         <hr>
         <div class="row">
-            <div  class="row card-body bg-dark  ">
+            <div class="row card-body bg-dark  ">
                 <div class="row m-4 float-left">
                     <img class="col poster " 
                     src={{movieImage}}>
 
                     <div class="card col rounded alert-info m-4 p-4">
-                        <p class="card-text text-success font-monospace" [innerHTML]="synopsis" ></p>
+                        <p 
+                        class="card-text text-success font-monospace" 
+                        [innerHTML]="synopsis"></p>
                         <hr>
                     </div>                    
                 </div>

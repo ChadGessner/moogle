@@ -44,24 +44,31 @@
           class="nav-link " 
           (click)="getTheaterListRoute()">Local Theaters</a>
         </li>
-        <form 
-        class="d-flex" 
-        (ngSubmit)="searchQuery(queryParam)" 
-        #queryParam="ngForm">
-          <input 
-          class="form-control me-2" 
-          type="search" 
-          name="search" 
-          for="queryParam" 
-          placeholder="Search" 
-          aria-label="Search" 
-          ngModel>
-          <button  
-          class="btn btn-outline-light" 
-          for="search" 
-          type="submit">Search</button>
-        </form>
+        <div>
+          <form 
+          class="d-flex" 
+          (ngSubmit)="searchQuery(queryParam)" 
+          #queryParam="ngForm">
+            <input 
+            class="form-control me-2" 
+            
+            type="search" 
+            name="search" 
+            for="queryParam" 
+            placeholder="Search" 
+            aria-label="Search" 
+            ngModel>
+            <button  
+            
+            class="btn btn-outline-light" 
+            for="queryParam" 
+            
+            type="submit">Search</button>
+          </form>
+        </div>
+        
       </ul>
+      
     </div>
     
     <div class="collapse navbar-collapse " id="navbarDark">
@@ -69,11 +76,13 @@
         <li class="nav-item">
           <a 
           class="nav-link " 
+          
           routerLink="home">Home</a>
         </li>
         <li class="nav-item">
           <a 
           class="nav-link" 
+          
           routerLink="login">{{registeredUser ? 'Account Details' : 'Login'}}</a>
         </li>
         <li 
@@ -81,11 +90,13 @@
         class="nav-item">
           <a 
           class="nav-link" 
+          
           routerLink="register" >Register</a>
         </li>
         <li class="nav-item">
           <a 
           class="nav-link" 
+          
            (click)="getTheaterListRoute()" >Local Theaters</a>
         </li>
         
@@ -99,21 +110,20 @@
         </a>
       </div>
       <form class="d-flex" 
-      (ngSubmit)="searchQuery(queryParam)" 
-      #queryParam="ngForm">
+      (ngSubmit)="hamburgerSearch(query)" 
+      #query="ngForm">
         <input 
         class="form-control me-2" 
         id="search"
         type="search" 
         name="search" 
-        for="queryParam" 
+        for="query" 
         placeholder="Search" 
         aria-label="Search" 
         ngModel>
         <button 
-        routerLink={{searchRouteWithParams}} 
         class="btn btn-outline-light" 
-        for="search" 
+        for="query" 
         type="submit">Search</button>
       </form>
     </div>

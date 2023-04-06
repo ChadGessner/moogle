@@ -43,8 +43,8 @@
         *ngIf="notIsActive[0].isActive" 
         class="card col-7 m-4 alert-success">
             <p 
-            class="text-success" >
-            {{actor.data.person.biography}}
+            class="text-success" [innerHTML]="actor.data.person.biography">
+            
         </p>
         </div>
         <div 

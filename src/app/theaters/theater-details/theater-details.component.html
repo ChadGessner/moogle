@@ -1,5 +1,8 @@
 
-<app-loading *ngIf="!currentlySelectedTheater"></app-loading>
+<div *ngIf="!currentlySelectedTheater" class="text-center" >
+  <h4>Please select a theater to see movies and show times!</h4>
+<img class="rounded-pill" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a07e73f0-bc3f-47c2-83b8-0f33bd8ccefd/dc6060v-434a8c6d-bd80-4f33-90b6-90b95d799cea.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EwN2U3M2YwLWJjM2YtNDdjMi04M2I4LTBmMzNiZDhjY2VmZFwvZGM2MDYwdi00MzRhOGM2ZC1iZDgwLTRmMzMtOTBiNi05MGI5NWQ3OTljZWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5ZfOtdJ-KBDSAWIKfLK1aUJxtkLnkspPtnuE5168g7g" />
+</div>
 
 <div *ngIf="currentlySelectedTheater">
     <div class="card m-4 p-4 border border-primary">

@@ -1,10 +1,3 @@
-<div class="card col alert-success m-4" *ngIf="!currentlySelectedTheater">
-  <div class="d-flex bg-dark">
-    <h4 class="text-center text-warning">...Please select a theater</h4>
-  </div>
-  <hr>
-</div>
-
 
 <div *ngIf="!currentlySelectedTheater" class="text-center" >
   <h4>Please select a theater to see movies and show times!</h4>
@@ -13,41 +6,41 @@
 
 
 <div *ngIf="currentlySelectedTheater">
-    <div class="card m-4 p-4 border border-primary">
-      <div class="row container-fluid">
-        <div class="col-10"></div>
-        <div class="col">
-          
-        </div>
-      </div>
-      
-      
-        <div class="card-body">
-          <h4 class="text-success" >
-            <p class="card-text">{{this.currentTitle.name}}</p>
-          </h4>
-          
-          <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
-          <div class="row" >
-
-        </div>
+  <div class="card m-4 p-4 border border-primary">
+    <div class="row container-fluid">
+      <div class="col-10"></div>
+      <div class="col">
         
-          
-          <img 
-          class="image-fluid" 
-          height="200px" 
-          width="200px" 
-          src={{currentTitle.posterImage.url}}>
-          
-          
-        </div>
-        <div class="btn-group">
-            <a 
-            (click)="previousTitle()"
-            class="btn btn-outline-info">Previous</a>
-            <a  
-            (click)="nextTitle()"
-            class="btn btn-outline-info">Next</a>
-          </div>
       </div>
+    </div>
+    
+    
+      <div class="card-body">
+        <h4 class="text-success" >
+          <p class="card-text">{{this.currentTitle.name}}</p>
+        </h4>
+        
+        <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
+        <div class="row" >
+
+      </div>
+      
+        
+        <img 
+        class="image-fluid" 
+        height="200px" 
+        width="200px" 
+        src={{currentTitle.posterImage.url}}>
+        
+        
+      </div>
+      <div class="btn-group">
+          <a 
+          (click)="previousTitle()"
+          class="btn btn-outline-info">Previous</a>
+          <a  
+          (click)="nextTitle()"
+          class="btn btn-outline-info">Next</a>
+        </div>
+    </div>
 </div>

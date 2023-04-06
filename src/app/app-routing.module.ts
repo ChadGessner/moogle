@@ -41,7 +41,7 @@ const routes: Routes = [
     path: 'movie-detail/:emsVersionId',
      component: MovieDetailComponent
   },{
-    path: 'search/:id/:zip',
+    path: 'search/:id',
     component: SearchComponent
   },{
     path: 'home',

@@ -21,7 +21,7 @@ namespace Moogle_Flixter_Domain
     public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
 
-    public string ApiKey { get; set; } = "3741bbb5bdmsh3165f25a2e7271dp1d1a5fjsn54eb62b9462c";
+    public string ApiKey { get; set; } = "7a30b7b242msh7969928338da493p18acd6jsnd89b4f07471e";
 
     public FlixterClient()
     {
@@ -170,9 +170,9 @@ namespace Moogle_Flixter_Domain
       ActorRoot result = apiTask.Result;
       return ActorRoot.ValidateActorRoot(result);
     }
-    public SearchRoot GetSearchQuery(string query, string userZip)
+    public SearchRoot GetSearchQuery(string query)
     {
-      string apiUri = BaseUri + $"search?query={query}&zipCode={userZip}&radius=50";
+      string apiUri = BaseUri + $"search?query={query}";
       var header = apiUri
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")

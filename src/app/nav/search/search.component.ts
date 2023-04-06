@@ -67,7 +67,7 @@ export class SearchComponent implements OnInit{
   ngOnInit(): void {
     this.route.params.subscribe(
       (p:Params)=>{
-        this.api.searchQuery(p['id'],p['zip']).subscribe(
+        this.api.searchQuery(p['id']).subscribe(
           (x)=>{
             console.log(JSON.stringify(x))
             this.queryData = x;

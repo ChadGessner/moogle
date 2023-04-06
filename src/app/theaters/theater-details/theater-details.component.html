@@ -4,42 +4,43 @@
 <img class="rounded-pill" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a07e73f0-bc3f-47c2-83b8-0f33bd8ccefd/dc6060v-434a8c6d-bd80-4f33-90b6-90b95d799cea.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EwN2U3M2YwLWJjM2YtNDdjMi04M2I4LTBmMzNiZDhjY2VmZFwvZGM2MDYwdi00MzRhOGM2ZC1iZDgwLTRmMzMtOTBiNi05MGI5NWQ3OTljZWEuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.5ZfOtdJ-KBDSAWIKfLK1aUJxtkLnkspPtnuE5168g7g" />
 </div>
 
-<div *ngIf="currentlySelectedTheater">
-    <div class="card m-4 p-4 border border-primary">
-      <div class="row container-fluid">
-        <div class="col-10"></div>
-        <div class="col">
-          
-        </div>
-      </div>
-      
-      
-        <div class="card-body">
-          <h4 class="text-success" >
-            <p class="card-text">{{this.currentTitle.name}}</p>
-          </h4>
-          
-          <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
-          <div class="row" >
 
-        </div>
+<div *ngIf="currentlySelectedTheater">
+  <div class="card m-4 p-4 border border-primary">
+    <div class="row container-fluid">
+      <div class="col-10"></div>
+      <div class="col">
         
-          
-          <img 
-          class="image-fluid" 
-          height="200px" 
-          width="200px" 
-          src={{currentTitle.posterImage.url}}>
-          
-          
-        </div>
-        <div class="btn-group">
-            <a 
-            (click)="previousTitle()"
-            class="btn btn-outline-info">Previous</a>
-            <a  
-            (click)="nextTitle()"
-            class="btn btn-outline-info">Next</a>
-          </div>
       </div>
+    </div>
+    
+    
+      <div class="card-body">
+        <h4 class="text-success" >
+          <p class="card-text">{{this.currentTitle.name}}</p>
+        </h4>
+        
+        <h6 class="card-subtitle mb-2 text-muted">Now Showing</h6>
+        <div class="row" >
+
+      </div>
+      
+        
+        <img 
+        class="image-fluid" 
+        height="200px" 
+        width="200px" 
+        src={{currentTitle.posterImage.url}}>
+        
+        
+      </div>
+      <div class="btn-group">
+          <a 
+          (click)="previousTitle()"
+          class="btn btn-outline-info">Previous</a>
+          <a  
+          (click)="nextTitle()"
+          class="btn btn-outline-info">Next</a>
+        </div>
+    </div>
 </div>

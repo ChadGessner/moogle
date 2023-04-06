@@ -1,5 +1,5 @@
 .image-container {
-    max-width: 376px;
+    max-width: 360px;
     max-height: 255.3px;
     display: flex;
     flex-flow:row wrap;
@@ -14,6 +14,7 @@
     flex-direction: row ;
     justify-content: space-evenly;
     align-items: center;
+    
 }
 .carousel-image {
     max-height: 10rem;
@@ -37,12 +38,12 @@
   
   .list {
     scroll-behavior: smooth;
-  
+    min-width: 300px;
     flex-grow: 1;
     display: flex;
     overflow-x: scroll;
     align-items: center;
-  
+    
     padding-left: 5px;
     padding-right: 5px;
   }

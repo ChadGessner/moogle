@@ -2,7 +2,12 @@
 https://stackblitz.com/edit/my-angular-scroll-better?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp.component.css
 https://stackoverflow.com/questions/59198238/scroll-buttons-in-angular-application
 */
-
+@media(max-width: 600px){
+  .news {
+    max-width: 160px;
+    max-height: 176px;
+  }
+}
 .news-link {
   font-size: medium;
   display: block;

@@ -199,8 +199,8 @@ export class MovieDetailComponent implements OnInit {
       (p:Params)=>{
         console.log(p['emsVersionId'] as string)
         this.setEmsVersionIdRxjs(p['emsVersionId'] as string)
-       // this.movieDetail = MovieDetail;
-       // this.imagesList = this.movieDetail.data.movie.images;
+      //  this.movieDetail = MovieDetail;
+      //  this.imagesList = this.movieDetail.data.movie.images;
         this.api.getMovieDetailsById(p['emsVersionId']).subscribe(
           (x:{})=>{
             console.log(JSON.stringify(x))
@@ -208,8 +208,8 @@ export class MovieDetailComponent implements OnInit {
             this.imagesList = this.movieDetail.data.movie.images;
           }
         )
+      
       }
-
     )
   }
 }

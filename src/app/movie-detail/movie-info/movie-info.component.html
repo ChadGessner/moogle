@@ -1,25 +1,32 @@
 <div 
-class="card p-4 m-4 bg-dark rounded border border-success"
+class="card p-4 m-4 bg-dark rounded border border-success "
  >
 
-    <div>
+    <div class="">
         <h4 class="text-warning" >General Information</h4>
         <hr>
-        <div class="row">
-            <div  class="row card-body bg-dark  ">
-                <div class="row m-4 float-left">
+        <div class="row sm-flex-row">
+            <!-- <div  class="row card-body bg-dark  "> -->
+            <div  class="row card-body bg-dark sm-flex">
+                <div class="row m-4 float-left sm-flex-row">
                     <img class="col poster " 
                     src={{movieImage}}>
 
-                    <div  class="col card border border-secondary m-4 p-4">
+                    <div  class="col card alert-success ">
                         <label>Director</label>
-                        <p class="text-success" [innerHTML]="directedBy" ></p>
+                        <p 
+                        class="text-success" 
+                        [innerHTML]="directedBy" ></p>
                         <hr>
                         <label>Release Date</label>
-                        <p class="text-success" [innerHTML]="releaseDate"></p>
+                        <p 
+                        class="text-success" 
+                        [innerHTML]="releaseDate"></p>
                         <hr>
                         <label>Total Gross</label>
-                        <p class="text-success" [innerHTML]="getTotalGross()" ></p>
+                        <p 
+                        class="text-success" 
+                        [innerHTML]="getTotalGross()" ></p>
                         <hr>
                     </div>
                 </div>

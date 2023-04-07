@@ -1,6 +1,9 @@
 <div *ngIf="registeredUser">
 
-  <form (ngSubmit)="submitZip(userZip)" class="row-2 m-4 bg-dark" #userZip="ngForm" >
+  <form 
+  (ngSubmit)="submitZip(userZip)" 
+  class="row-2 m-4 bg-dark" 
+  #userZip="ngForm" >
     <div class="col">
       <div class="card border border-secondary">
         
@@ -14,7 +17,9 @@
           name="userZip" 
           placeholder={{registeredUser.zipCode}}  
           ngModel>
-          <button (click)="canSubmitZips()" id="btn-1" class="btn btn-outline-light text-warning">Add/Select Zip Code</button>
+          <button 
+          (click)="canSubmitZips()" 
+           class="btn btn-outline-light text-warning">Add/Select Zip Code</button>
           <button class="btn btn-outline-light text-warning m-1" (click)="toggleZips()">Toggle Zips</button>
           <ul *ngIf="isToggleZips" >
             <li 

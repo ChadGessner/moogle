@@ -10,3 +10,10 @@ padding-top: -150%;
     align-items: center;
     justify-content: center;
 } */
+
+@media(max-width: 600px) {
+    button {
+        max-width: 80px;
+        font-size: 8px;
+    }
+}

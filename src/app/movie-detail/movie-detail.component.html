@@ -1,20 +1,8 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="bg-dark  alert-info rounded">
+<div class="bg-dark alert-info rounded no-scroll stuff">
     <app-loading *ngIf="!movieDetail"></app-loading>
     <div class="no-scroll" *ngIf="movieDetail">
-        <div class="card bg-dark  rounded">
+        <div class="card bg-dark  rounded no-scroll">
             <div class="card-header">
                 <h2 class="text-warning" >{{movieDetail.data.movie.name | uppercase}}</h2>
                 <hr class="text-success" >

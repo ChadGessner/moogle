@@ -21,3 +21,30 @@
 div {
     overflow: hidden;
 }
+@media(max-width: 600px){
+    
+    .poster {
+        max-width: 200px;
+        min-width: 200px;
+        /* max-height: 255.3px; */
+        height:auto;
+        margin-bottom: 3px;
+    }
+    .sm-col {
+        display: flex;
+        flex-flow: column wrap;
+        max-width: 376px;
+    }
+    .sm-flex {
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    }
+    .sm-flex-row {
+        display:flex;
+        flex-flow:row;
+        justify-content:center;
+        align-items:center;
+    }
+}

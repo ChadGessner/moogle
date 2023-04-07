@@ -31,7 +31,9 @@ export class FavoriteListComponent implements OnInit {
     private cdRef: ChangeDetectorRef) {
       
     }
-
+  windowWidth() {
+    return window.innerWidth;
+  }
   setEmsVersionIdRxjs(emsVersionIdRxjs: any) {
     this.api.setEmsVersionIdRxjs(emsVersionIdRxjs);
   };

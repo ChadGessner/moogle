@@ -10,10 +10,10 @@ builder.Services.AddControllers();
 //                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles); //This suppresses json cycle errors
 builder.Services
   .AddCors(options => options
-  .AddDefaultPolicy(policy => policy
+  .AddPolicy("policy", policy => policy
   .AllowAnyOrigin()
   .AllowAnyHeader()
-  .AllowAnyMethod()));
+  .AllowAnyMethod())) ;
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -46,7 +46,7 @@ app.UseDirectoryBrowser(new DirectoryBrowserOptions
   RequestPath = requestPath
 });
 app.UseAuthorization();
-app.UseCors();
+app.UseCors("policy");
 
 app.MapControllers();
 

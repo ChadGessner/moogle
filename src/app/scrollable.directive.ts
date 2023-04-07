@@ -19,14 +19,14 @@ export class ScrollableDirective {
   }
 
   scroll(direction: number) {
-    // if(window.screenX > 3000){
-    //   this.element.scrollLeft += (this.scrollUnit - 900) * direction
-    // }else if(window.screenX > 2700){
-    //   this.element.scrollLeft += (this.scrollUnit - 500) * direction
-    // }else{
+    if(window.innerWidth === 500){
+      this.element.scrollLeft += (this.scrollUnit - 1000) * direction;
+    }else{
       this.element.scrollLeft += this.scrollUnit * direction
+    }
+      
     //}
-    console.log(window.screenX);
+    console.log(window.innerWidth);
     
     //this.element.scrollLeft += this.scrollUnit * direction;
   }

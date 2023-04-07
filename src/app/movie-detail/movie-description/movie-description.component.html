@@ -1,18 +1,18 @@
 <!-- [@componentState]="isActive ? 'show':'hidden'" -->
 <div 
-class="card p-1 m-4  rounded alert-success"
+class="card p-1 m-4  rounded alert-success outer"
  >
 
     <div>
         <h4 class="text-warning" >DESCRIPTION</h4>
         <hr>
-        <div class="row">
-            <div class="row card-body bg-dark  ">
-                <div class="row m-4 float-left">
+        <div class="row ">
+            <div class="row card-body bg-dark ">
+                <div class="row m-4 float-left sm-flex">
                     <img class="col poster " 
                     src={{movieImage}}>
 
-                    <div class="card col rounded alert-info m-4 p-4">
+                    <div class="card col rounded alert-info m-2 p-2 description">
                         <p 
                         class="card-text text-success font-monospace" 
                         [innerHTML]="synopsis"></p>

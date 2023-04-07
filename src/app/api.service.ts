@@ -4,7 +4,7 @@ import {TheaterData} from 'src/app/models/theater-data.interface';
 import { User } from './models/user.interface';
 import { TheaterDetails } from './models/theater-details.interface';
 
-import { Observable, from, BehaviorSubject } from 'rxjs';
+import { Observable, from, BehaviorSubject, Subscription } from 'rxjs';
 //import { map } from 'rxjs/operators';
 
 import { Chad } from './dataForTesting/loggedInUser';
@@ -85,7 +85,16 @@ export class FlixterApiService {
     
    }
    userLogout() {
-    //this.user = null;
+    this.registerEvent = new EventEmitter<any>();
+    this.user = null;
+    this.http.post<User>(this.serverUri, this.user)
+      .subscribe((x)=>{
+        if(x){
+          this.user = null
+        }
+      }
+      )
+    return this.registerEvent.emit(this.user)
    }
 
    getActorData(actorId:string) {

@@ -3,12 +3,30 @@
 
 
     <app-news></app-news>
-    <button class="btn btn-outline-success" type="button" (click)="index = 1">Upcoming Movies <i
-        class="bi bi-film"></i></button>
-    <button class="btn btn-outline-success" type="button" (click)="index = 2">Popular Movies <i
-        class="bi bi-film"></i></button>
-    <button class="btn btn-outline-success" type="button" (click)="index = 3">Favorite Movies <i
-        class="bi bi-star-fill"></i></button>
+    <div class="btn-group row">
+      <div class="col">
+        <button 
+          class="btn btn-outline-success text-success" 
+          type="button" (click)="index = 3">Favorite Movies 
+          <i class="bi bi-star-fill"></i></button>
+      </div>
+      <div class="col">
+        <button 
+        class="btn btn-outline-success text-success" 
+        type="button" 
+        (click)="index = 2">Popular Movies 
+        <i class="bi bi-film"></i></button>
+      </div>
+      <div class="col">
+        <button 
+        class="btn btn-outline-success text-success" 
+        type="button" 
+        (click)="index = 1">Upcoming Movies 
+        <i class="bi bi-film"></i></button>
+      </div>
+
+    </div>
+    
 
     <ng-template [ngIf]="index == 1">
       <app-upcoming-movie-details></app-upcoming-movie-details>

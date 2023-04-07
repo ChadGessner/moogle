@@ -21,3 +21,36 @@ div {
 .carousel-image {
     max-width:10rem;
 }
+
+@media(max-width: 600px){
+    .outer {
+        display:flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .sm-flex {
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    }
+    .poster {
+        max-width: 200px;
+        min-width: 200px;
+        /* max-height: 255.3px; */
+        height:240px;
+        margin-bottom: 3px;
+    }
+    
+    .sm-col {
+        display: flex;
+        flex-flow: column wrap;
+        max-width: 376px;
+    }
+    .description {
+        display:inline-flex;
+        width:100%;
+        margin: 2px;
+    }
+    
+}

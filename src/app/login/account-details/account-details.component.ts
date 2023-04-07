@@ -64,6 +64,10 @@ export class AccountDetailsComponent implements OnInit, OnChanges{
   toggleZips() {
     this.isToggleZips = !this.isToggleZips;
   }
+  logout() {
+    this.registeredUser = null;
+    this.api.userLogout();
+  }
   submitZip(userZip:NgForm) {
     if(this.isSubmitZips){
       const newZip = userZip.form.value.userZip;

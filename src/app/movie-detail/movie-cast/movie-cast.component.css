@@ -11,8 +11,9 @@ div {
     align-items: center;
 }
 .poster {
-    max-width: 10vw;
-    
+    max-width: 236px;
+    min-width: 236px;
+    height: auto;
 }
 .images-container {
     display:flex;
@@ -22,4 +23,61 @@ div {
 }
 .carousel-image {
     max-width:10rem;
+}
+/* @media(min-width: 600px){
+    .sm-flex {
+        display:flex;
+        flex-flow:row;
+        
+    }
+} */
+@media(max-width: 600px){
+    
+    .sm-flex {
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    }
+    .poster {
+        max-width: 200px;
+        min-width: 200px;
+        /* max-height: 255.3px; */
+        height:240px;
+        margin-bottom: 3px;
+    }
+    .sm-row {
+        display: flex;
+        flex-flow: row wrap;
+        max-width: 376px;
+        margin:2px;
+        padding:2px;
+    }
+    .mx-300 {
+        max-width: 300px;
+    }
+    
+}
+@media(max-width: 730px){
+    
+     /* .sm-flex {
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+        align-items:center;
+    } */
+    div, p, button {
+        font-size: 10px;
+    }
+    .poster {
+        max-width: 200px;
+        min-width: 200px;
+         /* max-height: 255.3px;  */
+        height:240px;
+        margin-bottom: 3px;
+    }
+    .sm-cast-info {
+        min-width:300px;
+        max-width:376px;
+    }
 }

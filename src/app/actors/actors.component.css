@@ -5,3 +5,14 @@
     height:auto;
     width: 200px;
 }
+@media(max-width:600px){
+    .film-poster {
+        width: 125px;
+    }
+    h4 {
+        font-size: 14px;
+    }
+    p, div, button {
+        font-size: 10px;
+    }
+}

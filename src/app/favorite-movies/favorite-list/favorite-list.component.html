@@ -2,13 +2,15 @@
 
 <ng-template #userSection>
     <div>
-        <h1 class="text-center" class="card-text text-success font-monospace">Favorite Movies!</h1>
+        <h1 
+        class="text-center card-text text-success font-monospace">
+        Favorite Movies!</h1>
 
     </div>
 
-    <div class="card border border-success p-2 mb-2">
+    <div *ngIf="windowWidth() > 700" class="card border border-success p-2 mb-2">
         <div class="table-responsive">
-            <table class="table align-middle">
+            <table class="table align-middle col">
                 <thead>
                     <tr class="text-warning">
                         <th scope="col-sm-10">Movie Poster</th>
@@ -34,20 +36,64 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-outline-success" (click)="passEmsVersionId(detail.emsVersionId)"
-                                routerLink="/movie-detail">Movie Details <i class="bi bi-film"></i></a>
+                            <a 
+                            class="btn btn-outline-success" 
+                            (click)="passEmsVersionId(detail.emsVersionId)"
+                            routerLink="/movie-detail">
+                            Movie Details 
+                            <i class="bi bi-film"></i></a>
                         </td>
                         <td>
-                            <button class="btn btn-success fav-btn" type="button"
-                                (click)="removeFavorite(detail.emsVersionId)"><i class="star2 bi bi-star-fill"></i>
-                                Remove</button>
+                            <button 
+                            class="btn btn-success fav-btn" 
+                            type="button"
+                            (click)="removeFavorite(detail.emsVersionId)">
+                            <i class="star2 bi bi-star-fill"></i>
+                            Remove</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
+    <div class="card col alert-success" *ngIf="windowWidth() <= 700" >
+        <div class="col card m-4 alert-info" *ngFor="let detail of favoriteMovies">
+            <label class="text-warning" >{{detail.name}} </label>
+            
+            <hr>
+            <div class="row p-4">
+                <button 
+                class="m-1 col btn btn-outline-success" 
+                type="button"
+                (click)="openTrailer(detail.trailerUrl)">
+                <i class="bi bi-film"></i> Trailer</button>
+                <a 
+                class="m-1 col btn btn-outline-success" 
+                (click)="passEmsVersionId(detail.emsVersionId)"
+                routerLink="/movie-detail">
+                Movie Details 
+                <i class="bi bi-film"></i></a>
+                <button 
+                class="m-1 col btn btn-success fav-btn" 
+                type="button"
+                (click)="removeFavorite(detail.emsVersionId)">
+                <i class="star2 bi bi-star-fill"></i>
+                Remove</button>
+            </div>
+            <hr>
+            <div class="row" >
+                <img class="poster col" src={{detail.posterImageUrl}}/>
+                <div class="col">
+                    <p class="text-success text-center">
+                        {{detail.synopsis}}
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
     <!-- <div *ngIf="favoriteMovies.length > 5">
         <div *ngIf="startOfFavoriteMovies; then thenBlock else elseBlock">
         </div>

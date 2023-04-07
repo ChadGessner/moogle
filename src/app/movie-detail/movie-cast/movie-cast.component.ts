@@ -28,6 +28,9 @@ export class MovieCastComponent {
   constructor(
     private router:Router
   ){}
+  windowWidth() {
+    return window.innerWidth;
+  }
   navigateToActorDetails() {
     const actorId = this.movieCast[this.castIndex].id
     if(actorId) {

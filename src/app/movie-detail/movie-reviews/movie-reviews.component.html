@@ -9,29 +9,48 @@ class="card p-4 m-4 bg-dark rounded border border-success"
         <hr>
         <div class="row">
             <div  class="row card-body bg-dark border ">
-                <div class="row m-4 float-left">
+                <div class="row">
                     <img class="col poster " 
                     src={{movieImage}}>
 
-                    <div class="card col ">
-                        <div  class="col card ">
-                            <div class="card border border-secondary m-1 p-1">
-                                <label class="text-warning" >Tomato Meter</label>
-                                <p class="text-info" [innerHTML]="getTomatometerData(tomatometer)" ></p>
-                            </div>
-                            <div class="card border border-danger m-1 p-1">
-                                <label class="text-warning" >Rating Count</label>
-                                <p class="text-info" [innerHTML]="getTomatometerData(ratingCount)" ></p>
-                            </div>
-                            <div class="card border border-danger m-1 p-1">
-                                <label class="text-warning" >Consensus</label>
-                                <p class="text-info" [innerHTML]="getTomatometerData(consensus)" ></p>
-                            </div>
-                            
+                <div *ngIf="windowWidth() > 600" 
+                    class="card col ">
+                    <div  class="col card ">
+                        <div class="card border border-secondary m-1 p-1">
+                            <label class="text-warning" >Tomato Meter</label>
+                            <p class="text-info" [innerHTML]="getTomatometerData(tomatometer)" ></p>
                         </div>
-                    </div>                    
+                        <div class="card border border-danger m-1 p-1">
+                            <label class="text-warning" >Rating Count</label>
+                            <p class="text-info" [innerHTML]="getTomatometerData(ratingCount)" ></p>
+                        </div>
+                        <div class="card border border-danger m-1 p-1">
+                            <label class="text-warning" >Consensus</label>
+                            <p class="text-info" [innerHTML]="getTomatometerData(consensus)" ></p>
+                        </div>
+                    </div>
                 </div>
+                <div class="col " *ngIf="windowWidth() < 600" >
+                    <div  class="col card ">
+                        <div class="col card border border-secondary m-1 p-1">
+                            <label class="text-warning" >Tomato Meter</label>
+                            <p class="text-info" [innerHTML]="getTomatometerData(tomatometer)" ></p>
+                        </div>
+                        <div class="col card border border-danger m-1 p-1">
+                            <label class="text-warning" >Rating Count</label>
+                            <p class="text-info" [innerHTML]="getTomatometerData(ratingCount)" ></p>
+                        </div>
+                    </div>
+                </div> 
             </div>
-        </div>
+                
+            </div>
+            
+        
     </div>
+    <div *ngIf="windowWidth() < 600"
+    class="row card border border-danger m-1 p-1">
+        <label class="text-warning" >Consensus</label>
+        <p class="text-info" [innerHTML]="getTomatometerData(consensus)" ></p>
+    </div>         
 </div>

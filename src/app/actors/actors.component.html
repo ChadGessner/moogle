@@ -133,26 +133,26 @@
         class="col p-4 ">
             <ul 
             class="list-group col alert-info">
-                <li 
+                <li [innerHTML]="actor.data.person.name"
                     class="list-group-item text-success ">
+                    
+                </li>
+                <li [innerHTML]="actor.data.person.birthDate"
+                    class="list-group-item text-success">
+                    
+                </li>
+                <li [innerHTML]="actor.data.person.birthPlace"
+                    class="list-group-item text-success">
+                    
+                </li>
+                <li [innerHTML]="actor.data.person.gender"
+                    class="list-group-item text-success">
+                    
+                </li>
+                <!-- <li 
+                    class="list-group-item text-success">
                     {{actor.data.person.name}}
-                </li>
-                <li 
-                    class="list-group-item text-success">
-                    {{actor.data.person.birthDate}}
-                </li>
-                <li 
-                    class="list-group-item text-success">
-                    {{actor.data.person.birthPlace}}
-                </li>
-                <li 
-                    class="list-group-item text-success">
-                    {{actor.data.person.gender}}
-                </li>
-                <li 
-                    class="list-group-item text-success">
-                    {{actor.data.person.name}}
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>

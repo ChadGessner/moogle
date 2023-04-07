@@ -18,6 +18,10 @@ export class MovieReviewsComponent {
   @Input()ratingCount:number = 0;
   @Input()consensus:string = '';
   constructor(){}
+  windowWidth() {
+    console.log(window.innerWidth)
+    return window.innerWidth;
+  }
   getTomatometerData(data:number|string) {
     return data = data.toString() === '-1' || data.toString() === 'N/A' ? '<i class="bi bi-bandaid"></i>' : data;
   }

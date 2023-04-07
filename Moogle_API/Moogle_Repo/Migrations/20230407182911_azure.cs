@@ -5,7 +5,7 @@
 namespace Moogle_Repo.Migrations
 {
     /// <inheritdoc />
-    public partial class muhfravrits : Migration
+    public partial class azure : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

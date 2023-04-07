@@ -400,4 +400,5 @@ FodyWeavers.xsd
 *.json
 *.js
 *.old
-*appsettings.json
+*.appsettings.json
+*.Secrets.cs

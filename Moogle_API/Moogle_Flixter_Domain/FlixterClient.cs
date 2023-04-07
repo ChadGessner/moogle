@@ -10,6 +10,8 @@ using Moogle_Models.API_Models.UpcomingMovies;
 using Moogle_Models.API_Models.Actor;
 using Moogle_Models.API_Models.Search;
 using Moogle_Models.API_Models.PopularMovies;
+using Moogle_Models.Secrets;
+using System.Runtime.CompilerServices;
 
 namespace Moogle_Flixter_Domain
 {
@@ -18,14 +20,19 @@ namespace Moogle_Flixter_Domain
     public HttpClient Client { get; set; }
 
     public string BaseUri { get; set; } = "https://flixster.p.rapidapi.com/";
-    public string TestUri { get; set; } = @"C:\Users\Chad\Desktop\GC_Angular\moogle-app\Moogle_API\Moogle_Flixter_Domain\ModelsTest.json";
     public string Headers { get; set; }
-
-    public string ApiKey { get; set; } = "cb1927f98fmshfc2a76338497f7ap1a9eb4jsnb4ab1030f663";
+    
 
     public FlixterClient()
     {
       Client = new HttpClient();
+    }
+    public static string GetApiUri()
+    {
+      Random randint = new Random();
+      string Uri = Secrets.ApiUris[randint.Next(1,3)];
+      Console.WriteLine(Uri);
+      return Uri;
     }
     public async Task<TheaterRequest> MakeTheaterRequest(string zipCode)
     {
@@ -35,7 +42,7 @@ namespace Moogle_Flixter_Domain
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-        .WithHeader("X-RapidAPI-Key", ApiKey)
+        .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -52,7 +59,7 @@ namespace Moogle_Flixter_Domain
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -81,7 +88,7 @@ namespace Moogle_Flixter_Domain
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -101,7 +108,7 @@ namespace Moogle_Flixter_Domain
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -119,7 +126,7 @@ namespace Moogle_Flixter_Domain
 
         //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-        .WithHeader("X-RapidAPI-Key", ApiKey)
+        .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
         .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -137,7 +144,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
           //.WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
@@ -159,7 +166,7 @@ namespace Moogle_Flixter_Domain
 
           // .WithHeader("X-RapidAPI-Key", "a5eb94d850msh3000c463db4a25dp1f3109jsn756a961153bc")
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");
@@ -196,7 +203,7 @@ namespace Moogle_Flixter_Domain
       var header = apiUri
 
 
-          .WithHeader("X-RapidAPI-Key", ApiKey)
+          .WithHeader("X-RapidAPI-Key", GetApiUri())
 
 
           .WithHeader("X-RapidAPI-Host", "flixster.p.rapidapi.com");

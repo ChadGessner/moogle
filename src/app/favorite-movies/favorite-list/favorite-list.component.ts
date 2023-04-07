@@ -59,7 +59,7 @@ export class FavoriteListComponent implements OnInit {
       this.isLoggedIn = true;
     }
     // this.getFavorites(this.currentUserIdRxjs)
-    this.api.getFavoriteMovieList(this.currentUserIdRxjs).subscribe(
+    this.api.getFavoriteMovieList(this.api.getLoggedInUser().id).subscribe(
       (response) => {
         this.favoriteMovies = response;
         this.cdRef.detectChanges();

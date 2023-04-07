@@ -402,3 +402,5 @@ FodyWeavers.xsd
 *.old
 *.appsettings.json
 *.Secrets.cs
+/Moogle_API/Moogle_Models/Secrets/Secrets.cs
+/Moogle_API/Moogle_Repo/appsettings.json
